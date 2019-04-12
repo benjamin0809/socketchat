@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Socket.IO Chat Example</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <ul class="pages">
+    <li class="chat page">
+      <div class="chatArea">
+        <ul class="messages"></ul>
+      </div>
+      <input type="file" id="imgInput">
+      <input class="inputMessage" placeholder="Type here..."/>
+      
+    </li>
+    <li class="login page">
+      <div class="form">
+        <h3 class="title">What's your nickname?</h3>
+        <input class="usernameInput" type="text" maxlength="14" />
+      </div>
+    </li>
+  </ul>
+
+  <div class="user-list-container">
+      <div>
+          <img src="" id="imgs">
+      </div>
+       
+      
+    <div class="online_user_container">
+      在线人数 <span id="online_user">0</span>
+    </div>
+    <ul id="user-list" class="user-list">
+      <li  > 
+        <div class="userinfo">
+          <span class="username">benjamin</span>
+          <span class="userid"></span>
+        </div> 
+      </li>  
+       
+    </ul>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="./javascripts/socket.io.js"></script>
+  <script src="/main.js"></script>
+  <script src="/notification.js"></script>
+
+  <script >
+    var notification = new Notice();
+    //notification.sendNotification('hello',{body: '@ionic-native/app-minimize@4.20.0 requires a peer of rxjs@^5.5.11 but none is installed. You must install peer dependencies yourself.'},()=>{
+     // console.log('onclicked')
+     // window.open('https://www.baidu.com')
+    //})
+
+    document.addEventListener("visibilitychange", function() {
+      console.log(document.visibilityState);
+      if(document.visibilityState == "hidden") {
+          console.log('隐藏');
+      } else if (document.visibilityState == "visible") {
+          console.log('显示')
+      }
+  });
+  </script>
+</body>
+</html>

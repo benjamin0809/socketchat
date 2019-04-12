@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>Second Page</title>
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+   
+  <meta name="theme-color" content="#4e8ef7">
+
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+</head>
+<script>
+        window.addEventListener("message", receiveMessage, false);
+
+        function receiveMessage(event)
+        {
+            console.log(event)
+        // For Chrome, the origin property is in the event.originalEvent
+        // object. 
+        // 这里不准确，chrome没有这个属性
+        // var origin = event.origin || event.originalEvent.origin; 
+        var origin = event.origin
+        if (origin !== "http://example.org:8080")
+            return;
+
+        // ...
+        }
+</script>
+
+<body>
+
+   <h1>Hello World</h1>
+
+</body>
+</html>
