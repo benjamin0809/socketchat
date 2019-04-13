@@ -6,6 +6,8 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "async": "^2.6.2",
+    "cheerio": "^1.0.0-rc.3",
     "connect-multiparty": "^2.2.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
@@ -17,6 +19,7 @@
     "mysql": "^2.16.0",
     "pug": "^2.0.3",
     "request": "^2.88.0",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.2.0",
+    "superagent": "^5.0.2"
   }
 }
