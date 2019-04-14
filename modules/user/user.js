@@ -1,5 +1,5 @@
  
-var sqlUtils = require('../../database/sql.utils.js')
+const sqlUtils = require('../../database/sql.utils.js')
 
 const getUser = (userid)=>{
     let sql = `SELECT * from user where id = ?`
