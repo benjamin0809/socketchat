@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<title>GET VIDEO</title>
@@ -6,10 +6,13 @@
 	</head>
 	<body>
 	<input type="button" title="开启摄像头" value="开启摄像头" onclick="getMedia()" />
-	<video id="video" width="500px" height="500px" autoplay="autoplay"></video>
+	<video id="video" width="500px" height="500px"  ></video>
 	<canvas id="canvas" width="500px" height="500px"></canvas>
 	<button id="snap" onclick="takePhoto()">拍照</button>
 	<script>
+
+
+    alert(navigator.mediaDevices)
         function getMedia() {
             let constraints = {
                 video: {width: 500, height: 500},
