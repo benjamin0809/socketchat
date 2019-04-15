@@ -4,19 +4,23 @@ class WebSocket{
   constructor(socket,io){  
     this.addedUser = false;
     this.socket = socket;
+    this.rooms = [];
     this.io = io;
+    this.funcArr = ['newMessage','refresh','addUser','typing','stopTyping','disconnect','joinRoom']
 
-    this.newMessage();
-    this.refresh();
-    this.addUser();
-    this.typing();
-    this.stopTyping();
-    this.disconnect();
+    this.funcArr.forEach(func=>{
+      this[func]();
+    }) 
   }
-  joinRoom (socket, roomId){
-    socket.join(roomId)
-  }
+  // joinRoom (socket, roomId){
+  //   socket.join(roomId)
+  // }
   
+  joinRoom (){
+    this.socket.on('join room', (data) => {  
+      this.socket.join(data.roomId) 
+    });
+  }
   isValid(token){
     return !!token;
   }

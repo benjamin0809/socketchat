@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "echo test", 
+    "start": "node ./bin/www",
+    "check": "npm run test && npm start"
   },
   "dependencies": {
     "async": "^2.6.2",
@@ -17,11 +19,13 @@
     "mime-types": "^2.1.22",
     "mkdirp": "^0.5.1",
     "morgan": "~1.9.0",
-    "mysql": "^2.16.0",
     "pug": "^2.0.3",
     "request": "^2.88.0",
     "socket.io": "^2.2.0",
     "superagent": "^5.0.2",
     "superagent-proxy": "^2.0.0"
+  },
+  "devDependencies": {
+    "mysql": "^2.16.0"
   }
 }
