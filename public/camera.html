@@ -13,6 +13,18 @@
 
 
     alert(navigator.mediaDevices)
+
+    let constraints = {
+      audio: true,
+      video: {
+        width: { min: 1024, ideal: 1280, max: 1920 },
+        height: { min: 776, ideal: 720, max: 1080 }
+      }
+    }
+
+    navigator.mediaDevices.getUserMedia(constraints)
+.then(function(mediaStream) {  })
+.catch(function(error) { alert(JSON.stringify(error)) })
         function getMedia() {
             let constraints = {
                 video: {width: 500, height: 500},
