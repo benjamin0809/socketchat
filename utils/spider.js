@@ -105,7 +105,9 @@ class Sipder {
               let avatar = $('.headpic:first-child>img').attr('src');//用户头像
               let username = $('.j_u:first-child').attr('uname');//用户ID 
               let Arr = []
+              let timestamp = new Date().getTime().toString()
               let article = {
+                id: Number(timestamp.substr(5,timestamp.length - 1) + h.replace(/[^0-9]/ig,"")) ,
                 articleid: Number(h.replace(/[^0-9]/ig,"")) || +new Date(),
                 title: title,
                 avatar: avatar,

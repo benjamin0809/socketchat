@@ -18,6 +18,12 @@ class HupuDao{
         return this.sqlUtils.queryWithParams(sql, params);
     }
     
+    getHupuImages(limit = 20,offset = 0){
+        let sql = `SELECT * from ${TBALE_NAME} where length(images) > 2
+        ORDER BY id desc limit ${offset}, ${limit}`
+        let params = []
+        return this.sqlUtils.queryWithParams(sql, params);
+    }
     insertHupuImages(hupuEntity){
         if(!hupuEntity)return; 
         let sql = `INSERT INTO ${TBALE_NAME} (id,articleid,title,avatar,images,username,createTime,modifiedTime) VALUES (?,?,?,?,?,?,?,?)`
