@@ -100,6 +100,7 @@ class Sipder {
                 return;
               }
 
+              
               let $ = cheerio.load(resp.text);
               let title = $('.bbs-hd-h1>h1').attr('data-title');//帖子标题
               let avatar = $('.headpic:first-child>img').attr('src');//用户头像
@@ -123,7 +124,7 @@ class Sipder {
                   url: url 
                 };  
                 FileUtils.downloadImage(opts, outPath, article.articleid+ '-' +id + '-'+ src.split('/').slice(-1))
-
+                article.images.push(url)
               })
 
              
