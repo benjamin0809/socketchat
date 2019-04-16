@@ -22,6 +22,7 @@ router.get('/spiderMove',function(req,res,next){
     let offset = req.query.offset;
     if(token !== '9527'){
         console.error('permission denied')
+        res.send('未授权')
         return;
     }
    
