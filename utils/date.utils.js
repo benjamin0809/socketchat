@@ -60,6 +60,16 @@ class DateUtils {
       var timeString = year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds; 
       return timeString; 
     }  
+
+     //获取当前时间 
+     static getCurrentDate() { 
+      var today = new Date(); 
+      var year = today.getFullYear(); 
+      var month = today.getMonth() + 1; 
+      var day = today.getDate();  
+      var timeString = year + "-" + month + "-" + day ; 
+      return timeString; 
+    } 
     /* 
      * 比较时间大小 
      * time1>time2 return 1 
@@ -106,7 +116,7 @@ class DateUtils {
      */
     static format(dateTime, pattern) { 
       var date = new Date(dateTime); 
-      if(Bee.StringUtils.isBlank(pattern)) { 
+      if(!pattern) { 
         return date.toLocaleString(); 
       } 
       return pattern.replace(/([a-z])\1*/ig, function(matchStr, group1) { 

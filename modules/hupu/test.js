@@ -4,7 +4,7 @@ let hupuDao = new HupuDao()
 
 let hupuEntity = {
     id : 123456,
-    atricleid :234567,
+    articleid :268473394,
     title: 'test',
     avatar :'ttt',
     username :'benjamin',
@@ -19,8 +19,14 @@ hupuDao.insertHupuImages(hupuEntity).then(res=>{
 })
 
 
-hupuDao.getAllHupuImages().then(res=>{
-    console.log(res)
-}).catch(err=>{
-    console.log(err)
-})
+// hupuDao.getAllHupuImages().then(res=>{
+//     console.log(res)
+// }).catch(err=>{
+//     console.log(err)
+// })
+
+// hupuDao.getHupuImages().then(res=>{
+//     console.log(res)
+// }).catch(err=>{
+//     console.log(err)
+// })

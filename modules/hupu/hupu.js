@@ -26,13 +26,14 @@ class HupuDao{
     }
     insertHupuImages(hupuEntity){
         if(!hupuEntity)return; 
-        let sql = `INSERT INTO ${TBALE_NAME} (id,articleid,title,avatar,images,username,createTime,modifiedTime) VALUES (?,?,?,?,?,?,?,?)`
+        let sql = `REPLACE INTO ${TBALE_NAME} (id,articleid,title,avatar,images,sourceUrl,username,createTime,modifiedTime) VALUES (?,?,?,?,?,?,?,?,?)`
         let params = []
         params.push(hupuEntity.id || +new Date())
         params.push(hupuEntity.articleid )
         params.push(hupuEntity.title )
         params.push(hupuEntity.avatar )
         params.push(JSON.stringify(hupuEntity.images) )
+        params.push(JSON.stringify(hupuEntity.sourceUrl) ) 
         params.push(hupuEntity.username )
         params.push(hupuEntity.createTime || DateUtils.getCurrentTime())
         params.push(hupuEntity.modifiedTime )

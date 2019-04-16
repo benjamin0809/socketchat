@@ -8,6 +8,7 @@ const fs = require('fs')
 const path = require('path')
 const HupuDao = new (require('../modules/hupu/hupu'))()
 const FileUtils = require('./file-utils')
+const dateUtils = require('./date.utils')
 class Sipder {
   constructor() {}
 
@@ -79,8 +80,8 @@ class Sipder {
      static getHupuImages(spider_url, proxy) {
       return new Promise((resolve, reject)=>{
        let allUrl = [];
-       let ssr = []
-       let outPath = path.resolve('./base64/' + +new Date() + '/');  
+       let ssr = [] 
+       let outPath = path.resolve('./base64/' +  dateUtils.getCurrentDate() + '/');  
        superagent.get(spider_url) 
        .end((err, res) => {
          err && console.error(err) 
@@ -113,6 +114,7 @@ class Sipder {
                 title: title,
                 avatar: avatar,
                 username: username,
+                sourceUrl: href,
                 images: Arr
               }
               $('.quote-content img').each((id,ele)=>{
@@ -123,8 +125,11 @@ class Sipder {
                 let opts = {
                   url: url 
                 };  
-                FileUtils.downloadImage(opts, outPath, article.articleid+ '-' +id + '-'+ src.split('/').slice(-1))
-                article.images.push(url)
+
+                if(src.split('/').slice(-1) != 'placeholder.png'){
+                  FileUtils.downloadImage(opts, outPath, article.articleid+ '-' +id + '-'+ src.split('/').slice(-1))
+                  article.images.push(url)
+                } 
               })
 
              
