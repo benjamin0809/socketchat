@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "test": "echo test", 
+    "test": "echo test",
     "start": "node ./bin/www",
     "check": "npm run test && npm start"
   },
@@ -21,6 +21,7 @@
     "morgan": "~1.9.0",
     "pug": "^2.0.3",
     "request": "^2.88.0",
+    "serve-favicon": "^2.5.0",
     "socket.io": "^2.2.0",
     "superagent": "^5.0.2",
     "superagent-proxy": "^2.0.0"
