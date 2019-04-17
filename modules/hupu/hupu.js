@@ -20,13 +20,13 @@ class HupuDao{
     
     getHupuImages(limit = 20,offset = 0){
         let sql = `SELECT * from ${TBALE_NAME} where length(images) > 2
-        ORDER BY createTime desc limit ${offset}, ${limit}`
+        ORDER BY UNIX_TIMESTAMP(articleTime) desc, UNIX_TIMESTAMP(createTime) desc limit ${offset}, ${limit}`
         let params = []
         return this.sqlUtils.queryWithParams(sql, params);
     }
     insertHupuImages(hupuEntity){
         if(!hupuEntity)return; 
-        let sql = `REPLACE INTO ${TBALE_NAME} (id,articleid,title,avatar,images,sourceUrl,username,createTime,modifiedTime) VALUES (?,?,?,?,?,?,?,?,?)`
+        let sql = `REPLACE INTO ${TBALE_NAME} (id,articleid,title,avatar,images,sourceUrl,username,createTime,articleTime,modifiedTime) VALUES (?,?,?,?,?,?,?,?,?,?)`
         let params = []
         params.push(hupuEntity.id || +new Date())
         params.push(hupuEntity.articleid )
@@ -36,6 +36,8 @@ class HupuDao{
         params.push(JSON.stringify(hupuEntity.sourceUrl) ) 
         params.push(hupuEntity.username )
         params.push(hupuEntity.createTime || DateUtils.getCurrentTime())
+        params.push(hupuEntity.articleTime)
+        
         params.push(hupuEntity.modifiedTime )
         return this.sqlUtils.queryWithParams(sql, params);
     }
