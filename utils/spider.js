@@ -105,7 +105,8 @@ class Sipder {
               let $ = cheerio.load(resp.text);
               let title = $('.bbs-hd-h1>h1').attr('data-title');//帖子标题
               let avatar = $('.headpic:first-child>img').attr('src');//用户头像
-              let username = $('.j_u:first-child').attr('uname');//用户ID 
+              let username = $('.j_u:first-child').attr('uname');//用户ID  
+              let stime = $('#tpc .author .stime').text();//用户ID 
               let Arr = []
               let timestamp = new Date().getTime().toString()
               let article = {
@@ -114,9 +115,11 @@ class Sipder {
                 title: title,
                 avatar: avatar,
                 username: username,
+                articleTime: stime,
                 sourceUrl: href,
                 images: Arr
-              }
+              } 
+              console.log(stime)
               $('.quote-content img').each((id,ele)=>{
                 let $ele = $(ele);
                 let src = $ele.attr('src') ||  $ele.attr('data-src'); 

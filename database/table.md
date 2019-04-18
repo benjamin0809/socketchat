@@ -8,6 +8,7 @@ let createTable = `CREATE TABLE IF NOT EXISTS hupuImages(
    images text,
    sourceUrl VARCHAR(256),
    createTime VARCHAR(40) NOT NULL,
+   articleTime VARCHAR(32) NOT NULL,
    modifiedTime VARCHAR(40) NULL,
    PRIMARY KEY ( id )
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;`
