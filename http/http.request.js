@@ -1,6 +1,7 @@
 var http = require("http");
 var config = require("../config/dev.conf");
   
+const proxy = 'http://F2846595:mrz0809@10.191.131.156:3128'
 const request = function(method, path, body, headers){ 
     var data = {}
     body && Object.assign(data,body)
@@ -10,6 +11,7 @@ const request = function(method, path, body, headers){
         port: config.sever.port,  
         method: method,  
         path: path,  
+        proxy: proxy,
         headers: {  
             "Content-Type": 'application/json',  
             "Content-Length": data.length 
