@@ -24,7 +24,7 @@ $(function() {
   var $currentInput = $usernameInput.focus();
 
   var member_list = []
-  var socket = io('localhost:3000?token=12', {
+  var socket = io('www.popochiu.com?token=12', {
     path: '/chat'
   });
 
