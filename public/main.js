@@ -24,7 +24,7 @@ $(function() {
   var $currentInput = $usernameInput.focus();
 
   var member_list = []
-  var socket = io('www.popochiu.com?token=12', {
+  var socket = io('localhost:3000?token=12', {
     path: '/chat'
   });
 
@@ -49,6 +49,8 @@ $("#imgInput").change(function(){
   // var img = new Image();
  var fileurl = $(this)[0].files[0]
   // img.src=URL.createObjectURL(fileurl);
+
+  if(!fileurl)return;
   var reader = new FileReader();
   reader.readAsDataURL(fileurl);
   reader.onload = function (e) {  
@@ -114,17 +116,17 @@ $("#imgInput").change(function(){
     // Prevent markup from being injected into the message
     message = cleanInput(message);
     // if there is a non-empty message and a socket connection
-    if (message && connected) {
+    if ((message && connected) || messageType == 'image') {
       $inputMessage.val('');
+      if(!messageType)messageType = 'text'
       addChatMessage({
         username: username,
-        message: message
-      });
-
-      if(!messageType)messageType = 'text'
+        message:messageType == 'image' ? sourceMessage : message,
+        type: messageType
+      }); 
       // tell server to execute 'new message' and send along one parameter
       socket.emit('new message', {message: sourceMessage || message,type: messageType});
-    }
+    } 
   }
 
   // Log a message
@@ -163,8 +165,8 @@ $("#imgInput").change(function(){
   // Adds the visual chat typing message
   const addChatTyping = (data) => {
     data.typing = true;
-    data.message = data.message || 'is typing' ;
-    addChatMessage(data);
+    // data.message = data.message || 'is typing' ;
+    // addChatMessage(data);
   }
 
   // Removes the visual chat typing message
@@ -268,6 +270,15 @@ $("#imgInput").change(function(){
     }
   });
 
+  $('#submit').click(function(event){
+    if (username) {
+      sendMessage();
+      socket.emit('stop typing');
+      typing = false;
+    } else {
+      setUsername();
+    }
+  }) 
   $inputMessage.on('input', () => {
     updateTyping();
   });
@@ -316,9 +327,8 @@ $("#imgInput").change(function(){
     for(let i = 0;i < data.data.length; i++){
       
       $('#user-list').append(`<li  > 
-    <div id="${data.data[i].id}" class="userinfo">
-      <span class="username">${data.data[i].name}</span>
-      <a class="userid"  a href="javascript:void(0);" onclick="chatOnMessage()">${data.data[i].id}</a>
+    <div id="${data.data[i].id}" class="userinfo"> 
+      <a class="userid"  a href="javascript:void(0);" onclick="chatOnMessage()">${data.data[i].name}</a>
     </div> 
   </li>  `)
     }

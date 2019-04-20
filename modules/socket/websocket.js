@@ -1,17 +1,21 @@
  
-var numUsers = 0; 
+ 
 class WebSocket{
   constructor(socket,io){  
     this.addedUser = false;
     this.socket = socket;
     this.rooms = [];
-    this.io = io;
+    this.io = io; 
     this.funcArr = ['newMessage','refresh','addUser','typing','stopTyping','disconnect','joinRoom']
 
     this.funcArr.forEach(func=>{
       this[func]();
     }) 
   }
+
+  // addSocket(socket){
+  //   socket.
+  // }
   // joinRoom (socket, roomId){
   //   socket.join(roomId)
   // }
@@ -32,6 +36,11 @@ class WebSocket{
         type: data.type
       });
     });
+  }
+
+  getSocketsCount(){
+    let sockets = this.io.sockets.sockets; 
+    return Object.keys(sockets).length
   }
   refresh_list(){
     let datalist = []
@@ -60,7 +69,7 @@ class WebSocket{
   
       // we store the username in the socket session for this client
       this.socket.username = username;
-      ++numUsers;
+      let numUsers = this.getSocketsCount();
       this.addedUser = true;
       
       this.socket.emit('login', {
@@ -78,10 +87,10 @@ class WebSocket{
 
   typing(){
     this.socket.on('typing', (data) => {
-      this.socket.broadcast.emit('typing', {
-        username: this.socket.username,
-        message: data.message
-      });
+      // this.socket.broadcast.emit('typing', {
+      //   username: this.socket.username,
+      //   message: data.message
+      // });
     });
   } 
 
@@ -96,12 +105,11 @@ class WebSocket{
 
   disconnect(){ 
     this.socket.on('disconnect', () => {
-      if (this.addedUser) {
-        --numUsers; 
+      if (this.addedUser) { 
         // echo globally that this client has left
         this.socket.broadcast.emit('user left', {
           username: this.socket.username,
-          numUsers: numUsers
+          numUsers: this.getSocketsCount()
         });
       }
     });

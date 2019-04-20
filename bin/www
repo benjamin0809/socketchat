@@ -6,7 +6,7 @@
 
 var app = require('../app');
 var debug = require('debug')('myapp:server');
-var http = require('http'); 
+var http = require('http');  
 const WebSocket = require('../modules/socket/websocket') 
 /**
  * Get port from environment and store in Express.
@@ -31,18 +31,28 @@ var io = require('socket.io')(server, {
   cookie: false
 });  
 
-io.use((socket, next) => {
+io.on('connection',(socket=>{ 
   let token = socket.handshake.query.token;
-  console.log(socket.handshake.query)
-  if (token) {
-    io.on('connection',(socket=>{
-      let newsocket = new WebSocket(socket,io); 
-    })) 
-    return next();
+  if (!token) {
+    delete io.sockets.sockets[socket.id]
   }else{ 
-    return next(new Error('authentication error'));
+    let newsocket = new WebSocket(socket,io); 
   }
-});
+})) 
+
+// io.use((socket, next) => {
+//   let token = socket.handshake.query.token;
+//   console.log(socket.handshake.query)
+//   if (token) {
+//     io.on('connection',(socket=>{
+//       console.log(socket.id) 
+//       // let newsocket = new WebSocket(socket,io); 
+//     })) 
+//     return next();
+//   }else{ 
+//     return next(new Error('authentication error'));
+//   }
+// });
 
 
  

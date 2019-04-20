@@ -12,39 +12,43 @@
       <div class="chatArea">
         <ul class="messages"></ul>
       </div>
-      <input type="file" id="imgInput">
-      <input class="inputMessage" placeholder="Type here..."/>
+      <div class="input">
+         <div class="imginput">
+            <img src="images/album.png"/>
+            <input type="file" id="imgInput" style="opacity: 0;width:2rem;height:100%"/>
+         </div> 
+        <input class="inputMessage" placeholder="Type here..."/>
+      </div>
+     
+      
       
     </li>
     <li class="login page">
       <div class="form">
         <h3 class="title">What's your nickname?</h3>
         <input class="usernameInput" type="text" maxlength="14" />
+        <button id="submit" type="submit">确定</button>
       </div>
     </li>
   </ul>
 
-  <div class="user-list-container">
+  <!-- <div class="user-list-container">
       <div>
           <img src="" id="imgs">
       </div>
        
+      <button onclick=""></button>
       
     <div class="online_user_container">
       在线人数 <span id="online_user">0</span>
     </div>
     <ul id="user-list" class="user-list">
-      <li  > 
-        <div class="userinfo">
-          <span class="username">benjamin</span>
-          <span class="userid"></span>
-        </div> 
-      </li>  
+     
        
     </ul>
 
     
-  </div>
+  </div> -->
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="./javascripts/socket.io.js"></script>
   <script src="/main.js"></script>
