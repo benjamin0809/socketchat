@@ -4,22 +4,45 @@ const Hupu = require('../modules/hupu/hupu.js');
 const Spider = require('../utils/spider')
 const FileUtils = require('../utils/file-utils')
 const path = require('path') 
-
+const Redis =require('../redis/redis')
+const main_key = "getHupuImages";
 const HupuDao = new Hupu();
+const redis = new Redis();
+
+router.get('/',function(req,res,next){
+  res.sendFile('./public/hupu/index.html')
+})
 router.get('/getImages',function(req,res,next){
-    let limit = req.query.limit;
-    let offset = req.query.offset;
-    HupuDao.getHupuImages(limit,offset).then(data=>{
+    let limit = req.query.limit || 20;
+    let offset = req.query.offset || 0;
+    const pagekey = limit + '-' + offset;
+    
+    redis.getpageh(main_key, pagekey).then(result=>{
+      if(result.length > 0){
+        res.send(result)
+      }else{
+        HupuDao.getHupuImages(limit,offset).then(data=>{
+          redis.sethpage(main_key,pagekey,data)
+          res.send(data)
+        }).catch(error=>{
+          res.send(JSON.stringify(error))
+        })  
+      } 
+    }).catch(err=>{
+      HupuDao.getHupuImages(limit,offset).then(data=>{
         res.send(data)
+        redis.sethpage(main_key,pagekey,data)
       }).catch(error=>{
         res.send(JSON.stringify(error))
-      })  
+      }) 
+    }) 
 })
 
 router.get('/spiderMove',function(req,res,next){
     let limit = req.query.limit;
     let token = req.query.token;
     let offset = req.query.offset;
+    redis.clearPageh(main_key)
     if(token !== '9527'){
         console.error('permission denied')
         res.send('未授权')

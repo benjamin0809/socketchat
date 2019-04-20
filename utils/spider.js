@@ -77,6 +77,88 @@ class Sipder {
       }) 
      }  
 
+     static getTmallImages(spider_url){
+      return new Promise((resolve, reject)=>{
+        let outPath = path.resolve('./base64/taobao/' +  dateUtils.getCurrentDate() + '/'); 
+        superagent.agent().get(spider_url).end((err,res)=>{
+          if(err){
+            console.error(err);
+            reject(err)
+            return;
+          } 
+          
+          let $ = cheerio.load(res.text);
+
+          let firstCatchList = $('.product a ');
+          firstCatchList.each((idx,element)=>{
+            let $element = $(element);
+            let href = $element.attr('href') ;
+            if(href && !href.startsWith('http:') && href.indexOf('detail') >-1){
+              href = "https:" + href ;
+              superagent.agent().get(href).end((err,res)=>{
+                if(err){
+                  console.error(err);
+                  reject(err) 
+                } 
+
+                let $ = cheerio.load(res.text);
+                let secondCatchList = $('img');
+                secondCatchList.each((idx,element)=>{
+                  let $element = $(element);
+                let src = $element.attr('src') || $element.attr('data-src');
+                  // console.log(src)
+                  src = 'https:' + src
+                  let url = src;
+                  let opts = {
+                    url: url 
+                  };  
+                  FileUtils.downloadImage(opts, outPath, idx + '-'+ src.split('/').slice(-1))
+                })
+             })
+            }
+          })
+        }) 
+      })
+   }
+
+     static getTaobaoImages(spider_url){
+        return new Promise((resolve, reject)=>{
+          let outPath = path.resolve('./base64/taobao/' +  dateUtils.getCurrentDate() + '/'); 
+          superagent.get(spider_url).end((err,res)=>{
+            if(err){
+              console.error(err);
+              reject(err)
+              return;
+            } 
+            
+            let $ = cheerio.load(res.text);
+
+            let firstCatchList = $('.product a ');
+            firstCatchList.each((idx,element)=>{
+              let $element = $(element);
+              let h = $element.attr('href') ;
+              console.log(h)
+            })
+          }) 
+        })
+     }
+
+     static findGavbus(){
+      return new Promise((resolve, reject)=>{
+        for(let i = 188; i <1000;i++){
+          let url = `https://www.gavbus${i}.com/`;
+          superagent.agent().get(url) 
+          .end((err, res) => {
+            console.log(i)
+            if(!err){
+              resolve(url)
+            } 
+          })
+        } 
+      })
+     
+      
+     }
      static getHupuImages(spider_url, proxy) {
       return new Promise((resolve, reject)=>{
        let allUrl = [];
