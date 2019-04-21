@@ -41,9 +41,11 @@ router.get('/getImages', function (req, res, next) {
 router.post('/spiderAction', function (req, res, next) {
 
   let st = new Date().getTime()
-  let limit = req.query.limit;
-  let token = req.query.token;
-  let offset = req.query.offset;
+  let limit = req.body.limit || 2;
+  let token = req.body.token; 
+  let offset = req.body.offset || 0;
+
+  console.log(req.body)
   redis.clearPageh(main_key)
   if (token !== '9527') {
     console.error('permission denied')
@@ -53,7 +55,7 @@ router.post('/spiderAction', function (req, res, next) {
   try {
     const base_url = 'https://bbs.hupu.com/selfie'
     let tasks = []
-    for (let i = 0; i < 2; i++) {
+    for (let i = offset; i < limit + offset; i++) {
       const http_url = i == 0 ? base_url : base_url + '-' + (i + 1);
       tasks.push(Spider.getHupuImages(http_url));
     }

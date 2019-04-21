@@ -182,10 +182,16 @@ class Sipder {
             result: true,
             spiderUrl: spider_url,
             successCount: 0,
-            failedCount: 0
+            failedCount: 0,
+            error:[]
           }
           res && res.forEach(item=>{
-            item.result ? result.successCount++ : result.failedCount
+            if(item.result){
+              result.successCount++
+            }else{
+              result.failedCount++;
+              result.error.push(item)
+            }  
           }) 
            resolve(result)
          }).catch(error=>{
@@ -201,7 +207,7 @@ class Sipder {
         HupuDao.insertHupuImages(article).then(res=>{
           resolve({result: true, message:'insert into table ok'})
         }).catch(err=>{
-          resolve({result: false, message:'this item failed'})
+          resolve({result: false, message:'this item failed',error: err})
         }) 
        }) 
      }
@@ -213,6 +219,11 @@ class Sipder {
         .end((error, resp)=> {
           if(error){
             console.log(error)
+            resolve({
+              href: href,
+              error: error,
+              result: false
+            })
             return;
           } 
           let $ = cheerio.load(resp.text);
