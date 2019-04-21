@@ -159,87 +159,96 @@ class Sipder {
      
       
      }
-     static getHupuImages(spider_url, proxy) {
-      return new Promise((resolve, reject)=>{
-       let allUrl = [];
-       let ssr = [] 
+     static getHupuImages(spider_url) {
+      return new Promise((resolve)=>{ 
        let outPath = path.resolve('./base64/' +  dateUtils.getCurrentDate() + '/');  
        superagent.get(spider_url) 
        .end((err, res) => {
          err && console.error(err) 
          let $ = cheerio.load(res.text); 
  
-         let imgs = $('.titlelink a') 
-         imgs.each((idx, element) => { 
+         let articalList = $('.titlelink a')  
+         let tasks = []
+         articalList.each((idx, element) => { 
            let $element = $(element);
-           let h = $element.attr('href') ;
-           if(!h)return;
-           let href = url.resolve(spider_url, h);
+           let articleHref = $element.attr('href') ;
+           if(!articleHref)return;
+           let href = url.resolve(spider_url, articleHref);
+           tasks.push(this.getArticleDetails(href,articleHref,outPath))
+         }) 
 
-           superagent.get(href)
-            .end((error, resp)=> {
-              if(error){
-                console.log(error)
-                return;
-              }
-
-              
-              let $ = cheerio.load(resp.text);
-              let title = $('.bbs-hd-h1>h1').attr('data-title');//帖子标题
-              let avatar = $('.headpic:first-child>img').attr('src');//用户头像
-              let username = $('.j_u:first-child').attr('uname');//用户ID  
-              let stime = $('#tpc .author .stime').text();//用户ID 
-              let Arr = []
-              let timestamp = new Date().getTime().toString()
-              let article = {
-                id: Number(timestamp.substr(5,timestamp.length - 1) + h.replace(/[^0-9]/ig,"")) ,
-                articleid: Number(h.replace(/[^0-9]/ig,"")) || +new Date(),
-                title: title,
-                avatar: avatar,
-                username: username,
-                articleTime: stime,
-                sourceUrl: href,
-                images: Arr
-              } 
-              console.log(stime)
-              $('.quote-content img').each((id,ele)=>{
-                let $ele = $(ele);
-                let src = $ele.attr('src') ||  $ele.attr('data-src'); 
-                
-                let url = src;
-                let opts = {
-                  url: url 
-                };  
-
-                if(src.split('/').slice(-1) != 'placeholder.png'){
-                  FileUtils.downloadImage(opts, outPath, article.articleid+ '-' +id + '-'+ src.split('/').slice(-1))
-                  article.images.push(url)
-                } 
-              })
-
-             
-              ssr.push(article) 
-              HupuDao.insertHupuImages(article).then(res=>{
-                console.log(res)
-              }).catch(err=>{
-                console.log(err)
-              })
-           
-
-              // let save = path.resolve('./utils/data/result1.json')
-              // fs.appendFile(save, ","+ JSON.stringify(article ,null , 2) ,'utf-8', function (err) {
-              //   if(err)  {
-              //     console.log(err)
-              //   }
-              //   //console.log("数据写入success...");
-              // }); 
-            }) 
-           
+         Promise.all(tasks).then(res=>{
+          let result = {
+            result: true,
+            spiderUrl: spider_url,
+            successCount: 0,
+            failedCount: 0
+          }
+          res && res.forEach(item=>{
+            item.result ? result.successCount++ : result.failedCount
+          }) 
+           resolve(result)
+         }).catch(error=>{
+          resolve({result: false, message:'spider action failed',error: error})
          })
-         resolve(allUrl);
        })
       }) 
      }
+ 
+
+     static insertArticle(article){
+       return new Promise(resolve =>{
+        HupuDao.insertHupuImages(article).then(res=>{
+          resolve({result: true, message:'insert into table ok'})
+        }).catch(err=>{
+          resolve({result: false, message:'this item failed'})
+        }) 
+       }) 
+     }
+
+     static getArticleDetails(href,articleHref,outPath){  
+
+      return new Promise((resolve,reject)=>{
+        superagent.get(href)
+        .end((error, resp)=> {
+          if(error){
+            console.log(error)
+            return;
+          } 
+          let $ = cheerio.load(resp.text);
+          let title = $('.bbs-hd-h1>h1').attr('data-title');//帖子标题
+          let avatar = $('.headpic:first-child>img').attr('src');//用户头像
+          let username = $('.j_u:first-child').attr('uname');//用户ID  
+          let stime = $('#tpc .author .stime').text();//用户ID  
+          let timestamp = new Date().getTime().toString()
+          let article = {
+            id: Number(timestamp.substr(5,timestamp.length - 1) + articleHref.replace(/[^0-9]/ig,"")) ,
+            articleid: Number(articleHref.replace(/[^0-9]/ig,"")) || +new Date(),
+            title: title,
+            avatar: avatar,
+            username: username,
+            articleTime: stime,
+            sourceUrl: href,
+            images: []
+          }   
+          $('.quote-content img').each((id,ele)=>{
+            let $ele = $(ele);
+            let src = $ele.attr('src') ||  $ele.attr('data-src');  
+            let url = src;
+            let opts = {
+              url: url 
+            };   
+            if(src.split('/').slice(-1) != 'placeholder.png'){ 
+              article.images.push(url) 
+              FileUtils.downloadImage(opts, outPath, 
+                article.articleid+ '-' +id + '-'+ src.split('/').slice(-1))
+            } 
+          }) 
+          resolve(this.insertArticle(article)) 
+        })  
+      }) 
+     }
+
 }
 
 module.exports = Sipder
