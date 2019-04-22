@@ -32,3 +32,16 @@ const proxy = 'http://F2846595:mrz0809@10.191.131.156:3128';
     console.log(e);
   }
 })()
+
+
+// (async () => {
+//   try { 
+ 
+//     const array = await Spider.getHupuImages('https://bbs.hupu.com/selfie'); 
+//     console.log(array);
+    
+//   }
+//   catch (e) {
+//     console.log(e);
+//   }
+// })()
