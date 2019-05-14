@@ -1,0 +1,1564 @@
+{
+
+  "APP_TUTORIAL_START":"展开冒险",
+  "APP_TUTORIAL_PASS":"跳过",
+
+  "APP_DATETIME_SECOND": "秒",
+  "APP_BUTTON_CANCEL": "取消",
+  "APP_BUTTON_SAVE": "保存",
+  "APP_NETWORK_DISCONNECT": "未检测到网络,请连接网络",
+  "APP_NETWORK_ONDISCONNECTED": "网络已断开，请重新连接网络",
+  "APP_NETWORK_ONCONNECTED": "网络已重新连接",
+
+  "ABOUT_APP": "关于员宝",
+  "ABOUT_APP_VERSION": "版本",
+  "ABOUT_VERSION_CHECK": "版本检测",
+  "ABOUT_VERSION_DESC": "版本说明",
+  "ABOUT_VERSION_ALREADY_LASTEST": "已是最新版本",
+  "ABOUT_VERSION_DEBUG": "测试版",
+  "ABOUT_VERSION_RELEASE": "正式版",
+  "ABOUT_VERSION_UPDATE": "更新版本",
+  "ABOUT_WELCOME_PAGE":"欢迎页",
+
+
+  "UPGRADE_CURRENT_VERSION": "当前版本",
+  "UPGRADE_LATEST_VERSION": "最新版本",
+  "UPGRADE_VERSION_TIPS": "为保证您正常使用APP,请进行版本更新。",
+  "UPGRADE_UPDATE_NOW": "立即更新",
+  "UPGRADE_NEW_VERSION": "版本升级",
+  "UPGRADE_IGNORE": "忽略",
+
+  "CHANGE_PASSWORD_OLD": "旧密码",
+  "CHANGE_PASSWORD_NEW": "新密码",
+  "CHANGE_PASSWORD_CONFIRM": "确认密码",
+  "CHANGE_PASSWORD_SUBMIT": "提交",
+  "CHANGE_PASSWORD_CONFIRM_INVLID": "确认密码与新密码不相同",
+  "CHANGE_PASSWORD_SUCCESS": "您的密码已经成功被修改",
+
+  "CONTACT_BLACK_LIST_TITLE":"黑名单",
+  "CONTACT_BLACK_LIST_REMOVE":"移出黑名单",
+  "CONTACT_BLACK_LIST_REMOVE_MESSAGE":"确定要移出黑名单?",
+
+  "CONTACT_TITLE":"通讯录",
+  "CONTACT_SEARCH":"搜索",
+  "CONTACT_NEW":"新的朋友",
+  "CONTACT_RESOURCE":"来自分组:",
+
+  "CONTACT_ADD_TITLE":"添加好友",
+  "CONTACT_ADD_PHONE":"手机号",
+  "CONTACT_ADD_SCAN":"扫一扫",
+  "CONTACT_ADD_SCAN_INFO":"扫描二维码添加朋友",
+  "CONTACT_ADD_MYCODE":"我的二维码",
+  "CONTACT_ADD_MYCODE_INFO":"扫一扫，加我为朋友",
+  "CONTACT_ADD_NEW_REQUEST":"好友请求",
+  "CONTACT_ADD_NEW_REQUEST_REJECT":"拒绝",
+  "CONTACT_ADD_NEW_REQUEST_AGREE":"同意",
+  "CONTACT_ADD_SEND_REQUEST_OK":"已发送好友请求，请等待对方确认!",
+  "CONTACT_ADD_SEND_RESPONSE":"我已经接受了你的好友请求。现在让我们来聊天！",
+  
+
+  "CONTACT_CHOOSER_CLOSE":"返回",
+  "CONTACT_CHOOSER_MULTI":"多选",
+  "CONTACT_CHOOSER_DONE":"完成",
+  "CONTACT_CHOOSER_CANCEL":"取消",
+  "CONTACT_CHOOSER_TITLE":"选择一个好友",
+  "CONTACT_CHOOSER_TITLE_MULTI":"选择多个好友",
+
+  "CONTACT_DETAIL_NICKNAME":"昵称：",
+  "CONTACT_DETAIL_NAME":"姓名：",
+  "CONTACT_DETAIL_CONCERN":"关注",
+  "CONTACT_DETAIL_CONCERN_UNDO":"取消关注",
+  "CONTACT_DETAIL_BLACK_HINT":"已添加至黑名单,你将不再收到对方的消息",
+  "CONTACT_DETAIL_SEND_MESSAGE":"发消息",
+  "CONTACT_DETAIL_SEND_REQUEST":"添加好友",
+  "CONTACT_DETAIL_VERIFY_INFO":"验证信息",
+  "CONTACT_DETAIL_VERIFY_DESCRIPTION":"你需要发送验证申请,等对方通过",
+  "CONTACT_DETAIL_VERIFY_CANCEL":"取消",
+  "CONTACT_DETAIL_VERIFY_SEND":"发送",
+
+  "CONTACT_GROUP_MANAGE_TITLE":"标签管理",
+  "CONTACT_GROUP_MANAGE_ADD":"添加标签",
+  "CONTACT_GROUP_ADD_ALERT":"添加标签",
+  "CONTACT_GROUP_ADD_MESSAGE":"请输入新的标签名称",
+  "CONTACT_GROUP_ADD_PLACEHOLDER":"请输入标签名",
+  "CONTACT_GROUP_DELETE_ALERT":"删除提示",
+  "CONTACT_GROUP_DELETE_MESSAGE":"确定删除标签?删除该标签后,标签内联系人将移至默认标签.",
+  "CONTACT_GROUP_EDIT_ALERT":"编辑标签",
+  "CONTACT_GROUP_EDIT_MESSAGE":"请输入新的标签名称",
+
+  "CONTACT_MORE_ADD_FRIEND":"添加好友",
+  "CONTACT_MORE_GROUP_MANAGE":"标签管理",
+  "CONTACT_MORE_BLACKLIST_MANAGE":"黑名单管理",
+
+  "CONTACT_OPTION_TITLE":"更多",
+  "CONTACT_OPTION_ALIASNAME":"备注和标签",
+  "CONTACT_OPTION_STARRED":"星标好友",
+  "CONTACT_OPTION_PHONE_NUMBER":"电话",
+  "CONTACT_OPTION_SHARE":"推荐该联系人",
+  "CONTACT_OPTION_BLACKLIST":"黑名单",
+  "CONTACT_OPTION_DELETE":"删除好友",
+  "CONTACT_OPTION_DELETE_ALERT":"确定要删除好友",
+  "CONTACT_OPTION_BLACKLIST_ALERT":"确定要加入黑名单",
+  "CONTACT_OPTION_BLACKLIST_UNDO_ALERT":"确定要移出黑名单",
+
+  "CONTACT_SET_REMARK_TITLE":"修改备注",
+  "CONTACT_SET_ALIAS":"设置备注",
+  "CONTACT_ALIAS":"备注",
+  "CONTACT_SET_REMARK_TAG":"标签",
+  "CONTACT_TAG_CHOOSER_TITLE":"移至分组",
+
+  "EMPLOYEE_IDENTITY_TITLE": "员工身份",
+  "EMPLOYEE_IDENTITY_BIND": "绑定员工身份",
+  "EMPLOYEE_IDENTITY_UNBIND": "解除身份绑定",
+  "EMPLOYEE_BIND_ALREADY": "您已经绑定了员工身份",
+  "EMPLOYEE_NOT_BIND_YET": "您尚未绑定员工身份",
+  "EMPLOYEE_STAFF_NUMBER": "工号",
+  "EMPLOYEE_NATIONAL_ID": "身份证号码",
+  "EMPLOYEE_REAL_NAME": "姓名",
+  "EMPLOYEE_GRADE": "资位",
+  "EMPLOYEE_POSITION": "管理职",
+  "EMPLOYEE_SITE": "工作厂区",
+  "EMPLOYEE_BU": "事业处",
+  "EMPLOYEE_DEPARTMENT": "部门",
+  "EMPLOYEE_DEPARTMENT_CODE": "部门代码",
+  "EMPLOYEE_COST_CODE": "费用代码",
+
+  "EMPLOYEE_POSITIONSERIES": "职系",
+  "EMPLOYEE_COMMITTEE": "技委会",
+  "EMPLOYEE_WORKPOSTNAME": "岗位",
+  "EMPLOYEE_ISDIRECT": "直/间接",
+  "EMPLOYEE_INCOMPANYDATE": "入职时间",
+  "EMPLOYEE_WORKLONG": "年资",
+  "EMPLOYEE_OUTYEAR":"厂外年资",
+  "EMPLOYEE_MAXEDUCATION": "最高学历",
+  "EMPLOYEE_SPECIALTY": "专业",
+  "EMPLOYEE_URGENTMANANDTEL": "紧急联系人",
+  "EMPLOYEE_DIRECTOR": "直属主管",
+  "EMPLOYEE_DORM": "宿舍",
+  "EMPLOYEE_WORK_HISTORY": "工作经历",
+  "EMPLOYEE_FWP": "未来轮调岗位",
+  "EMPLOYEE_HOBBY": "兴趣爱好",
+
+  "FORGOT_PASSWORD_TITLE": "短信快捷登陆",
+  "FORGOT_PASSWORD_MOBILEPHONE": "手机号码",
+  "FORGOT_PASSWORD_NEXTSTEP": "下一步",
+
+  "HOME_TITLE": "员宝",
+  "HOME_LINKS": "友情链接",
+  "HOME_MORE_WIDGET": "更多应用",
+  "HOME_PULL_REFRESH": "下拉刷新",
+  "HOME_REFRESH": "刷新...",
+  "HOME_SEARCH_LIST": "搜索",
+  "HOME_SEARCH_INFO": "所有文章",
+  "HOME_SEARCH_RECORD": "最近搜索关键词",
+  "HOME_SEARCH_RESULT": "搜索结果:",
+  "HOME_SEARCH_LOADING": "加载中...",
+  "HOME_SEARCH_PERIOD": "没有更多了!",
+  "HOME_SEARCH_ITEM": "条",
+  "HOME_SIGN_TITLE": "最近签到:",
+  "HOME_SIGN_WEEK": "一周内",
+  "HOME_SIGN_MONTH": "一个月内",
+  "HOME_SIGN_QUARTER": "三个月内",
+  "HOME_PARK_LIFE": "园区生活",
+  "HOME_NEWS": "新闻速递",
+  "HOME_GENERAL_RECRUITMENT": "普工招聘",
+  "HOME_ENGINEER_RECRUITMENT": "工程师招聘",
+  "HOME_ENGINEER": "普工 ",
+  "HOME_GENERAL": "工程师",
+  "HOME_POSITION_PREVIEW": "职位速递",
+  "HOME_NEWS_INDUSTRY_PREVIEW": "业界新闻",
+  "HOME_NEWS_FIH_PREVIEW":"厂区热点",
+
+
+  "MESSAGE_EMPTY": "暂无消息",
+  "MESSAGE_DELETE": "删除",
+  "MESSAGE_DELETE_TITLE": "删除提示",
+  "MESSAGE_DELETE_MESSAGE": "确定要删除该信息？", 
+  "MESSAGE_CLEAR_MESSAGE": "清空后将无法恢复,确定要清空所有消息吗？",
+  "MESSAGE_DELETE_CONFIRM": "确定",
+  "MESSAGE_DELETE_CANCEL": "取消",
+  "MESSAGE_NO_MORE": "没有更多了",
+  "MESSAGE_IMAGE_PHOTO": "相册",
+  "MESSAGE_IMAGE_CAMERA": "相机",
+  "MESSAGE_TITLE": "消息",
+  "MESSAGE_CHAT_RESEND":"是否重新发送？",
+  
+  "MESSAGE_GROUP_STICKY_ON_TOP": "置顶",
+  "MESSAGE_GROUP_REMOVE_STICKY": "取消置顶",
+  "MESSAGE_GROUP_DELETE": "删除",
+  "MESSAGE_TYPE_IMAGE": "[图片]", 
+
+
+  "VERSION_EXCHANGE_TIPS": "操作提示",
+  "VERSION_EXCHANGE_MESSAGE": "正式版不可用，是否切换到测试版？",
+  "VERSION_EXCHANGE_TO_RELEASE": "已经切换到正式版,需要重启客户端才能生效。",
+  "VERSION_EXCHANGE_TO_DEBUG": "已经切换到测试版,需要重启客户端才能生效。",
+
+  "MY_INFO_TITLE": "我的资料",
+  "MY_INFO_AVATAR": "头像",
+  "MY_INFO_NICKNAME": "昵称",
+  "MY_INFO_USERNAME": "手机号码",
+  "MY_INFO_SIGNATURE": "个性签名",
+  "MY_INFO_CODE": "二维码名片",
+  "MY_INFO_BIND_EMPLOYEE": "绑定员工身份",
+  "MY_INFO_SHOW_EMPLOYEE": "查看员工资料",
+  "MY_INFO_SET_PASSWORD": "设置密码",
+  "MY_INFO_CHANGE_PASSWORD": "修改密码",
+  "MY_INFO_FROM_LIBRARY": "从相册中选择",
+  "MY_INFO_VIEW_FULL_AVATAR": "查看大图",
+  "MY_INFO_FROM_CAMERA": "拍照",
+  "MY_INFO_CANCEL": "取消",
+
+  "MY_LIST_TITLE": "我的资料",
+  "MY_LIST_FABIAO": "发表",
+  "MY_LIST_GUANZHU": "关注",
+  "MY_LIST_FENSI": "粉丝",
+  "MY_LIST_HUOZAN": "获赞",
+  "MY_LIST_EMPLOYEE": "员工身份",
+  "MY_LIST_SECURITY": "安全中心",
+  "MY_LIST_HELP": "我的客服",
+  "MY_LIST_FEEDBACK": "问题反馈",
+  "MY_LIST_SETTING": "设置",
+  "MY_LIST_SHARE": "邀请好友",
+  "MY_LIST_ABOUT": "关于",
+  "MY_LIST_LOGOUT": "登 出",
+  "MY_LIST_LOGIN_REGISTER": "登录/注册",
+  "MY_LIST_SIGN_BUTTONNAME":"签到",
+  "MY_LIST_ASSETS_SHELL":"我的员宝贝",
+  "MY_LIST_ASSETS_RANKS":"我的排名",
+  "MY_LIST_ASSETS_MEDALS":"我的勋章",
+  "MY_LIST_ACHIEVELIST":"成就列表",
+  "MY_LIST_SHELLS_DETAILS":"宝贝明细",
+  "MY_LIST_TASKLIST":"任务清单",
+  "MY_LIST_SCORE_ROLE":"制度说明",
+  "MY_LIST_EXPERIENCE":"经验值: ",
+  "MY_LIST_NEXT_LEVEL_REQUIRES":",下一级还需: ",
+
+  "MY_LIST_MYCOMMENTS":"我的评论",
+  "MY_LIST_MYEVENTS":"我的活动",
+  "MY_LIST_MYPUBLISH":"我的发表",
+  "MY_LIST_MYFOLLOWS":"我的关注",
+
+  "MY_UPDATA_NICKNAME": "请输入昵称",
+  "MY_NICKNAME_VERIFY": "昵称不合法",
+  "MY_NICKNAME_EXCEED":"昵称不能超过50个字节。",
+  "MY_SET_NICKNAME": "设置昵称",
+  "MY_SET_NICKNAME_SUCCEED": "昵称设置成功",
+  "MY_SET_NICKNAME_DEFEATED": "昵称设置失败",
+
+  "MY_UPDATA_SIGNATURE": "请输入个性签名",
+  "MY_SET_SIGNATURE": "设置个性签名",
+
+  "MY_SET_PHONE": "重置手机号码",
+  "MY_UPDATA_PHONE": "请输入电话号码",
+  "MY_PHONE_VERIFY": "手机号码格式不合法",
+  "MY_SET_PHONE_SUCCEED": "手机重置成功",
+  "MY_SET_PHONE_DEFEATED": "手机重置失败",
+
+  "MY_BIND_EMPLOYEE_SUCCEED": "绑定员工信息成功",
+  "MY_BIND_EMPLOYEE_DEFEATED": "绑定员工信息不匹配",
+  "MY_BIND_EMPLOYEE_ALREADY_BIND": "该工号已经绑定了手机号码",
+  "MY_UNBIND_EMPLOYEE_SUCCEED": "解除绑定员工信息成功",
+  "MY_UNBIND_EMPLOYEE_DEFEATED": "解除绑定员工信息失败",
+
+  "LOGIN_TITLE": "用户登录",
+  "LOGIN_MOBILEPHONE": "手机号码",
+  "LOGIN_FORGET_PASSWORD": "忘记密码",
+  "LOGIN_RETRIEVE_PASSWORD": "找回密码", 
+  "LOGIN_PASSWORD": "密码",
+  "LOGIN_PASSWORD_HINTS": "密码(8位及以上数字和字母)",
+  "LOGIN_FORGOTPASSWORD": "短信快捷登录",
+  "LOGIN_SUBMIT": "登录",
+  "LOGIN_ACCOUNT": "账号",
+  "LOGIN_WORKFLOW": "Workflow账号登录",
+  "LOGIN_ERROR": "无法登录。请检查账号信息然后重试。",
+  "LOGIN_ERROR_INCORRECT_SECURITY_CODE": "验证码不正确！",
+  "LOGIN_ERROR_PHONE_NUMBER_NOT_EXIST": "登录失败！电话号码不存在，请检查账号信息然后重试。",
+  "LOGIN_ERROR_USER_NOT_EXIST": "登录失败！账号不存在，请检查账号信息然后重试。",
+  "LOGIN_ERROR_INCORRECT_PASSWORD": "登录失败！密码错误，请检查密码然后重试。",
+  "LOGIN_ERROR_CONFIRM_BUTTON": "确定",
+  "LOGIN_REGISTER": "注册",
+  "LOGIN_LANGUAGE_SELECT": "选择语言",
+  "LOGIN_LANGUAGES":"语言",
+  "LOGIN_BY_OTHER_WAY": "其他登录方式",
+  "LOGIN_BY_WORKFLOW_TIPS":"已通过手机号注册员宝且绑定了员工身份才可使用Workflow账号登录。",
+  "LOGIN_NO_EMPLOYEEID_TIPS":"内部员工请点击绑定员工身份",
+
+  "VERIFICATION_CODE_SENT":"发送验证码失败，请稍后再试。",
+  "VERIFICATION_CODE_INCORRECT": "验证码不正确！",
+  "VERIFICATION_CODE_EXPIRED": "验证码已过期！",
+
+  "SET_PASSWORD_RULE": "<span class='place'>密码长度必须8-32位</span>,<span class='status'>由最少2种字符类型组成</span>。例如:0~9、A~Z、a~z等其它字符组成.",
+  "SET_PASSWORD_LENG_ERROR": "密码长度小于8.",
+  "SET_PASSWORD_ERROR": "密码强度太弱！",
+  "SET_PASSWORD_NEW": "请输入密码,例如:XXXX0000",
+  "SET_PASSWORD_CONFIRM": "确认密码",
+  "SET_PASSWORD_CONFIRM_INVLID": "两次输入密码不一致",
+  "SET_PASSWORD_ISSENT": "密码设置成功",
+  "SET_PASSWORD_COEFFICIENT1": "无效",
+  "SET_PASSWORD_COEFFICIENT2": "无效",
+  "SET_PASSWORD_COEFFICIENT3": "中",
+  "SET_PASSWORD_COEFFICIENT4": "强",
+  "SET_PASSWORD_COEFFICIENT5": "极强",
+  "SET_PASSWORD_OLD_ERR": "旧密码不正确",
+
+  "SECURITY_MY_ACCOUNT": "我的账号安全",
+
+  "SELECT_COUNTRY_TITLE": "选择国家区域",
+  "SELECT_COUNTRY_MOBILEPHONE": "手机号码",
+  "SELECT_COUNTRY_SEARCH": "搜索",
+  "SELECT_COUNTRY_HOT": "热门国家和地区",
+  "SELECT_COUNTRY_ALL": "全部国家和地区",
+
+  "SETTINGS_TITLE": "设置",
+  "SETTINGS_OPTION_RECEIVE_NOTIFY": "接收推送消息",
+  "SETTINGS_OPTION_LANGUAGE": "选择语言",
+  "SETTINGS_PROFILE_BUTTON": "编辑资料",
+  "SETTINGS_PAGE_PROFILE": "编辑资料",
+  "SETTINGS_DELETE_CACHE": "清除缓存",
+  "SETTINGS_CACHE_INFO": "你确定要清除所有緩存（包含消息、图片、搜索记录等）？",
+  "SETTINGS_CACHE_COMPLETE": "清除完成",
+  "SETTINGS_ASSISTIVE_TOUCH": "悬浮球",
+  "SETTINGS_BROWSER_CORE": "内置浏览器",
+  "SETTINGS_DARK_THEME":"夜间模式",
+  "SETTINGS_SEND_ERROR_REPORT":"报告异常", 
+
+  "SIGNUP_TITLE": "新用户注册",
+  "SIGNUP_MOBILEPHONE": "手机号码",
+  "SIGNUP_PASSWORD": "密码",
+  "SIGNUP_NICKNAME": "昵称",
+  "SIGNUP_VERIFYCODE": "验证码",
+  "SIGNUP_VERIFYCODE_PLACEHOLDER": "六位数字",
+  "SIGNUP_IDENTIFY_PLACEHOLDER": "验证码",
+  "SIGNUP_IDENTIFY_CHANGE_ONE": "换一个",
+  "SIGNUP_VERIFYCODE_SEND": "获取验证码",
+  "SIGNUP_SUBMIT": "下一步",
+  "SIGNUP_ERROR": "无法创建账号。请检查账户信息然后重试。",
+  "SIGNUP_ERROR_NUMBER_EXIST": "无法创建账号。该手机号码已存在。",
+  "SIGNUP_ERROR_INVALID_CODE": "无法创建账号。验证码不正确。",
+  "SIGNUP_VERIFYCODE_ISSENT": "验证码已发送到你手机，注意查收",
+  "SIGNUP_LOGIN_AGREE_PRIVACY": "登录表示同意",
+  "SIGNUP_REGISTER_AGREE_PRIVACY": "已阅读并同意",
+  "SIGNUP_SERVICE_AGREEMENT": "服务协议",
+  "SIGNUP_PRIVACY_PPLICY": "隐私政策",
+  "SIGNUP_AND": " 和 ",
+
+  "SIGNUP_VERIFYCODE_INCORRECT":"验证码不正确",
+  "SIGNUP_VERIFYCODE_TITLE":"请输入验证码",
+
+
+  "TABS_TAB1_TITLE": "首页",
+  "TABS_TAB2_TITLE": "消息",
+  "TABS_TAB3_TITLE": "应用",
+  "TABS_TAB4_TITLE": "社群",
+  "TABS_TAB5_TITLE": "我的",
+
+  "TUTORIAL_SLIDE1_TITLE":"欢 迎",
+  "TUTORIAL_SLIDE2_TITLE":"全 方 位 功 能",
+  "TUTORIAL_SLIDE3_TITLE":"开 始 使 用",
+  "TUTORIAL_SLIDE1_DESCRIPTION1":"欢迎使用FIH员工专属的APP",
+  "TUTORIAL_SLIDE1_DESCRIPTION2":"「员宝」一个有温度的共享平台!",
+  "TUTORIAL_SLIDE1_DESCRIPTION3":"属于你的旅程即将展开",
+  "TUTORIAL_SLIDE2_DESCRIPTION1":"在员宝，你可以查询薪资，考勤",
+  "TUTORIAL_SLIDE2_DESCRIPTION2":"办理请假，报修，投诉等事宜",
+  "TUTORIAL_SLIDE2_DESCRIPTION3":"及时接收集团，业界第一手信息",
+  "TUTORIAL_SLIDE3_DESCRIPTION1":"注册进入后，需要进入「我的」",
+  "TUTORIAL_SLIDE3_DESCRIPTION2":"输入工号，绑定员工身份",
+  "TUTORIAL_SLIDE3_DESCRIPTION3":"以激活相关应用功能！",
+
+  "WELCOME_TITLE": "员宝",
+  "WELCOME_INTRO": "一个有温度的共享平台",
+  "WELCOME_SIGNUP": "注 册",
+  "WELCOME_LOGIN": "登 录",
+  "WELCOME_VERSION": "版本",
+
+  "WIDGET_LIST_TITLE": "全部应用",
+  "WIDGET_LIST_MYWIDGET": "我的应用",
+  "WIDGET_LIST_EDIT": "编辑",
+  "WIDGET_FAVORITE_SAVE_SUCCESS": "您的常用应用保存成功",
+  "WIDGET_FAVORITE_SAVE_FAILURE": "您的常用应用保存失败",
+  "WIDGET_FAVORITE_EXCEED": "常用应用最多只能设置八个",
+
+  "WORKFLOW_DONETASK_TITLE":"已办任务",
+  "WORKFLOW_DONETASK_STARTDATE":"开始日期",
+  "WORKFLOW_DONETASK_ENDDATE":"结束日期",
+  "WORKFLOW_DONETASK_BUTTON":"查询",
+  "WORKFLOW_DONETASK_HINT":"该时段内无已办任务！",
+  "WORKFLOW_TASK_HINT":"该时段内无任务单！",
+
+  "WORKFLOW_UNDONETASK_TITLE":"待办任务",
+  "WORKFLOW_UNDONETASK_ALL":"全部",
+  "WORKFLOW_UNDONETASK_HINT":"当前暂无待办任务！",
+  "WORKFLOW_UNDONETASK_APPLICANT":"申请",
+  "WORKFLOW_UNDONETASK_APPLYDATE":"申请日期", 
+
+  "WORKFLOW_SET_AGENT_TITLE":"代理人",
+  "WORKFLOW_SET_AGENT_USER":"当前用户",
+  "WORKFLOW_SET_AGENT_EMPLOYEECARD":"请输入工号",
+  "WORKFLOW_SET_AGENT_STARTDATE":"开始日期",
+  "WORKFLOW_SET_AGENT_INPUTSTART":"请输入开始日期",
+  "WORKFLOW_SET_AGENT_ENDDATE":"结束日期",
+  "WORKFLOW_SET_AGENT_INPUTEND":"请输入结束日期",
+  "WORKFLOW_SET_AGENT_TYPE":"代理类型",
+  "WORKFLOW_SET_AGENT_TYPE1":"委托",
+  "WORKFLOW_SET_AGENT_TYPE2":"一般代理",
+  "WORKFLOW_SET_AGENT_POSTMAN":"代理对象",
+  "WORKFLOW_SET_AGENT_ABOUT":"代理说明",
+  "WORKFLOW_SET_AGENT_POSTMANID":"请输入工号",
+  "WORKFLOW_SET_AGENT_NUMBER":"0-200字",
+  "WORKFLOW_SET_AGENT_ALERT1":"委托：您不再收到邮件和任务；",
+  "WORKFLOW_SET_AGENT_ALERT2":"一般代理：您和代理人都收到邮件和任务",
+  "WORKFLOW_SET_AGENT_NO_EMPLOYEE":"workflow无此员工，请确保是正确的工号。",
+  "WORKFLOW_SET_AGENT_NOT_YOURSELF":"请注意，不能将代理设为自己",
+  "WORKFLOW_SET_AGENT_BUTTON":"提交",
+
+  "WORKFLOW_DETAILS_TITLE":"任务详情",
+  "WORKFLOW_DETAILS_SIGN":"签核栏",
+  "WORKFLOW_DETAILS_ALERT":"在此填写审核意见，拒绝表单时必须填写",
+  "WORKFLOW_DETAILS_REJECT_TOAST":"请填写审核意见",
+  "WORKFLOW_DETAILS_ADOPT":"通过",
+  "WORKFLOW_DETAILS_HINT":"当前任务不支持手机签核",
+  "WORKFLOW_DETAILS_NO_SUPPORT":"当前节点不支持签核",
+  "WORKFLOW_DETAILS_TASK_FINISH":"任务已完成",
+  "WORKFLOW_DETAILS_REJECT":"拒绝",
+  "WORKFLOW_DETAILS_TASKINFO":"任务信息",
+  "WORKFLOW_DETAILS_PROCESS":"当前流程",
+  "WORKFLOW_DETAILS_TASK":"当前任务",
+  "WORKFLOW_DETAILS_APPLYMAN":"申请人",
+  "WORKFLOW_DETAILS_APPLYTIME":"申请时间",
+  "WORKFLOW_DETAILS_MAININFO":"表单主体信息",
+  "WORKFLOW_DETAILS_DETAILINFO":"表单明细信息",
+  "WORKFLOW_DETAILS_CKECKHISTORY":"签核历史",
+  "WORKFLOW_DETAILS_APPROVE_FINISH_TITLE":"签核完成",
+  "WORKFLOW_DETAILS_APPROVE_FINISH_SUBTITLE":"您可以",
+  "WORKFLOW_DETAILS_APPROVE_CLOSE":"关闭",
+  "WORKFLOW_DETAILS_APPROVE_GOTODO":"前往待办任务",
+  "WORKFLOW_DETAILS_VIEW_FORM":"表单详情",
+ 
+  "WORKFLOW_SETTING_TITLE":"设置",  
+  "WORKFLOW_SETTING_MESSAGE":"接收消息推送",
+  "WORKFLOW_SETTING_TASK":"只接收支持手机签核任务",
+  "WORKFLOW_SETTING_MYAGENT":"我的代理人",
+  "WORKFLOW_SETTING_AGENTLIST":"我的代理人",
+  "WORKFLOW_SETTING_AGENTID":"代理人工号：",
+  "WORKFLOW_SETTING_AGENTNAME":"代理人姓名：",
+  "WORKFLOW_SETTING_AGENTTYPE":"代理类型：",
+  "WORKFLOW_SETTING_AGENTTIME":"代理时间：",
+  "WORKFLOW_SETTING_DELETE":"刪除",
+  "AGENT_DELETE_MESSAGE":"确定要刪除代理人？",
+  "DATE_ALERT_MESSAGE":"日期区间错误！开始日期不能大于结束日期。",
+
+  "WORKFLOW_SETTING_NEW":"新增",
+  "WORKFLOW_SETTING_TILL":" 至 ",
+  "WORKFLOW_AGENT_NOWAGENT":"当前代理人",
+ "WORKFLOW_AGENTLIST_HINT" :"当前暂无代理人！",
+  "WORKFLOW_AGENT_BUTTON":"新增",
+
+
+  "WORKFLOW_TASK_TITLE":"我的单",
+  "WORKFLOW_TASK_STARTDATE":"开始日期",
+  "WORKFLOW_TASK_ENDDATE":"结束日期",
+  "WORKFLOW_TASK_BUTTON":"查询",
+
+  "WORKFLOW_TAB1_TITLE":"待办任务",
+  "WORKFLOW_TAB2_TITLE":"已办任务",
+  "WORKFLOW_TAB3_TITLE":"我的单",
+  "WORKFLOW_TAB4_TITLE":"设置",
+
+
+
+  "BROWSER_NOT_INSTALL_WEXIN": "您没有安装微信！",
+  "BROWSER_SHARE_SUCCESSFULLY": "分享成功!",
+  "BROWSER_SENT": "已发送",
+  "SHARE_TITLE":"员宝，有温度的共享平台",
+  "SHARE_DESCRIPTION":"下载员宝APP,考勤薪酬一把抓。微信企业号将在员宝上线后停用，以后只有员宝可以查薪资单啦！",
+  "BROWSER_COPIED": "链接地址已复制到剪贴板",
+
+  "SHARE_MODAL_TITLE": "分享到",
+  "BROWSER_POPOVER_WEBLOG": "新浪微博",
+  "BROWSER_POPOVER_COLLECT": "收藏",
+  "BROWSER_POPOVER_WECHAT": "微信好友",
+  "BROWSER_POPOVER_WECHAT_MOMENT": "微信朋友圈",
+  "BROWSER_POPOVER_COPYURL": "复制链接",
+  "BROWSER_POPOVER_REFRESH": "刷新",
+  "BROWSER_POPOVER_CLOSE": "关闭窗口",
+  "BROWSER_POPOVER_OPENINBROWSER":"浏览器打开",
+
+  "RECRUITMENT_QUICK_REGISTRATION": "快速报名",
+  "RECRUITMENT_PERSON_NAME": "人员姓名",
+  "RECRUITMENT_INTERVIEW_SITE": "面试厂区",
+  "RECRUITMENT_CARD_ID": "身份证号",
+  "RECRUITMENT_MOBILE_PHONE": "手机号码",
+  "RECRUITMENT_INTERVIEW_DATE": "面试日期",
+  "RECRUITMENT_INTERVIEW_WORKPOST": "面试岗位",
+  "RECRUITMENT_POST_DESCRIPTION": "职位描述",
+  "RECRUITMENT_POST_QUESTION": "常见问题",
+  "RECRUITMENT_REGISTRATION": "我要报名",
+  "RECRUITMENT_APPLY": "立即申请",
+  "RECRUITMENT_DL_SALARY": "薪资待遇",
+  "RECRUITMENT_DL_QUANTITY": "招聘人数",
+  "RECRUITMENT_DL_REGISTRATION_MOBILE": "免费报名咨询电话",
+  "RECRUITMENT_IDL_WORKPLACE": "工作地点",
+  "RECRUITMENT_IDL_DEPARTMENT": "需求部门",
+  "RECRUITMENT_IDL_QUANTITY": "招聘人数",
+  "RECRUITMENT_IDL_SALARY_RANGE": "薪资范围",
+  "RECRUITMENT_IDL_PUBLISHTIME": "发布时间",
+  "RECRUITMENT_IDL_ENDTIME": "截止时间",
+  "RECRUITMENT_IDL_WORK_DUTY": "工作职责",
+  "RECRUITMENT_IDL_QUALIFICATIONS": "任职资格",
+  "RECRUITMENT_SEARCH_KEYWORD": "关键词",
+  "RECRUITMENT_IDL_ALLAREA": "全部地区",
+  "RECRUITMENT_IDL_ALLTYPE": "全部类别",
+
+  "APP_COMMON_CONFIRM": "确定",
+  "APP_COMMON_HANDLE_TIPS": "操作提示",
+  "APP_COMMON_CANCEL": "取消",
+  "APP_COMMON_SUBMIT": "提交",
+  "APP_COMMON_MORE": "更多",
+  "APP_COMMON_NO_MORE": "没有更多了",
+  "APP_COMMON_ALL": "全部",
+  "APP_COMMON_NODATA":"无数据",
+  "APP_COMMON_ENTER":"进入",
+  "APP_COMMON_CLEAR_MESSAGES": "清空消息",
+  "APP_COMMON_COPY_MESSAGE":"复制消息",
+  "APP_COMMON_EXTRACT_QRCODE":"识别图中二维码",
+  "APP_COMMON_DISABLE_FUCTION":"该功能暂未启用。",
+
+  "POST_DETAILS": "职位详情",
+
+  "SCANNER_SETTING_REQUEST": "设置请求",
+  "SCANNER_SETTING_OPENSETTING": "拒绝访问相机!是否要打开相机设置?",
+
+  "HTTP_ERROR_STATUS_0":"请求失败，请求响应出错。",
+  "HTTP_ERROR_STATUS_404":"请求失败，未找到请求地址。",
+  "HTTP_ERROR_STATUS_500":"请求失败，服务器出错，请稍后再试。",
+  "HTTP_ERROR_STATUS_TIMEOUT":"请求超时，请稍后再试。",
+  "HTTP_ERROR_STATUS_DISCONNECTED":"请连接网络。",
+  "HTTP_ERROR_STATUS_UNKNOWN":"请求发生异常，未知原因。",
+
+  "SOCIAL_CHECKIN_CHECKINREWARD_TITLE":"今天签到领取",
+  "SOCIAL_IPROUD_POINTS":"员宝贝",
+  "SOCIAL_POINTS":"员宝贝",
+  "SOCIAL_CHECKIN_CHECKINREWARD_BUTTON_TEXT":"立即领取",
+  "SOCIAL_CHECKIN_BUTTON":"点我签到",
+  "SOCIAL_CHECKIN_ACCUMULATE_DAYS":"已连续签到",
+  "SOCIAL_CHECKIN_ACCUMULATE_DAY":"天",
+  "SOCIAL_CHECKIN_TITLE":"签到",
+  "SOCIAL_CHECKIN_ALREADY_SIGN":"已签到",
+
+  "SOCIAL_CALENDAR_SUNDAY":"日",
+  "SOCIAL_CALENDAR_MONDAY":"一",
+  "SOCIAL_CALENDAR_TUESDAY":"二",
+  "SOCIAL_CALENDAR_WEDNESDAY":"三",
+  "SOCIAL_CALENDAR_THURSDAY":"四",
+  "SOCIAL_CALENDAR_FRIDAY":"五",
+  "SOCIAL_CALENDAR_SATURDAY":"六",
+
+  "SOCIAL_ACHIEVEMENT_TITLE":"成就列表",
+  "SOCIAL_ACHIEVEMENT_ITEM_GOT":"恭喜你获得成就勋章",
+  "SOCIAL_ACHIEVEMENT_ITEM_NO_GOT":"该成就勋章尚未获得",
+  "SOCIAL_ACHIEVEMENT_ITEM_SHARE_BUTTON":"分享我的勋章",
+  "SOCIAL_ACHIEVEMENT_ITEM_PRESENTEDTO":"颁赠予",
+  
+  "SOCIAL_TASK_TITLE":"任务清单",
+  "SOCIAL_TASK_RECEIVE_ALL":"一键领取", 
+  "SOCIAL_TASK_COMPLETED":"已完成", 
+  "SOCIAL_TASK_NOT_COMPLETED":"去完成", 
+  "SOCIAL_TASK_RECEIVE":"领取", 
+  "SOCIAL_TASK_ALREADY_RECEIVE":"已领取",  
+
+  "SOCIAL_MY_IPROUD_POINTS":"我的员宝贝",
+  "SOCIAL_MY_DAILY":"每日任务", 
+  "SOCIAL_MY_ASSETS_POINTS":"宝贝明细", 
+  "SOCIAL_MY_LEADERBOARD":"宝贝排名",  
+  "SOCIAL_MY_DAILY_LIST":"日榜",  
+  "SOCIAL_MY_WEEK_LIST":"周榜",  
+  "SOCIAL_MY_MONTH_LIST":"月榜",  
+  "SOCIAL_MY_TOTAL_LIST":"总榜",  
+
+  "ACCOUNT_LOCKED": "您的账号已被锁定，请联系管理员!",
+  "QR_CODE": "二维码",
+
+  "TUTORIAL_SKIP_BUTTON": "跳过",
+  "TUTORIAL_CONTINUE_BUTTON": "继续",
+  
+  "COUNTRY_REAGION_HOT": [{
+      "number": "86",
+      "code": "CN",
+      "name": "中国大陸"
+    },
+    {
+      "number": "886",
+      "code": "TW",
+      "name": "台湾"
+    },
+    {
+      "number": "91",
+      "code": "IN",
+      "name": "印度"
+    },
+    {"number":"84","code":"VN","name":"越南"}
+  ],
+  "COUNTRY_REAGION": [{
+      "number": "1",
+      "code": "US",
+      "name": "美国"
+    },
+    {
+      "number": "1",
+      "code": "CA",
+      "name": "加拿大"
+    },
+    {
+      "number": "7",
+      "code": "RU",
+      "name": "俄罗斯"
+    },
+    {
+      "number": "20",
+      "code": "EG",
+      "name": "埃及"
+    },
+    {
+      "number": "27",
+      "code": "ZA",
+      "name": "南非"
+    },
+    {
+      "number": "30",
+      "code": "GR",
+      "name": "希腊"
+    },
+    {
+      "number": "31",
+      "code": "NL",
+      "name": "荷兰"
+    },
+    {
+      "number": "32",
+      "code": "BE",
+      "name": "比利时"
+    },
+    {
+      "number": "33",
+      "code": "FR",
+      "name": "法国"
+    },
+    {
+      "number": "34",
+      "code": "ES",
+      "name": "西班牙"
+    },
+    {
+      "number": "36",
+      "code": "HU",
+      "name": "匈牙利"
+    },
+    {
+      "number": "39",
+      "code": "IT",
+      "name": "意大利"
+    },
+    {
+      "number": "40",
+      "code": "RO",
+      "name": "罗马尼亚"
+    },
+    {
+      "number": "41",
+      "code": "CH",
+      "name": "瑞士"
+    },
+    {
+      "number": "43",
+      "code": "AT",
+      "name": "奥地利"
+    },
+    {
+      "number": "44",
+      "code": "GB",
+      "name": "英国"
+    },
+    {
+      "number": "45",
+      "code": "DK",
+      "name": "丹麦"
+    },
+    {
+      "number": "46",
+      "code": "SE",
+      "name": "瑞典"
+    },
+    {
+      "number": "47",
+      "code": "NO",
+      "name": "挪威"
+    },
+    {
+      "number": "48",
+      "code": "PL",
+      "name": "波兰"
+    },
+    {
+      "number": "49",
+      "code": "DE",
+      "name": "德国"
+    },
+    {
+      "number": "51",
+      "code": "PE",
+      "name": "秘鲁"
+    },
+    {
+      "number": "52",
+      "code": "MX",
+      "name": "墨西哥"
+    },
+    {
+      "number": "53",
+      "code": "CU",
+      "name": "古巴"
+    },
+    {
+      "number": "54",
+      "code": "AR",
+      "name": "阿根廷"
+    },
+    {
+      "number": "55",
+      "code": "BR",
+      "name": "巴西"
+    },
+    {
+      "number": "56",
+      "code": "CL",
+      "name": "智利"
+    },
+    {
+      "number": "57",
+      "code": "CO",
+      "name": "哥伦比亚"
+    },
+    {
+      "number": "58",
+      "code": "VE",
+      "name": "委内瑞拉"
+    },
+    {
+      "number": "60",
+      "code": "MY",
+      "name": "马来西亚"
+    },
+    {
+      "number": "61",
+      "code": "AU",
+      "name": "澳大利亚"
+    },
+    {
+      "number": "62",
+      "code": "ID",
+      "name": "印度尼西亚"
+    },
+    {
+      "number": "63",
+      "code": "PH",
+      "name": "菲律宾"
+    },
+    {
+      "number": "64",
+      "code": "NZ",
+      "name": "新西兰"
+    },
+    {
+      "number": "65",
+      "code": "SG",
+      "name": "新加坡"
+    },
+    {
+      "number": "66",
+      "code": "TH",
+      "name": "泰国"
+    },
+    {
+      "number": "81",
+      "code": "JP",
+      "name": "日本"
+    },
+    {
+      "number": "82",
+      "code": "KR",
+      "name": "韩国"
+    },
+    {
+      "number": "84",
+      "code": "VN",
+      "name": "越南"
+    },
+    {
+      "number": "86",
+      "code": "CN",
+      "name": "中国大陆"
+    },
+    {
+      "number": "90",
+      "code": "TR",
+      "name": "土耳其"
+    },
+    {
+      "number": "91",
+      "code": "IN",
+      "name": "印度"
+    },
+    {
+      "number": "92",
+      "code": "PK",
+      "name": "巴基斯坦"
+    },
+    {
+      "number": "93",
+      "code": "AF",
+      "name": "阿富汗"
+    },
+    {
+      "number": "94",
+      "code": "LK",
+      "name": "斯里兰卡"
+    },
+    {
+      "number": "95",
+      "code": "MM",
+      "name": "缅甸"
+    },
+    {
+      "number": "98",
+      "code": "IR",
+      "name": "伊朗"
+    },
+    {
+      "number": "212",
+      "code": "MA",
+      "name": "摩洛哥"
+    },
+    {
+      "number": "213",
+      "code": "DZ",
+      "name": "阿尔及利亚"
+    },
+    {
+      "number": "216",
+      "code": "TN",
+      "name": "突尼斯"
+    },
+    {
+      "number": "218",
+      "code": "LY",
+      "name": "利比亚"
+    },
+    {
+      "number": "220",
+      "code": "GM",
+      "name": "冈比亚"
+    },
+    {
+      "number": "221",
+      "code": "SN",
+      "name": "塞内加尔"
+    },
+    {
+      "number": "223",
+      "code": "ML",
+      "name": "马里"
+    },
+    {
+      "number": "224",
+      "code": "GN",
+      "name": "几内亚"
+    },
+    {
+      "number": "225",
+      "code": "",
+      "name": "科特迪瓦"
+    },
+    {
+      "number": "226",
+      "code": "BF",
+      "name": "布基纳法索"
+    },
+    {
+      "number": "227",
+      "code": "NE",
+      "name": "尼日尔"
+    },
+    {
+      "number": "228",
+      "code": "TG",
+      "name": "多哥"
+    },
+    {
+      "number": "229",
+      "code": "BJ",
+      "name": "贝宁"
+    },
+    {
+      "number": "230",
+      "code": "MU",
+      "name": "毛里求斯"
+    },
+    {
+      "number": "231",
+      "code": "LR",
+      "name": "利比里亚"
+    },
+    {
+      "number": "232",
+      "code": "SL",
+      "name": "塞拉利昂"
+    },
+    {
+      "number": "233",
+      "code": "GH",
+      "name": "加纳"
+    },
+    {
+      "number": "233",
+      "code": "UZ",
+      "name": "乌兹别克斯坦"
+    },
+    {
+      "number": "234",
+      "code": "NG",
+      "name": "尼日利亚"
+    },
+    {
+      "number": "235",
+      "code": "TD",
+      "name": "乍得"
+    },
+    {
+      "number": "236",
+      "code": "CF",
+      "name": "中非共和国"
+    },
+    {
+      "number": "237",
+      "code": "CM",
+      "name": "喀麦隆"
+    },
+    {
+      "number": "239",
+      "code": "ST",
+      "name": "圣多美和普林西比"
+    },
+    {
+      "number": "241",
+      "code": "GA",
+      "name": "加蓬"
+    },
+    {
+      "number": "242",
+      "code": "CG",
+      "name": "刚果"
+    },
+    {
+      "number": "243",
+      "code": "ZR",
+      "name": "扎伊尔"
+    },
+    {
+      "number": "244",
+      "code": "AO",
+      "name": "安哥拉"
+    },
+    {
+      "number": "247",
+      "code": "",
+      "name": "阿森松"
+    },
+    {
+      "number": "248",
+      "code": "SC",
+      "name": "塞舌尔"
+    },
+    {
+      "number": "249",
+      "code": "SD",
+      "name": "苏丹"
+    },
+    {
+      "number": "251",
+      "code": "ET",
+      "name": "埃塞俄比亚"
+    },
+    {
+      "number": "252",
+      "code": "SO",
+      "name": "索马里"
+    },
+    {
+      "number": "253",
+      "code": "DJ",
+      "name": "吉布提"
+    },
+    {
+      "number": "254",
+      "code": "KE",
+      "name": "肯尼亚"
+    },
+    {
+      "number": "255",
+      "code": "TZ",
+      "name": "坦桑尼亚"
+    },
+    {
+      "number": "256",
+      "code": "UG",
+      "name": "乌干达"
+    },
+    {
+      "number": "257",
+      "code": "BI",
+      "name": "布隆迪"
+    },
+    {
+      "number": "258",
+      "code": "MZ",
+      "name": "莫桑比克"
+    },
+    {
+      "number": "260",
+      "code": "ZM",
+      "name": "赞比亚"
+    },
+    {
+      "number": "261",
+      "code": "MG",
+      "name": "马达加斯加"
+    },
+    {
+      "number": "262",
+      "code": "",
+      "name": "留尼旺"
+    },
+    {
+      "number": "263",
+      "code": "ZW",
+      "name": "津巴布韦"
+    },
+    {
+      "number": "264",
+      "code": "NA",
+      "name": "纳米比亚"
+    },
+    {
+      "number": "265",
+      "code": "MW",
+      "name": "马拉维"
+    },
+    {
+      "number": "266",
+      "code": "LS",
+      "name": "莱索托"
+    },
+    {
+      "number": "267",
+      "code": "BW",
+      "name": "博茨瓦纳"
+    },
+    {
+      "number": "268",
+      "code": "SZ",
+      "name": "斯威士兰"
+    },
+    {
+      "number": "327",
+      "code": "KZ",
+      "name": "哈萨克斯坦"
+    },
+    {
+      "number": "331",
+      "code": "KG",
+      "name": "吉尔吉斯坦"
+    },
+    {
+      "number": "350",
+      "code": "GI",
+      "name": "直布罗陀"
+    },
+    {
+      "number": "351",
+      "code": "PT",
+      "name": "葡萄牙"
+    },
+    {
+      "number": "352",
+      "code": "LU",
+      "name": "卢森堡"
+    },
+    {
+      "number": "353",
+      "code": "IE",
+      "name": "爱尔兰"
+    },
+    {
+      "number": "354",
+      "code": "IS",
+      "name": "冰岛"
+    },
+    {
+      "number": "355",
+      "code": "AL",
+      "name": "阿尔巴尼亚"
+    },
+    {
+      "number": "356",
+      "code": "MT",
+      "name": "马耳他"
+    },
+    {
+      "number": "357",
+      "code": "CY",
+      "name": "塞浦路斯"
+    },
+    {
+      "number": "358",
+      "code": "FI",
+      "name": "芬兰"
+    },
+    {
+      "number": "359",
+      "code": "BG",
+      "name": "保加利亚"
+    },
+    {
+      "number": "370",
+      "code": "LT",
+      "name": "立陶宛"
+    },
+    {
+      "number": "371",
+      "code": "LV",
+      "name": "拉脱维亚"
+    },
+    {
+      "number": "372",
+      "code": "EE",
+      "name": "爱沙尼亚"
+    },
+    {
+      "number": "373",
+      "code": "MD",
+      "name": "摩尔多瓦"
+    },
+    {
+      "number": "374",
+      "code": "AM",
+      "name": "亚美尼亚"
+    },
+    {
+      "number": "375",
+      "code": "BY",
+      "name": "白俄罗斯"
+    },
+    {
+      "number": "376",
+      "code": "AD",
+      "name": "安道尔共和国"
+    },
+    {
+      "number": "377",
+      "code": "MC",
+      "name": "摩纳哥"
+    },
+    {
+      "number": "378",
+      "code": "SM",
+      "name": "圣马力诺"
+    },
+    {
+      "number": "380",
+      "code": "UA",
+      "name": "乌克兰"
+    },
+    {
+      "number": "381",
+      "code": "YU",
+      "name": "南斯拉夫"
+    },
+    {
+      "number": "386",
+      "code": "SI",
+      "name": "斯洛文尼亚"
+    },
+    {
+      "number": "420",
+      "code": "CZ",
+      "name": "捷克"
+    },
+    {
+      "number": "421",
+      "code": "SK",
+      "name": "斯洛伐克"
+    },
+    {
+      "number": "423",
+      "code": "LI",
+      "name": "列支敦士登"
+    },
+    {
+      "number": "501",
+      "code": "BZ",
+      "name": "伯利兹"
+    },
+    {
+      "number": "502",
+      "code": "GT",
+      "name": "危地马拉"
+    },
+    {
+      "number": "503",
+      "code": "SV",
+      "name": "萨尔瓦多"
+    },
+    {
+      "number": "504",
+      "code": "HN",
+      "name": "洪都拉斯"
+    },
+    {
+      "number": "505",
+      "code": "NI",
+      "name": "尼加拉瓜"
+    },
+    {
+      "number": "506",
+      "code": "CR",
+      "name": "哥斯达黎加"
+    },
+    {
+      "number": "507",
+      "code": "PA",
+      "name": "巴拿马"
+    },
+    {
+      "number": "509",
+      "code": "HT",
+      "name": "海地"
+    },
+    {
+      "number": "591",
+      "code": "BO",
+      "name": "玻利维亚"
+    },
+    {
+      "number": "592",
+      "code": "GY",
+      "name": "圭亚那"
+    },
+    {
+      "number": "593",
+      "code": "EC",
+      "name": "厄瓜多尔"
+    },
+    {
+      "number": "594",
+      "code": "GF",
+      "name": "法属圭亚那"
+    },
+    {
+      "number": "595",
+      "code": "PY",
+      "name": "巴拉圭"
+    },
+    {
+      "number": "596",
+      "code": "",
+      "name": "马提尼克"
+    },
+    {
+      "number": "597",
+      "code": "SR",
+      "name": "苏里南"
+    },
+    {
+      "number": "598",
+      "code": "UY",
+      "name": "乌拉圭"
+    },
+    {
+      "number": "599",
+      "code": "",
+      "name": "荷属安的列斯"
+    },
+    {
+      "number": "673",
+      "code": "BN",
+      "name": "文莱"
+    },
+    {
+      "number": "674",
+      "code": "NR",
+      "name": "瑙鲁"
+    },
+    {
+      "number": "675",
+      "code": "PG",
+      "name": "巴布亚新几内亚"
+    },
+    {
+      "number": "676",
+      "code": "TO",
+      "name": "汤加"
+    },
+    {
+      "number": "677",
+      "code": "SB",
+      "name": "所罗门群岛"
+    },
+    {
+      "number": "679",
+      "code": "FJ",
+      "name": "斐济"
+    },
+    {
+      "number": "682",
+      "code": "CK",
+      "name": "库克群岛"
+    },
+    {
+      "number": "684",
+      "code": "",
+      "name": "东萨摩亚(美)"
+    },
+    {
+      "number": "685",
+      "code": "",
+      "name": "西萨摩亚"
+    },
+    {
+      "number": "689",
+      "code": "PF",
+      "name": "法属玻利尼西亚"
+    },
+    {
+      "number": "850",
+      "code": "KP",
+      "name": "朝鲜"
+    },
+    {
+      "number": "852",
+      "code": "HK",
+      "name": "香港"
+    },
+    {
+      "number": "853",
+      "code": "MO",
+      "name": "澳门"
+    },
+    {
+      "number": "855",
+      "code": "KH",
+      "name": "柬埔寨"
+    },
+    {
+      "number": "856",
+      "code": "LA",
+      "name": "老挝"
+    },
+    {
+      "number": "880",
+      "code": "BD",
+      "name": "孟加拉国"
+    },
+    {
+      "number": "886",
+      "code": "TW",
+      "name": "台湾"
+    },
+    {
+      "number": "960",
+      "code": "MV",
+      "name": "马尔代夫"
+    },
+    {
+      "number": "961",
+      "code": "LB",
+      "name": "黎巴嫩"
+    },
+    {
+      "number": "962",
+      "code": "JO",
+      "name": "约旦"
+    },
+    {
+      "number": "963",
+      "code": "SY",
+      "name": "叙利亚"
+    },
+    {
+      "number": "964",
+      "code": "IQ",
+      "name": "伊拉克"
+    },
+    {
+      "number": "965",
+      "code": "KW",
+      "name": "科威特"
+    },
+    {
+      "number": "966",
+      "code": "SA",
+      "name": "沙特阿拉伯"
+    },
+    {
+      "number": "967",
+      "code": "YE",
+      "name": "也门"
+    },
+    {
+      "number": "968",
+      "code": "OM",
+      "name": "阿曼"
+    },
+    {
+      "number": "971",
+      "code": "AE",
+      "name": "阿拉伯联合酋长国"
+    },
+    {
+      "number": "972",
+      "code": "IL",
+      "name": "以色列"
+    },
+    {
+      "number": "973",
+      "code": "BH",
+      "name": "巴林"
+    },
+    {
+      "number": "974",
+      "code": "QA",
+      "name": "卡塔尔"
+    },
+    {
+      "number": "976",
+      "code": "MN",
+      "name": "蒙古"
+    },
+    {
+      "number": "977",
+      "code": "NP",
+      "name": "尼泊尔"
+    },
+    {
+      "number": "992",
+      "code": "TJ",
+      "name": "塔吉克斯坦"
+    },
+    {
+      "number": "993",
+      "code": "TM",
+      "name": "土库曼斯坦"
+    },
+    {
+      "number": "994",
+      "code": "AZ",
+      "name": "阿塞拜疆"
+    },
+    {
+      "number": "995",
+      "code": "GE",
+      "name": "格鲁吉亚"
+    },
+    {
+      "number": "1242",
+      "code": "BS",
+      "name": "巴哈马"
+    },
+    {
+      "number": "1246",
+      "code": "BB",
+      "name": "巴巴多斯"
+    },
+    {
+      "number": "1264",
+      "code": "AI",
+      "name": "安圭拉岛"
+    },
+    {
+      "number": "1268",
+      "code": "AG",
+      "name": "安提瓜和巴布达"
+    },
+    {
+      "number": "1345",
+      "code": "",
+      "name": "开曼群岛"
+    },
+    {
+      "number": "1441",
+      "code": "BM",
+      "name": "百慕大群岛"
+    },
+    {
+      "number": "1664",
+      "code": "MS",
+      "name": "蒙特塞拉特岛"
+    },
+    {
+      "number": "1670",
+      "code": "",
+      "name": "马里亚那群岛"
+    },
+    {
+      "number": "1671",
+      "code": "GU",
+      "name": "关岛"
+    },
+    {
+      "number": "1758",
+      "code": "LC",
+      "name": "圣卢西亚"
+    },
+    {
+      "number": "1758",
+      "code": "LC",
+      "name": "圣卢西亚"
+    },
+    {
+      "number": "1784",
+      "code": "VC",
+      "name": "圣文森特岛"
+    },
+    {
+      "number": "1784",
+      "code": "VC",
+      "name": "圣文森特"
+    },
+    {
+      "number": "1787",
+      "code": "PR",
+      "name": "波多黎各"
+    },
+    {
+      "number": "1809",
+      "code": "GD",
+      "name": "格林纳达"
+    },
+    {
+      "number": "1809",
+      "code": "TT",
+      "name": "特立尼达和多巴哥"
+    },
+    {
+      "number": "1876",
+      "code": "JM",
+      "name": "牙买加"
+    },
+    {
+      "number": "1890",
+      "code": "DO",
+      "name": "多米尼加共和国"
+    }
+  ]
+
+}
