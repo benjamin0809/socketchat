@@ -43,38 +43,6 @@ router.get('/emotion/getEmotions/demo', function(req, res, next) {
   res.render(result) 
   res.writeHead(200, {'Content-Type' : 'text/html; charset=utf-8'}); 
 });
-
-/* GET home page. */
-router.post('/upload',multipartMiddleware, function(req, res, next) {
-   console.log(req.body,req.files)  
-
-   res.writeHead(200, {'Content-Type' : 'text/html; charset=utf-8'}); 
-   let outpath = path.resolve(__dirname,UPLOAD_PATH)
-
-   console.log(outpath)
-  if(!fs.existsSync(outpath)){
-    fs.mkdirSync(outpath)
-  } 
-  let result = 'Rendered to ' + JSON.stringify(req.files, null, 2) + '\n';
-  
-   fs.copyFile(req.files.myfile.path, outpath + "\\" + req.files.myfile.originalFilename,fs.constants.COPYFILE_FICLONE,(err=>{
-     
-     if(err){
-      console.error(err) 
-     }else{
-
-      req.files.url = req.protocol + '://' + req.host + ':3000/upload/' + req.files.myfile.originalFilename
-      console.log(req.files.url)
-      console.log(req)
-      result += '<img src="'+ req.files.url +'">'
-     }
-     
-
-
-      res.end(result);
-
-   }))
-   
-});
+ 
 
 module.exports = router;
