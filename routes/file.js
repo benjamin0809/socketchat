@@ -23,14 +23,26 @@ router.post('/download/png', function(req, res, next) {
 });
 
 router.post('/download/pdf', function(req, res, next) {  
-  res.sendFile(path.join(__dirname,'../public/upload/pdf.pdf')) 
+  res.sendFile(path.join(__dirname,'../public/file/pdf.pdf')) 
 });
 
+ 
 router.post('/download/word', function(req, res, next) {  
   res.sendFile(path.join(__dirname,'../public/file/word.docx')) 
 });
 
 router.post('/download/excel', function(req, res, next) {  
+  res.sendFile(path.join(__dirname,'../public/file/language.xlsx')) 
+});
+
+router.get('/download/getpdf', function(req, res, next) {  
+  res.sendFile(path.join(__dirname,'../public/file/pdf.pdf')) 
+});
+
+router.get('/download/getword', function(req, res, next) {  
+  res.sendFile(path.join(__dirname,'../public/file/word.docx')) 
+});
+router.get('/download/getexcel', function(req, res, next) {  
   res.sendFile(path.join(__dirname,'../public/file/language.xlsx')) 
 });
 
