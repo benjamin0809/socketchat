@@ -13,7 +13,7 @@
   overflow-y: auto;
 }
 
-.demo-iframe-holder iframe {
+  iframe {
   height: 100%;
   width: 100%;
 }
@@ -23,11 +23,22 @@ html, body {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
-
+.iframe-container {
+  -webkit-overflow-scrolling: touch;
+  overflow: scroll;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
 </style>
 
 <html>
 <body> 
-        <iframe scrolling="no" src="http://www.baidu.com" /> 
+  <div class="iframe-container ">
+      <iframe scrolling="no" src="http://www.baidu.com" /> 
+  </div>
+        
 </body>
 </html>
