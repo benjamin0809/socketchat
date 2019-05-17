@@ -98,5 +98,40 @@ router.post('/uploadFile',multipartMiddleware, function(req, res, next) {
   }))
   
 });
+ 
+router.post('/saveAsHtml', function(req, res, next) {
+  console.log(req.body )  
+
+  if(req.body.token != '9527'){
+    res.send({
+      msg: 'token id invalid'
+    })
+    return;
+  } 
+
+  let UPLOAD_PATH = '../public/upload'
+  console.log(UPLOAD_PATH)
+  let outpath = path.resolve(__dirname,UPLOAD_PATH) 
+  console.log(outpath)
+ if(!fs.existsSync(outpath)){
+   fs.mkdirSync(outpath)
+ }  
+  
+ let filename = new Date().getTime()
+ fs.writeFile(outpath + '/' + filename+ '.html' ,req.body.data,(err)=>{
+  if (err) {
+    res.send({
+      msg: 'o huo'
+    })
+    return ;
+  } 
+  res.send({
+    result : filename
+  })
+ })
+  
+ 
+  
+});
 
 module.exports = router;

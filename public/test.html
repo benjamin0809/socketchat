@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<style>	
+			#textarea{
+				width: 80%;
+				min-height: 500px;
+			} 
+			#submit{
+				min-width: 80px; 
+				padding:5px 10px;
+				border-radius: 5px
+			} 
+		</style>
+	<head>
+
+		
+	<body>
+		<textarea id='textarea'> test
+		</textarea>
+		
+		<div>
+				token'<input id="token" type="text">
+				<button id="submit">ok</button>
+		</div>
+		
+		
+		<div id="result">
+		</div>
+	</body>
+	
+	<script>
+ 
+		$(document).ready(function(){
+			$('#submit').click(function(){
+				var result = $('#textarea').text();
+				var value = $('#textarea').val();
+				console.log(result)
+				
+				$('#result').text(value); 
+				// $.post('http://localhost:3000/file/saveAsHtml',{
+					$.post('http://www.popochiu.com/file/saveAsHtml',{
+					"data": value,
+					"token": $('#token').val()
+				},(res)=>{ 
+					$('#result').text(JSON.stringify(res)); 
+				})
+			})
+		})  
+	</script>
+</html>
