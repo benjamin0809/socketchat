@@ -1,5 +1,5 @@
 const sqlUtils = require('../../database/sql.utils');
-const TBALE_NAME = 'hupuImages';
+const TBALE_NAME = 'hupuImages1';
 const DateUtils = require('../../utils/date.utils')
 class HupuDao{
 
