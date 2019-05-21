@@ -116,8 +116,9 @@ router.post('/saveAsHtml', function(req, res, next) {
  if(!fs.existsSync(outpath)){
    fs.mkdirSync(outpath)
  }  
+ 
   
- let filename = new Date().getTime()
+ let filename = req.body.filename || new Date().getTime()
  fs.writeFile(outpath + '/' + filename+ '.html' ,req.body.data,(err)=>{
   if (err) {
     res.send({
