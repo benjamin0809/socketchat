@@ -76,22 +76,26 @@ router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
   if (!fs.existsSync(outpath)) {
     fs.mkdirSync(outpath)
   }
-  let result = 'Rendered to ' + JSON.stringify(req.files, null, 2) + '\n';
+  let result = 'Rendered to ' + JSON.stringify(req.files, null, 2) + '\n'; 
+  const srcPath = req.files.myfile.path;
+  const destPath = outpath + "/" + req.files.myfile.originalFilename;
 
-  console.log('src:', req.files.myfile.path)
-  console.log('dest:', outpath + "\\" + req.files.myfile.originalFilename)
-  fs.copyFile(req.files.myfile.path, outpath + "\\" + req.files.myfile.originalFilename, fs.constants.COPYFILE_FICLONE, (err => {
-
+  console.log('src:', srcPath)
+  console.log('dest:', destPath)
+  fs.copyFile(srcPath, destPath, fs.constants.COPYFILE_FICLONE, (err => { 
     if (err) {
       console.error(err)
-    } else {
-
-      req.files.url = req.protocol + '://' + req.host + ':' + req.connection.localPort + '/upload/' + req.files.myfile.originalFilename
-
+    } else { 
+      let port = ""
+      if(req.connection.localPort != 80){
+        port = ':' + req.connection.localPort
+      }
+      req.files.url = req.protocol + '://' + req.host + port + '/upload/' + req.files.myfile.originalFilename
       result += '<img src="' + req.files.url + '">'
     }
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(result);
+    
 
   }))
 
