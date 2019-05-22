@@ -20,10 +20,15 @@
 		<textarea id='textarea'> test
 		</textarea>
 		
+		<pre id="pre" contenteditable="true" >
+			coding
+		</pre>
 		<div>
 				token'<input id="token" type="text">
 				filename'<input id="filename" type="text">
-				<button id="submit">ok</button>
+				<button id="saveAsHtml">saveAsHtml</button>
+				<button id="saveAsJS">saveAsJS</button>
+				<button id="coding">coding</button>
 		</div>
 		
 		
@@ -34,22 +39,31 @@
 	<script>
  
 		$(document).ready(function(){
-			$('#submit').click(function(){
+			let baseUrl = 'http://localhost:3000/file/'
+			// let baseUrl = 'http://www.popochiu.com/file/'
+			const submit = (action)=>{
 				var result = $('#textarea').text();
 				var value = $('#textarea').val();
-				var filename = $('#filename').val();
-				console.log(result)
-				
-				$('#result').text(value); 
-				// $.post('http://localhost:3000/file/saveAsHtml',{
-					$.post('http://www.popochiu.com/file/saveAsHtml',{
+				var filename = $('#filename').val(); 
+				$('#result').text(value);  
+					$.post(baseUrl + action,{
 					"data": value,
 					"filename": filename,
 					"token": $('#token').val()
 				},(res)=>{ 
 					$('#result').text(JSON.stringify(res)); 
 				})
-			})
+			}
+			$('button').click(function(e){ 
+				e.currentTarget.id 
+				submit(e.currentTarget.id )
+			}) 
+			$('#coding').click(function(e){ 
+				console.log($('#pre').text())
+			}) 
+
+			
+			
 		})  
 	</script>
 </html>

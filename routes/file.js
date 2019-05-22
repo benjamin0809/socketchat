@@ -73,7 +73,7 @@ router.post('/readStream/excel', function(req, res, next) {
 router.post('/uploadFile',multipartMiddleware, function(req, res, next) {
   console.log(req.body,req.files)  
 
-  res.writeHead(200, {'Content-Type' : 'text/html; charset=utf-8'}); 
+  const UPLOAD_PATH = '../public/upload'
   let outpath = path.resolve(__dirname,UPLOAD_PATH)
 
   console.log(outpath)
@@ -86,13 +86,14 @@ router.post('/uploadFile',multipartMiddleware, function(req, res, next) {
     
     if(err){
      console.error(err) 
-    }else{
-
-     req.files.url = req.protocol + '://' + req.host + ':3000/upload/' + req.files.myfile.originalFilename
+    }else{  
+      
+     req.files.url = req.protocol + '://' + req.host + ':' + req.connection.localPort + '/upload/' + req.files.myfile.originalFilename
      console.log(req.files.url)
      console.log(req)
      result += '<img src="'+ req.files.url +'">'
     } 
+    res.writeHead(200, {'Content-Type' : 'text/html; charset=utf-8'});
      res.end(result);
 
   }))
@@ -130,8 +131,40 @@ router.post('/saveAsHtml', function(req, res, next) {
     result : filename
   })
  })
-  
+
+ router.post('/saveAsJS', function(req, res, next) {
+  console.log(req.body )  
+
+  if(req.body.token != '9527'){
+    res.send({
+      msg: 'token id invalid'
+    })
+    return;
+  } 
+
+  let UPLOAD_PATH = '../public/js'
+  console.log(UPLOAD_PATH)
+  let outpath = path.resolve(__dirname,UPLOAD_PATH) 
+  console.log(outpath)
+ if(!fs.existsSync(outpath)){
+   fs.mkdirSync(outpath)
+ }  
  
+  
+ let filename = req.body.filename || new Date().getTime()
+ fs.writeFile(outpath + '/' + filename+ '.js' ,req.body.data,(err)=>{
+  if (err) {
+    res.send({
+      msg: 'o huo'
+    })
+    return ;
+  } 
+  res.send({
+    result : filename
+  })
+ })
+  
+})
   
 });
 
