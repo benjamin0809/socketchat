@@ -5,6 +5,8 @@
   "scripts": {
     "test": "echo test",
     "start": "node ./bin/www",
+    "serve": "set PORT=80 && node ./bin/www",
+    "dev": "set PORT=3001 && node ./bin/www",
     "check": "npm run test && npm start"
   },
   "dependencies": {
