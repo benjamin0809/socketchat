@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 
-
+const config = require('../../config/dev.conf')
 // 设置邮件内容（谁发送什么给谁）
 const defaultMailOptions = {
   from: '"benjamin 👻" <benjamin_0809@163.com>', // 发件人
@@ -10,27 +10,44 @@ const defaultMailOptions = {
   html: '<b>这是一封来自 Node.js 的测试邮件</b>' // html body
   // 下面是发送附件，不需要就注释掉 
 };
+
+ 
 class Mail{
    
   constructor(){
+    // this.mailTransport = nodemailer.createTransport({
+    //   host: 'smtp.163.com',
+    //   port: 25,
+    //   auth: {
+    //       user: 'benjamin_0809@163.com',
+    //       pass: 'Mrz08090'
+    //   }
+    // });
+
     this.mailTransport = nodemailer.createTransport({
-      host: 'smtp.163.com',
-      port: 25,
+      // host: 'smtp.ethereal.email',
+      service: 'qq', // 使用了内置传输发送邮件 查看支持列表：https://nodemailer.com/smtp/well-known/
+      port: 465, // SMTP 端口
+      secureConnection: true, // 使用了 SSL
       auth: {
-          user: 'benjamin_0809@163.com',
-          pass: 'Mrz08090'
+        user: config.mail.user,
+        // 这里密码不是qq密码，是你设置的smtp授权码
+        pass: config.mail.pass,
       }
-    });
+    }); 
+    
   }
 
   
-  sendEmail(from, to, subject, text, html){ 
+  sendEmail(aliasName, to, subject, text, html, attachments){  
+    aliasName = aliasName ? `${aliasName}<${config.mail.user}>` : config.mail.user
     let param = {
-      from: from,
+      from: aliasName,
       to: to,
       subject: subject,
       text: text,
-      html: html
+      html: html,
+      attachments: attachments
     }
     return new Promise((resolve, reject) =>{
       this.mailTransport.sendMail(param, (error, info) => {
@@ -43,6 +60,8 @@ class Mail{
     });
     }) 
   }
+
+ 
 
   /**
    * 发送邮件到带附件
