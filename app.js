@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var hupuRouter = require('./routes/hupu');
 var fileRouter = require('./routes/file');
+var mailRouter = require('./routes/mail');
 var app = express(); 
  
   
@@ -37,6 +38,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/hupu', hupuRouter);
 app.use('/file', fileRouter);
+app.use('/email', mailRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
