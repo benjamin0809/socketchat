@@ -12,3 +12,18 @@ let createTable = `CREATE TABLE IF NOT EXISTS hupuImages(
    modifiedTime VARCHAR(40) NULL,
    PRIMARY KEY ( id )
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;`
+
+
+##special table: file
+let createTable = `CREATE TABLE IF NOT EXISTS file(
+   id BIGINT NOT NULL,
+   masterid BIGINT NOT NULL,
+   filename VARCHAR(256) NOT NULL,
+   path VARCHAR(128) NOT NULL,
+   fullpath VARCHAR(128) NOT NULL, 
+   filetype VARCHAR(40) NOT NULL,
+   sourceUrl VARCHAR(256),
+   createTime VARCHAR(40) NOT NULL, 
+   modifiedTime VARCHAR(40) NULL,
+   PRIMARY KEY ( id ) ,UNIQUE INDEX 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;`
