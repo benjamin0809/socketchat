@@ -20,6 +20,7 @@ class FileDao{
     }
     
     insertFile(fileEntity){
+        console.log(fileEntity)
         if(!fileEntity)return; 
         let params = []
         let columns = [

@@ -114,6 +114,12 @@ router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
     }
     req.files.url = req.protocol + '://' + req.host + port + '/upload/' + req.files.myfile.originalFilename
     fileEntity.fullpath = req.files.url
+    fileDao.insertFile(fileEntity) .then(res=>{
+      result += JSON.stringify(res)
+    }).catch(e=>{
+      result += JSON.stringify(res)
+    })
+
     result += '<img src="' + req.files.url + '">'
     res.end(result);
   }); 
@@ -122,8 +128,7 @@ router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
   });
 
 
-  fileDao.insertFile(fileEntity) 
-
+ 
 
 
   // fs.copyFile(srcPath, destPath, fs.constants.COPYFILE_FICLONE, (err => { 
