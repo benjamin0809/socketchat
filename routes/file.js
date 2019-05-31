@@ -92,7 +92,7 @@ router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
     fs.mkdirSync(outpath)
   }
   let result = 'Rendered to ' + JSON.stringify(req.files, null, 2) + '\n';
-
+  fileEntity.filename =  req.files.myfile.originalFilename
   fileEntity.filetype =  req.files.myfile.originalFilename.split('.').pop();
   const srcPath = req.files.myfile.path;
   const destPath = outpath + "/" + req.files.myfile.originalFilename;
@@ -112,7 +112,7 @@ router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
     if (req.connection.localPort != 80) {
       port = ':' + req.connection.localPort
     }
-    req.files.url = req.protocol + '://' + req.host + port + '/upload/' + req.files.myfile.originalFilename
+    req.files.url = req.protocol + '://' + req.hostname  + port + '/upload/' + req.files.myfile.originalFilename
     fileEntity.fullpath = req.files.url
     fileDao.insertFile(fileEntity).then(res=>{
       try{
@@ -213,13 +213,13 @@ router.post('/saveAsHtml', function (req, res, next) {
 
   }) 
 });
-
+ 
 router.get('/getFileByMasterId', function (req, res, next) { 
   const id = req.query.id 
   const fileDao = new FileDao();
-  fileDao.getFileByMasterId(id).then(res=>{
+  fileDao.getFileByMasterId(id).then(data=>{
     res.send({
-      result: res
+      result: data
     })
   }).catch(e=>{
     res.send({
@@ -230,14 +230,10 @@ router.get('/getFileByMasterId', function (req, res, next) {
 
 router.get('/getAllFiles', function (req, res, next) {  
   const fileDao = new FileDao();
-  fileDao.getAllFiles().then(res=>{
-    res.send({
-      result: res
-    })
+  fileDao.getAllFiles().then(data=>{
+    res.send(data)
   }).catch(e=>{
-    res.send({
-      result: e
-    })
+    res.send( e)
   }) 
 })
 

@@ -12,30 +12,25 @@ const redis = new Redis();
 router.get('/', function (req, res, next) {
   res.sendFile('./public/hupu/index.html')
 })
-router.get('/getImages', function (req, res, next) {
+router.get('/getImages', async (req, res, next) => {
   let limit = req.query.limit || 20;
   let offset = req.query.offset || 0;
   const pagekey = limit + '-' + offset;
 
-  redis.getpageh(main_key, pagekey).then(result => {
-    if (result.length > 0) {
-      res.send(result)
-    } else {
-      HupuDao.getHupuImages(limit, offset).then(data => {
-        redis.sethpage(main_key, pagekey, data)
-        res.send(data)
-      }).catch(error => {
-        res.send(JSON.stringify(error))
-      })
-    }
-  }).catch(err => {
-    HupuDao.getHupuImages(limit, offset).then(data => {
-      res.send(data)
+  try{ 
+    let reidsResult = await redis.getpageh(main_key, pagekey);
+    if(reidsResult && reidsResult.length > 0){
+      res.send(reidsResult)
+    }else {
+      let data = await HupuDao.getHupuImages(limit, offset) 
       redis.sethpage(main_key, pagekey, data)
-    }).catch(error => {
-      res.send(JSON.stringify(error))
-    })
-  })
+      res.send(data) 
+    } 
+  }catch(e){
+    console.error(e)
+    res.send(e) 
+  }
+  
 })
 
 router.post('/spiderAction', function (req, res, next) {
