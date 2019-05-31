@@ -2,11 +2,13 @@ var express = require('express');
 var router = express.Router();
 var user = require('../modules/user/user')
 var utils = require('../utils/utils')
+const DateUtils = require('../utils/date.utils') 
 var mutipart = require('connect-multiparty')
+const FileDao = require('../modules/file/file')
+
 const fs = require('fs')
 var multipartMiddleware = mutipart();
-const path = require('path');
-
+const path = require('path'); 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   res.sendFile(path.join(__dirname, '../modules/file/upload.html'))
@@ -71,39 +73,76 @@ router.post('/readStream/excel', function (req, res, next) {
 
 /* GET home page. */
 router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
+  const fileDao = new FileDao();
+  let fileEntity = {
+    id : +new Date() ,
+    masterid: +new Date(),
+    filename: '',
+    path: '',
+    fullpath: '',
+    filetype: '',
+    sourceUrl: '',
+    createTime:  DateUtils.getCurrentTime() ,
+    modifiedTime:  DateUtils.getCurrentTime() ,
+  }
+
   const UPLOAD_PATH = '../public/upload'
   let outpath = path.resolve(__dirname, UPLOAD_PATH)
   if (!fs.existsSync(outpath)) {
     fs.mkdirSync(outpath)
   }
-  let result = 'Rendered to ' + JSON.stringify(req.files, null, 2) + '\n'; 
+  let result = 'Rendered to ' + JSON.stringify(req.files, null, 2) + '\n';
+
+  fileEntity.filetype =  req.files.myfile.originalFilename.split('.').pop();
   const srcPath = req.files.myfile.path;
   const destPath = outpath + "/" + req.files.myfile.originalFilename;
-
-  console.log('src:', srcPath)
-  console.log('dest:', destPath)
-  fs.copyFile(srcPath, destPath, fs.constants.COPYFILE_FICLONE, (err => { 
-    if (err) {
-      console.error(err)
-    } else { 
-      let port = ""
-      if(req.connection.localPort != 80){
-        port = ':' + req.connection.localPort
-      }
-      req.files.url = req.protocol + '://' + req.host + port + '/upload/' + req.files.myfile.originalFilename
-      result += '<img src="' + req.files.url + '">'
+  fileEntity.sourceUrl = req.files.url
+  fileEntity.path = destPath
+  
+  var source = fs.createReadStream(srcPath);
+  var dest = fs.createWriteStream(destPath);
+  
+  source.pipe(dest);
+  source.on('end', function () {
+    fs.unlinkSync(srcPath);  //delete tmp file
+    res.writeHead(200, {
+      'Content-Type': 'text/html; charset=utf-8'
+    });
+    let port = ""
+    if (req.connection.localPort != 80) {
+      port = ':' + req.connection.localPort
     }
-    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    req.files.url = req.protocol + '://' + req.host + port + '/upload/' + req.files.myfile.originalFilename
+    fileEntity.fullpath = req.files.url
+    result += '<img src="' + req.files.url + '">'
     res.end(result);
-    
+  }); 
+  source.on('error', function (err) {
+    res.end('哦豁');
+  });
 
-  }))
+
+  fileDao.insertFile(fileEntity) 
+
+
+
+  // fs.copyFile(srcPath, destPath, fs.constants.COPYFILE_FICLONE, (err => { 
+  //   if (err) {
+  //     console.error(err)
+  //   } else { 
+  //     let port = ""
+  //     if(req.connection.localPort != 80){
+  //       port = ':' + req.connection.localPort
+  //     }
+  //     req.files.url = req.protocol + '://' + req.host + port + '/upload/' + req.files.myfile.originalFilename
+  //     result += '<img src="' + req.files.url + '">'
+  //   } 
+  // }))
 
 });
 
 router.post('/saveAsHtml', function (req, res, next) {
-  console.log(req.body)
-
+  console.log(req.body) 
   if (req.body.token != '9527') {
     res.send({
       msg: 'token id invalid'
@@ -143,12 +182,12 @@ router.post('/saveAsHtml', function (req, res, next) {
       return;
     }
 
-    let UPLOAD_PATH = '../public/js' 
-    let outpath = path.resolve(__dirname, UPLOAD_PATH) 
+    let UPLOAD_PATH = '../public/js'
+    let outpath = path.resolve(__dirname, UPLOAD_PATH)
     if (!fs.existsSync(outpath)) {
       fs.mkdirSync(outpath)
     }
- 
+
 
     let filename = req.body.filename || new Date().getTime()
     fs.writeFile(outpath + '/' + filename + '.js', req.body.data, (err) => {
@@ -163,8 +202,34 @@ router.post('/saveAsHtml', function (req, res, next) {
       })
     })
 
-  })
-
+  }) 
 });
+
+router.get('/getFileByMasterId', function (req, res, next) { 
+  const id = req.query.id 
+  const fileDao = new FileDao();
+  fileDao.getFileByMasterId(id).then(res=>{
+    res.send({
+      result: res
+    })
+  }).catch(e=>{
+    res.send({
+      result: e
+    })
+  }) 
+})
+
+router.get('/getAllFiles', function (req, res, next) {  
+  const fileDao = new FileDao();
+  fileDao.getAllFiles().then(res=>{
+    res.send({
+      result: res
+    })
+  }).catch(e=>{
+    res.send({
+      result: e
+    })
+  }) 
+})
 
 module.exports = router;
