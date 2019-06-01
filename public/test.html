@@ -20,6 +20,7 @@
 		<textarea id='textarea'> test
 		</textarea>
 		
+		<code contenteditable="true">asd </code>
 		<pre id="pre" contenteditable="true" >
 			coding
 		</pre>
@@ -28,7 +29,7 @@
 				filename'<input id="filename" type="text">
 				<button id="saveAsHtml">saveAsHtml</button>
 				<button id="saveAsJS">saveAsJS</button>
-				<button id="coding">coding</button>
+				<button id="saveAsCss">saveAsCss</button>
 		</div>
 		
 		
@@ -39,8 +40,9 @@
 	<script>
  
 		$(document).ready(function(){
-			//let baseUrl = 'http://localhost:3000/file/'
-			let baseUrl = 'http://www.popochiu.com/file/'
+			let host = window.location.host 
+			let baseUrl = 'http://' + host + '/file/'
+			//let baseUrl = 'http://www.popochiu.com/file/'
 			const submit = (action)=>{
 				var result = $('#textarea').text();
 				var value = $('#textarea').val();

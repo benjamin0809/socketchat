@@ -120,6 +120,10 @@ class FileUtils {
     }
     return req.protocol + '://' + req.hostname  + port 
   };
+
+  static joinChar(array,char){
+    return array.join(char)
+  }
 }
 
 module.exports = FileUtils;

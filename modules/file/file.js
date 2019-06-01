@@ -13,9 +13,15 @@ class FileDao {
         return this.sqlUtils.queryWithParams(sql, params);
     }
 
-    getAllFiles() {
+    getAllFiles(key) { 
         let sql = `SELECT * from ${TBALE_NAME}`
         let params = []
+
+        if(key){
+            key = '%' + key + '%'
+            sql += 'where filename like ?'
+            params.push(key)
+        }
         return this.sqlUtils.queryWithParams(sql, params);
     }
 
