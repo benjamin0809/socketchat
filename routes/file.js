@@ -144,7 +144,7 @@ router.post('/saveAsHtml', function (req, res, next) {
     let fileEntity =  fileDao.getInstance(); 
     fileEntity.filename = filename + '.html'
     fileEntity.masterid = fileEntity.id;
-    fileEntity.filetype = html;
+    fileEntity.filetype = 'html';
     fileEntity.fullpath = FileUtils.getRequestUrl(req) + '/upload/' + fileEntity.filename;
     fileEntity.sourceUrl = req.url;
     fileEntity.path = outpath + '/' + filename + '.html';
@@ -181,7 +181,7 @@ router.post('/saveAsHtml', function (req, res, next) {
       let fileEntity =  fileDao.getInstance(); 
       fileEntity.filename = filename + '.html'
       fileEntity.masterid = fileEntity.id;
-      fileEntity.filetype = html;
+      fileEntity.filetype = 'js';
       fileEntity.fullpath = FileUtils.getRequestUrl(req) + '/js/' + fileEntity.filename;
       fileEntity.sourceUrl = req.url;
       fileEntity.path = outpath + '/' + filename + '.js';
