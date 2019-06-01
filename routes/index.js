@@ -1,48 +1,30 @@
-var express = require('express');
-var router = express.Router();
-var mutipart = require('connect-multiparty')
-var multipartMiddleware = mutipart(); 
-const path = require('path')
-const fs = require('fs')
+const express = require('express');
+const router = express.Router();
+const app =  express()
+/** import module router */ 
+const usersRouter = require('./users')
+const hupuRouter = require('./hupu')
+const fileRouter = require('./file')
+const mailRouter  = require('./mail')
+const emotionRouter  = require('./emotion')
 
-const UPLOAD_PATH = "../public/upload/";
-const Emotion = require('../modules/emotion/emotion')
 /* GET home page. */
-router.get('/', function(req, res, next) { 
-   
-  // res.sendFile('../public/upload.html')
+router.get('/', function(req, res, next) {  
   res.render('index', { title: 'Express' });
 });
 
 
-/* GET home page. */
-router.get('/mock', function(req, res, next) {
-  res.json(Mock.mock({
-    "status": 200,
-    "data|1-9": [{
-        "name|5-8": /[a-zA-Z]/,
-        "id|+1": 1,
-        "value|0-500": 20
-    }]
-  }));
-});
-
-/* GET home page. */
-router.get('/emotion/getEmotions', function(req, res, next) {
-  res.json(new Emotion().getEmotions()) 
-});
-
-/* GET home page. */
-router.get('/emotion/getEmotions/demo', function(req, res, next) {
-  
-  let array = new Emotion().getEmotions();
-  let result = `<div></div>`;
-  for(let item of array){  
-    result +=`<div>${String.fromCodePoint('0x' + item.bit16)}</div>`
-  } 
-  res.render(result) 
-  res.writeHead(200, {'Content-Type' : 'text/html; charset=utf-8'}); 
-});
+const routers = []
+routers.push({path: '/',routerName: router})
+routers.push({path: '/users',routerName: usersRouter})
+routers.push({path: '/hupu',routerName: hupuRouter})
+routers.push({path: '/file',routerName: fileRouter})
+routers.push({path: '/email',routerName: mailRouter})
+routers.push({path: '/emotion',routerName: emotionRouter})
  
+routers.forEach(item => { 
+  app.use(item.path, item.routerName)  
+})
 
-module.exports = router;
+module.exports = app
+
