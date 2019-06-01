@@ -19,7 +19,7 @@ class FileDao {
 
         if(key){
             key = '%' + key + '%'
-            sql += 'where filename like ?'
+            sql += ' where filename like ?'
             params.push(key)
         }
         return this.sqlUtils.queryWithParams(sql, params);
