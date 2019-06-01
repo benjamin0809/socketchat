@@ -3,6 +3,7 @@ var router = express.Router();
 var user = require('../modules/user/user')
 var utils = require('../utils/utils')
 const DateUtils = require('../utils/date.utils') 
+const FileUtils = require('../utils/file-utils') 
 var mutipart = require('connect-multiparty')
 const FileDao = require('../modules/file/file')
 
@@ -74,17 +75,7 @@ router.post('/readStream/excel', function (req, res, next) {
 /* GET home page. */
 router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
   const fileDao = new FileDao();
-  let fileEntity = {
-    id : +new Date() ,
-    masterid: +new Date(),
-    filename: '',
-    path: '',
-    fullpath: '',
-    filetype: '',
-    sourceUrl: '',
-    createTime:  DateUtils.getCurrentTime() ,
-    modifiedTime:  DateUtils.getCurrentTime() ,
-  }
+  let fileEntity =  fileDao.getInstance()
 
   const UPLOAD_PATH = '../public/upload'
   let outpath = path.resolve(__dirname, UPLOAD_PATH)
@@ -92,10 +83,12 @@ router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
     fs.mkdirSync(outpath)
   }
   let result = 'Rendered to ' + JSON.stringify(req.files, null, 2) + '\n';
-  fileEntity.filename =  req.files.myfile.originalFilename
-  fileEntity.filetype =  req.files.myfile.originalFilename.split('.').pop();
+  
   const srcPath = req.files.myfile.path;
   const destPath = outpath + "/" + req.files.myfile.originalFilename;
+
+  fileEntity.filename =  req.files.myfile.originalFilename
+  fileEntity.filetype =  req.files.myfile.originalFilename.split('.').pop();
   fileEntity.sourceUrl = req.files.url
   fileEntity.path = destPath
   
@@ -108,12 +101,9 @@ router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
     res.writeHead(200, {
       'Content-Type': 'text/html; charset=utf-8'
     });
-    let port = ""
-    if (req.connection.localPort != 80) {
-      port = ':' + req.connection.localPort
-    }
-    req.files.url = req.protocol + '://' + req.hostname  + port + '/upload/' + req.files.myfile.originalFilename
-    fileEntity.fullpath = req.files.url
+     
+    let webUrl =  FileUtils.getRequestUrl(req) + '/upload/' + req.files.myfile.originalFilename
+    fileEntity.fullpath = webUrl
     fileDao.insertFile(fileEntity).then(res=>{
       try{
         result += JSON.stringify(res)
@@ -124,66 +114,48 @@ router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
       }catch(e){}  
     })
 
-    result += '<img src="' + req.files.url + '">'
+    result += '<img src="' + webUrl + '">'
     res.end(result);
   }); 
   source.on('error', function (err) {
     res.end('哦豁');
-  });
-
-
- 
-
-
-  // fs.copyFile(srcPath, destPath, fs.constants.COPYFILE_FICLONE, (err => { 
-  //   if (err) {
-  //     console.error(err)
-  //   } else { 
-  //     let port = ""
-  //     if(req.connection.localPort != 80){
-  //       port = ':' + req.connection.localPort
-  //     }
-  //     req.files.url = req.protocol + '://' + req.host + port + '/upload/' + req.files.myfile.originalFilename
-  //     result += '<img src="' + req.files.url + '">'
-  //   } 
-  // }))
-
+  }); 
 });
 
-router.post('/saveAsHtml', function (req, res, next) {
-  console.log(req.body) 
+router.post('/saveAsHtml', function (req, res, next) { 
   if (req.body.token != '9527') {
-    res.send({
-      msg: 'token id invalid'
-    })
+    res.send({ msg: 'token id invalid' })
     return;
-  }
-
-  let UPLOAD_PATH = '../public/upload'
-  console.log(UPLOAD_PATH)
-  let outpath = path.resolve(__dirname, UPLOAD_PATH)
-  console.log(outpath)
+  } 
+  let UPLOAD_PATH = '../public/upload' 
+  let outpath = path.resolve(__dirname, UPLOAD_PATH) 
   if (!fs.existsSync(outpath)) {
     fs.mkdirSync(outpath)
   }
-
-
+ 
   let filename = req.body.filename || new Date().getTime()
   fs.writeFile(outpath + '/' + filename + '.html', req.body.data, (err) => {
     if (err) {
-      res.send({
-        msg: 'o huo'
-      })
-      return;
+      res.send({ msg: 'o huo' }) 
+      return
     }
+
+    const fileDao = new FileDao();
+    let fileEntity =  fileDao.getInstance(); 
+    fileEntity.filename = filename + '.html'
+    fileEntity.masterid = fileEntity.id;
+    fileEntity.filetype = html;
+    fileEntity.fullpath = FileUtils.getRequestUrl(req) + '/upload/' + fileEntity.filename;
+    fileEntity.sourceUrl = req.url;
+    fileEntity.path = outpath + '/' + filename + '.html';
+    fileDao.insertFile(fileEntity)
+
     res.send({
       result: filename
     })
   })
 
-  router.post('/saveAsJS', function (req, res, next) {
-    console.log(req.body)
-
+  router.post('/saveAsJS', function (req, res, next) { 
     if (req.body.token != '9527') {
       res.send({
         msg: 'token id invalid'
@@ -201,11 +173,19 @@ router.post('/saveAsHtml', function (req, res, next) {
     let filename = req.body.filename || new Date().getTime()
     fs.writeFile(outpath + '/' + filename + '.js', req.body.data, (err) => {
       if (err) {
-        res.send({
-          msg: 'o huo'
-        })
+        res.send({  msg: 'o huo' })
         return;
       }
+
+      const fileDao = new FileDao();
+      let fileEntity =  fileDao.getInstance(); 
+      fileEntity.filename = filename + '.html'
+      fileEntity.masterid = fileEntity.id;
+      fileEntity.filetype = html;
+      fileEntity.fullpath = FileUtils.getRequestUrl(req) + '/js/' + fileEntity.filename;
+      fileEntity.sourceUrl = req.url;
+      fileEntity.path = outpath + '/' + filename + '.js';
+      fileDao.insertFile(fileEntity)
       res.send({
         result: filename
       })

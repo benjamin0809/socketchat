@@ -109,6 +109,17 @@ class FileUtils {
 
     })
   };
+
+ 
+  static getRequestUrl(req) {
+
+    if(!req)return '';
+    let port = ""
+    if (req.connection.localPort != 80) {
+      port = ':' + req.connection.localPort
+    }
+    return req.protocol + '://' + req.hostname  + port 
+  };
 }
 
 module.exports = FileUtils;

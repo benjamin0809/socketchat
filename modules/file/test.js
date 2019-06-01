@@ -35,3 +35,12 @@ file.getFileByMasterId(1559227914534).then(res=>{
 }).catch(err=>{
     console.log(err)
 })
+
+class demo{
+    constructor(){
+        this.name = ''
+        this.sex = ''
+    }
+}
+
+console.log(demo)
