@@ -19,6 +19,7 @@ let createTable = `CREATE TABLE IF NOT EXISTS file(
    id BIGINT NOT NULL,
    masterid BIGINT NOT NULL,
    filename VARCHAR(256) NOT NULL,
+   fileSize BIGINT,
    path VARCHAR(128) NOT NULL,
    fullpath VARCHAR(128) NOT NULL, 
    filetype VARCHAR(40) NOT NULL,

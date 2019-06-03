@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router(); 
 const FileUtils = require('../utils/file-utils')
+const utils = require('../utils/utils')
 var mutipart = require('connect-multiparty')
 const FileDao = require('../modules/file/file')
 
@@ -86,6 +87,7 @@ router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
 
   fileEntity.filename = req.files.myfile.originalFilename
   fileEntity.filetype = req.files.myfile.type
+  fileEntity.fileSize = req.files.myfile.size
   fileEntity.sourceUrl = req.files.url
   fileEntity.path = destPath
 
@@ -157,7 +159,8 @@ const customRouter = function (routerPath, type) {
       let fileEntity = fileDao.getInstance();
       fileEntity.filename = filename + '.' + filetype
       fileEntity.masterid = fileEntity.id;
-      fileEntity.filetype = filetype;
+      fileEntity.filetype = filetype; 
+      fileEntity.fileSize = utils.sizeof(req.body.data);
       fileEntity.fullpath = FileUtils.joinChar([FileUtils.getRequestUrl(req), filetype, fileEntity.filename], '/');
       fileEntity.sourceUrl = req.url;
       fileEntity.path = FileUtils.joinChar([outpath, filename + '.' + filetype], '/');

@@ -62,6 +62,10 @@ class FileDao {
                 default: null
             },
             {
+                code: "fileSize",
+                default: 0
+            }, 
+            {
                 code: "filetype",
                 default: null
             },
@@ -104,6 +108,7 @@ class FileDao {
             path: '',
             fullpath: '',
             filetype: '',
+            fileSize: 0,
             sourceUrl: '',
             createTime:  DateUtils.getCurrentTime() ,
             modifiedTime:  DateUtils.getCurrentTime() ,
