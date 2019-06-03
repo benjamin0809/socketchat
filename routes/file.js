@@ -85,7 +85,7 @@ router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
   const destPath = outpath + "/" + req.files.myfile.originalFilename;
 
   fileEntity.filename = req.files.myfile.originalFilename
-  fileEntity.filetype = req.files.myfile.originalFilename.split('.').pop();
+  fileEntity.filetype = req.files.myfile.type
   fileEntity.sourceUrl = req.files.url
   fileEntity.path = destPath
 
@@ -110,8 +110,17 @@ router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
         result += JSON.stringify(e)
       } catch (e) {}
     })
+    result += 'webUrl="' + webUrl + '"<br>'
+    if(fileEntity.filetype.indexOf('video') > -1){
+      result +=  `
+      <video src=" ${webUrl}" controls="controls">
+ 
+</video>`
 
-    result += '<img src="' + webUrl + '">'
+    }else{
+      result += '<img src="' + webUrl + '">'
+    }  
+   
     res.end(result);
   });
   source.on('error', function (err) {
