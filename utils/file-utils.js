@@ -5,6 +5,11 @@ const path = require('path')
 
 class FileUtils { 
   static downloadImage(opts = {}, outPath = '', fileName = '') {
+
+    // if(fileName.endsWith('format,webp')){
+    //   fileName = fileName.replace('format,webp','.png')
+    // }
+
     if (fs.existsSync(outPath)) {
       return this._downImg(opts, outPath + '/' + fileName)
     } else {
@@ -88,23 +93,29 @@ class FileUtils {
    */
   static _downImg(opts = {}, path = '') {
 
+    let type = ''
+    let length = 0
     return new Promise((resolve, reject) => {
       request
         .get(opts)
         .on('response', (response) => {
           console.log("img type:", response.headers['content-type'])
+          console.log("content length:", response.headers['content-length'])
+          type =  response.headers['content-type']
+          length = response.headers['content-length']
         })
         .pipe(fs.createWriteStream(path))
         .on("error", (e) => {
-          console.log("pipe error", e)
-          resolve('');
+          console.log("pipe error", e) 
         })
-        .on("finish", () => {
-          console.log("finish");
-          resolve("ok");
+        .on("finish", () => { 
+          resolve({
+            type: type,
+            length: length
+          });
         })
         .on("close", () => {
-          console.log("close");
+          // console.log("close");
         })
 
     })

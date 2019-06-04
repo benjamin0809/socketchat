@@ -37,7 +37,10 @@ class sql{
     queryWithParams(sql, params){
         return new Promise((resolve, reject) => {
             this.pool.getConnection((error,connection)=>{
-                if(error)reject(error)
+                if(error){
+                    reject(error)
+                    return
+                }
                 connection.query(sql,params,function(error, results, fields){
                     if (error) {
                         reject(error)

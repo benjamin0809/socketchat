@@ -9,6 +9,8 @@ const path = require('path')
 const HupuDao = new (require('../modules/hupu/hupu'))()
 const FileUtils = require('./file-utils')
 const dateUtils = require('./date.utils')
+const FileDao = require('../modules/file/file')
+
 class Sipder {
   constructor() {}
 
@@ -161,7 +163,8 @@ class Sipder {
      }
      static getHupuImages(spider_url) {
       return new Promise((resolve)=>{ 
-       let outPath = path.resolve('./base64/' +  dateUtils.getCurrentDate() + '/');  
+        let subfix = 'public/upload/' +  dateUtils.getCurrentDate() + '/'
+        
        superagent.get(spider_url) 
        .end((err, res) => {
          err && console.error(err) 
@@ -174,7 +177,7 @@ class Sipder {
            let articleHref = $element.attr('href') ;
            if(!articleHref)return;
            let href = url.resolve(spider_url, articleHref);
-           tasks.push(this.getArticleDetails(href,articleHref,outPath))
+           tasks.push(this.getArticleDetails(href,articleHref,subfix))
          }) 
 
          Promise.all(tasks).then(res=>{
@@ -212,8 +215,8 @@ class Sipder {
        }) 
      }
 
-     static getArticleDetails(href,articleHref,outPath){  
-
+     static getArticleDetails(href,articleHref,subfix){   
+      let outPath = path.resolve(subfix); 
       return new Promise((resolve,reject)=>{
         superagent.get(href)
         .end((error, resp)=> {
@@ -235,13 +238,16 @@ class Sipder {
           let article = {
             id: Number(timestamp.substr(5,timestamp.length - 1) + articleHref.replace(/[^0-9]/ig,"")) ,
             articleid: Number(articleHref.replace(/[^0-9]/ig,"")) || +new Date(),
-            title: title,
+            title: title || '无标题',
             avatar: avatar,
             username: username,
             articleTime: stime,
             sourceUrl: href,
             images: []
           }   
+
+          let filedao = new FileDao()
+          
           $('.quote-content img').each((id,ele)=>{
             let $ele = $(ele);
             let src = $ele.attr('src') ||  $ele.attr('data-src');  
@@ -249,10 +255,27 @@ class Sipder {
             let opts = {
               url: url 
             };   
+
+            let fileName = article.articleid + '-' +id + '-'+ src.split('/').slice(-1)
+
+            let entity = filedao.getInstance() 
+            entity.filename = fileName
+            entity.masterid = article.articleid
+            entity.sourceUrl = url
+            entity.path = outPath
+            entity.fullpath = subfix + '/' +fileName
+
             if(src.split('/').slice(-1) != 'placeholder.png'){ 
               article.images.push(url) 
-              FileUtils.downloadImage(opts, outPath, 
-                article.articleid+ '-' +id + '-'+ src.split('/').slice(-1))
+              FileUtils.downloadImage(opts, outPath, fileName).then(res=>{ 
+                  entity.fileSize = Number(res.length)
+                  entity.filetype = res.type
+                  setTimeout(()=>{
+                    filedao.insertFile(entity).then(res=>{
+                      console.log(res)
+                    })
+                  },id * 200) 
+                })
             } 
           }) 
           resolve(this.insertArticle(article)) 
