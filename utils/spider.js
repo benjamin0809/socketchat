@@ -9,10 +9,11 @@ const path = require('path')
 const HupuDao = new (require('../modules/hupu/hupu'))()
 const FileUtils = require('./file-utils')
 const dateUtils = require('./date.utils')
-const FileDao = require('../modules/file/file')
-
+const FileDao = require('../modules/file/file') 
 class Sipder {
-  constructor() {}
+  constructor() {
+    this.filedao = new FileDao()
+  }
 
   static run(spider_url, proxy) {
     let result = []; 
@@ -37,7 +38,7 @@ class Sipder {
         console.log(allUrl)
       })
   }
-   static getImages(spider_url, proxy) {
+   getImages(spider_url, proxy) {
      return new Promise((resolve, reject)=>{
       let allUrl = [];
       superagent.get(spider_url)
@@ -58,7 +59,7 @@ class Sipder {
      }) 
     }  
 
-    static getPocoImages(spider_url, proxy) {
+     getPocoImages(spider_url, proxy) {
       return new Promise((resolve, reject)=>{
        let allUrl = [];
        superagent.get(spider_url)
@@ -79,7 +80,7 @@ class Sipder {
       }) 
      }  
 
-     static getTmallImages(spider_url){
+       getTmallImages(spider_url){
       return new Promise((resolve, reject)=>{
         let outPath = path.resolve('./base64/taobao/' +  dateUtils.getCurrentDate() + '/'); 
         superagent.agent().get(spider_url).end((err,res)=>{
@@ -123,7 +124,7 @@ class Sipder {
       })
    }
 
-     static getTaobaoImages(spider_url){
+       getTaobaoImages(spider_url){
         return new Promise((resolve, reject)=>{
           let outPath = path.resolve('./base64/taobao/' +  dateUtils.getCurrentDate() + '/'); 
           superagent.get(spider_url).end((err,res)=>{
@@ -145,7 +146,7 @@ class Sipder {
         })
      }
 
-     static findGavbus(){
+       findGavbus(){
       return new Promise((resolve, reject)=>{
         for(let i = 188; i <1000;i++){
           let url = `https://www.gavbus${i}.com/`;
@@ -161,7 +162,7 @@ class Sipder {
      
       
      }
-     static getHupuImages(spider_url) {
+       getHupuImages(spider_url) {
       return new Promise((resolve)=>{ 
         let subfix = 'public/upload/' +  dateUtils.getCurrentDate() + '/'
         
@@ -205,7 +206,7 @@ class Sipder {
      }
  
 
-     static insertArticle(article){
+       insertArticle(article){
        return new Promise(resolve =>{
         HupuDao.insertHupuImages(article).then(res=>{
           resolve({result: true, message:'insert into table ok'})
@@ -215,7 +216,7 @@ class Sipder {
        }) 
      }
 
-     static getArticleDetails(href,articleHref,subfix){   
+       getArticleDetails(href,articleHref,subfix){   
       let outPath = path.resolve(subfix); 
       return new Promise((resolve,reject)=>{
         superagent.get(href)
@@ -246,7 +247,7 @@ class Sipder {
             images: []
           }   
 
-          let filedao = new FileDao()
+          
           
           $('.quote-content img').each((id,ele)=>{
             let $ele = $(ele);
@@ -258,7 +259,7 @@ class Sipder {
 
             let fileName = article.articleid + '-' +id + '-'+ src.split('/').slice(-1)
 
-            let entity = filedao.getInstance() 
+            let entity = this.filedao.getInstance() 
             entity.filename = fileName
             entity.masterid = article.articleid
             entity.sourceUrl = url
@@ -271,7 +272,7 @@ class Sipder {
                   entity.fileSize = Number(res.length)
                   entity.filetype = res.type
                   setTimeout(()=>{
-                    filedao.insertFile(entity).then(res=>{
+                    this.filedao.insertFile(entity).then(res=>{
                       console.log(res)
                     })
                   },id * 200) 

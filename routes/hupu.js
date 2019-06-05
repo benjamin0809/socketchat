@@ -8,6 +8,7 @@ const Redis = require('../redis/redis')
 const main_key = "getHupuImages";
 const HupuDao = new Hupu();
 const redis = new Redis();
+const spider = new Spider();
 
 router.get('/', function (req, res, next) {
   res.sendFile('./public/hupu/index.html')
@@ -52,7 +53,7 @@ router.post('/spiderAction', function (req, res, next) {
     let tasks = []
     for (let i = offset; i < limit + offset; i++) {
       const http_url = i == 0 ? base_url : base_url + '-' + (i + 1);
-      tasks.push(Spider.getHupuImages(http_url));
+      tasks.push(spider.getHupuImages(http_url));
     }
 
     Promise.all(tasks).then(result => {
