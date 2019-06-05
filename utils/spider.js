@@ -268,7 +268,7 @@ class Sipder {
 
             if(src.split('/').slice(-1) != 'placeholder.png'){ 
               article.images.push(url) 
-              this.saveINtoFile(entity, id,opts, outPath, fileNamea)
+              this.saveINtoFile(entity, id,opts, outPath, fileName)
             } 
           }) 
           resolve(this.insertArticle(article)) 
