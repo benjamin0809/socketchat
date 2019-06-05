@@ -106,10 +106,7 @@ class FileUtils {
         })
         .pipe(fs.createWriteStream(path))
         .on("error", (e) => {
-          reject({
-            type: type,
-            length: length
-          });
+          reject(e);
           console.log("pipe error", e) 
         })
         .on("finish", () => { 

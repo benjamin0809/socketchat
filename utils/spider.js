@@ -218,7 +218,7 @@ class Sipder {
 
        getArticleDetails(href,articleHref,subfix){   
       let outPath = path.resolve(subfix); 
-      return new Promise((resolve,reject)=>{
+      return new Promise(async (resolve,reject)=>{
         superagent.get(href)
         .end((error, resp)=> {
           if(error){
@@ -268,15 +268,14 @@ class Sipder {
 
             if(src.split('/').slice(-1) != 'placeholder.png'){ 
               article.images.push(url) 
-              FileUtils.downloadImage(opts, outPath, fileName).then(res=>{ 
-                  entity.fileSize = Number(res.length)
-                  entity.filetype = res.type
-                  setTimeout(()=>{
-                    this.filedao.insertFile(entity).then(res=>{
-                      console.log(res)
-                    })
-                  },id * 200) 
+              let res = await FileUtils.downloadImage(opts, outPath, fileName) 
+              entity.fileSize = Number(res.length)
+              entity.filetype = res.type
+              setTimeout(()=>{
+                this.filedao.insertFile(entity).then(res=>{
+                  console.log(res)
                 })
+              },id * 200)  
             } 
           }) 
           resolve(this.insertArticle(article)) 
