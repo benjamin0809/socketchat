@@ -185,8 +185,8 @@ class FileDao {
         return new Promise(async (resovle, reject)=>{
             try{
                 let result = await this.getFileById(id) 
-                let data = await this.removeFile(result[0].path) 
-                data = await this.deleteFilesById(id) 
+                let data = await this.deleteFilesById(id) 
+                 data = await this.removeFile(result[0].path) 
                 resovle(new Output(true, data))
             }catch(e){
                 console.error(e)

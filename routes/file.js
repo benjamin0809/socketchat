@@ -13,6 +13,12 @@ router.get('/', function (req, res, next) {
   res.sendFile(path.join(__dirname, '../modules/file/upload.html'))
 });
 
+router.get('/managment', function (req, res, next) {
+  res.sendFile(path.join(__dirname, '../modules/file/file-management.html'))
+});
+
+
+
 router.post('/*',function (req, res, next) {
 
   if(Number(req.headers.token) !== 9527){

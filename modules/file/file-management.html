@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport"
+        content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>file managment</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <style>
+        #textarea {
+            width: 100%;
+            min-height: 500px;
+        }
+
+        #textarea::-webkit-scrollbar {
+            display: none;
+        }
+
+        #submit {
+            min-width: 80px;
+            padding: 5px 10px;
+            border-radius: 5px
+        }
+
+        button {
+            margin-right: 8px;
+        }
+
+        th{
+            border: 1px solid gray;
+        }
+    </style>
+
+    <head>
+
+
+    <body>
+            <div>
+                    令牌: <input id="token" type="text"  > 
+                </div>
+            <button id="getAllFiles">确定</button> 
+         
+            <div class="lise-header">
+                <table>
+                    <th>filename</th>
+                    <th>id</th>
+                    <th>filesize</th> 
+                </table>
+            </div>
+            <div class="file-list">
+                <ol id="ol">
+                    <li></li>
+                </ol>
+            </div>
+        
+    </body>
+
+    <script>
+
+        $(document).ready(function () {
+            let host = window.location.host
+            let baseUrl = 'http://' + host + '/file/'
+
+            $('#getAllFiles').click(function (e) {
+                submit(e.currentTarget.id)
+            }) 
+
+            const submit = (action, token) => {
+                var result = $('#textarea').text();
+                var value = $('#textarea').val();  
+                $.ajax({
+                    type: "post",
+                    url: baseUrl + action,
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify({
+                        "data": value  
+                    }),
+                    dataType: "json",
+                    beforeSend: function (XMLHttpRequest) {
+                        XMLHttpRequest.setRequestHeader("token", $('#token').val() || token);
+                    },
+                    success: function (data) {
+                        for(let item of data){
+                            $('#ol').append(`
+                            <li  >${item.filename} 
+                                    ${item.fullpath}
+                                <button class="preview" data-url=${item.fullpath}>预览</button>
+                                <button class="delete" data-id=${item.id}> 删除</button>
+                            </li>
+                        `);
+                        }
+                        setCookie('token', $('#token').val() || token)
+                        $('.preview').click(function (e) {  
+                            let url = e.currentTarget.getAttribute('data-url')
+                            window.open(url ,'_blank')
+                        }) 
+
+                        $('.delete').click(function (e) {  
+                            let id = e.currentTarget.getAttribute('data-id')
+                            deleteFile(id,token)
+                        }) 
+                        
+                    }, error: function (error) {
+                        $('#result').text(JSON.stringify(error));
+                    }
+                });
+            }
+
+            const deleteFile = (id, token) => { 
+                $.ajax({
+                    type: "post",
+                    url: baseUrl + 'removeFileById',
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify({
+                        "id": id  
+                    }),
+                    dataType: "json",
+                    beforeSend: function (XMLHttpRequest) {
+                        XMLHttpRequest.setRequestHeader("token", $('#token').val() || token);
+                    },
+                    success: function (data) {   
+                        $('#result').text(JSON.stringify(data));
+                    }, error: function (error) {
+                        $('#result').text(JSON.stringify(error));
+                    }
+                });
+            }
+
+            var username=document.cookie.split(";")[0].split("=")[1];
+                //JS操作cookies方法!
+                //写cookies
+                function setCookie(name,value)
+                {
+                var Days = 30;
+                var exp = new Date();
+                exp.setTime(exp.getTime() + Days*24*60*60*1000);
+                document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+                }
+
+                function getCookie(name)
+                {
+                var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+                if(arr=document.cookie.match(reg))
+                return unescape(arr[2]);
+                else
+                return null;
+                }
+                var token = getCookie('token')
+                submit.call(this,'getAllFiles',token)
+
+        })  
+    </script>
+
+</html>
