@@ -1,6 +1,8 @@
 const sqlUtils = require('../../database/sql.utils');
 const TBALE_NAME = 'file';
 const DateUtils = require('../../utils/date.utils')
+const fs = require('fs');
+const Output = require('../../utils/format')
 
 class FileDao {
 
@@ -13,15 +15,42 @@ class FileDao {
         return this.sqlUtils.queryWithParams(sql, params);
     }
 
-    getAllFiles(key) { 
+    getFileById(id) {
+        let sql = `SELECT * from ${TBALE_NAME} where id = ?`
+        let params = [id]
+        return this.sqlUtils.queryWithParams(sql, params);
+    }
+
+    getAllFiles(filters, orders) { 
         let sql = `SELECT * from ${TBALE_NAME}`
         let params = []
 
-        if(key){
-            key = '%' + key + '%'
-            sql += ' where filename like ?'
-            params.push(key)
+        if(filters && Array.isArray(filters) ){
+            let filterCondition = ''  
+            for(let item of filters){ 
+                if(item.key && item.value){
+                    let value = '%' + item.value + '%'
+                    filterCondition ? filterCondition += ` and ${item.key } like ?` : filterCondition += ` where ${item.key } like ?` 
+                    params.push(value)
+                } 
+            }
+            sql += filterCondition  
         }
+
+        if(orders && Array.isArray(orders)){
+            orders.sort((a, b)=>{
+                return b.priority > a.priority
+            })
+             
+            let orderCondition = ''
+            for(let item of orders){ 
+                if(item.key) { 
+                    orderCondition ? orderCondition += ` ,${item.key } ${item.orderby}` : orderCondition += ` order by ${item.key } ${item.orderby}`               
+                }  
+            }
+            sql += orderCondition  
+        } 
+        console.log(sql,params)
         return this.sqlUtils.queryWithParams(sql, params);
     }
 
@@ -115,6 +144,57 @@ class FileDao {
           }
         return fileEntity
     }
+
+    /**
+     * 删除物理文件
+     * @param {*} path 
+     */
+    removeFile(path){
+        return new Promise((resolve, reject)=>{
+            fs.unlink(path,function(error){
+                if(error){
+                    reject(new Output(false, error))
+                    return
+                } 
+                resolve(new Output(true, 'remove success'))
+            })
+        }) 
+    }
+
+
+    //7.fs.rename 重命名  1.改名  2.剪切文件(移动)
+    renameFile(oldPath, newPath){
+        return new Promise((resolve, reject)=>{
+            fs.rename(oldPath, newPath, function(error){
+                if(error){
+                    reject({
+                        result: false,
+                        data:error
+                    })
+                    return
+                } 
+                resolve({
+                    result: true,
+                    data: 'remove success'
+                })
+            })
+        }) 
+    }
+
+     removeFileAndRecordById(id){
+        return new Promise(async (resovle, reject)=>{
+            try{
+                let result = await this.getFileById(id) 
+                let data = await this.removeFile(result[0].path) 
+                data = await this.deleteFilesById(id) 
+                resovle(new Output(true, data))
+            }catch(e){
+                console.error(e)
+                reject(new Output(false, e))
+            } 
+        }) 
+    }
+ 
 }
 
 module.exports = FileDao;

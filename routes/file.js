@@ -13,6 +13,15 @@ router.get('/', function (req, res, next) {
   res.sendFile(path.join(__dirname, '../modules/file/upload.html'))
 });
 
+router.post('/*',function (req, res, next) {
+
+  if(Number(req.headers.token) !== 9527){
+    res.status(401)
+    res.send('unauthorized')
+  }else{
+    next()
+  }  
+})
 /* GET users listing. */
 router.get('/download/demo', function (req, res, next) {
   res.sendFile(path.join(__dirname, '../modules/file/download.html'))
@@ -132,14 +141,7 @@ router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
 
 
 const customRouter = function (routerPath, type) {
-  router.post(routerPath, function (req, res, next) {
-
-    if (req.body.token != '9527') {
-      res.send({
-        msg: 'token id invalid'
-      })
-      return;
-    }
+  router.post(routerPath, function (req, res, next) { 
     let filetype = type;
     let filename = req.body.filename || new Date().getTime()
     let UPLOAD_PATH = '../public/' + filetype
@@ -189,6 +191,18 @@ types.forEach(item => {
   customRouter(item.router, item.folder)
 })
 
+router.post('/removeFileById',async (req, res, next)=>{
+  const fileDao = new FileDao();
+  let id = req.body.id
+  try{
+    let result = await fileDao.removeFileAndRecordById(id)
+    res.send(result)
+  }catch(e){
+    res.send(e)
+  } 
+})
+ 
+ 
 router.get('/getFileByMasterId', function (req, res, next) {
   const id = req.query.id
   const fileDao = new FileDao();
@@ -203,9 +217,36 @@ router.get('/getFileByMasterId', function (req, res, next) {
   })
 })
 
-router.get('/getAllFiles', function (req, res, next) { 
+/**
+ * {
+	"filters": [{
+		"key": "filename",
+		"value": ""
+	}],
+	"orders": [{
+		"orderby": "desc",
+		"key": "id",
+		"priority": 2
+	},{
+		"orderby": "desc",
+		"key": "fileSize",
+		"priority": 3
+		}]
+}
+ */
+router.all('/getAllFiles', function (req, res, next) { 
   const fileDao = new FileDao();
-  fileDao.getAllFiles(req.query.key).then(data => {
+
+  let filters = {}
+  let orders = {} 
+  if(req.method == 'POST'){
+    filters = req.body.filters 
+    orders = req.body.orders
+  }else if(req.method == 'GET'){
+    orders = JSON.parse(req.query.orders)
+    filters = JSON.parse(req.query.filters)
+  }
+  fileDao.getAllFiles(filters, orders).then(data => {
     res.send(data)
   }).catch(e => {
     res.send(e)

@@ -1,71 +1,97 @@
 <!DOCTYPE html>
 <html>
-	<head>
+
+<head>
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<style>	
-			#textarea{
-				width: 80%;
-				min-height: 500px;
-			} 
-			#submit{
-				min-width: 80px; 
-				padding:5px 10px;
-				border-radius: 5px
-			} 
-		</style>
+	<style>
+		#textarea {
+			width: 100%;
+			min-height: 500px;
+		}
+
+		#textarea::-webkit-scrollbar {
+			display: none;
+		}
+
+		#submit {
+			min-width: 80px;
+			padding: 5px 10px;
+			border-radius: 5px
+		}
+		button{
+			margin-right: 8px;
+		}
+	</style>
+
 	<head>
 
-		
+
 	<body>
-		<textarea id='textarea'> test
-		</textarea>
-		
-		<code contenteditable="true">asd </code>
-		<pre id="pre" contenteditable="true" >
-			coding
-		</pre>
+		<textarea id='textarea'></textarea> 
 		<div>
-				token'<input id="token" type="text">
-				filename'<input id="filename" type="text">
-				<button id="saveAsHtml">saveAsHtml</button>
-				<button id="saveAsJS">saveAsJS</button>
-				<button id="saveAsCss">saveAsCss</button>
+			令牌: <input id="token" type="text" placeholder="不填则自动生成时间戳">
+			文件名 <input id="filename" type="text" placeholder="不填则自动生成时间戳">
 		</div>
-		
-		
-		<div id="result">
-		</div>
+		<div style="padding: 16px;"> 
+			<button id="saveAsHtml">saveAsHtml</button>
+			<button id="saveAsJS">saveAsJS</button>
+			<button id="saveAsCss">saveAsCss</button>
+		</div> 
+		<div id="result"> </div>
+		<code id="code" contenteditable="true"></code>
+		<pre id="pre" contenteditable="true"></pre>
 	</body>
-	
+
 	<script>
- 
-		$(document).ready(function(){
-			let host = window.location.host 
+
+		$(document).ready(function () {
+			let host = window.location.host
 			let baseUrl = 'http://' + host + '/file/'
-			//let baseUrl = 'http://www.popochiu.com/file/'
-			const submit = (action)=>{
+			const submit = (action) => {
 				var result = $('#textarea').text();
 				var value = $('#textarea').val();
-				var filename = $('#filename').val(); 
-				$('#result').text(value);  
-					$.post(baseUrl + action,{
+				var filename = $('#filename').val();
+				$('#result').text(value); 
+				$('#pre').text(value)
+				// $.post(baseUrl + action, {
+				// 	"data": value,
+				// 	"filename": filename,
+				// 	"token": $('#token').val()
+				// }, (res) => {
+				// 	$('#result').text(JSON.stringify(res));
+				// })
+
+				$.ajax({
+					type: "post",
+					url: baseUrl + action,
+					contentType: "application/json;charset=utf-8",
+					data :JSON.stringify({
 					"data": value,
 					"filename": filename,
 					"token": $('#token').val()
-				},(res)=>{ 
-					$('#result').text(JSON.stringify(res)); 
-				})
+				}),
+					dataType: "json",
+					beforeSend: function (XMLHttpRequest) {
+						XMLHttpRequest.setRequestHeader("token", $('#token').val());
+					},
+					success: function (data) {
+						$('#result').text(JSON.stringify(data));
+					},error:function(error){
+						$('#result').text(JSON.stringify(error)); 
+					}
+				}); 
 			}
-			$('button').click(function(e){ 
-				e.currentTarget.id 
-				submit(e.currentTarget.id )
-			}) 
-			$('#coding').click(function(e){ 
+			$('button').click(function (e) {
+				submit(e.currentTarget.id)
+			})
+			$('#coding').click(function (e) {
 				console.log($('#pre').text())
-			}) 
+			})
 
 			
-			
+
+
 		})  
 	</script>
+
 </html>
