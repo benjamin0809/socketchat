@@ -29,27 +29,107 @@
         th{
             border: 1px solid gray;
         }
+        .col{
+            white-space: normal;
+            border: 1px solid gray;
+            padding: 5px;
+            word-break:break-all;
+        }
+        .col-1{
+            width: 8.333333333333334%; 
+        }
+        .col-2{
+            width: 16.666666666666668%; 
+        }
+        .col-3{
+            width: 25%; 
+        }
+        .col-4{
+            width: 33.333333333333336%; 
+        }
+        .col-5{
+            width: 41.66666666666667%; 
+        }
+        .col-6{
+            width: 50%; 
+        }
+        .col-7{
+            width: 58.333333333333336%; 
+        }
+        .col-8{
+            width: 66.66666666666667%; 
+        }
+        .col-9{
+            width: 75%; 
+        }
+        .col-10{
+            width: 83.33333333333334%; 
+        }
+        .col-11{
+            width: 91.66666666666667%; 
+        }
+        .col-12{
+            width: 100%; 
+        }
+        .row-head{
+            font-weight: bold;
+            text-align: center;
+        }
+        li{
+            display: flex;
+        }
+        .options {
+            padding: 16px;
+            display: flex;
+        }
+        #valid{
+            display: none;
+        }
     </style>
 
     <head>
 
 
     <body>
-            <div>
+            <div id="valid" >
                     令牌: <input id="token" type="text"  > 
+                    <button id="getAllFiles">确定</button> 
                 </div>
-            <button id="getAllFiles">确定</button> 
-         
-            <div class="lise-header">
-                <table>
-                    <th>filename</th>
-                    <th>id</th>
-                    <th>filesize</th> 
-                </table>
-            </div>
+             <div class="options">
+                 <div class="order">
+                     <label>order</label>
+                    <select class="selector">
+                            <option value="UNIX_TIMESTAMP(createTime)-asc">按时间升</option>
+                            <option value="UNIX_TIMESTAMP(createTime)-desc">按时间降</option>
+                            <option value="fileSize-asc">文件大小升</option>
+                            <option value="fileSize-desc">文件大小降</option>
+                        </select>
+                 </div>
+                 <div class="filter">
+                        <label>filename</label>
+                        <input type="text"> 
+                    </div>
+             </div> 
             <div class="file-list">
                 <ol id="ol">
-                    <li></li>
+                    <li >
+                        <div class="col col-2 row-head">
+                                createTime
+                            </div> 
+                        <div class="col col-2 row-head">
+                            filename
+                        </div>
+                        <div class="col col-5 row-head">
+                            fullpath
+                        </div>
+                        <div class="col col-1 row-head">
+                            fileSize
+                        </div> 
+                        <div class="col col-2 row-head">
+                            handle
+                        </div>
+                      
+                    </li>
                 </ol>
             </div>
         
@@ -61,34 +141,82 @@
             let host = window.location.host
             let baseUrl = 'http://' + host + '/file/'
 
+            $(".selector").change(function(){
+                // 先清空第二个
+                let orders = $(".selector").val().split('-'); 
+                submit.call(this,'getAllFiles',token,orders[0],orders[1]) 
+            });
+
             $('#getAllFiles').click(function (e) {
                 submit(e.currentTarget.id)
             }) 
 
-            const submit = (action, token) => {
+            const submit = (action, token ,orderkey, orderby) => {
                 var result = $('#textarea').text();
                 var value = $('#textarea').val();  
+
+                let data = { 
+                        orders: [{
+                            "orderby": orderby,
+                            "key": orderkey,
+                            "priority": 2
+                        }]
+                        }
+
                 $.ajax({
                     type: "post",
                     url: baseUrl + action,
                     contentType: "application/json;charset=utf-8",
-                    data: JSON.stringify({
-                        "data": value  
-                    }),
+                    data: JSON.stringify(data),
                     dataType: "json",
                     beforeSend: function (XMLHttpRequest) {
                         XMLHttpRequest.setRequestHeader("token", $('#token').val() || token);
                     },
                     success: function (data) {
+                        $('#ol').html(`                    <li >
+                        <div class="col col-2 row-head">
+                                createTime
+                            </div> 
+                        <div class="col col-2 row-head">
+                            filename
+                        </div>
+                        <div class="col col-5 row-head">
+                            fullpath
+                        </div>
+                        <div class="col col-1 row-head">
+                            fileSize
+                        </div> 
+                        <div class="col col-2 row-head">
+                            handle
+                        </div>
+                      
+                    </li>`)
                         for(let item of data){
                             $('#ol').append(`
-                            <li  >${item.filename} 
-                                    ${item.fullpath}
+                            
+                            <li id=${item.id}>
+                        
+
+                        <div class="col col-2 "> 
+                                ${item.createTime}
+                            </div> 
+                        <div class="col col-2  ">
+                                ${item.filename} 
+                        </div>
+                        <div class="col col-5   ">
+                                ${item.fullpath}
+                        </div>
+                        <div class="col col-1  ">
+                            ${item.fileSize}
+                        </div> 
+                        <div class="col col-2  ">
                                 <button class="preview" data-url=${item.fullpath}>预览</button>
                                 <button class="delete" data-id=${item.id}> 删除</button>
-                            </li>
+                        </div>
+                    </li>
                         `);
                         }
+                        
                         setCookie('token', $('#token').val() || token)
                         $('.preview').click(function (e) {  
                             let url = e.currentTarget.getAttribute('data-url')
@@ -97,6 +225,7 @@
 
                         $('.delete').click(function (e) {  
                             let id = e.currentTarget.getAttribute('data-id')
+                            $("#" + id).remove();
                             deleteFile(id,token)
                         }) 
                         
@@ -146,6 +275,9 @@
                 return null;
                 }
                 var token = getCookie('token')
+                if(!token){
+                    $('#valid').css('display','block')
+                } 
                 submit.call(this,'getAllFiles',token)
 
         })  
