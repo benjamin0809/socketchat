@@ -3,6 +3,10 @@ const client = redis.createClient(6379,'localhost');
  
 class Redis {
   
+    sadd(){
+        client.sadd('a','a-1','a-1-1')
+    }
+    
     clearPageh(main_key){ 
         client.hgetall(main_key,(err,res)=>{
             if(err){

@@ -4,7 +4,7 @@ const FileUtils = require('../utils/file-utils')
 const utils = require('../utils/utils')
 var mutipart = require('connect-multiparty')
 const FileDao = require('../modules/file/file')
-
+const QRCode = require('qrcode')
 const fs = require('fs')
 var multipartMiddleware = mutipart();
 const path = require('path');
@@ -19,15 +19,15 @@ router.get('/managment', function (req, res, next) {
 
 
 
-// router.post('/*',function (req, res, next) {
+router.post('/*',function (req, res, next) {
 
-//   if(Number(req.headers.token) !== 9527){
-//     res.status(401)
-//     res.send('unauthorized')
-//   }else{
-//     next()
-//   }  
-// })
+  if(Number(req.headers.token) !== 9527){
+    res.status(401)
+    res.send('unauthorized')
+  }else{
+    next()
+  }  
+})
 /* GET users listing. */
 router.get('/download/demo', function (req, res, next) {
   res.sendFile(path.join(__dirname, '../modules/file/download.html'))
@@ -146,6 +146,21 @@ router.post('/uploadFile', multipartMiddleware, function (req, res, next) {
 });
 
 
+
+const toQrCodeDataUrl = (url) => {
+  return new Promise((resolve, reject) => 
+  {
+    QRCode.toDataURL(url, function (err, res) { 
+      if(err){
+        reject(err)
+      } 
+      resolve(res)
+    })
+  })
+}
+
+
+
 const customRouter = function (routerPath, type) {
   router.post(routerPath, function (req, res, next) { 
     let filetype = type;
@@ -156,7 +171,7 @@ const customRouter = function (routerPath, type) {
       fs.mkdirSync(outpath)
     }
 
-    fs.writeFile(outpath + '/' + filename + '.' + filetype, req.body.data, (err) => {
+    fs.writeFile(outpath + '/' + filename + '.' + filetype, req.body.data, async (err) => {
       if (err) {
         res.send({
           msg: 'o huo'
@@ -173,8 +188,12 @@ const customRouter = function (routerPath, type) {
       fileEntity.sourceUrl = req.url;
       fileEntity.path = FileUtils.joinChar([outpath, filename + '.' + filetype], '/');
       fileDao.insertFile(fileEntity)
+
+      const image =  await toQrCodeDataUrl(fileEntity.fullpath)
+     
       res.send({
-        result: fileEntity.fullpath
+        result: fileEntity.fullpath,
+        dataurl: image
       })
     })
   })
