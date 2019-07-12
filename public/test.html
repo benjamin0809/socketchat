@@ -76,6 +76,8 @@
 					},
 					success: function (data) {
 						$('#result').text(JSON.stringify(data));
+
+						$('#result').append(`<img src="${data.dataurl}">`)
 					},error:function(error){
 						$('#result').text(JSON.stringify(error)); 
 					}
