@@ -79,8 +79,18 @@
             display: flex;
         }
         .options {
-            padding: 16px;
+            padding: 16px 48px;
             display: flex;
+            position: fixed;
+            background: #fff;
+            top: 0;
+            left: 0;
+            right: 0;
+            border-bottom: 0.8px solid #c1c1c1;
+        }
+
+        .file-list{
+            margin-top: 54px;
         }
         #valid{
             display: none;
@@ -91,11 +101,8 @@
 
 
     <body>
-            <div id="valid" >
-                    令牌: <input id="token" type="text"  > 
-                    <button id="getAllFiles">确定</button> 
-                </div>
-             <div class="options">
+           
+             <header class="options">
                  <div class="order">
                      <label>order</label>
                     <select class="selector">
@@ -107,9 +114,14 @@
                  </div>
                  <div class="filter">
                         <label>filename</label>
-                        <input type="text"> 
+                        <input id="filename" type="text"> 
+                        <button id="query">确定</button> 
                     </div>
-             </div> 
+             </header> 
+             <div id="valid" >
+                令牌: <input id="token" type="text"  > 
+                <button id="getAllFiles">确定</button> 
+            </div>
             <div class="file-list">
                 <ol id="ol">
                     <li >
@@ -142,16 +154,21 @@
             let baseUrl = 'http://' + host + '/file/'
 
             $(".selector").change(function(){
-                // 先清空第二个
-                let orders = $(".selector").val().split('-'); 
-                submit.call(this,'getAllFiles',token,orders[0],orders[1]) 
+                filterData()
             });
 
             $('#getAllFiles').click(function (e) {
                 submit(e.currentTarget.id)
             }) 
-
-            const submit = (action, token ,orderkey, orderby) => {
+            $('#query').click(function (e) {
+                filterData()
+            }) 
+            
+            const filterData = () =>{
+                let orders = $(".selector").val().split('-'); 
+                submit.call(this,'getAllFiles',token, orders[0],orders[1], $("#filename").val())
+            }
+            const submit = (action, token ,orderkey, orderby, filename) => {
                 var result = $('#textarea').text();
                 var value = $('#textarea').val();  
 
@@ -160,8 +177,15 @@
                             "orderby": orderby,
                             "key": orderkey,
                             "priority": 2
-                        }]
-                        }
+                        }] 
+                    }
+
+                if(filename){
+                    data.filters = [{
+                        "key": "filename",
+                        "value": filename
+                    }] 
+                }
 
                 $.ajax({
                     type: "post",
