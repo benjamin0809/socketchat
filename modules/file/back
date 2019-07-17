@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport"
+        content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>file managment</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <style>
+        #textarea {
+            width: 100%;
+            min-height: 500px;
+        }
+
+        #textarea::-webkit-scrollbar {
+            display: none;
+        }
+
+        #submit {
+            min-width: 80px;
+            padding: 5px 10px;
+            border-radius: 5px
+        }
+
+        button {
+            margin-right: 8px;
+        }
+
+        th {
+            border: 1px solid gray;
+        }
+
+        .col {
+            white-space: normal;
+            border: 1px solid gray;
+            padding: 5px;
+            word-break: break-all;
+        }
+
+        .col-1 {
+            width: 8.333333333333334%;
+        }
+
+        .col-2 {
+            width: 16.666666666666668%;
+        }
+
+        .col-3 {
+            width: 25%;
+        }
+
+        .col-4 {
+            width: 33.333333333333336%;
+        }
+
+        .col-5 {
+            width: 41.66666666666667%;
+        }
+
+        .col-6 {
+            width: 50%;
+        }
+
+        .col-7 {
+            width: 58.333333333333336%;
+        }
+
+        .col-8 {
+            width: 66.66666666666667%;
+        }
+
+        .col-9 {
+            width: 75%;
+        }
+
+        .col-10 {
+            width: 83.33333333333334%;
+        }
+
+        .col-11 {
+            width: 91.66666666666667%;
+        }
+
+        .col-12 {
+            width: 100%;
+        }
+
+        .row-head {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        li {
+            display: flex;
+        }
+
+        .options {
+            padding: 16px 48px;
+            display: flex;
+            position: fixed;
+            background: #fff;
+            top: 0;
+            left: 0;
+            right: 0;
+            border-bottom: 0.8px solid #c1c1c1;
+        }
+
+        .file-list {
+            margin-top: 54px;
+        }
+
+        #valid {
+            display: none;
+        }
+    </style>
+
+    <head>
+
+
+    <body>
+
+        <header class="options">
+            <div class="order">
+                <label>order</label>
+                <select class="selector">
+                    <option value="UNIX_TIMESTAMP(createTime)-desc">按时间降</option>
+                    <option value="UNIX_TIMESTAMP(createTime)-asc">按时间升</option>
+                    <option value="fileSize-asc">文件大小升</option>
+                    <option value="fileSize-desc">文件大小降</option>
+                </select>
+            </div>
+            <div class="filter">
+                <label>filename</label>
+                <input id="filename" type="text">
+                <button id="query">确定</button>
+            </div>
+        </header>
+        <div id="valid">
+            令牌: <input id="token" type="text">
+            <button id="getAllFiles">确定</button>
+        </div>
+        <div class="file-list">
+            <ol id="ol">
+                <li>
+                    <div class="col col-2 row-head">
+                        createTime
+                    </div>
+                    <div class="col col-2 row-head">
+                        filename
+                    </div>
+                    <div class="col col-5 row-head">
+                        fullpath
+                    </div>
+                    <div class="col col-1 row-head">
+                        fileSize
+                    </div>
+                    <div class="col col-2 row-head">
+                        handle
+                    </div>
+
+                </li>
+            </ol>
+        </div>
+
+    </body>
+
+    <script>
+
+        $(document).ready(function () {
+            let host = window.location.host
+            let baseUrl = 'http://' + host + '/file/'
+
+            $(".selector").change(function () {
+                filterData()
+            });
+
+            $('#getAllFiles').click(function (e) {
+                submit(e.currentTarget.id)
+            })
+            $('#query').click(function (e) {
+                filterData()
+            })
+
+            const filterData = () => {
+                let orders = $(".selector").val().split('-');
+                submit.call(this, 'getAllFiles', token, orders[0], orders[1], $("#filename").val())
+            }
+            const submit = (action, token, orderkey, orderby, filename) => {
+                var result = $('#textarea').text();
+                var value = $('#textarea').val();
+
+                let data = {
+                    orders: [{
+                        "orderby": orderby,
+                        "key": orderkey,
+                        "priority": 2
+                    }]
+                }
+
+                if (filename) {
+                    data.filters = [{
+                        "key": "filename",
+                        "value": filename
+                    }]
+                }
+
+                $.ajax({
+                    type: "post",
+                    url: baseUrl + action,
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    beforeSend: function (XMLHttpRequest) {
+                        XMLHttpRequest.setRequestHeader("token", $('#token').val() || token);
+                    },
+                    success: function (data) {
+                        $('#ol').html(`                    <li >
+                        <div class="col col-2 row-head">
+                                createTime
+                            </div> 
+                        <div class="col col-2 row-head">
+                            filename
+                        </div>
+                        <div class="col col-5 row-head">
+                            fullpath
+                        </div>
+                        <div class="col col-1 row-head">
+                            fileSize
+                        </div> 
+                        <div class="col col-2 row-head">
+                            handle
+                        </div>
+                      
+                    </li>`)
+                        for (let item of data) {
+                            $('#ol').append(`
+                            
+                            <li id=${item.id}>
+                        
+
+                        <div class="col col-2 "> 
+                                ${item.createTime}
+                            </div> 
+                        <div class="col col-2  ">
+                                ${item.filename} 
+                        </div>
+                        <div class="col col-5   ">
+                                ${item.fullpath}
+                        </div>
+                        <div class="col col-1  ">
+                            ${item.fileSize}
+                        </div> 
+                        <div class="col col-2  ">
+                                <button class="preview" data-url=${item.fullpath}>预览</button>
+                                <button class="delete" data-id=${item.id}> 删除</button>
+                        </div>
+                    </li>
+                        `);
+                        }
+
+                        setCookie('token', $('#token').val() || token)
+                        $('.preview').click(function (e) {
+                            let url = e.currentTarget.getAttribute('data-url')
+                            window.open(url, '_blank')
+                        })
+
+                        $('.delete').click(function (e) {
+                            let id = e.currentTarget.getAttribute('data-id')
+                            $("#" + id).remove();
+                            deleteFile(id, token)
+                        })
+
+                    }, error: function (error) {
+                        $('#result').text(JSON.stringify(error));
+                    }
+                });
+            }
+
+            const deleteFile = (id, token) => {
+                $.ajax({
+                    type: "post",
+                    url: baseUrl + 'removeFileById',
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify({
+                        "id": id
+                    }),
+                    dataType: "json",
+                    beforeSend: function (XMLHttpRequest) {
+                        XMLHttpRequest.setRequestHeader("token", $('#token').val() || token);
+                    },
+                    success: function (data) {
+                        $('#result').text(JSON.stringify(data));
+                    }, error: function (error) {
+                        $('#result').text(JSON.stringify(error));
+                    }
+                });
+            }
+
+            var username = document.cookie.split(";")[0].split("=")[1];
+            //JS操作cookies方法!
+            //写cookies
+            function setCookie(name, value) {
+                var Days = 30;
+                var exp = new Date();
+                exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+                document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+            }
+
+            function getCookie(name) {
+                var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+                if (arr = document.cookie.match(reg))
+                    return unescape(arr[2]);
+                else
+                    return null;
+            }
+            var token = getCookie('token')
+            if (!token) {
+                $('#valid').css('display', 'block')
+            }
+            submit.call(this, 'getAllFiles', token)
+
+        })  
+    </script>
+
+</html>
