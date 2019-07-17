@@ -22,7 +22,7 @@
       </style>
   <div id="app">
       <el-input placeholder="Please input" v-model="token"  v-if="!valid">
-          <template slot="append"  >  <el-button slot="append" icon="el-icon-search" @click="getFiles">验证</el-button></template>
+          <template slot="append"  >  <el-button slot="append" icon="el-icon-search" @click="validToken">验证</el-button></template>
         </el-input>
       <el-container style="height: 500px; border: 1px solid #eee" v-if="valid"> 
           <el-container>
@@ -98,8 +98,15 @@
         }
       },
       methods: {
-        getFiles(){  
-
+        validToken(){
+          this.instance = axios.create({
+            baseURL: baseURL,
+            timeout: 20000,
+            headers: {'token': this.token}
+          });
+          this.getFiles()
+        },
+        getFiles(){   
           if(!this.token){
             return
           }
@@ -162,7 +169,7 @@
         this.instance = axios.create({
           baseURL: baseURL,
           timeout: 20000,
-          headers: {'token': token}
+          headers: {'token': this.token}
         });
         
           this.getFiles()
