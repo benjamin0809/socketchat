@@ -54,6 +54,41 @@ class FileDao {
         return this.sqlUtils.queryWithParams(sql, params);
     }
 
+    getFiles(filters, orders, curPage = 1, pageSize = 20) { 
+        let sql = `SELECT * from ${TBALE_NAME}`
+        let params = []
+
+        if(filters && Array.isArray(filters) ){
+            let filterCondition = ''  
+            for(let item of filters){ 
+                if(item.key && item.value){
+                    let value = '%' + item.value + '%'
+                    filterCondition ? filterCondition += ` and ${item.key } like ?` : filterCondition += ` where ${item.key } like ?` 
+                    params.push(value)
+                } 
+            }
+            sql += filterCondition  
+        }
+
+        if(orders && Array.isArray(orders)){
+            orders.sort((a, b)=>{
+                return b.priority > a.priority
+            })
+             
+            let orderCondition = ''
+            for(let item of orders){ 
+                if(item.key) { 
+                    orderCondition ? orderCondition += ` ,${item.key } ${item.orderby}` : orderCondition += ` order by ${item.key } ${item.orderby}`               
+                }  
+            }
+            sql += orderCondition  
+        } 
+
+        sql += `   limit ${(curPage-1)* pageSize}, ${pageSize}`
+        console.log(sql,params)
+        return this.sqlUtils.queryWithParams(sql, params); 
+    }
+
     deleteFilesByMasterId(MasterId) {
         let sql = `DELETE FROM ${TBALE_NAME} WHERE masterid = ?`
         let params = [MasterId]

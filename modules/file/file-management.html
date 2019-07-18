@@ -105,9 +105,9 @@
                     @current-change="handleCurrentChange"
                     :current-page.sync="currentPage"
                     :page-sizes="[100, 200, 300, 400]"
-                    :page-size="100"
+                    :page-size="pageSize"
                     layout="total, sizes, prev, pager, next, jumper"
-                    :tableData.length="400">
+                    :total="4000">
                   </el-pagination>
                 </div>
             </el-main>
@@ -139,7 +139,8 @@
           currentPage: 1,
           loading: false,
           showbackdrop : false,
-          backdropimg: ''
+          backdropimg: '',
+          pageSize: 20
         }
       },
       methods: {
@@ -176,7 +177,9 @@
           this.loading = true
           const queryCondi = {
             "orders": [],
-            "filters": []
+            "filters": [],
+            "currentPage":this.currentPage ,
+            "pageSize": this.pageSize
           } 
           queryCondi.orders.push(
             {"orderby": this.select.split('-').pop(),
@@ -187,7 +190,7 @@
             {"key":"filename",
             "value":this.keyword}
           )
-            this.instance.post('file/getAllFiles', queryCondi)
+            this.instance.post('file/getFiles', queryCondi)
                 .then( response => {
                     // handle success
 
@@ -243,6 +246,8 @@
         },
         handleCurrentChange(val) {
           console.log(`current page: ${val}`);
+          this.currentPage = val
+          this.getFiles()
         }
       },
       mounted() {

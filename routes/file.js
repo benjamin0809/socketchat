@@ -278,4 +278,20 @@ router.all('/getAllFiles', function (req, res, next) {
   })
 })
  
+router.all('/getFiles', function (req, res, next) { 
+  const fileDao = new FileDao(); 
+
+  const params = req.method == 'POST' ? req.body : JSON.parse(req.query)
+  
+  const { filters, orders, currentPage, pageSize } =params 
+
+  
+  fileDao.getFiles(filters, orders, currentPage, pageSize).then(data => {
+    res.send(data)
+  }).catch(e => {
+    res.send(e)
+  })
+})
+ 
+
 module.exports = router;
