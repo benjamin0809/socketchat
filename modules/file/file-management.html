@@ -104,10 +104,10 @@
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
                     :current-page.sync="currentPage"
-                    :page-sizes="[100, 200, 300, 400]"
+                    :page-sizes="[pageSize * 1, pageSize * 2, pageSize * 3, pageSize * 4]"
                     :page-size="pageSize"
                     layout="total, sizes, prev, pager, next, jumper"
-                    :total="4000">
+                    :total="total">
                   </el-pagination>
                 </div>
             </el-main>
@@ -140,7 +140,8 @@
           loading: false,
           showbackdrop : false,
           backdropimg: '',
-          pageSize: 20
+          pageSize: 20,
+          total: 0
         }
       },
       methods: {
@@ -200,8 +201,9 @@
                     console.log(response);
                     this.valid = true
 
-                    if(Array.isArray(response.data)){
-                      this.tableData = response.data
+                    if(Array.isArray(response.data.data)){
+                      this.tableData = response.data.data
+                      this.total = response.data.total
                     }else{
                       
                       this.tableData.push({
@@ -243,6 +245,7 @@
         }, 
         handleSizeChange(val) {
           console.log(`${val} items per page`);
+          this.pageSize = val
         },
         handleCurrentChange(val) {
           console.log(`current page: ${val}`);

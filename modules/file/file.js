@@ -54,8 +54,9 @@ class FileDao {
         return this.sqlUtils.queryWithParams(sql, params);
     }
 
-    getFiles(filters, orders, curPage = 1, pageSize = 20) { 
+    async getFiles(filters, orders, curPage = 1, pageSize = 20) { 
         let sql = `SELECT * from ${TBALE_NAME}`
+        const total_sql = `SELECT COUNT(*) from ${TBALE_NAME}`
         let params = []
 
         if(filters && Array.isArray(filters) ){
@@ -86,7 +87,16 @@ class FileDao {
 
         sql += `   limit ${(curPage-1)* pageSize}, ${pageSize}`
         console.log(sql,params)
-        return this.sqlUtils.queryWithParams(sql, params); 
+
+        let result = {
+            data: [],
+            total: 0
+        }
+
+        result.total = await this.sqlUtils.queryWithParams(total_sql, {})
+        result.data = await this.sqlUtils.queryWithParams(sql, params)
+        
+        return result; 
     }
 
     deleteFilesByMasterId(MasterId) {
