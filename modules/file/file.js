@@ -56,7 +56,7 @@ class FileDao {
 
     async getFiles(filters, orders, curPage = 1, pageSize = 20) { 
         let sql = `SELECT * from ${TBALE_NAME}`
-        const total_sql = `SELECT COUNT(*) from ${TBALE_NAME}`
+        const total_sql = `SELECT COUNT(*) as total from ${TBALE_NAME}`
         let params = []
 
         if(filters && Array.isArray(filters) ){
@@ -93,7 +93,8 @@ class FileDao {
             total: 0
         }
 
-        result.total = await this.sqlUtils.queryWithParams(total_sql, {})
+       const query = await this.sqlUtils.queryWithParams(total_sql, {}) 
+        result.total = query[0].total
         result.data = await this.sqlUtils.queryWithParams(sql, params)
         
         return result; 
