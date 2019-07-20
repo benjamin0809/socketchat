@@ -32,13 +32,13 @@ const login = (account, password)=>{
     
 }
 
-const register = (account, password)=>{ 
+const register = (account, password) => { 
 }
 
-const logout = (account, password)=>{ 
+const logout = (account, password) => { 
 }
 
-const updateUser = (account, password)=>{ 
+const updateUser = (account, password) => { 
 }
 
 module.exports = {

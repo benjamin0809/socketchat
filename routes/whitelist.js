@@ -1,0 +1,1 @@
+module.exports = ['user/login','/file/saveAsHtml','/saveAsHtml']

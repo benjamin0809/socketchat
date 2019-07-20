@@ -5,9 +5,9 @@ var logger = require('morgan');
 var favicon = require('serve-favicon')
 
 const Routers = require('./routes/index');
-var app = express(); 
- 
- 
+const tokenUtils = require('./utils/token')
+const whitelist = require('./routes/whitelist')
+var app = express();  
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,8 +38,21 @@ app.use(allowCors)
 /** request 拦截器 */ 
 app.all('*',function(req, res, next) { 
   const method = req.method  
-  console.log('request 拦截器' +  req.url ,', method: ', method ,)
-  next();
+  console.log('request 拦截器' +  req.url ,', method: ', method ,) 
+
+  // 白名单
+  if(whitelist.includes(req.path)){
+    next()
+    return
+  }
+ 
+  if(req.path.indexOf('api') > -1 && !tokenUtils.validToken(req.headers.token)){
+   // 验证不通过 
+     res.status(401).send('Unauthorized')
+  }else{
+    next();  
+  } 
+ 
 });
 
 /**定义路由 */  
