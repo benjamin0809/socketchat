@@ -40,8 +40,15 @@ const sizeof = (str, charset) => {
    return total;
 }
 
+const genereateId = () => {
+    return Math.floor(Math.random() * 10000).toString() + 
+    Date.now()
+}
+
+
 module.exports = {
     getQueryString,
-    sizeof
+    sizeof,
+    genereateId
 }
 

@@ -1,4 +1,15 @@
- var express = require('express');
+var express = require('express');
+
+var child_process = require("child_process")
+child_process.execFile("redis.bat",null,{ cwd:'G:/projects/node/myapp/config'},function(error,stdout,stderr){
+    if(error !==null){
+        console.log("exec error"+error)
+    }
+    else console.log("成功")
+    console.log('stdout: ' + stdout);
+    console.log('stderr: ' + stderr);
+})
+
 var path = require('path'); 
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -24,8 +35,9 @@ app.use(favicon(path.join(__dirname,  './favicon.ico')))
 
 // 自定义跨域中间件
 var allowCors = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', req.headers.origin);
-  // res.header('Access-Control-Allow-Origin', '*');
+  // res.header('Access-Control-Allow-Origin', req.headers.origin); 
+
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   res.header('Access-Control-Allow-Credentials','true');
@@ -36,12 +48,14 @@ app.use(allowCors)
 
 
 /** request 拦截器 */ 
-app.all('*',function(req, res, next) { 
+app.all('*',function(req, res, next) {   
   const method = req.method  
-  console.log('request 拦截器' +  req.url ,', method: ', method ,) 
+  console.log('request 拦截器' +  req.url ,',req.path' + req.path +', method: ', method ,) 
 
   // 白名单
-  if(whitelist.includes(req.path)){
+
+  let isWhite = whitelist.some(item =>req.path.indexOf(item) > -1)
+  if(isWhite){
     next()
     return
   }

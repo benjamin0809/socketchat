@@ -19,15 +19,15 @@ router.get('/managment', function (req, res, next) {
 
 
 
-router.post('/*',function (req, res, next) {
+// router.post('/*',function (req, res, next) {
 
-  if(Number(req.headers.token) !== 9527){
-    res.status(401)
-    res.send('unauthorized')
-  }else{
-    next()
-  }  
-})
+//   if(Number(req.headers.token) !== 9527){
+//     res.status(401)
+//     res.send('unauthorized')
+//   }else{
+//     next()
+//   }  
+// })
 /* GET users listing. */
 router.get('/download/demo', function (req, res, next) {
   res.sendFile(path.join(__dirname, '../modules/file/download.html'))
@@ -259,18 +259,11 @@ router.get('/getFileByMasterId', function (req, res, next) {
 		}]
 }
  */
-router.all('/getAllFiles', function (req, res, next) { 
-  const fileDao = new FileDao();
+router.all('/api/getAllFiles', function (req, res, next) { 
+  const fileDao = new FileDao(); 
+  const params = req.method == 'POST' ? req.body : JSON.parse(req.query) 
+  const { filters, orders } = params 
 
-  let filters = {}
-  let orders = {} 
-  if(req.method == 'POST'){
-    filters = req.body.filters 
-    orders = req.body.orders
-  }else if(req.method == 'GET'){
-    orders = JSON.parse(req.query.orders)
-    filters = JSON.parse(req.query.filters)
-  }
   fileDao.getAllFiles(filters, orders).then(data => {
     res.send(data)
   }).catch(e => {
@@ -283,7 +276,7 @@ router.all('/getFiles', function (req, res, next) {
 
   const params = req.method == 'POST' ? req.body : JSON.parse(req.query)
   
-  const { filters, orders, currentPage, pageSize } =params 
+  const { filters, orders, currentPage, pageSize } = params 
 
   
   fileDao.getFiles(filters, orders, currentPage, pageSize).then(data => {

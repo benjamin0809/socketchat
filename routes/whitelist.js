@@ -1,1 +1,1 @@
-module.exports = ['user/login','/file/saveAsHtml','/saveAsHtml']
+module.exports = ['/api/users/login','/file/saveAsHtml','/saveAsHtml','/api/users/register']
