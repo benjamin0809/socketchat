@@ -3,6 +3,8 @@ import Home from '../page/home'
 import Management from '../view/Management'
 import Upload from '../view/Upload'  
 import File from '../view/File'  
+import Compose from '../view/Compose'   
+
 import App from '../App' 
 import VueRouter from 'vue-router'
 
@@ -28,7 +30,13 @@ const routes = [ {
             path : 'upload',
             name: 'upload',
             component: Upload
-          }
+          },
+          {
+            path : 'compose',
+            name: 'compose',
+            component: Compose
+          },
+          
         ]
       }, {
         path: '/login',
