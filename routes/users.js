@@ -22,7 +22,7 @@ router.post('/login', function(req, res, next) {
     const userId = data.data.userId
     const result = {
       accessToken : token.generateAccessToken(userId),
-      userToken : token.generateUserToken(userId),
+      userToken : token.generateAccessToken(userId),
       userId: userId
     } 
     res.json(result)
@@ -43,7 +43,7 @@ router.post('/register', function(req, res, next) {
     const userId = data.data.userId
     const result = {
       accessToken : token.generateAccessToken(userId),
-      userToken : token.generateUserToken(userId),
+      userToken : token.generateAccessToken(userId),
       userId: userId
     } 
     res.json(result)

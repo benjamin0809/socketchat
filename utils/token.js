@@ -27,7 +27,7 @@ class Token{
    * 生成 自定义事件token
    * @param {*} userId 
    */
-  static generateCustionToken(userId, expiresIn){
+  static generateCustomToken(userId, expiresIn){
     return jwt.sign({ userId: userId }, secret, { expiresIn: expiresIn });
   }
 
