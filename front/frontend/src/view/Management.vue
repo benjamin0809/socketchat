@@ -218,10 +218,7 @@ export default {
     handleDelete(index, row) {
       console.log(index, row);
       if (!row.id) return;
-      this.instance
-        .post("file/removeFileById", {
-          id: row.id
-        })
+      fileService.removeFileById(row.id)
         .then(response => {
           this.tableData.splice(index, 1);
         })
