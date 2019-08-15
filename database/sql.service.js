@@ -9,14 +9,19 @@ class SqlService{
     getConnection() {
         if (this.connection) {
             return this.connection
+        } 
+        try{
+            this.connection = mysql.createConnection({
+                host: config.db.host,
+                user: config.db.user,
+                password: config.db.password,
+                database: config.db.database,
+                multipleStatements: config.db.multipleStatements
+            })
+        }catch(e){
+            this.connection = {}
         }
-        this.connection = mysql.createConnection({
-            host: config.db.host,
-            user: config.db.user,
-            password: config.db.password,
-            database: config.db.database,
-            multipleStatements: config.db.multipleStatements
-        })
+        
         return this.connection
 
     }
@@ -25,13 +30,18 @@ class SqlService{
         if (this.pool) {
             return this.pool
         }
-        this.pool = mysql.createPool({
-            host: config.db.host,
-            user: config.db.user,
-            password: config.db.password,
-            database: config.db.database,
-            multipleStatements: config.db.multipleStatements
-        })
+        try{
+            this.pool = mysql.createPool({
+                host: config.db.host,
+                user: config.db.user,
+                password: config.db.password,
+                database: config.db.database,
+                multipleStatements: config.db.multipleStatements
+            })
+        }catch(e){
+            this.pool = {}
+        }
+       
         return this.pool
     }
 }

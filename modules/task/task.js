@@ -15,45 +15,56 @@ class Task{
         this.tasklist.push(task)
     }
 
-    startTimer(task){
+    startTimer(task, context, leading){
         let date = new Date()
          
         const repeat = 60 * 60 * 24 * 1000;
         const firstExec = repeat - date.getTime() + new Date(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`).getTime();
-
-        console.log(firstExec)
+ 
+        if(leading) {
+            task.call(context || this)
+        }
         setTimeout(()=>{
-            task.call(this)
+            task.call(context || this)
             setInterval(()=>{
-                task.call(this)
+                task.call(context || this)
             }, repeat)
         }, firstExec)
     }
 
     
-    startTimerWithMinute(task){
+    startTimerWithMinute(task, context, leading){
         let date = new Date()
          
         const repeat = 60 * 1000;
         const firstExec = 60 - date.getSeconds()
 
-        console.log(firstExec)
+        if(leading && !this.currentTimer) {
+            task.call(context || this)
+        }
         setTimeout(()=>{
-            task.call(this)
+            task.call(context || this)
             if(this.currentTimer){
                 clearInterval(this.currentTimer)
             }
 
             this.currentTimer = setInterval(()=>{
-                task.call(this)
+                task.call( context || this)
             }, repeat)
         }, firstExec * 1000)
     }
 }
 
+// const obj = {
+//     name : 'benjamin'
+// }
+// const testFn = ()=> { 
+//     console.log(this.name, new Date())
+// }
+// const task = new Task()
+// task.startTimerWithMinute(testFn, obj)
 
-const testFn = ()=> {
-    console.log(new Date())
-}
-const task = new Task()
-task.startTimerWithMinute(testFn)
+
+// testFn.bind(obj).call(obj)
+
+module.exports = Task

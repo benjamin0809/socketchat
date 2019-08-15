@@ -164,11 +164,15 @@ class Sipder {
      }
        getHupuImages(spider_url) {
       return new Promise((resolve)=>{ 
-        let subfix = 'public/upload/' +  dateUtils.getCurrentDate() + '/'
+        let subfix = '/public/upload/' +  dateUtils.getCurrentDate() + '/'
         
        superagent.get(spider_url) 
        .end((err, res) => {
-         err && console.error(err) 
+         if(err ){
+          console.error(err) 
+          return;
+         }
+         
          let $ = cheerio.load(res.text); 
  
          let articalList = $('.titlelink a')  
@@ -217,7 +221,10 @@ class Sipder {
      }
 
        getArticleDetails(href,articleHref,subfix){   
-      let outPath = path.resolve(subfix); 
+
+
+      let outPath = path.resolve(__dirname, subfix); 
+      console.log('outPath', outPath)
       return new Promise( (resolve,reject)=>{
         superagent.get(href)
         .end(  (error, resp)=> {
@@ -268,7 +275,7 @@ class Sipder {
 
             if(src.split('/').slice(-1) != 'placeholder.png'){ 
               article.images.push(url) 
-              this.saveINtoFile(entity, id,opts, outPath, fileName)
+              this.saveIntoFile(entity, id,opts, outPath, fileName)
             } 
           }) 
           resolve(this.insertArticle(article)) 
@@ -276,7 +283,7 @@ class Sipder {
       }) 
      }
 
-     async saveINtoFile(entity, id,opts, outPath, fileName){
+     async saveIntoFile(entity, id,opts, outPath, fileName){
        try{
         let res = await FileUtils.downloadImage(opts, outPath, fileName) 
         entity.fileSize = Number(res.length)

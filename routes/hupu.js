@@ -9,7 +9,7 @@ const main_key = "getHupuImages";
 const HupuDao = new Hupu();
 const redis = new Redis();
 const spider = new Spider();
-
+var spiding = false
 router.get('/', function (req, res, next) {
   res.sendFile('./public/hupu/index.html')
 })
@@ -48,6 +48,12 @@ router.post('/spiderAction', function (req, res, next) {
     res.send('未授权')
     return;
   }
+  if(spiding){
+    res.send({
+      msg: 'Loading',
+      result : true
+    })
+  }
   try {
     const base_url = 'https://bbs.hupu.com/selfie'
     let tasks = []
@@ -55,7 +61,7 @@ router.post('/spiderAction', function (req, res, next) {
       const http_url = i == 0 ? base_url : base_url + '-' + (i + 1);
       tasks.push(spider.getHupuImages(http_url));
     }
-
+    spiding = true
     Promise.all(tasks).then(result => {
       let resp = {
         data: result,
@@ -63,6 +69,7 @@ router.post('/spiderAction', function (req, res, next) {
         status: 'ok'
       }
       res.send(resp)
+      spiding = false
     }).catch(error => {
       let resp = {
         miles: new Date().getTime() - st,
@@ -70,6 +77,7 @@ router.post('/spiderAction', function (req, res, next) {
         error: error
       }
       res.send(resp)
+      spiding = false
     }) 
   }
   catch (e) {

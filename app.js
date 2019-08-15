@@ -18,6 +18,7 @@ var favicon = require('serve-favicon')
 const Routers = require('./routes/index');
 const tokenUtils = require('./utils/token')
 const whitelist = require('./routes/whitelist')
+const TaskList = require('./modules/task/task-list')
 var app = express();  
 
 // view engine setup
@@ -90,4 +91,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+new TaskList().start() 
 module.exports = app;
