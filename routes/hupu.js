@@ -19,14 +19,18 @@ router.get('/getImages', async (req, res, next) => {
   const pagekey = limit + '-' + offset;
 
   try{ 
-    let reidsResult = await redis.getpageh(main_key, pagekey);
-    if(reidsResult && reidsResult.length > 0){
-      res.send(reidsResult)
-    }else {
-      let data = await HupuDao.getHupuImages(limit, offset) 
+    // let reidsResult = await redis.getpageh(main_key, pagekey);
+    // if(reidsResult && reidsResult.length > 0){
+    //   res.send(reidsResult)
+    // }else {
+    //   let data = await HupuDao.getHupuImages(limit, offset) 
+    //   redis.sethpage(main_key, pagekey, data)
+    //   res.send(data) 
+    // } 
+
+    let data = await HupuDao.getHupuImages(limit, offset) 
       redis.sethpage(main_key, pagekey, data)
       res.send(data) 
-    } 
   }catch(e){
     console.error(e)
     res.send(e) 
