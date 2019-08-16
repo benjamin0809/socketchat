@@ -2,24 +2,60 @@ const request = require("request");
 const fs = require("fs");
 const mkdirp = require('mkdirp');  
 const path = require('path')
+const proxy = 'http://F2846595:mrz0809@10.191.131.156:3128';  
+const probe = require('probe-image-size');
 
 class FileUtils { 
-  static downloadImage(opts = {}, outPath = '', fileName = '') {
 
-    // if(fileName.endsWith('format,webp')){
-    //   fileName = fileName.replace('format,webp','.png')
-    // }
+  static mkdirpAsync(outPath){
 
-    if (fs.existsSync(outPath)) {
-      return this._downImg(opts, outPath + '/' + fileName)
-    } else {
-      mkdirp(outPath, () => {
-        return this._downImg(opts, outPath + '/' + fileName)
-      });
-    }
+    return new Promise((resolve, reject) => {
+      if (fs.existsSync(outPath)) {  
+        resolve()
+      } else{
+        mkdirp(outPath, () => {
+          resolve()
+         });
+      } 
+    }) 
   }
+  static async downloadImage(opts = {}, outPath = '', fileName = '') { 
+ 
+    await this.mkdirpAsync(outPath)
 
-  
+    let type = '' // 文件类型
+    let length = 0 // 文件长度
+    let path = outPath + '/' + fileName // 文件路径
+
+    return new Promise((resolve, reject) => {
+      request
+        .get(opts)
+        .on('response', (response) => {
+          console.log({
+            img_type: response.headers['content-type'],
+            content_length: response.headers['content-length'],
+            path
+          }) 
+          type =  response.headers['content-type']
+          length = response.headers['content-length']
+        })
+        .pipe(fs.createWriteStream(path))
+        .on("error", (e) => {
+          reject(e);
+          console.log("pipe error", e) 
+        })
+        .on("finish", () => { 
+          resolve({
+            type: type,
+            length: length
+          });
+        })
+        .on("close", () => {
+          // console.log("close");
+        }) 
+    }) 
+  } 
+
   static saveBase64(base64str) { 
     let reg  = /data:image\/([^;]+).*/i
 
@@ -86,43 +122,7 @@ class FileUtils {
     fs.createWriteStream(file).end(data, () => {
       console.log('write success')
     })
-  }
-  /**
-   * 下载网络图片
-   * @param {object} opts 
-   */
-  static _downImg(opts = {}, path = '') {
-
-    let type = ''
-    let length = 0
-    return new Promise((resolve, reject) => {
-      request
-        .get(opts)
-        .on('response', (response) => {
-          console.log("img type:", response.headers['content-type'])
-          console.log("content length:", response.headers['content-length'])
-          type =  response.headers['content-type']
-          length = response.headers['content-length']
-        })
-        .pipe(fs.createWriteStream(path))
-        .on("error", (e) => {
-          reject(e);
-          console.log("pipe error", e) 
-        })
-        .on("finish", () => { 
-          resolve({
-            type: type,
-            length: length
-          });
-        })
-        .on("close", () => {
-          // console.log("close");
-        })
-
-    })
-  };
-
- 
+  } 
   static getRequestUrl(req) {
 
     if(!req)return '';
@@ -133,6 +133,9 @@ class FileUtils {
     return req.protocol + '://' + req.hostname  + port 
   };
 
+  static getImageInfo(url){
+    return probe(url,{  proxy }) 
+  }
   static joinChar(array,char){
     return array.join(char)
   }
