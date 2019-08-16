@@ -1,7 +1,6 @@
 const superagent = require('superagent'); //获取网页dom树
 require('superagent-proxy')(superagent);
-const cheerio = require('cheerio'); //nodejs JQuery
-const async = require('async');
+const cheerio = require('cheerio'); //nodejs JQuery 
 const url = require('url');
 const request = require('request')
 const fs = require('fs')
@@ -12,7 +11,7 @@ const dateUtils = require('./date.utils')
 const FileDao = require('../modules/file/file')
 class Sipder {
   constructor() {
-    this.filedao = new FileDao()
+    this.filedao = new FileDao() // 新建一个 FileDao 实例
   }
 
   static run(spider_url, proxy) {
@@ -48,7 +47,7 @@ class Sipder {
           let $ = cheerio.load(res.text);
 
           let imgs = $('img')
-          $('img').each((idx, element) => {
+          imgs.each((idx, element) => {
             let $element = $(element);
             let h = $element.attr('src') || $element.attr('data-src');
             let href = url.resolve(spider_url, h);
@@ -68,11 +67,17 @@ class Sipder {
           err && console.error(err)
           let $ = cheerio.load(res.text);
 
-          let imgs = $('div .vw_works_list')
+          let imgs = $('.vw_h img')
           imgs.each((idx, element) => {
             let $element = $(element);
+
+            //  console.log($element.attr('src')) 
+            //  console.log($element.attr('data-src')) 
             let h = $element.attr('src') || $element.attr('data-src');
+            //  let h = $element.attr('data-src')
+            if (!h) return
             let href = url.resolve(spider_url, h);
+            console.dir(href)
             allUrl.push(href);
           })
           resolve(allUrl);
@@ -145,23 +150,7 @@ class Sipder {
       })
     })
   }
-
-  findGavbus() {
-    return new Promise((resolve, reject) => {
-      for (let i = 188; i < 1000; i++) {
-        let url = `https://www.gavbus${i}.com/`;
-        superagent.agent().get(url)
-          .end((err, res) => {
-            console.log(i)
-            if (!err) {
-              resolve(url)
-            }
-          })
-      }
-    })
-
-
-  }
+ 
   getHupuImages(spider_url) {
     return new Promise((resolve) => {
       let subfix = '/public/upload/' + dateUtils.getCurrentDate() + '/'
@@ -220,9 +209,7 @@ class Sipder {
     })
   }
 
-  getArticleDetails(href, articleHref, subfix) {
-
-
+  getArticleDetails(href, articleHref, subfix) { 
     let outPath = path.resolve(__dirname, subfix);
     console.log('outPath', outPath)
     return new Promise((resolve, reject) => {
@@ -252,10 +239,7 @@ class Sipder {
             articleTime: stime,
             sourceUrl: href,
             images: []
-          }
-
-
-
+          } 
           $('.quote-content img').each((id, ele) => {
             let $ele = $(ele);
             let src = $ele.attr('src') || $ele.attr('data-src');
@@ -295,12 +279,9 @@ class Sipder {
       }, id * 200)
     } catch (e) {
       console.error(e)
-    }
-
+    } 
   }
 
 }
 
-module.exports = Sipder
-
-
+module.exports = Sipder 
