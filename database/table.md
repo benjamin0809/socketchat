@@ -24,6 +24,9 @@ let createTable = `CREATE TABLE IF NOT EXISTS file(
    fullpath VARCHAR(128) NOT NULL, 
    filetype VARCHAR(40) NOT NULL,
    sourceUrl VARCHAR(256),
+   extra VARCHAR,
+   width INT,
+   height INT,
    createTime VARCHAR(40) NOT NULL, 
    modifiedTime VARCHAR(40) NULL,
    PRIMARY KEY ( id ) ,UNIQUE INDEX 

@@ -133,6 +133,17 @@ class FileUtils {
     return req.protocol + '://' + req.hostname  + port 
   };
 
+  /**
+   * height:128
+      hUnits:"px"
+      length:15849
+      mime:"image/jpeg"
+      type:"jpg"
+      url:"http://static-c.pocoimg.cn/project/poco_new_pc/prod/online/image/widget/poco_footer/i/code-img_e4da165.jpg"
+      width:128
+      wUnits:"px"
+   * @param {*} url 
+   */
   static getImageInfo(url){
     return probe(url,{  proxy }) 
   }

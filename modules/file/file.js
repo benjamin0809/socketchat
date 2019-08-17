@@ -155,6 +155,18 @@ class FileDao {
             {
                 code: "modifiedTime",
                 default: null
+            },
+            {
+                code: "width",
+                default: 0
+            },
+            {
+                code: "height",
+                default: 0
+            },
+            {
+                code: "extra",
+                default: null
             }
         ]
 
@@ -185,6 +197,9 @@ class FileDao {
             filetype: '',
             fileSize: 0,
             sourceUrl: '',
+            width: 0,
+            height: 0,
+            extra: '',
             createTime:  DateUtils.getCurrentTime() ,
             modifiedTime:  DateUtils.getCurrentTime() ,
           }

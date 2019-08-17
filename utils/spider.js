@@ -78,7 +78,14 @@ class Sipder {
             if (!h) return
             let href = url.resolve(spider_url, h);
             console.dir(href)
-            allUrl.push(href);
+
+            let  filters = ['logo_down_c6789b4.jpg','poli_8a53b90.png','code-img_e4da165.jpg']
+
+            let filename = href.split('/').pop()
+            if(!filters.some(x => x == filename)){
+              allUrl.push(href);
+            }
+           
           })
           resolve(allUrl);
         })

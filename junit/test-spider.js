@@ -3,7 +3,7 @@ const FileUtils = require('../utils/file-utils')
 const dateUtils = require('../utils/date.utils')
 const DownloadManager = require('../modules/download-manager')
 const path = require('path')
-const proxy = 'http://F2846595:mrz0809@10.191.131.156:3128';
+const proxy = 'http://F2846595:mrz0809@10.191.131.156:3128'; 
 
 // (async () => {
 //   try { 
@@ -56,7 +56,7 @@ const proxy = 'http://F2846595:mrz0809@10.191.131.156:3128';
     // const result = await FileUtils.getImageInfo(url)
     // console.dir(result);
     const spider = new Spider()
-
+    
     const ids = [{
       id: 20912691,
       desc: '情迷帕米尔/航拍'
@@ -97,16 +97,31 @@ const proxy = 'http://F2846595:mrz0809@10.191.131.156:3128';
     }]
 
     const load = new DownloadManager()
-    idss.forEach( (item, index) =>{
+    ids.forEach( (item, index) =>{
       setTimeout(async () => {
         const { id, desc } = item
         const array = await spider.getPocoImages(`http://www.poco.cn/works/detail?works_id=${id}`, proxy); 
   
-        let subfix = '../public/upload/' +  dateUtils.getCurrentDate() + '/' + desc + '/'
+        const datePath = dateUtils.getCurrentDate();
+        const staticPath = '../public'
+        const webpath = '/upload/' + datePath + '/' + desc + '/'
+        let subfix = staticPath + webpath
         let outPath = path.resolve(__dirname, subfix); 
-        array.map((url, index) => {
-          //const result = await FileUtils.getImageInfo(url)  
-          load.downloadImage({ url, proxy }, outPath, index + '-'+ url.split('/').slice(-1))
+        array.map(async (url, index) => {
+          const result = await FileUtils.getImageInfo(url)  
+          const filename = index + '-'+ url.split('/').slice(-1)
+          let entity = spider.filedao.getInstance() 
+          entity.width = result.width
+          entity.height = result.height
+          entity.fileSize = result.length
+          entity.filename = filename
+          entity.path = path.resolve(__dirname, subfix + filename)
+          entity.sourceUrl = `http://www.poco.cn/works/detail?works_id=${id}`
+          entity.fullpath = webpath + filename
+          entity.filetype = result.mime
+
+          spider.filedao.insertFile(entity)
+          load.downloadImage({ url, proxy }, outPath, filename)
         }) 
       },index * 1000 * 60)
       
