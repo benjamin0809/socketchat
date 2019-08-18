@@ -24,6 +24,16 @@ class HupuDao{
         let params = []
         return this.sqlUtils.queryWithParams(sql, params);
     }
+
+    getMobileHupuImages(limit = 20,offset = 0){
+        let sql = `SELECT a.*, f.id as fileid, f.width ,f.height, fileSize,f.filetype,f.fullpath,f.path,f.sourceUrl as originPath from hupuimages1 a
+        LEFT JOIN file f
+        on a.articleid = f.masterid
+        where f.id is not null
+        ORDER BY UNIX_TIMESTAMP(a.articleTime) desc, UNIX_TIMESTAMP(a.createTime) desc  limit ${offset}, ${limit};`
+        let params = []
+        return this.sqlUtils.queryWithParams(sql, params);
+    }
     insertHupuImages(hupuEntity){
         if(!hupuEntity)return; 
         let sql = `REPLACE INTO ${TBALE_NAME} (id,articleid,title,avatar,images,sourceUrl,username,createTime,articleTime,modifiedTime) VALUES (?,?,?,?,?,?,?,?,?,?)`

@@ -26,10 +26,14 @@ class Task{
         }
         setTimeout(()=>{
             task.call(context || this)
-            setInterval(()=>{
+            this.currentTimer = setInterval(()=>{
                 task.call(context || this)
             }, repeat)
         }, firstExec)
+    }
+
+    cancelTimer(){
+        clearInterval(this.currentTimer)
     }
 
     

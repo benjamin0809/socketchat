@@ -205,6 +205,50 @@ class Sipder {
     })
   }
 
+  getMobileHupuImages(spider_url) {
+    return new Promise((resolve) => {  
+      superagent.get(spider_url)
+        .end((err, res) => {
+          if (err) {
+            console.error(err)
+            return;
+          }
+
+          let $ = cheerio.load(res.text);
+
+          let articalList = $('.common-list a')
+          let tasks = []
+          articalList.each((idx, element) => {
+            let $element = $(element);
+            let articleHref = $element.attr('href');
+            if (!articleHref) return;
+            let href = url.resolve(spider_url, articleHref);
+            tasks.push(this.getArticleDetails(href, articleHref))
+          })
+
+          Promise.all(tasks).then(res => {
+            let result = {
+              result: true,
+              spiderUrl: spider_url,
+              successCount: 0,
+              failedCount: 0,
+              error: []
+            }
+            res && res.forEach(item => {
+              if (item.result) {
+                result.successCount++
+              } else {
+                result.failedCount++;
+                result.error.push(item)
+              }
+            })
+            resolve(result)
+          }).catch(error => {
+            resolve({ result: false, message: 'spider action failed', error: error })
+          })
+        })
+    })
+  }
 
   insertArticle(article) {
     return new Promise(resolve => {
@@ -216,8 +260,14 @@ class Sipder {
     })
   }
 
-  getArticleDetails(href, articleHref, subfix) { 
-    let outPath = path.resolve(__dirname, subfix);
+  getArticleDetails(href, articleHref) { 
+
+    const datePath = dateUtils.getCurrentDate();
+    const staticPath = '../public'
+    const webpath = '/upload/' + datePath + '/' 
+    let subfix = staticPath + webpath
+    let outPath = path.resolve(__dirname, subfix);  
+
     console.log('outPath', outPath)
     return new Promise((resolve, reject) => {
       superagent.get(href)
@@ -232,10 +282,10 @@ class Sipder {
             return;
           }
           let $ = cheerio.load(resp.text);
-          let title = $('.bbs-hd-h1>h1').attr('data-title');//帖子标题
-          let avatar = $('.headpic:first-child>img').attr('src');//用户头像
-          let username = $('.j_u:first-child').attr('uname');//用户ID  
-          let stime = $('#tpc .author .stime').text();//用户ID  
+          let title = $('header .headline').text(); // 帖子标题
+          let avatar = $('.detail-content .detail-author img').attr('src'); // 用户头像
+          let username = $('.detail-content .author-name a').text(); // 用户名称
+          let stime =  dateUtils.translateHupuTime($('header .times').text()); // 文章发帖时间  
           let timestamp = new Date().getTime().toString()
           let article = {
             id: Number(timestamp.substr(5, timestamp.length - 1) + articleHref.replace(/[^0-9]/ig, "")),
@@ -247,22 +297,20 @@ class Sipder {
             sourceUrl: href,
             images: []
           } 
-          $('.quote-content img').each((id, ele) => {
+          $('.article-content .article-deposit-pic').each((id, ele) => {
             let $ele = $(ele);
             let src = $ele.attr('src') || $ele.attr('data-src');
-            let url = src;
-            let opts = {
-              url: url
-            };
+            let url = src.split('?x-oss-process=image').slice(0, 1).join('');
+            let opts = { url };
 
-            let fileName = article.articleid + '-' + id + '-' + src.split('/').slice(-1)
+            let fileName = article.articleid + '-' + id + '-' + url.split('/').slice(-1)
 
             let entity = this.filedao.getInstance()
             entity.filename = fileName
             entity.masterid = article.articleid
             entity.sourceUrl = url
-            entity.path = outPath
-            entity.fullpath = subfix + '/' + fileName
+            entity.path = outPath  + '/' + fileName
+            entity.fullpath = webpath + fileName
 
             if (src.split('/').slice(-1) != 'placeholder.png') {
               article.images.push(url)
@@ -277,8 +325,12 @@ class Sipder {
   async saveIntoFile(entity, id, opts, outPath, fileName) {
     try {
       let res = await FileUtils.downloadImage(opts, outPath, fileName)
-      entity.fileSize = Number(res.length)
-      entity.filetype = res.type
+      const result = await FileUtils.getImageInfo(opts.url)
+
+      entity.width = result.width
+      entity.height = result.height
+      entity.fileSize = ~~(result.length || res.length) 
+      entity.filetype = res.type || result.mime
       setTimeout(() => {
         this.filedao.insertFile(entity).then(result => {
           console.log(result)

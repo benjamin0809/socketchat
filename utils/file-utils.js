@@ -2,7 +2,8 @@ const request = require("request");
 const fs = require("fs");
 const mkdirp = require('mkdirp');  
 const path = require('path')
-const proxy = 'http://F2846595:mrz0809@10.191.131.156:3128';  
+const proxy = '';  
+// const proxy = 'http://F2846595:mrz0809@10.191.131.156:3128'; 
 const probe = require('probe-image-size');
 
 class FileUtils { 

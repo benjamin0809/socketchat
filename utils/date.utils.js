@@ -49,14 +49,14 @@ class DateUtils {
     } 
     
     //获取当前时间 
-    static getCurrentTime() { 
-      var today = new Date(); 
+    static getCurrentTime(time) { 
+      var today = !time ? new Date() : new Date(time); 
       var year = today.getFullYear(); 
       var month = today.getMonth() + 1; 
       var day = today.getDate(); 
       var hours = today.getHours(); 
-      var minutes = today.getMinutes(); 
-      var seconds = today.getSeconds(); 
+      var minutes = today.getMinutes() < 10 ?  '0' + today.getMinutes() : today.getMinutes(); 
+      var seconds = today.getSeconds() < 10 ?  '0' + today.getSeconds() : today.getSeconds();; 
       var timeString = year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds; 
       return timeString; 
     }  
@@ -229,6 +229,22 @@ class DateUtils {
       }; 
       return obj; 
     } 
+
+    static translateHupuTime(time){
+      var result = '' 
+      if(/分钟/.test(time)){
+          var mins = parseInt(time)
+          result = new Date(new Date().getTime() - mins * 60 * 1000)
+  
+      }else if(/小时/.test(time)){
+          var hours = parseInt(time)
+          result = new Date(new Date().getTime() - hours * 60 * 60 * 1000)
+      }else{
+          time = new Date().getFullYear() + '-' + time
+          result = new Date(time)
+      }
+      return this.getCurrentTime(result)
+  }
   };
 
   module.exports = DateUtils
