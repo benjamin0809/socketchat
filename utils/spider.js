@@ -9,6 +9,7 @@ const HupuDao = new (require('../modules/hupu/hupu'))()
 const FileUtils = require('./file-utils')
 const dateUtils = require('./date.utils')
 const FileDao = require('../modules/file/file')
+const qiniu = new (require('../modules/qiniu/qiniu'))()
 class Sipder {
   constructor() {
     this.filedao = new FileDao() // 新建一个 FileDao 实例
@@ -269,9 +270,9 @@ class Sipder {
     let outPath = path.resolve(__dirname, subfix);  
 
     console.log('outPath', outPath)
-    return new Promise((resolve, reject) => {
+    return new Promise( (resolve, reject) => {
       superagent.get(href)
-        .end((error, resp) => {
+        .end( async(error, resp) => {
           if (error) {
             console.log(error)
             resolve({
@@ -285,6 +286,11 @@ class Sipder {
           let title = $('header .headline').text(); // 帖子标题
           let avatar = $('.detail-content .detail-author img').attr('src'); // 用户头像
           let username = $('.detail-content .author-name a').text(); // 用户名称
+ 
+          await qiniu.fetchWebUrl(avatar, username)
+          avatar = await qiniu.getPublicDownloadUrl(username)
+
+         
           let stime =  dateUtils.translateHupuTime($('header .times').text()); // 文章发帖时间  
           let timestamp = new Date().getTime().toString()
           let article = {
@@ -308,7 +314,7 @@ class Sipder {
             let entity = this.filedao.getInstance()
             entity.filename = fileName
             entity.masterid = article.articleid
-            entity.sourceUrl = url
+            entity.sourceUrl = src
             entity.path = outPath  + '/' + fileName
             entity.fullpath = webpath + fileName
 
@@ -324,9 +330,10 @@ class Sipder {
 
   async saveIntoFile(entity, id, opts, outPath, fileName) {
     try {
-      let res = await FileUtils.downloadImage(opts, outPath, fileName)
+      // let res = await FileUtils.downloadImage(opts, outPath, fileName)
       const result = await FileUtils.getImageInfo(opts.url)
-
+      let res = await qiniu.fetchWebUrl(opts.url, fileName)
+      entity.fullpath = await qiniu.getPublicDownloadUrl(fileName)
       entity.width = result.width
       entity.height = result.height
       entity.fileSize = ~~(result.length || res.length) 

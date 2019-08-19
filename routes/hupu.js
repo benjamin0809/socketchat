@@ -40,7 +40,7 @@ router.get('/getImages', async (req, res, next) => {
 
 router.get('/getMobileImages', async (req, res, next) => {
   let limit = req.query.limit || 20;
-  let offset = req.query.offset || 0;
+  let offset = ~~req.query.offset || 0;
   const pagekey = limit + '-' + offset;
 
   try{ 
