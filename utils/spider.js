@@ -269,7 +269,7 @@ class Sipder {
     let subfix = staticPath + webpath
     let outPath = path.resolve(__dirname, subfix);  
 
-    console.log('outPath', outPath)
+    //console.log('outPath', outPath)
     return new Promise( (resolve, reject) => {
       superagent.get(href)
         .end( async(error, resp) => {
@@ -337,7 +337,7 @@ class Sipder {
       entity.filetype = res.type || result.mime
       setTimeout(() => {
         this.filedao.insertFile(entity).then(result => {
-          console.log(result)
+          //console.log(result)
         })
       }, id * 200)
     } catch (e) {
