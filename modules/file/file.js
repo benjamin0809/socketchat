@@ -50,7 +50,7 @@ class FileDao {
             }
             sql += orderCondition  
         } 
-        console.log(sql,params)
+        //console.log(sql,params)
         return this.sqlUtils.queryWithParams(sql, params);
     }
 
@@ -86,7 +86,7 @@ class FileDao {
         } 
 
         sql += `   limit ${(curPage-1)* pageSize}, ${pageSize}`
-        console.log(sql,params)
+        //console.log(sql,params)
 
         let result = {
             data: [],
@@ -113,7 +113,7 @@ class FileDao {
     }
 
     insertFile(fileEntity) {
-        console.log(fileEntity)
+        //console.log(fileEntity)
         if (!fileEntity) return;
         let params = []
         let columns = [{

@@ -274,7 +274,7 @@ class Sipder {
       superagent.get(href)
         .end( async(error, resp) => {
           if (error) {
-            console.log(error)
+            console.error(error)
             resolve({
               href: href,
               error: error,
