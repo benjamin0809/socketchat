@@ -74,6 +74,28 @@ class Qiniu{
         })
     }
 
+    fetchWebUrlPlus(resUrl, key){
+        return new Promise((resolve, reject) =>{
+            bucketManager.fetch(resUrl, bucket, key, async function(err, respBody, respInfo) {
+                if (err) {
+                    console.log(err);
+                    reject(err) 
+                } else {
+                if (respInfo.statusCode == 200) { 
+                    resolve({
+                        hash: respBody.hash,
+                        key: respBody.key,
+                        url: await bucketManager.publicDownloadUrl(publicBucketDomain, key)
+                    })
+                } else {
+                    reject(respBody)
+                    console.error(respBody); 
+                }
+                }
+            });
+        })
+    }
+
     getPublicDownloadUrl(key) {
         return bucketManager.publicDownloadUrl(publicBucketDomain, key);
     }

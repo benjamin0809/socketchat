@@ -146,7 +146,7 @@ class FileUtils {
    * @param {*} url 
    */
   static getImageInfo(url){
-    return probe(url,{  proxy }) 
+    return probe(url) 
   }
   static joinChar(array,char){
     return array.join(char)

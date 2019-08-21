@@ -9,7 +9,7 @@ const HupuDao = new (require('../modules/hupu/hupu'))()
 const FileUtils = require('./file-utils')
 const dateUtils = require('./date.utils')
 const FileDao = require('../modules/file/file')
-const qiniu = new (require('../modules/qiniu/qiniu'))()
+const Qiniu = require('../modules/qiniu/qiniu')
 class Sipder {
   constructor() {
     this.filedao = new FileDao() // 新建一个 FileDao 实例
@@ -206,7 +206,7 @@ class Sipder {
     })
   }
 
-  getMobileHupuImages(spider_url) {
+  getMobileHupuImages(spider_url) { 
     return new Promise((resolve) => {  
       superagent.get(spider_url)
         .end((err, res) => {
@@ -268,7 +268,7 @@ class Sipder {
     const webpath = '/upload/' + datePath + '/' 
     let subfix = staticPath + webpath
     let outPath = path.resolve(__dirname, subfix);  
-
+    const qiniu = new Qiniu()
     //console.log('outPath', outPath)
     return new Promise( (resolve, reject) => {
       superagent.get(href)
@@ -327,10 +327,11 @@ class Sipder {
 
   async saveIntoFile(entity, id, opts, outPath, fileName) {
     try {
+      const qiniu = new Qiniu()
       // let res = await FileUtils.downloadImage(opts, outPath, fileName)
       const result = await FileUtils.getImageInfo(opts.url)
-      let res = await qiniu.fetchWebUrl(opts.url, fileName)
-      entity.fullpath = await qiniu.getPublicDownloadUrl(fileName)
+      let res = await qiniu.fetchWebUrlPlus(opts.url, fileName)
+      entity.fullpath =  res.url
       entity.width = result.width
       entity.height = result.height
       entity.fileSize = ~~(result.length || res.length) 
