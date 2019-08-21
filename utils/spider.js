@@ -303,7 +303,7 @@ class Sipder {
             sourceUrl: href,
             images: []
           } 
-          $('.article-content .article-deposit-pic').each((id, ele) => {
+          $('.article-content .article-deposit-pic').each(async (id, ele) => {
             let $ele = $(ele);
             let src = $ele.attr('src') || $ele.attr('data-src');
             let url = src.split('?x-oss-process=image').slice(0, 1).join('');
@@ -317,11 +317,8 @@ class Sipder {
             entity.sourceUrl = src
             entity.path = outPath  + '/' + fileName
             entity.fullpath = webpath + fileName
-
-            if (src.split('/').slice(-1) != 'placeholder.png') {
-              article.images.push(url)
-              this.saveIntoFile(entity, id, opts, outPath, fileName)
-            }
+            article.images.push(url)
+            await this.saveIntoFile(entity, id, opts, outPath, fileName) 
           })
           resolve(this.insertArticle(article))
         })

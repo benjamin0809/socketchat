@@ -14,7 +14,7 @@ const spiderAction = async() => {
   }
 
   await Promise.all(tasks) 
-  spiderAction1()
+  // spiderAction1()
   
 }
 
