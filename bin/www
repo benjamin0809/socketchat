@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('myapp:server');
 var http = require('http');  
+var path = require('path'); 
 var fs = require('fs')
 var https = require('https'); 
 const WebSocket = require('../modules/socket/websocket') 
@@ -14,9 +15,10 @@ const WebSocket = require('../modules/socket/websocket')
  * Get port from environment and store in Express.
  */
 
+ console.log(path.resolve(__dirname,'../https/www.popochiu.com.key'))
  const httpsOption = {
-   key: fs.readFileSync('../https/www.popochiu.com.key'),
-   cert: fs.readFileSync('../https/www.popochiu.com.pem')
+   key: fs.readFileSync(path.resolve(__dirname,'../https/www.popochiu.com.key')),
+   cert: fs.readFileSync(path.resolve(__dirname,'../https/www.popochiu.com.pem'))
  }
 var port = normalizePort(process.env.PORT || '80'); 
 app.set('port', port);
