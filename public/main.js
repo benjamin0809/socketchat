@@ -24,7 +24,7 @@ $(function() {
   var $currentInput = $usernameInput.focus();
 
   var member_list = []
-  var socket = io('localhost:80?token=12', {
+  var socket = io('/?token=12', {
     path: '/chat'
   });
 
