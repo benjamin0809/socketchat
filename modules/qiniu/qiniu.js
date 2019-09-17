@@ -4,7 +4,7 @@ const accessKey = 'jfxJjeElvLIUgldn-OmFQrSL4x4WTbZNRSkxEWZP'
 const secretKey = 'hCxKrvlFocCyjeP0WQ-gJerutHlb-_gG8-iUJ8S-'
 const bucket = 'bullet'
  
-const publicBucketDomain = 'http://www.popochiu.com.qiniudns.com';
+const publicBucketDomain = 'http://image.popochiu.com';
 const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
 
 const options = {
