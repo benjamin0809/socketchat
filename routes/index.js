@@ -8,6 +8,7 @@ const fileRouter = require('./file')
 const fileApiRouter = require('./fileapi')
 const mailRouter  = require('./mail')
 const emotionRouter  = require('./emotion')
+const articleRouter  = require('./article')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {  
@@ -23,6 +24,7 @@ routers.push({path: '/file',routerName: fileRouter})
 routers.push({path: '/api/file',routerName: fileApiRouter}) 
 routers.push({path: '/email',routerName: mailRouter})
 routers.push({path: '/emotion',routerName: emotionRouter})
+routers.push({path: '/article',routerName: articleRouter})
  
 routers.forEach(item => { 
   app.use(item.path, item.routerName)  

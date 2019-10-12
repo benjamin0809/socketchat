@@ -22,8 +22,8 @@ const TaskList = require('./modules/task/task-list')
 var app = express();  
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views')); 
+app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 
@@ -32,6 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'))); 
 app.use(express.static(path.join(__dirname, 'front/frontend'))); 
+app.use(express.static(path.join(__dirname, 'front'))); 
 app.use(favicon(path.join(__dirname,  './favicon.ico')))
 
 
@@ -51,8 +52,10 @@ app.use(allowCors)
 
 /** request 拦截器 */ 
 app.all('*',function(req, res, next) {   
+
+  const clientIP = getClientIP(req)
   const method = req.method  
-  console.log('request 拦截器' +  req.url ,',req.path' + req.path +', method: ', method ,) 
+  console.log('request 拦截器' +  req.url ,',req.path' + req.path +', method: ', method ,"客户端Ip", clientIP) 
 
   // 白名单
 
@@ -77,7 +80,7 @@ app.use(Routers)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   // next(createError(404)); 
-  res.sendFile(path.join(__dirname, 'public/404.html') )
+  res.sendFile(path.join(__dirname, 'public/404.html') ) 
 });
 
  
@@ -91,6 +94,13 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+function getClientIP(req) {
+  return req.headers['x-forwarded-for'] || // 判断是否有反向代理 IP
+      req.connection.remoteAddress || // 判断 connection 的远程 IP
+      req.socket.remoteAddress || // 判断后端的 socket 的 IP
+      req.connection.socket.remoteAddress;
+};
 
 new TaskList().start() 
 module.exports = app;
