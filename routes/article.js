@@ -38,7 +38,7 @@ router.get('/home', async (req, res, next) => {
 
   const article = new ArticleDao()
   let data = await article.getAllArticles()
-  res.render('common/home', { menu: menu, title: 'home', articles: data })
+  res.render('./common/home', { menu: menu, title: 'home', articles: data })
 });
 
 router.get('/profile', function (req, res, next) {
