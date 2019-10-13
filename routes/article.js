@@ -56,7 +56,7 @@ router.get('/message', function (req, res, next) {
 });
 router.get('/compose', function (req, res, next) {
   console.log(req.cookies)
-  req.cookies.set('userid', 1)
+  // req.cookies.set('userid', 1)
   // 渲染文件 index.ejs
   let menu = getMenu()
   menu[3].class = "active"
