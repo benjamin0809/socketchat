@@ -49,6 +49,23 @@ router.get('/home', async (req, res, next) => {
   res.render('./common/home', { menu: menu, title: 'home', articles: data })
 });
 
+router.get('/index', async function (req, res, next) {
+  // 渲染文件 index.ejs
+  let menu = getMenu()
+  menu[0].class = "active"
+
+  const article = new ArticleDao()
+  let data = await article.getAllArticles(null, [{
+    key:'publishtime',
+    orderby:'desc'
+  }])
+
+  for(let item of data){ 
+    item.publishtime = dateUtils.getCurrentTime(item.publishtime)
+  }
+  res.render('./home', { menu: menu, title: 'home', articles: data })
+});
+
 router.get('/profile', function (req, res, next) {
   // 渲染文件 index.ejs
   let menu = getMenu()
