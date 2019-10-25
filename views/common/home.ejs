@@ -20,9 +20,10 @@
     <div class="list-group">
      
       <% articles.forEach(function(item){ %>
-        <a href="#" class="list-group-item  ">
+        <a href="./details?id=<%= item.id %>" class="list-group-item  ">
           <h4 class="list-group-item-heading"><%= item.title %></h4>
           <p class="list-group-item-text"><%= item.content %></p>
+          <p class="list-group-item-text toolbar"><%= item.publishtime %></p>
         </a> 
       <% }); %> 
     </div>

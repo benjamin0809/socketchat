@@ -14,7 +14,7 @@
   <%- include('../layout/header',{ menu: menu}) -%> 
   <div class="content">  
     <h1> <%= article.title %></h1>
-    <p><%= article.publishtime %> 阅读:<%=article.readqty%></p>
+    <p><%= article.publishtime %> <span class="view-count">阅读:<%=article.readqty%></span></p>
     <div><%- article.content %></div>
 
     <p><%=article.likeqty%>点赞</p>

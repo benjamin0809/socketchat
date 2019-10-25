@@ -5,6 +5,7 @@ var router = express.Router();
 var mutipart = require('connect-multiparty')
 const ArticleDao = require('../modules/article/article')
 const path = require('path');
+const dateUtils = require('../utils/date.utils')
 
 const getMenu = () => {
   return [{
@@ -37,7 +38,14 @@ router.get('/home', async (req, res, next) => {
   menu[0].class = "active"
 
   const article = new ArticleDao()
-  let data = await article.getAllArticles()
+  let data = await article.getAllArticles(null, [{
+    key:'publishtime',
+    orderby:'desc'
+  }])
+
+  for(let item of data){ 
+    item.publishtime = dateUtils.getCurrentTime(item.publishtime)
+  }
   res.render('./common/home', { menu: menu, title: 'home', articles: data })
 });
 
@@ -70,17 +78,36 @@ router.get('/details', async (req, res, next) => {
   let data = await article.getArticleById(id)
   try {
     if (data && data.length > 0) {
+      article.viewArticle(id)
+
       let menu = getMenu()
+
+      let mdoel = data[0];
+      mdoel.publishtime = dateUtils.getCurrentTime(mdoel.publishtime)
+       
       res.render('module/detail', {
         menu: menu,
         article: data[0]
-      })
+      }) 
     }
   } catch (e) {
     res.render('formerror', { e: e })
   }
 
 });
+
+router.post('/like', async (req, res, next) => {
+  const id = req.body.id
+  try {
+    const article = new ArticleDao()
+    let data = await article.insertArticle(entity)
+    res.json(new ResponseSuccess(data).toJson())
+  } catch (e) {
+    res.json(new ResponseError(e).toJson())
+  }
+})
+ 
+
 
 
 router.post('/createArticle', async (req, res, next) => {

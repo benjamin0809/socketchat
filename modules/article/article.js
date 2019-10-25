@@ -73,5 +73,18 @@ class articleDao {
         return this.sqlUtils.insert(TBALE_NAME, articleModel, articleEntity)
     }
 
+    viewArticle(id) {
+        let sql = `UPDATE ${TBALE_NAME} set readqty = IFNULL(readqty,0) + 1 WHERE id = ?`
+        let params = [id]
+        return this.sqlUtils.queryWithParams(sql, params);
+    }
+
+    likeArticle(id) {
+        let sql = `UPDATE ${TBALE_NAME} set likeqty = IFNULL(likeqty,0) + 1 WHERE id = ?`
+        let params = [id]
+        return this.sqlUtils.queryWithParams(sql, params);
+    }
+
+
 }
 module.exports = articleDao;
