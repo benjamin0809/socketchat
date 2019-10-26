@@ -7,6 +7,14 @@ const ArticleDao = require('../modules/article/article')
 const path = require('path');
 const dateUtils = require('../utils/date.utils')
 
+const getUserInfo = (req)=>{ 
+  return {
+    userid: req.cookies.userid,
+    username: req.cookies.username,
+    redirectUrl:req.protocol + "://" +req.headers.host + req.originalUrl
+  }
+}
+
 const getMenu = () => {
   return [{
     name: 'home',
@@ -46,7 +54,7 @@ router.get('/home', async (req, res, next) => {
   for(let item of data){ 
     item.publishtime = dateUtils.getCurrentTime(item.publishtime)
   }
-  res.render('./common/home', { menu: menu, title: 'home', articles: data })
+  res.render('./common/home', { menu: menu, title: 'home', articles: data, user: getUserInfo(req)  })
 });
 
 router.get('/index', async function (req, res, next) {
@@ -63,21 +71,21 @@ router.get('/index', async function (req, res, next) {
   for(let item of data){ 
     item.publishtime = dateUtils.getCurrentTime(item.publishtime)
   }
-  res.render('./home', { menu: menu, title: 'home', articles: data })
+  res.render('./home', { menu: menu, title: 'home', articles: data, user: getUserInfo(req)  })
 });
 
 router.get('/profile', function (req, res, next) {
   // 渲染文件 index.ejs
   let menu = getMenu()
   menu[1].class = "active"
-  res.render('common/profile', { menu: menu, title: 'profile' })
+  res.render('common/profile', { menu: menu, title: 'profile', user: getUserInfo(req)  })
 });
 
 router.get('/message', function (req, res, next) {
   // 渲染文件 index.ejs
   let menu = getMenu()
   menu[2].class = "active"
-  res.render('common/message', { menu: menu, title: 'message' })
+  res.render('common/message', { menu: menu, title: 'message', user: getUserInfo(req)  })
 });
 router.get('/compose', function (req, res, next) {
   console.log(req.cookies)
@@ -85,7 +93,7 @@ router.get('/compose', function (req, res, next) {
   // 渲染文件 index.ejs
   let menu = getMenu()
   menu[3].class = "active"
-  res.render('module/compose', { menu: menu, title: 'compose' })
+  res.render('module/compose', { menu: menu, title: 'compose', user: getUserInfo(req)  })
 });
 
 /* GET users listing. */
@@ -104,7 +112,8 @@ router.get('/details', async (req, res, next) => {
        
       res.render('module/detail', {
         menu: menu,
-        article: data[0]
+        article: data[0], 
+        user: getUserInfo(req) 
       }) 
     }
   } catch (e) {

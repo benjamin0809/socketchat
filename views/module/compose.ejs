@@ -25,6 +25,10 @@
           <input id="title" type="text" name="title" class="form-control" placeholder="标题" aria-describedby="basic-addon1">
         </div>
         <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">摘要</span>
+          <input id="abstract" type="text" name="abstract" class="form-control" placeholder="摘要" aria-describedby="basic-addon1">
+        </div> 
+        <div class="input-group">
             <span class="input-group-addon" id="basic-addon1">栏目</span>
             <select name="subjectid" form="article" class="form-control">
                 <option value="1">诗词</option>
@@ -49,7 +53,7 @@
 </body>
 <!-- Initialize Quill editor -->
 <script>
-    document.cookie = "test1=Hello";
+    document.cookie = "test1= <%- title -%>";
     var quill = new Quill('#editor', {
       theme: 'snow'
     });

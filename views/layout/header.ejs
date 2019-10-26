@@ -1,7 +1,15 @@
 <header class="header"> 
+    
+
+    <% if (user && user.userid) { %>
+      <h2><%= user.username %></h2>
+    <% } else {%>
+      <a id="login"style="position: absolute;top:0;right:0;"
+      href="/connect?redirectUrl=<%=user.redirectUrl%>"><button type="button" >login</button></a> 
+    <% } %>
     <ul class="nav nav-pills"> 
         <% menu.forEach(function(item){ %>
           <li role="presentation" class="<%= item.class %>"><a href="<%= item.url %>"><%= item.name %></a></li>
         <% }); %> 
-      </ul>
+      </ul> 
 </header> 
