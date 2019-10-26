@@ -28,7 +28,7 @@ const getMenu = () => {
 }
 router.get('/', function (req, res, next) {
   // 渲染文件 index.ejs
-  res.redirect('./article/home')
+  res.redirect('./home')
 
 });
 
