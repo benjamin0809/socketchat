@@ -10,6 +10,7 @@ const mailRouter  = require('./mail')
 const emotionRouter  = require('./emotion')
 const articleRouter  = require('./article')
 const loginRouter  = require('./login')
+const wechatRouter  = require('./wechat')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {  
@@ -27,7 +28,8 @@ routers.push({path: '/email',routerName: mailRouter})
 routers.push({path: '/emotion',routerName: emotionRouter})
 routers.push({path: '/article',routerName: articleRouter})
 routers.push({path: '/connect',routerName: loginRouter})
- 
+routers.push({path: '/wechat',routerName: wechatRouter})
+
 routers.forEach(item => { 
   app.use(item.path, item.routerName)  
 })
