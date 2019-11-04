@@ -16,7 +16,7 @@ router.get('/getOpenId', async (req, res, next) => {
 
 
     try {
-        let result = http.get(url)
+        let result = await http.get(url)
         res.json(new ResponseSuccess(result).toJson())
     } catch (e) {
         res.json(new ResponseError(e).toJson())
