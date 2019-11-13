@@ -99,4 +99,52 @@ router.all('/refreshtoken', async function (req, res, next) {
    }  
    
 });
+
+
+router.all('/v2/getuser', async function (req, res, next) { 
+   
+   const accessToken = req.headers.authorization && req.headers.authorization.replace('Bearer ','')
+   
+   const UserID = Token.validToken(accessToken);
+
+   if(UserID) {
+    res.json({
+      account : UserID
+    });
+   } else{
+    res.json(new ResponseError('random', 'token is invalid', 401).toJson());
+   } 
+});
+router.all('/v2/random', async function (req, res, next) { 
+   
+  const accessToken = req.headers.authorization && req.headers.authorization.replace('Bearer ','')
+  
+  const UserID = Token.validToken(accessToken);
+
+  if(UserID) {
+   res.json({
+     value : Math.random()
+   });
+  } else{
+    res.json(new ResponseError('random', 'token is invalid', 401).toJson());
+  } 
+});
+
+router.all('/v2/refreshtoken', async function (req, res, next) { 
+  const refreshToken = req.body.refreshToken
+
+  const UserID = Token.validToken(refreshToken);
+
+   if(UserID) {
+    res.json({
+      jwt: Token.generateUserToken(UserID),
+      account : UserID
+    });
+   } else{
+
+    
+    res.json(new ResponseError('refreshtoken', 'refreshtoken is invalid', 401).toJson());
+   }  
+   
+});
 module.exports = router;
