@@ -56,19 +56,20 @@ class FileDao {
 
     async getFiles(filters, orders, curPage = 1, pageSize = 20) { 
         let sql = `SELECT * from ${TBALE_NAME}`
-        const total_sql = `SELECT COUNT(*) as total from ${TBALE_NAME}`
+        let total_sql = `SELECT COUNT(*) as total from ${TBALE_NAME}`
         let params = []
 
         if(filters && Array.isArray(filters) ){
             let filterCondition = ''  
             for(let item of filters){ 
                 if(item.key && item.value){
-                    let value = '%' + item.value + '%'
+                    let value = "%" + item.value + "%"
                     filterCondition ? filterCondition += ` and ${item.key } like ?` : filterCondition += ` where ${item.key } like ?` 
                     params.push(value)
                 } 
             }
             sql += filterCondition  
+            total_sql+= filterCondition  
         }
 
         if(orders && Array.isArray(orders)){
@@ -83,19 +84,25 @@ class FileDao {
                 }  
             }
             sql += orderCondition  
+            total_sql+= orderCondition  
         } 
 
-        sql += `   limit ${(curPage-1)* pageSize}, ${pageSize}`
+        sql += ` limit ${(curPage-1)* pageSize}, ${pageSize};`
+        
         //console.log(sql,params)
 
         let result = {
             data: [],
             total: 0
-        }
+        };
+ 
+        const data = await this.sqlUtils.queryWithParams(sql + total_sql, params.concat(params));
+        result.total = data[1][0].total
+        result.data  = data[0]
 
-       const query = await this.sqlUtils.queryWithParams(total_sql, {}) 
-        result.total = query[0].total
-        result.data = await this.sqlUtils.queryWithParams(sql, params)
+    //    const query = await this.sqlUtils.queryWithParams(total_sql, {}) 
+    //     result.total = query[0].total
+    //     result.data = await this.sqlUtils.queryWithParams(sql + total_sql, params.concat(params))
         
         return result; 
     }
