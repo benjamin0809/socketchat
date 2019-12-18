@@ -52,8 +52,8 @@ class DateUtils {
     static getCurrentTime(time) { 
       var today = !time ? new Date() : new Date(time); 
       var year = today.getFullYear(); 
-      var month = today.getMonth() + 1; 
-      var day = today.getDate(); 
+      var month = ('0'+ (today.getMonth() + 1)).slice(-2);
+      var day = ('0'+ (today.getDate() + 1)).slice(-2);
       var hours = today.getHours(); 
       var minutes = today.getMinutes() < 10 ?  '0' + today.getMinutes() : today.getMinutes(); 
       var seconds = today.getSeconds() < 10 ?  '0' + today.getSeconds() : today.getSeconds();; 
@@ -61,12 +61,12 @@ class DateUtils {
       return timeString; 
     }  
 
-     //获取当前时间 
-     static getCurrentDate() { 
-      var today = new Date(); 
+     //获取当前日期
+     static getCurrentDate(date) { 
+      var today = !date ? new Date() : new Date(date); 
       var year = today.getFullYear(); 
-      var month = today.getMonth() + 1; 
-      var day = today.getDate();  
+      var month = ('0'+ (today.getMonth() + 1)).slice(-2); 
+      var day = ('0'+ (today.getDate() + 1)).slice(-2);
       var timeString = year + "-" + month + "-" + day ; 
       return timeString; 
     } 

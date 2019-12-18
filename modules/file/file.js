@@ -21,6 +21,13 @@ class FileDao {
         return this.sqlUtils.queryWithParams(sql, params);
     }
 
+    getFileType() {
+        let sql = `
+        select filetype from ${TBALE_NAME} 
+        group by filetype;`
+        return this.sqlUtils.queryWithParams(sql, []);
+    }
+
     getAllFiles(filters, orders) { 
         let sql = `SELECT * from ${TBALE_NAME}`
         let params = []
@@ -63,9 +70,19 @@ class FileDao {
             let filterCondition = ''  
             for(let item of filters){ 
                 if(item.key && item.value){
-                    let value = "%" + item.value + "%"
-                    filterCondition ? filterCondition += ` and ${item.key } like ?` : filterCondition += ` where ${item.key } like ?` 
-                    params.push(value)
+                    if(!item.scope){
+                        let value = "%" + item.value + "%"
+                        filterCondition ? 
+                            filterCondition += ` and ${item.key } like ?` :
+                            filterCondition += ` where ${item.key } like ?` 
+                        params.push(value)
+                    }else {
+                        filterCondition ? 
+                            filterCondition += ` and ${item.key } between ? and ?` : 
+                            filterCondition += ` where ${item.key } between ? and ?` 
+                        params.push(...item.value)
+                    }
+                    
                 } 
             }
             sql += filterCondition  

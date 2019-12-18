@@ -289,5 +289,15 @@ router.all('/getFiles', function (req, res, next) {
   })
 })
  
+router.all('/getFileType', function (req, res, next) { 
+  const fileDao = new FileDao(); 
+  fileDao.getFileType().then(data => {
+    res.send(data)
+  }).catch(e => {
+    res.send(e)
+  })
+})
+
+
 
 module.exports = router;
