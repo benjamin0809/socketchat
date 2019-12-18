@@ -31,7 +31,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'))); 
-app.use(express.static(path.join(__dirname, 'front/frontend'))); 
+app.use(express.static(path.join(__dirname, 'front/vue-typescript-admin-template'))); 
 app.use(express.static(path.join(__dirname, 'front'))); 
 app.use(favicon(path.join(__dirname,  './favicon.ico')))
 

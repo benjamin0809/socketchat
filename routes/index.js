@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const app =  express()
+const path = require('path'); 
 /** import module router */ 
 const usersRouter = require('./users')
 const hupuRouter = require('./hupu')
@@ -17,6 +18,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/admin', function(req, res, next) { 
+  res.sendFile(path.join(__dirname, '../front/vue-typescript-admin-template/dist/index.html'));
+});
 
 const routers = []
 routers.push({path: '/',routerName: router})
