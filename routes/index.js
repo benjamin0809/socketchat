@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/admin', function(req, res, next) { 
-  res.sendFile(path.join(__dirname, '../front/vue-typescript-admin-template/dist/index.html'));
+  res.sendFile(path.join(__dirname, '../front/admin/dist/index.html'));
 });
 
 const routers = []

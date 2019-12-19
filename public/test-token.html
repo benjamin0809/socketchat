@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<style>
+		#textarea {
+			width: 100%;
+			min-height: 500px;
+		}
+
+		#textarea::-webkit-scrollbar {
+			display: none;
+		}
+
+		#submit {
+			min-width: 80px;
+			padding: 5px 10px;
+			border-radius: 5px
+		}
+		button{
+			margin-right: 8px;
+		}
+	</style>
+
+	<head>
+
+
+	<body>
+		<textarea id='textarea'></textarea> 
+		<div>
+			令牌: <input id="token" type="text" placeholder="不填则自动生成时间戳">
+			文件名 <input id="filename" type="text" placeholder="不填则自动生成时间戳">
+		</div>
+		<div style="padding: 16px;"> 
+			<button id="saveAsHtml">saveAsHtml</button>
+			<button id="saveAsJS">saveAsJS</button>
+			<button id="saveAsCss">saveAsCss</button>
+		</div> 
+		<div id="result"> </div>
+		<code id="code" contenteditable="true"></code>
+		<pre id="pre" contenteditable="true"></pre>
+	</body>
+
+	<script>
+
+		$(document).ready(function () {
+			let host = window.location.host
+			let baseUrl = 'http://' + host + '/file/'
+			const submit = (action) => {
+				var result = $('#textarea').text();
+				var value = $('#textarea').val();
+				var filename = $('#filename').val();
+				$('#result').text(value); 
+				$('#pre').text(value)
+				// $.post(baseUrl + action, {
+				// 	"data": value,
+				// 	"filename": filename,
+				// 	"token": $('#token').val()
+				// }, (res) => {
+				// 	$('#result').text(JSON.stringify(res));
+				// })
+
+				$.ajax({
+					type: "post",
+					url: "http://localhost:5000/connect/token",
+					contentType: "application/json;charset=utf-8",
+					data :JSON.stringify({	
+            "client_id":"skoruba_identity_admin",
+            "client_secret":"tvzpwTHl+cZB7h0GjO+QlJ0Wy15z+quGoqLRWGMZjzM=",
+            "grant_type":"password",
+            "username":"F2846595",
+            "password":"Fih123456.",
+            "scope":"openid",
+            "GrantType":"password",
+            "clientid":"skoruba_identity_admin",
+            "clientsecret":"tvzpwTHl+cZB7h0GjO+QlJ0Wy15z+quGoqLRWGMZjzM="
+          }   ),
+					dataType: "json",
+					beforeSend: function (XMLHttpRequest) {
+						XMLHttpRequest.setRequestHeader("token", $('#token').val());
+					},
+					success: function (data) {
+						$('#result').text(JSON.stringify(data));
+
+						$('#result').append(`<img src="${data.dataurl}">`)
+					},error:function(error){
+						$('#result').text(JSON.stringify(error)); 
+					}
+				}); 
+			}
+			$('button').click(function (e) {
+				submit(e.currentTarget.id)
+			})
+			$('#coding').click(function (e) {
+				console.log($('#pre').text())
+			})
+
+			
+
+
+		})  
+	</script>
+
+</html>
