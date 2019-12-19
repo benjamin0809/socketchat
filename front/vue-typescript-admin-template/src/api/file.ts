@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const baseURL = ~location.host.indexOf('localhost') ? 'http://localhost/' : 'http://www.popochiu.com/' ;
+export const baseURL = ~location.host.indexOf('localhost') ? 'http://localhost/' : location.origin + '/' ;
 const token = localStorage.getItem('token') ;
 const instance = axios.create({
   baseURL: baseURL,

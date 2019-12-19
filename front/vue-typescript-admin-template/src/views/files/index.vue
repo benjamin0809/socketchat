@@ -268,7 +268,7 @@ export default class extends Vue {
 
   private handleEdit(index: number, row: any) {
     let url = row.fullpath
-    if (~url.indexOf('http')) {
+    if (!~url.indexOf('http')) {
       url = baseURL + url
     }
     console.log(url)
