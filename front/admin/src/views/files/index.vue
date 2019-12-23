@@ -1,29 +1,25 @@
 <template>
-  <div class="app-container">
-    <div
-      v-if="showbackdrop"
-      class="backdrop"
-      @click.stop="closeBackdrop"
-    >
-      <img
-        id="qrcode"
-        :src="backdropimg"
-      >
+  <div class="app-container" :class="{ 'mobile': isMobileDevice }">
+    <div v-if="showbackdrop" class="backdrop" @click.stop="closeBackdrop">
+      <img id="qrcode" :src="backdropimg" />
     </div>
     <el-container style="border: 1px solid #eee">
       <el-container>
-        <el-header style="text-align: right; font-size: 12px">
-          <el-form
-            :inline="true"
-            :model="formInline"
-            class="demo-form-inline"
-          >
-            <el-form-item label="CreateTime">
+        <el-header>
+          <el-form :inline="true" :model="formInline" class="demo-form-inline" >
+            <el-form-item label="File name">
+              <el-input v-model="formInline.filename" placeholder="e.g 123" />
+            </el-form-item>
+
+            <el-form-item label="Create ST">
               <el-date-picker
                 v-model="formInline.startdate"
                 type="datetime"
                 placeholder="start datetime"
-              />to
+              />
+            </el-form-item>
+
+              <el-form-item label="Create ET">
               <el-date-picker
                 v-model="formInline.enddate"
                 type="datetime"
@@ -32,45 +28,17 @@
             </el-form-item>
 
             <el-form-item label="Orders">
-              <el-select
-                v-model="select"
-                placeholder="Select"
-                @change="getFiles"
-              >
-                <el-option
-                  label="按时间降"
-                  value="UNIX_TIMESTAMP(createTime)-desc"
-                />
-                <el-option
-                  label="按时间升 "
-                  value="UNIX_TIMESTAMP(createTime)-asc"
-                />
-                <el-option
-                  label="文件大小升"
-                  value="fileSize-asc"
-                />
-                <el-option
-                  label="文件大小降"
-                  value="fileSize-desc"
-                />
+              <el-select v-model="select" placeholder="Select" @change="getFiles">
+                <el-option label="按时间降" value="UNIX_TIMESTAMP(createTime)-desc" />
+                <el-option label="按时间升 " value="UNIX_TIMESTAMP(createTime)-asc" />
+                <el-option label="文件大小升" value="fileSize-asc" />
+                <el-option label="文件大小降" value="fileSize-desc" />
               </el-select>
             </el-form-item>
 
-            <el-form-item label="File name">
-              <el-input
-                v-model="formInline.filename"
-                placeholder="e.g 123"
-              />
-            </el-form-item>
             <el-form-item label="File Type">
-              <el-select
-                v-model="formInline.filetype"
-                placeholder="e.g image/jpeg"
-              >
-                <el-option
-                  label="all"
-                  value
-                />
+              <el-select v-model="formInline.filetype" placeholder="e.g image/jpeg">
+                <el-option label="all" value />
                 <el-option
                   v-for="item in fileType"
                   :key="item.filetype"
@@ -80,44 +48,18 @@
               </el-select>
             </el-form-item>
             <el-form-item>
-              <el-button
-                type="primary"
-                @click="getFiles"
-              >
-                Query
-              </el-button>
+              <el-button type="primary" @click="getFiles">Query</el-button>
             </el-form-item>
           </el-form>
         </el-header>
 
         <el-main>
-          <el-table
-            v-loading="loading"
-            :data="tableData"
-          >
-            <el-table-column
-              prop="createTime"
-              label="createTime"
-              width="160"
-              onmouseover="mouse"
-            />
-            <el-table-column
-              prop="filename"
-              label="filename"
-            />
-            <el-table-column
-              prop="fullpath"
-              label="fullpath"
-            />
-            <el-table-column
-              prop="fileSize"
-              label="fileSize"
-              min-width="120"
-            />
-            <el-table-column
-              prop="handle"
-              label="handle"
-            >
+          <el-table v-loading="loading" :data="tableData" v-if="!isMobileDevice">
+            <el-table-column prop="createTime" label="createTime" width="160" onmouseover="mouse" />
+            <el-table-column prop="filename" label="filename" />
+            <el-table-column prop="fullpath" label="fullpath" />
+            <el-table-column prop="fileSize" label="fileSize" min-width="120" />
+            <el-table-column prop="handle" label="handle">
               <template slot-scope="scope">
                 <el-button
                   type="primary"
@@ -133,19 +75,49 @@
                   @click="handleDelete(scope.$index, scope.row)"
                 />
 
-                <el-button
-                  circle
-                  @click="mouse($event,scope.row)"
-                >
-                  <svg-icon
-                    name="QR-code"
-                    class="icon"
-                  />
+                <el-button circle @click="mouse($event,scope.row)">
+                  <svg-icon name="QR-code" class="icon" />
                 </el-button>
               </template>
             </el-table-column>
           </el-table>
 
+<el-table  v-loading="loading" v-if="isMobileDevice"
+    :data="tableData"
+    style="width: 100%">
+    <el-table-column type="expand">
+      <template slot-scope="props">
+        <p>fullpath: {{ props.row.fullpath }}</p>
+        <p>fileSize: {{ props.row.fileSize }}</p>
+        <p>width: {{ props.row.width }}</p>
+        <p>height: {{ props.row.height }}</p>
+        <el-button
+                  type="primary"
+                  icon=" el-icon-view"
+                  circle
+                  @click="handleEdit(scope.$index, scope.row)"
+                />
+
+                <el-button
+                  type="danger"
+                  icon="el-icon-delete"
+                  circle
+                  @click="handleDelete(scope.$index, scope.row)"
+                />
+                <el-button circle @click="mouse($event,scope.row)">
+                  <svg-icon name="QR-code" class="icon" />
+                </el-button> 
+      </template>
+    </el-table-column>
+    <el-table-column
+      label="createTime"
+      prop="createTime">
+    </el-table-column>
+    <el-table-column
+      label="fileName"
+      prop="filename">
+    </el-table-column>
+  </el-table>
           <div class="block">
             <el-pagination
               :current-page.sync="currentPage"
@@ -164,181 +136,180 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator'
-import { toggleClass } from '@/utils'
-import { fetchFiles, removeFile, getFileType, baseURL } from '@/api/file'
-import { dateFormat } from '@/utils/date'
-import '@/assets/custom-theme/index.css' // the theme changed version element-ui css
+import { Component, Vue, Watch } from "vue-property-decorator";
+import { toggleClass, isMobileDevice } from "@/utils";
+import { fetchFiles, removeFile, getFileType, baseURL } from "@/api/file";
+import { dateFormat } from "@/utils/date";
+import "@/assets/custom-theme/index.css"; // the theme changed version element-ui css
 @Component({
-  name: 'File'
+  name: "File"
 })
 export default class extends Vue {
+  private isMobileDevice = isMobileDevice();
   private QRCode: any;
   private currentPage = 1;
   private pageSize = 20;
   private total = 1000;
-  private keyword = '';
-  private select = 'UNIX_TIMESTAMP(createTime)-desc';
+  private keyword = "";
+  private select = "UNIX_TIMESTAMP(createTime)-desc";
   private loading = false;
-  private backdropimg = '';
+  private backdropimg = "";
   private fileType = [];
   private formInline = {
-    filename: '',
-    filetype: '',
-    startdate: '',
-    enddate: ''
+    filename: "",
+    filetype: "",
+    startdate: "",
+    enddate: ""
   };
 
   private onSubmit() {
-    console.log(this.formInline)
+    console.log(this.formInline);
   }
   private mouse($event: any, row: any) {
-    console.log($event, row)
+    console.log($event, row);
 
-    this.showbackdrop = true
+    this.showbackdrop = true;
     this.QRCode.toDataURL(row.fullpath).then((url: string) => {
-      this.backdropimg = url
-    })
+      this.backdropimg = url;
+    });
   }
   private handleCurrentChange(val: number) {
-    console.log(`current page: ${val}`)
-    this.currentPage = val
-    this.getFiles()
+    console.log(`current page: ${val}`);
+    this.currentPage = val;
+    this.getFiles();
   }
   private closeBackdrop() {
-    this.showbackdrop = false
+    this.showbackdrop = false;
   }
 
   private getFileType() {
     getFileType().then(data => {
-      this.fileType = data
-    })
+      this.fileType = data;
+    });
   }
   private getFiles() {
-    this.loading = true
+    this.loading = true;
     const queryCondi = {
       orders: [{}],
       filters: [{}],
       currentPage: this.currentPage,
       pageSize: this.pageSize
-    }
+    };
     queryCondi.orders.push({
-      orderby: this.select.split('-').pop(),
-      key: this.select.split('-')[0],
+      orderby: this.select.split("-").pop(),
+      key: this.select.split("-")[0],
       priority: 2
-    })
+    });
     if (this.formInline.filename) {
       queryCondi.filters.push({
-        key: 'filename',
+        key: "filename",
         value: this.formInline.filename
-      })
+      });
     }
 
     if (this.formInline.filetype) {
       queryCondi.filters.push({
-        key: 'filetype',
+        key: "filetype",
         value: this.formInline.filetype
-      })
+      });
     }
 
     if (this.formInline.startdate || this.formInline.enddate) {
       queryCondi.filters.push({
-        key: 'createtime',
+        key: "createtime",
         value: [
-          this.formInline.startdate
-            ? dateFormat(this.formInline.startdate) : 0,
+          this.formInline.startdate ? dateFormat(this.formInline.startdate) : 0,
           this.formInline.enddate
-            ? dateFormat(this.formInline.enddate) : dateFormat('9999-01-01')
+            ? dateFormat(this.formInline.enddate)
+            : dateFormat("9999-01-01")
         ],
         scope: true
-      })
+      });
     }
 
     fetchFiles(queryCondi)
       .then(res => {
-        this.tableData = res.data
-        this.total = res.total
-        this.loading = false
+        this.tableData = res.data;
+        this.total = res.total;
+        this.loading = false;
       })
       .catch(err => {
-        this.loading = false
-        console.error(err)
-      })
+        this.loading = false;
+        console.error(err);
+      });
   }
 
   private handleEdit(index: number, row: any) {
-    let url = row.fullpath
-    if (!~url.indexOf('http')) {
-      url = baseURL + url
+    let url = row.fullpath;
+    if (!~url.indexOf("http")) {
+      url = baseURL + url;
     }
-    console.log(url)
-    window.open(url)
-    console.log(index, row)
+    console.log(url);
+    window.open(url);
+    console.log(index, row);
   }
 
   private handleDelete(index: number, row: any) {
-    console.log(index, row)
-    if (!row.id) return
+    console.log(index, row);
+    if (!row.id) return;
     removeFile(row.id)
       .then(res => {
-        this.tableData.splice(index, 1)
+        this.tableData.splice(index, 1);
       })
       .catch(err => {
-        console.error(err)
-      })
+        console.error(err);
+      });
   }
   private handleSizeChange(val: number) {
-    console.log(`${val} items per page`)
-    this.pageSize = val
+    console.log(`${val} items per page`);
+    this.pageSize = val;
   }
   private showbackdrop = false;
-  public tableData = [
-    {
-      id: 1576329929503,
-      masterid: 1576329929503,
-      filename: 'B5FD9195-208A-4764-8740-37278AA84FC7.jpeg',
-      path:
-        '/usr/local/app/socketchat/public/upload/B5FD9195-208A-4764-8740-37278AA84FC7.jpeg',
-      fullpath:
-        'http://www.popochiu.com/upload/B5FD9195-208A-4764-8740-37278AA84FC7.jpeg',
-      filetype: 'image/jpeg',
-      sourceUrl: null,
-      createTime: '2019-12-14 21:25:29',
-      modifiedTime: '2019-12-14 21:25:29',
-      fileSize: 75997,
-      width: 0,
-      height: 0,
-      extra: null
-    },
-    {
-      id: 1576318777342,
-      masterid: 1576318777342,
-      filename: 'S60430-242223.jpg',
-      path: '/usr/local/app/socketchat/public/upload/S60430-242223.jpg',
-      fullpath: 'http://www.popochiu.com/upload/S60430-242223.jpg',
-      filetype: 'image/jpeg',
-      sourceUrl: null,
-      createTime: '2019-12-14 18:19:37',
-      modifiedTime: '2019-12-14 18:19:37',
-      fileSize: 652946,
-      width: 0,
-      height: 0,
-      extra: null
-    }
-  ];
+  public tableData = [];
 
   private created() {
-    console.log('created')
-    this.getFiles()
-    this.getFileType()
+    this.getFiles();
+    this.getFileType();
   }
 }
 </script>
 
 <style lang="scss" scoped>
-// .el-select .el-input {
-//   width: 150px;
-// }
+
+.mobile{
+  .el-main {
+      padding: 8px;
+  }
+  .el-table__expanded-cell[class*=cell]{
+    padding: 8px;
+  }
+
+  
+  .el-header{
+    padding: 8px;
+  }
+
+  .el-form-item__label{
+    min-width: 80px;
+  }
+}
+
+.el-table__expanded-cell{
+    padding: 8px;
+  }
+form label{
+ min-width: 80px;
+}
+
+el-header {
+  text-align: left;
+  font-size: 12px;
+  height: auto !important;
+}
+
+header {
+  height: auto !important;
+}
 .input-with-select .el-input-group__prepend {
   background-color: #fff;
 }
