@@ -5,7 +5,7 @@
     </div>
     <el-container style="border: 1px solid #eee">
       <el-container>
-        <el-header>
+        <el-header class="expand">
           <el-form :inline="true" :model="formInline" class="demo-form-inline" >
             <el-form-item label="File name">
               <el-input v-model="formInline.filename" placeholder="e.g 123" />
@@ -87,24 +87,24 @@
     style="width: 100%">
     <el-table-column type="expand">
       <template slot-scope="props">
-        <p>fullpath: {{ props.row.fullpath }}</p>
-        <p>fileSize: {{ props.row.fileSize }}</p>
-        <p>width: {{ props.row.width }}</p>
-        <p>height: {{ props.row.height }}</p>
+        <p><label>fullpath:</label> {{ props.row.fullpath }}</p>
+        <p><label>fileSize:</label>  {{ props.row.fileSize }}</p>
+        <p><label>width:</label>  {{ props.row.width }}</p>
+        <p><label>height:</label>  {{ props.row.height }}</p>
         <el-button
                   type="primary"
                   icon=" el-icon-view"
                   circle
-                  @click="handleEdit(scope.$index, scope.row)"
+                  @click="handleEdit(props.$index, props.row)"
                 />
 
                 <el-button
                   type="danger"
                   icon="el-icon-delete"
                   circle
-                  @click="handleDelete(scope.$index, scope.row)"
+                  @click="handleDelete(props.$index, props.row)"
                 />
-                <el-button circle @click="mouse($event,scope.row)">
+                <el-button circle @click="mouse($event,props.row)">
                   <svg-icon name="QR-code" class="icon" />
                 </el-button> 
       </template>
@@ -240,6 +240,7 @@ export default class extends Vue {
   }
 
   private handleEdit(index: number, row: any) {
+    debugger
     let url = row.fullpath;
     if (!~url.indexOf("http")) {
       url = baseURL + url;
@@ -278,28 +279,16 @@ export default class extends Vue {
 
 .mobile{
   .el-main {
-      padding: 8px;
-  }
-  .el-table__expanded-cell[class*=cell]{
-    padding: 8px;
-  }
-
-  
+      padding: 0px;
+  }  
   .el-header{
     padding: 8px;
-  }
+  } 
 
-  .el-form-item__label{
-    min-width: 80px;
+  .expand{
+    height: auto !important;
   }
-}
-
-.el-table__expanded-cell{
-    padding: 8px;
-  }
-form label{
- min-width: 80px;
-}
+}  
 
 el-header {
   text-align: left;
@@ -307,7 +296,8 @@ el-header {
   height: auto !important;
 }
 
-header {
+header { 
+  transition: all 0.35s;
   height: auto !important;
 }
 .input-with-select .el-input-group__prepend {
