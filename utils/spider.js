@@ -217,7 +217,7 @@ class Sipder {
 
           let $ = cheerio.load(res.text);
 
-          let articalList = $('.common-list a')
+          let articalList = $('.post-wrap a')
           let tasks = []
           articalList.each((idx, element) => {
             let $element = $(element);
@@ -283,15 +283,15 @@ class Sipder {
             return;
           }
           let $ = cheerio.load(resp.text);
-          let title = $('header .headline').text(); // 帖子标题
-          let avatar = $('.detail-content .detail-author img').attr('src'); // 用户头像
-          let username = $('.detail-content .author-name a').text(); // 用户名称
+          let title = $('.bbs-user-title').text(); // 帖子标题
+          let avatar = $('.bbs-user-info-avator img').attr('src'); // 用户头像
+          let username = $('.bbs-user-info-name').text(); // 用户名称
  
           await qiniu.fetchWebUrl(avatar, username)
           avatar = await qiniu.getPublicDownloadUrl(username)
 
          
-          let stime =  dateUtils.translateHupuTime($('header .times').text()); // 文章发帖时间  
+          let stime =  dateUtils.translateHupuTime($('.bbs-user-info-time').text()); // 文章发帖时间  
           let timestamp = new Date().getTime().toString()
           let article = {
             id: Number(timestamp.substr(5, timestamp.length - 1) + articleHref.replace(/[^0-9]/ig, "")),
@@ -303,7 +303,11 @@ class Sipder {
             sourceUrl: href,
             images: []
           } 
-          $('.article-content .article-deposit-pic').each(async (id, ele) => {
+          let contetn = $('.bbs-thread-content center center center')
+          let contetn2 = $('.bbs-thread-content center center center .img-wrapper-embedded')
+          let contetn3 = $('.bbs-thread-content center center center img')
+          let imagesdasd =  $('.img-wrapper-embedded img')
+          $(contetn3).each(async (id, ele) => {
             let $ele = $(ele);
             let src = $ele.attr('src') || $ele.attr('data-src');
             let url = src.split('?x-oss-process=image').slice(0, 1).join('');
