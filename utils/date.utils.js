@@ -239,10 +239,14 @@ class DateUtils {
       }else if(/小时/.test(time)){
           var hours = parseInt(time)
           result = new Date(new Date().getTime() - hours * 60 * 60 * 1000)
+      }else if(/阅读/.test(time)){
+        time += '#'
+        time = time.replace(/阅读.*?#/g, '')
       }else{
           time = new Date().getFullYear() + '-' + time
           result = new Date(time)
       }
+      console.log(time,result)
       return this.getCurrentTime(result)
   }
   };
