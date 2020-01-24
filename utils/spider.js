@@ -217,7 +217,7 @@ class Sipder {
 
           let $ = cheerio.load(res.text);
 
-          let articalList = $('.post-wrap a')
+          let articalList = $('.seo-dom a')
           let tasks = []
           articalList.each((idx, element) => {
             let $element = $(element);
@@ -287,6 +287,7 @@ class Sipder {
           let avatar = $('.bbs-user-info-avator img').attr('src'); // 用户头像
           let username = $('.bbs-user-info-name').text(); // 用户名称
  
+          if( !title &&  !username) return
           await qiniu.fetchWebUrl(avatar, username)
           avatar = await qiniu.getPublicDownloadUrl(username)
 
