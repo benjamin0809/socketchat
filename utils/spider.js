@@ -287,9 +287,14 @@ class Sipder {
           let avatar = $('.bbs-user-info-avator img').attr('src'); // 用户头像
           let username = $('.bbs-user-info-name').text(); // 用户名称
  
-          if( !title &&  !username) return
-          await qiniu.fetchWebUrl(avatar, username)
-          avatar = await qiniu.getPublicDownloadUrl(username)
+          if(avatar) {
+            await qiniu.fetchWebUrl(avatar, username)
+          }
+          
+          if(username){
+            avatar = await qiniu.getPublicDownloadUrl(username)
+          }
+          
 
          
           let stime =  dateUtils.translateHupuTime($('.bbs-user-info-time').text()); // 文章发帖时间  
