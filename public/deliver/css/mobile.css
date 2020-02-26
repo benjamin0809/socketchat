@@ -4,6 +4,7 @@
 
 .mobile .form{
     margin: 2rem;
+    width:auto;
 }
 
 .mobile .form input{
@@ -27,6 +28,7 @@
 }
 
 .mobile .carousel{ 
+    height:auto;
     width: 100%;
     padding-bottom: 56.25%;
     background-size: cover;
