@@ -13,3 +13,30 @@
 .mobile .header{
     height: 44px;
 }
+
+.mobile .header img{
+    margin-left: 8px;
+    max-width: 80vw;
+    margin-top: 2px;
+}
+
+.mobile .locale{
+    float: right;
+    margin: auto;
+    margin-right: 4px;
+}
+
+.mobile .carousel{ 
+    width: 100%;
+    padding-bottom: 56.25%;
+    background-size: cover;
+    background-position: center;
+}
+
+.mobile .form{
+    margin: 1rem;
+}
+
+.mobile .deliver-details{
+    margin: 1rem;
+}

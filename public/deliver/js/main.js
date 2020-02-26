@@ -12,10 +12,10 @@
     function saveReport() {
         $('#submit').attr('disabled', true)
       $('#data').empty()
-      $('.result-list').empty()  
+      // $('.result-list').empty()  
       submitForm().then(data => {
         successAppend(data)
-        newAppend(data)
+        // newAppend(data)
         $('#submit').attr('disabled', false)
       }).catch(err => {
         failedAppend()
@@ -39,23 +39,23 @@
     }
 
 
-    function newAppend(data) {
-      for (var i = 0; i < data.length; i++) {
-        var str = `<li class="${i == 0 ? 'last' : ''}">
-            <div class="time">
-              <div>${data[i].datatime}</div>
-              <div>${data[i].datatime}</div>
-            </div>
-            <div class="dot"></div>
-            <div class="text">${data[i].desc}</div>
-          </li>`
-        $('.result-list').append(str)
-      }
-    }
+    // function newAppend(data) {
+    //   for (var i = 0; i < data.length; i++) {
+    //     var str = `<li class="${i == 0 ? 'last' : ''}">
+    //         <div class="time">
+    //           <div>${data[i].datatime}</div>
+    //           <div>${data[i].datatime}</div>
+    //         </div>
+    //         <div class="dot"></div>
+    //         <div class="text">${data[i].desc}</div>
+    //       </li>`
+    //     $('.result-list').append(str)
+    //   }
+    // }
     
     function failedAppend() {
       var str = ` 
-              <div class="layui-timeline-content layui-text">
+              <div class="layui-timeline-content layui-text nodata">
                   未追踪到订单
               </div> `
       $('#data').append(str)

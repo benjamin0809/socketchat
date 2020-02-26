@@ -3,17 +3,13 @@
 }
 
 .form{
-    margin: 1rem;
+    margin: 1.5rem auto;
+    width: 400px;
 }
 
 .form input{
     margin-bottom: 1rem;
 }
-
-html{
-    /* margin: 16px */
-}
-
 
 .header{
     height: 60px;
@@ -23,9 +19,9 @@ html{
 
 .locale{
     float: right;
-    margin: auto;
-    margin-right: 4px;
-}
+    margin-top: 8px;
+    margin-right: 15px;
+} 
 
 .locale a:visited {
     color: #fadccf;
@@ -49,120 +45,43 @@ html{
 .header img{
     margin-left: 8px;
     max-width: 80vw;
-    margin-top: 2px;
+    margin-top: 8px;
 }
 
 .deliver-details{
-    margin: 1rem;
+    margin: 1.5rem calc(50% - 200px);
 }
 
-.carousel{
-    background-image: url(./img/2.jpg);
+.carousel{ 
+    height: 30vh;
     width: 100%;
-    padding-bottom: 56.25%;
+    padding-bottom: 0%;
     background-size: cover;
     background-position: center;
 }
+@media screen and (min-width: 1440px) {
+    .carousel{ 
+        height: 35vh; 
+    }
+  }
 
-.result-success {
-    position: relative;
-    padding-bottom: 1rem;
-}
-
-.result-top {
-    position: relative;
-    padding: 10px 0;
-    font-size: .875rem;
-}
-
-.result-top time {
-    position: relative;
-    width: 6rem;
+  @media screen and (min-width: 1920px) {
+    .carousel{ 
+        height: 40vh; 
+    }
+  }
+ 
+.nodata{
     text-align: center;
 }
-
-.result-top span {
-    padding-left: 2em;
-}
-
-.flex {
-    display: -webkit-flex;
-    display: flex;
-}
-
-.result-list li.last {
-    color: #ff7f02;
-}
-
-.result-list li {
-    display: -webkit-flex;
-    display: flex;
-    padding-bottom: 1.5em;
-    color: #888;
-}
-
-.result-list .time {
-    width: 6rem;
-    text-align: center;
-    font-size: .75rem;
-}
-
-.last .time {
-    color: #ff7f02;
-}
-
-.result-list .dot {
-    width: 5px;
-    height: 5px;
-    margin-top: 6px;
-    border-radius: 50%;
-    background: #888;
-    box-shadow: 0 0 0 2px rgba(136,136,136,.3);
-}
-
-.result-list .last .dot {
-    width: 9px;
-    height: 9px;
-    margin-left: -4px;
-    -webkit-transform: translate(2px);
-    transform: translate(2px);
-    background: #ff7f02;
-    box-shadow: 0 0 0 2px rgba(255,127,2,.2);
-}
-
-.result-list .text {
-    position: relative;
-    flex: 1;
-    width: 0;
-    padding: 0 1em;
-    font-size: .875rem;
-}
-
-.result-list .last .text:before {
-    top: 11px;
-}
-
-.result-list .text:before {
-    position: absolute;
-    left: -3px;
-    top: 6px;
-    margin-top: 6px;
-    bottom: -2em;
-    border-left: 1px solid rgba(136,136,136,.3);
-    content: '';
-}
-
-.feedback {
-    padding-top: .975rem;
-    text-align: center;
-    color: #bebebe;
-    font-size: .8125rem;
-}
-
 .keypon-btn{
     background-color: #ec6d1e;
 }
 
 .keypon-btn[disabled]{
     background-color: #e08c57;
+}
+
+.layui-timeline-axis{
+    color: #ec6d1e
 }
