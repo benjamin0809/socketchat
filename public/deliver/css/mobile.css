@@ -1,0 +1,15 @@
+.mobile .input{
+    margin: 1rem;
+}
+
+.mobile .form{
+    margin: 2rem;
+}
+
+.mobile .form input{
+    margin-bottom: 1rem;
+}
+
+.mobile .header{
+    height: 44px;
+}

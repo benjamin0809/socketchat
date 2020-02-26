@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title></title>
+ 
+  <script src="./js/utils.js"></script>
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <script src="./layui/layui.all.js"></script>
+  <script src="http://code.jquery.com/jquery-2.1.1-rc2.min.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/mobile.css">
+
+</head>
+
+<body>
+  <header class="header">
+    <img src="./img/logo.jpg">
+    <div class="locale">
+      <a href="./default.html">
+        En
+      </a> 
+    </div>
+  </header>
+  <div>
+    <div class="carousel" style="background-image: url('./img/2.jpg');">
+
+    </div>
+    <form class="form" action="" onsubmit="return saveReport();">
+      <input id="queryno" type="search" name="title" required lay-verify="required" placeholder="运单号" autocomplete="off"
+        class="layui-input">
+
+      <button id="submit" type="submit" class="layui-btn layui-btn-fluid keypon-btn">追踪  </button>
+    </form>
+
+    <ul id="data" class="layui-timeline deliver-details">
+
+    </ul>
+    <section class="result-box">
+      <div class="result-success" style="">
+        <div id="resultTop" class="flex result-top">
+          <time class="up">时间</time>
+          <span>地点和跟踪进度</span> 
+        </div>
+        <ul class="result-list sortup">
+           
+        </ul>
+        <div class="more bottom5" style="display: none;"><span class="more-text"></span></div>
+        <!---->
+        <div class="feedback">快递有问题？可拨打<a href="tel:95554">启邦国际</a>客服电话</div>
+      </div>
+    </section>
+
+  </div>
+  <script src="./js/main.js">
+
+  </script>
+</body>
+
+</html>

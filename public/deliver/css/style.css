@@ -1,0 +1,168 @@
+.input{
+    margin: 1rem;
+}
+
+.form{
+    margin: 1rem;
+}
+
+.form input{
+    margin-bottom: 1rem;
+}
+
+html{
+    /* margin: 16px */
+}
+
+
+.header{
+    height: 60px;
+    background: #ec6d1e;
+    position: relative;
+}
+
+.locale{
+    float: right;
+    margin: auto;
+    margin-right: 4px;
+}
+
+.locale a:visited {
+    color: #fadccf;
+    padding: 0px 14px;
+    margin-top: 19px;
+    line-height: 25px;
+}
+
+.locale a {
+    font-size: 14px;
+    color: #fadccf;
+    padding: 0px 15px;
+    margin-top: 8px;
+    line-height: 25px;
+    background-color: #ee7c35;
+    display: block;
+    border: 1px solid #f0894a;
+}
+
+
+.header img{
+    margin-left: 8px;
+    max-width: 80vw;
+    margin-top: 2px;
+}
+
+.deliver-details{
+    margin: 1rem;
+}
+
+.carousel{
+    background-image: url(./img/2.jpg);
+    width: 100%;
+    padding-bottom: 56.25%;
+    background-size: cover;
+    background-position: center;
+}
+
+.result-success {
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.result-top {
+    position: relative;
+    padding: 10px 0;
+    font-size: .875rem;
+}
+
+.result-top time {
+    position: relative;
+    width: 6rem;
+    text-align: center;
+}
+
+.result-top span {
+    padding-left: 2em;
+}
+
+.flex {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.result-list li.last {
+    color: #ff7f02;
+}
+
+.result-list li {
+    display: -webkit-flex;
+    display: flex;
+    padding-bottom: 1.5em;
+    color: #888;
+}
+
+.result-list .time {
+    width: 6rem;
+    text-align: center;
+    font-size: .75rem;
+}
+
+.last .time {
+    color: #ff7f02;
+}
+
+.result-list .dot {
+    width: 5px;
+    height: 5px;
+    margin-top: 6px;
+    border-radius: 50%;
+    background: #888;
+    box-shadow: 0 0 0 2px rgba(136,136,136,.3);
+}
+
+.result-list .last .dot {
+    width: 9px;
+    height: 9px;
+    margin-left: -4px;
+    -webkit-transform: translate(2px);
+    transform: translate(2px);
+    background: #ff7f02;
+    box-shadow: 0 0 0 2px rgba(255,127,2,.2);
+}
+
+.result-list .text {
+    position: relative;
+    flex: 1;
+    width: 0;
+    padding: 0 1em;
+    font-size: .875rem;
+}
+
+.result-list .last .text:before {
+    top: 11px;
+}
+
+.result-list .text:before {
+    position: absolute;
+    left: -3px;
+    top: 6px;
+    margin-top: 6px;
+    bottom: -2em;
+    border-left: 1px solid rgba(136,136,136,.3);
+    content: '';
+}
+
+.feedback {
+    padding-top: .975rem;
+    text-align: center;
+    color: #bebebe;
+    font-size: .8125rem;
+}
+
+.keypon-btn{
+    background-color: #ec6d1e;
+}
+
+.keypon-btn[disabled]{
+    background-color: #e08c57;
+}
