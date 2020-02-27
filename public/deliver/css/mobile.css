@@ -15,6 +15,19 @@
     height: 44px;
 }
 
+
+.mobile .home-header{
+    height: 88px;
+    background: #ec6d1e;
+    position: relative;
+    text-align: center;
+}
+
+.mobile .home-header img{
+    margin-left: 8px;
+    max-width: 80vw;
+    margin-top: 8px;
+}
 .mobile .header img{
     margin-left: 8px;
     max-width: 80vw;
@@ -25,6 +38,13 @@
     float: right;
     margin: auto;
     margin-right: 4px;
+}
+
+.mobile  .carousel-img-box{
+    width: 100%;
+    left: 0;
+    height: auto;
+    padding-top: 56.25%;
 }
 
 .mobile .carousel{ 
@@ -41,4 +61,22 @@
 
 .mobile .deliver-details{
     margin: 1rem;
+}
+
+.mobile .footer{
+    margin: auto;
+    width: 100%;
+}
+
+.mobile .txtcenter img{
+    max-width: 100%;
+}
+
+.mobile .about{
+    margin: 16px;
+}
+
+.mobile .qrcode{
+    text-align: center;
+    float: none;
 }

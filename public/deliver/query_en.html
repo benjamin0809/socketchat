@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Keypon - Logistics query</title>
+
+    <script src="./js/utils.js"></script>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <script src="./layui/layui.all.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1-rc2.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/mobile.css">
+
+</head>
+
+<body>
+    <header class="header">
+        <a href="index_en.html">
+            <img src="./img/logo_en.jpg">
+        </a>
+
+        <div class="locale">
+            <a href="./index.html">
+                中文
+            </a>
+        </div>
+    </header>
+    <div class="content">
+        <div class="carousel" style="background-image: url('./img/2.jpg');">
+
+        </div>
+        <form class="form" action="" onsubmit="return saveReport();">
+            <input id="queryno" type="search" name="title" required lay-verify="required" placeholder="No."
+                autocomplete="off" class="layui-input">
+
+            <button id="submit" type="submit" class="layui-btn layui-btn-fluid keypon-btn">Follow </button>
+        </form>
+
+        <ul id="data" class="layui-timeline deliver-details">
+
+        </ul>
+
+    </div>
+    <script src="./js/main.js">
+
+    </script>
+    <footer>
+        <div class="footer">
+          <div class="footer-content">
+            <div class="contact">
+              <table width="100%" border="0">
+                <tbody>
+                  <tr>
+                    <td>Tel：(+86) 20-84528989</td>
+                    <td>Fax：(+86) 20-84528995</td>
+                  </tr>
+                  <tr>
+                    <td>Customer Service Dept：<a href="mailto:service@keypon.cn">service@keypon.cn</a></td>
+                    <td>Marketing Dept.：<a href="mailto:marketing@keypon.cn">marketing@keypon.cn</a></td>
+                  </tr>
+                  <tr>
+                    <td>Address：N0.3 Third Street Guangdong, the Free Trade Zone Nansha District. Guangzhou City</td>
+                    <td>Website：<a href="http://www.keypon.cn">www.keypon.cn</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="qrcode">
+              <img src="./img/weixin.png">
+            </div>
+          </div>
+          <div class="copyright">© 2017-2020 Keypon International Logistics (Guangzhou) Co., Ltd <a href="http://www.miitbeian.gov.cn" target="_blank"
+              style="color:#FFF;"></a></div>
+        </div>
+      </footer>
+</body>
+
+</html>

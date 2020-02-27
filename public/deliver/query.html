@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>启邦国际物流-物流查询</title>
+
+    <script src="./js/utils.js"></script>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <script src="./layui/layui.all.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1-rc2.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/mobile.css">
+
+</head>
+
+<body>
+    <header class="header">
+        <a href="index.html">
+            <img src="./img/logo.jpg">
+        </a>
+
+        <div class="locale">
+            <a href="./default.html">
+                En
+            </a>
+        </div>
+    </header>
+    <div class="content">
+        <div class="carousel" style="background-image: url('./img/2.jpg');">
+
+        </div>
+        <form class="form" action="" onsubmit="return saveReport();">
+            <input id="queryno" type="search" name="title" required lay-verify="required" placeholder="运单号"
+                autocomplete="off" class="layui-input">
+
+            <button id="submit" type="submit" class="layui-btn layui-btn-fluid keypon-btn">追踪 </button>
+        </form>
+
+        <ul id="data" class="layui-timeline deliver-details">
+
+        </ul>
+
+    </div>
+    <script src="./js/main.js">
+
+    </script>
+    <footer>
+        <div class="footer">
+            <div class="footer-content">
+                <div class="contact">
+                    <table width="100%" border="0">
+                        <tbody>
+                            <tr>
+                                <td>电话：(+86) 20-84528989</td>
+                                <td>传真：(+86) 20-84528995</td>
+                            </tr>
+                            <tr>
+                                <td>客服部：<a href="mailto:service@keypon.cn">service@keypon.cn</a></td>
+                                <td>市场部：<a href="mailto:marketing@keypon.cn">marketing@keypon.cn</a></td>
+                            </tr>
+                            <tr>
+                                <td>地址：广州市南沙自贸区南沙保税港区港荣三街3号402</td>
+                                <td>官方网站：<a href="http://www.keypon.cn">www.keypon.cn</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="qrcode">
+                    <img src="./img/weixin.png">
+                </div>
+            </div>
+            <div class="copyright">© 2017-2020 广州市启邦国际物流有限公司 ® <a href="http://www.miitbeian.gov.cn" target="_blank"
+                    style="color:#FFF;">粤ICP备16022606号-1</a></div>
+        </div>
+    </footer>
+</body>
+
+</html>
