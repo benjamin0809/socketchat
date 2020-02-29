@@ -1,74 +1,167 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Socket.IO Chat Example</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <ul class="pages">
-    <li class="chat page">
-      <div class="chatArea">
-        <ul class="messages"></ul>
-      </div>
-      <div class="input">
-         <div class="imginput">
-            <img src="images/album.png"/>
-            <input type="file" id="imgInput" style="opacity: 0;width:2rem;height:100%"/>
-         </div> 
-        <input class="inputMessage" placeholder="Type here..."/>
-      </div>
-     
-      
-      
-    </li>
-    <li class="login page">
-      <div class="form">
-        <h3 class="title">What's your nickname?</h3>
-        <input class="usernameInput" type="text" maxlength="14" />
-        <button id="submit" type="submit">确定</button>
-      </div>
-    </li>
-  </ul>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Benjamin个人主页</title>
+    <!-- 引入样式 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <style>
+        html,body {
+            margin: 0;
+        }
+        .el-header{
+            padding: 0;
+        }
+        .carousel-img{
+            width: 100%;
+        }
 
-  <!-- <div class="user-list-container">
-      <div>
-          <img src="" id="imgs">
-      </div>
-       
-      <button onclick=""></button>
-      
-    <div class="online_user_container">
-      在线人数 <span id="online_user">0</span>
-    </div>
-    <ul id="user-list" class="user-list">
-     
-       
-    </ul>
+        .content{
+            margin: 2rem auto;
+        }
+        .content .collapse{
+            float: left;
+        } 
+        .content .divider{
+            float: right;
+        } 
 
+        
+        .content::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+    </style>
+
+<style>
+    .el-carousel__item h3 {
+      color: #475669;
+      font-size: 14px;
+      opacity: 0.75;
+      line-height: 400px;
+      margin: 0;
+    }
     
-  </div> -->
-  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="./javascripts/socket.io.js"></script>
-  <script src="./main.js"></script>
-  <script src="./notification.js"></script>
+    .el-carousel__item:nth-child(2n) {
+      background-color: #99a9bf;
+    }
+    
+    .el-carousel__item:nth-child(2n+1) {
+      background-color: #d3dce6;
+    }
+  </style>
+</head>
 
-  <script >
-    var notification = new Notice();
-    //notification.sendNotification('hello',{body: '@ionic-native/app-minimize@4.20.0 requires a peer of rxjs@^5.5.11 but none is installed. You must install peer dependencies yourself.'},()=>{
-     // console.log('onclicked')
-     // window.open('https://www.baidu.com')
-    //})
+<body>
+    <div id="app">
+        <el-container>
+            <el-header>
+                <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect"
+                    background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+                    <el-menu-item index="1">首页</el-menu-item>
+                    <!-- <el-submenu index="2">
+                        <template slot="title">我的工作台</template>
+                        <el-menu-item index="2-1">选项1</el-menu-item>
+                        <el-menu-item index="2-2">选项2</el-menu-item>
+                        <el-menu-item index="2-3">选项3</el-menu-item>
+                        <el-submenu index="2-4">
+                            <template slot="title">选项4</template>
+                            <el-menu-item index="2-4-1">选项1</el-menu-item>
+                            <el-menu-item index="2-4-2">选项2</el-menu-item>
+                            <el-menu-item index="2-4-3">选项3</el-menu-item>
+                        </el-submenu>
+                    </el-submenu>
+                    <el-menu-item index="3" disabled>消息中心</el-menu-item>
+                    <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item> -->
+                </el-menu>
 
-    document.addEventListener("visibilitychange", function() {
-      console.log(document.visibilityState);
-      if(document.visibilityState == "hidden") {
-          console.log('隐藏');
-      } else if (document.visibilityState == "visible") {
-          console.log('显示')
-      }
-  });
-  </script>
+
+            </el-header>
+            <el-main>
+                <el-carousel :interval="4000" type="card" height="400px">
+                    <el-carousel-item v-for="item in imgs" :key="item">
+                      <img class="carousel-img" :src="item">
+                    </el-carousel-item>
+                  </el-carousel>
+
+                  <div class="content">
+                      <div class="collapse">
+                        <el-collapse v-model="activeNames" @change="handleChange">
+                            <el-collapse-item title="一致性 Consistency" name="1">
+                              <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
+                              <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
+                            </el-collapse-item>
+                            <el-collapse-item title="反馈 Feedback" name="2">
+                              <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
+                              <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
+                            </el-collapse-item>
+                            <el-collapse-item title="效率 Efficiency" name="3">
+                              <div>简化流程：设计简洁直观的操作流程；</div>
+                              <div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
+                              <div>帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
+                            </el-collapse-item>
+                            <el-collapse-item title="可控 Controllability" name="4">
+                              <div>用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
+                              <div>结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
+                            </el-collapse-item>
+                          </el-collapse>
+                      </div>
+                  
+                      
+                      <div class="divider"> 
+                        <span>青春是一个短暂的美梦, 当你醒来时, 它早已消失无踪</span>
+                        <el-divider></el-divider>
+                        <span>少量的邪恶足以抵消全部高贵的品质, 害得人声名狼藉</span>
+                      </div>
+
+                  </div>
+                  <el-divider content-position="left">memo</el-divider>
+                  <el-calendar v-model="value">
+                </el-calendar>
+            </el-main>
+            <el-footer></el-footer>
+        </el-container>
+    </div>
+
+    <div style="position: fixed;bottom: 8px;right:8px;;color: gray">
+        <p>
+            粤ICP备18036032号
+        </p>
+    </div>
 </body>
+
+<script>
+    var imgs = []
+    for(let i = 1;i < 12; i++) {
+        imgs.push('./img/' + i + '.jpg')
+    }
+    var app = new Vue({
+        el: '#app',
+        data: {
+            activeIndex: '1',
+            activeIndex2: '1',
+            imgs: imgs,
+            activeNames: ['1'],
+            value: new Date()
+        },
+        methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            handleChange(val) {
+                console.log(val);
+            }
+        }
+
+         
+    })
+</script>
+
 </html>
