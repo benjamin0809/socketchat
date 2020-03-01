@@ -130,18 +130,18 @@
         </el-container>
     </div>
 
-    <div style="position: fixed;bottom: 8px;right:8px;;color: gray">
+    <div style="position: fixed;bottom: 8px;left: 50%; transform: translateX(-50%)">
         <p>
-            粤ICP备18036032号
+            <a href="http://www.beian.miit.gov.cn/">粤ICP备18036032号</a>
         </p>
     </div>
 </body>
 
 <script>
-    var imgs = []
-    for(let i = 1;i < 12; i++) {
-        imgs.push('./img/' + i + '.jpg')
-    }
+    var imgs = ['15830609185369', '15830609048048', '15830608936677','15830608759656', '15830608112585']
+    imgs = imgs.map((item) => {
+        return 'http://image.popochiu.com/' + item + '.jpg'
+    }) 
     var app = new Vue({
         el: '#app',
         data: {

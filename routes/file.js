@@ -100,7 +100,7 @@ router.post('/uploadFileToQiniu', multipartMiddleware, async function (req, res,
   let result = 'Rendered to ' + JSON.stringify(req.files, null, 2) + '\n';
 
   const srcPath = req.files.myfile.path;
-  fileEntity.filename = req.files.myfile.originalFilename
+  fileEntity.filename = Date.now() + '' + req.files.myfile.originalFilename
   fileEntity.filetype = req.files.myfile.type
   fileEntity.fileSize = req.files.myfile.size
   fileEntity.sourceUrl = req.files.myfile.path
@@ -133,7 +133,7 @@ router.post('/uploadFileToQiniu', multipartMiddleware, async function (req, res,
     res.end(result);
 
   } catch (err) {
-    res.end('oho');
+    res.end('upload failed,error :' + JSON.stringify(err));
   }
 
 });
@@ -232,10 +232,7 @@ const toQrCodeDataUrl = (url) => {
       fileEntity.fullpath = qiniu_res.url
       fileEntity.path = qiniu_res.url
     } catch(err) {
-      res.send({
-        result: 'oho',
-        dataurl: 'oho'
-      })
+      res.end('upload failed,error :' + JSON.stringify(err));
     }
 
     fileDao.insertFile(fileEntity) 
