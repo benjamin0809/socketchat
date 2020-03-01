@@ -1,7 +1,7 @@
 var express = require('express');
 
 var child_process = require("child_process")
-child_process.execFile("redis.bat",null,{ cwd:'G:/projects/node/myapp/config'},function(error,stdout,stderr){
+child_process.execFile("redis.bat",null,{ cwd:'E:/projects/node/myapp/config'},function(error,stdout,stderr){
     if(error !==null){
         console.log("exec error"+error)
     }

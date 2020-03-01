@@ -2,11 +2,13 @@
 <html>
 
 <head>
+	<title>静态页面保存</title>
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<style>
 		#textarea {
-			width: 100%;
+			width: calc(100% - 2rem);
 			min-height: 500px;
+			outline: none;
 		}
 
 		#textarea::-webkit-scrollbar {
@@ -18,8 +20,44 @@
 			padding: 5px 10px;
 			border-radius: 5px
 		}
-		button{
+
+		button {
 			margin-right: 8px;
+			cursor: pointer;
+			padding: 8px 16px;
+			width: calc((100% - 2rem - 24px) / 3);
+		}
+
+		body {
+			margin: 1rem;
+			font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
+		}
+
+		.input-form {
+			margin: 1rem;
+
+		}
+
+		.input-item {
+			display: inline;
+		}
+
+		.input-form .input-item:last-child {
+			margin-left: 1rem;
+		}
+
+		textarea {
+			border-color: #2196F3;
+			border-radius: 5px;
+			margin: auto 1rem;
+		}
+
+		textarea:focus {
+			border-color: rgb(14, 136, 236);
+		}
+
+		h1 {
+			text-align: center;
 		}
 	</style>
 
@@ -27,17 +65,25 @@
 
 
 	<body>
-		<textarea id='textarea'></textarea> 
-		<div>
-			令牌: <input id="token" type="text" placeholder="不填则自动生成时间戳">
-			文件名 <input id="filename" type="text" placeholder="不填则自动生成时间戳">
+		<h1>静态页面保存</h1>
+		<div class="input-form">
+			<div class="input-item">
+				令牌: <input id="token" type="password" placeholder="token">
+			</div>
+			<div class="input-item">
+				文件名 <input id="filename" type="text" placeholder="不填则自动生成时间戳">
+			</div>
+
 		</div>
-		<div style="padding: 16px;"> 
+		<textarea id='textarea'></textarea>
+		<div style="padding: 16px;float: right;">
 			<button id="saveAsHtml">saveAsHtml</button>
 			<button id="saveAsJS">saveAsJS</button>
 			<button id="saveAsCss">saveAsCss</button>
-		</div> 
-		<div id="result"> </div>
+		</div>
+		<div >
+			<p id="result"></p> 
+		</div>
 		<code id="code" contenteditable="true"></code>
 		<pre id="pre" contenteditable="true"></pre>
 	</body>
@@ -45,54 +91,47 @@
 	<script>
 
 		$(document).ready(function () {
+
+			var password = localStorage.getItem('editor-password')
+			if (password) {
+				$('#token').val(password)
+			}
 			let host = window.location.host
 			let baseUrl = 'http://' + host + '/file/'
 			const submit = (action) => {
 				var result = $('#textarea').text();
 				var value = $('#textarea').val();
 				var filename = $('#filename').val();
-				$('#result').text(value); 
-				$('#pre').text(value)
-				// $.post(baseUrl + action, {
-				// 	"data": value,
-				// 	"filename": filename,
-				// 	"token": $('#token').val()
-				// }, (res) => {
-				// 	$('#result').text(JSON.stringify(res));
-				// })
-
+				$('#result').text(value);
+				$('#pre').text(value)  
 				$.ajax({
 					type: "post",
 					url: baseUrl + action,
 					contentType: "application/json;charset=utf-8",
-					data :JSON.stringify({
-					"data": value,
-					"filename": filename,
-					"token": $('#token').val()
-				}),
+					data: JSON.stringify({
+						"data": value,
+						"filename": filename,
+						"token": $('#token').val()
+					}),
 					dataType: "json",
 					beforeSend: function (XMLHttpRequest) {
 						XMLHttpRequest.setRequestHeader("token", $('#token').val());
 					},
 					success: function (data) {
 						$('#result').text(JSON.stringify(data));
-
+						localStorage.setItem('editor-password', $('#token').val())
 						$('#result').append(`<img src="${data.dataurl}">`)
-					},error:function(error){
-						$('#result').text(JSON.stringify(error)); 
+					}, error: function (error) {
+						$('#result').text(JSON.stringify(error));
 					}
-				}); 
+				});
 			}
 			$('button').click(function (e) {
 				submit(e.currentTarget.id)
 			})
 			$('#coding').click(function (e) {
 				console.log($('#pre').text())
-			})
-
-			
-
-
+			}) 
 		})  
 	</script>
 

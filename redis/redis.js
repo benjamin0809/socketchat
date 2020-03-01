@@ -1,5 +1,11 @@
 const redis = require('redis'); 
-const client = redis.createClient(6379,'localhost');
+let client = null;
+try {
+    client = redis.createClient(6379,'localhost');
+}catch(e) {
+    console.error(e)
+}
+
  
 class Redis {
   

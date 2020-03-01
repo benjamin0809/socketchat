@@ -1,0 +1,116 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Upload File To Qiniu</title>
+    <style>
+        .main{
+            margin: 16px;
+            text-align: center;
+        }
+        .logo-box{
+            width: 200px;
+            height: 200px;
+            border-radius: 16px;
+            position: relative;
+            border: 1px solid #ccc;
+            margin: auto; 
+        }
+
+        .logo-box .border{
+            width: 160px;
+            height: 10px;
+            border-radius: 5px;
+            background: linear-gradient(#ccc, #eee)  ;
+            transform-origin: 50% 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+        
+        }
+
+        .logo-box .left{
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        .logo-box .right{
+            transform: translate(-50%, -50%)
+        }
+
+        button {
+            width: 200px;
+            min-height: 44px;
+            border-radius: 16px;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        ul{
+            font-family: monospace;
+            font-size: 16px;
+            width: 200px;
+            margin: auto;
+            margin-top: 24px;
+        }
+        li{
+            list-style: none;
+            text-align: left;
+        }
+
+        .threed{
+            border: 0;
+            outline: 0;
+            border-radius: .2em;
+            color: #fff;
+            background: linear-gradient( #18addd, #3d879f);
+            text-shadow: 0 1px 1px grey;
+            box-shadow: 0em 0.2em 0 #1275a1, 0 0.2em 0.2em grey;
+            cursor: pointer;
+          }
+    
+          .threed:active{
+            transform: translateY(.05em);
+            /* box-shadow: 0em 0.1em 0 grey, 0 0.1em 0.1em #18aaaa; */
+            box-shadow: 0em 0.1em 0 #1275a1, 0 0.1em 0.1em grey;
+          }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>Choose File</h1>
+            <form action="uploadFileToQiniu" enctype="multipart/form-data" method="post"> 
+                <div id="chooser" class="logo-box">
+                    <div class="border left"> </div>
+                    <div class="border right"> </div>
+                </div>
+        
+                <ul id="result"></ul>
+                <p><input id="fileinput" type="file" name="myfile" style="display: none"></p>
+                <button class="threed" type="submit">Submit</button>
+                </p>
+            </form>
+    </div>
+   
+</body>
+<script>
+    const chooser = document.getElementById('chooser');
+    const fileinput = document.getElementById('fileinput');
+    const result = document.getElementById('result');
+    chooser.addEventListener('click',() =>{ 
+        fileinput.click();
+    })
+
+    fileinput.addEventListener('input', updateValue);
+
+    function updateValue(e) {
+        if(e.target.files && e.target.files.length > 0){
+            const { name, type, size } = e.target.files[0]
+            result.innerHTML += `<li>name:  ${name} </li> `
+            result.innerHTML += `<li>type:  ${type} </li>`
+            result.innerHTML += `<li>size:  ${size} </li>`
+        } 
+    }
+</script>
+</html>

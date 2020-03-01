@@ -30,11 +30,66 @@ class Qiniu{
     constructor(){
 
     }
+ 
+    /**
+     * 上传文件流 数据流上传（表单方式
+     * @param {*} readableStream 文件流
+     * @param {*} filename 文件名
+     */
+    putStream(readableStream, filename) {
+        return new Promise( (resolve, reject) =>{
+            formUploader.putStream(uploadToken, filename, readableStream, putExtra, async function(respErr,
+            respBody, respInfo) {
+            if (respErr) {
+                reject(respErr)
+                throw respErr; 
+            }
+            if (respInfo.statusCode == 200) { 
+                resolve({
+                    hash: respBody.hash,
+                    key: respBody.key,
+                    url: await bucketManager.publicDownloadUrl(publicBucketDomain, filename)
+                })
+            } else { 
+                console.error(respBody);
+                reject(respBody)
+            }
+            });
+        })
+    }
+
+    /**
+     * 字节数组上传（表单方式）
+     * @param {*} data 字节
+     * @param {*} filename 文件名
+     */
+    put(data, filename) {
+        return new Promise( (resolve, reject) =>{
+            formUploader.put(uploadToken, filename, data, putExtra, async function(respErr,
+            respBody, respInfo) {
+            if (respErr) {
+                reject(respErr)
+                throw respErr; 
+            }
+            if (respInfo.statusCode == 200) { 
+                resolve({
+                    hash: respBody.hash,
+                    key: respBody.key,
+                    url: await bucketManager.publicDownloadUrl(publicBucketDomain, filename)
+                })
+            } else { 
+                console.error(respBody);
+                reject(respBody)
+            }
+            });
+        })
+    }
+
 
     uploadFile(filename, localFile){
         return new Promise((resolve, reject) =>{
             // 文件上传
-            formUploader.putFile(uploadToken, filename, localFile, putExtra, function(respErr,
+            formUploader.putFile(uploadToken, filename, localFile, putExtra, async function(respErr,
                 respBody, respInfo) {
                 if (respErr) {
                     console.error(respErr) ;
@@ -43,7 +98,8 @@ class Qiniu{
                 if (respInfo.statusCode == 200) { 
                     resolve({
                         hash: respBody.hash,
-                        key: respBody.key
+                        key: respBody.key,
+                        url: await bucketManager.publicDownloadUrl(publicBucketDomain, key)
                     })
                 } else {
                     reject(respBody)

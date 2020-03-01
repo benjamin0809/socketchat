@@ -89,9 +89,9 @@
         <div class="buttons">
 
             <div style="padding: 16px;float: right;">
-                <button id="saveAsHtml">saveAsHtml</button>
-                <button id="saveAsJS">saveAsJS</button>
-                <button id="saveAsCss">saveAsCss</button>
+                <button id="html">saveAsHtml</button>
+                <button id="js">saveAsJS</button>
+                <button id="css">saveAsCss</button>
             </div>
         </div>
 
@@ -111,8 +111,8 @@
 				$('#token').val(password)
 			}
 			let host = window.location.host
-			let baseUrl = 'http://' + host + '/file/'
-			const submit = (action) => {
+			let baseUrl = 'http://' + host + '/file/saveBytesToQiniu'
+			const submit = (type) => {
 				var result = $('#textarea').text();
 				var value = $('#textarea').val();
 				var filename = $('#filename').val();
@@ -120,11 +120,12 @@
 				$('#pre').text(value)  
 				$.ajax({
 					type: "post",
-					url: baseUrl + action,
+					url: baseUrl,
 					contentType: "application/json;charset=utf-8",
 					data: JSON.stringify({
 						"data": value,
 						"filename": filename,
+						"type": type,
 						"token": $('#token').val()
 					}),
 					dataType: "json",
