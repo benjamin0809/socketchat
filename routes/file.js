@@ -6,7 +6,7 @@ var mutipart = require('connect-multiparty')
 const FileDao = require('../modules/file/file')
 const QRCode = require('qrcode')
 const Qiniu = require('../modules/qiniu/qiniu')
-const qiniu = new Qiniu()
+
 const fs = require('fs')
 var multipartMiddleware = mutipart();
 const path = require('path');
@@ -107,7 +107,7 @@ router.post('/uploadFileToQiniu', multipartMiddleware, async function (req, res,
   const fileDao = new FileDao();
   let fileEntity = fileDao.getInstance()
   let result = 'Rendered to ' + JSON.stringify(req.files, null, 2) + '\n';
-
+  const qiniu = new Qiniu()
   const srcPath = req.files.myfile.path;
   fileEntity.filename = Date.now() + '' + req.files.myfile.originalFilename
   fileEntity.filetype = req.files.myfile.type
@@ -172,7 +172,6 @@ router.post('/uploadFile', multipartMiddleware, async function (req, res, next) 
   var source = fs.createReadStream(srcPath); 
   var dest = fs.createWriteStream(destPath);
 
-  fileEntity.fullpath = webUrl
 
   source.pipe(dest);
   source.on('end', function () {
@@ -226,7 +225,7 @@ const toQrCodeDataUrl = (url) => {
     const filetype = req.body.type
     const fullname = filename + '.' + filetype
   
-    
+    const qiniu = new Qiniu()
 
     const fileDao = new FileDao();
     let fileEntity = fileDao.getInstance();
