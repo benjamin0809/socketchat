@@ -64,6 +64,15 @@ router.get('/download/getpdf', function (req, res, next) {
   res.sendFile(path.join(__dirname, '../public/file/pdf.pdf'))
 });
 
+router.get('/attachment/getpdf', function (req, res, next) { 
+  res.attachment(path.join(__dirname, '../public/file/pdf.pdf')) 
+});
+
+router.get('/download1/getpdf', function (req, res, next) { 
+  res.download(path.join(__dirname, '../public/file/pdf.pdf')) 
+});
+
+
 router.get('/download/getword', function (req, res, next) {
   res.sendFile(path.join(__dirname, '../public/file/word.docx'))
 });
