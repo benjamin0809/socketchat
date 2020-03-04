@@ -3,6 +3,7 @@ const fs = require("fs");
 const mkdirp = require('mkdirp');  
 const path = require('path')
 const proxy = '';  
+const mineType = require('mime-types');  // 文件类型
 // const proxy = 'http://F2846595:mrz0809@10.191.131.156:3128'; 
 const probe = require('probe-image-size');
 
@@ -151,6 +152,14 @@ class FileUtils {
   static joinChar(array,char){
     return array.join(char)
   }
+ 
+  static readAsBase64(filePath) {
+    let data = fs.readFileSync(filePath); 
+    let bufferData = Buffer.from(data,'utf-8'); 
+    let base64Str = bufferData.toString('base64') 
+    let base64 = 'data:' + mineType.lookup(filePath) + ';base64,' + base64Str; 
+    return base64
+  } 
 }
 
 module.exports = FileUtils;
