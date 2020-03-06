@@ -69,7 +69,10 @@ router.get('/attachment/getpdf', function (req, res, next) {
 router.get('/base64/getpdf', function (req, res, next) { 
   let filePath = path.join(__dirname, '../public/1583206573117mysql.pdf')
   let data = FileUtils.readAsBase64(filePath)
-  res.send(data) 
+
+  res.json({
+    base64Str: data
+  }) 
 });
 
 router.get('/download1/getpdf', function (req, res, next) { 
