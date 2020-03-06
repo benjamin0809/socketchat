@@ -6,7 +6,6 @@ var mutipart = require('connect-multiparty')
 const FileDao = require('../modules/file/file')
 const QRCode = require('qrcode')
 const Qiniu = require('../modules/qiniu/qiniu')
-
 const fs = require('fs')
 var multipartMiddleware = mutipart();
 const path = require('path');
@@ -68,7 +67,7 @@ router.get('/attachment/getpdf', function (req, res, next) {
   res.attachment(path.join(__dirname, '../public/file/pdf.pdf')) 
 });
 router.get('/base64/getpdf', function (req, res, next) { 
-  let filePath = path.join(__dirname, '../public/file/pdf.pdf')
+  let filePath = path.join(__dirname, '../public/1583206573117mysql.pdf')
   let data = FileUtils.readAsBase64(filePath)
   res.send(data) 
 });
@@ -77,6 +76,41 @@ router.get('/download1/getpdf', function (req, res, next) {
   res.download(path.join(__dirname, '../public/file/pdf.pdf')) 
 });
 
+router.post('/pdf/download', (req, res, next) => {
+  request.get({
+      url: `http://localhost:3000/file/download/getpdf`,
+      json: req.body,
+      gzip:true,
+      headers:{
+          'Content-Type': 'application/octet-stream',
+          'usertoken': req.headers.usertoken,
+      },
+  }).on('response', function(response) {
+      console.log(response.statusCode) // 200
+      console.log(response.headers)
+      // console.log(response.headers['content-type']) // 'image/png'
+      // res.headers['content-type'] = response.headers['content-type']
+      this.pipe(res)
+    });
+});
+
+router.get('/pdf/download', (req, res, next) => {
+  request.get({
+      url: `http://localhost:3000/file/download/getpdf`,
+      json: req.body,
+      gzip:true,
+      headers:{
+          'Content-Type': 'application/octet-stream',
+          'usertoken': req.headers.usertoken,
+      },
+  }).on('response', function(response) {
+      console.log(response.statusCode) // 200
+      console.log(response.headers)
+      // console.log(response.headers['content-type']) // 'image/png'
+      // res.headers['content-type'] = response.headers['content-type']
+      this.pipe(res)
+    });
+});
 
 router.get('/download/getword', function (req, res, next) {
   res.sendFile(path.join(__dirname, '../public/file/word.docx'))
