@@ -12,7 +12,7 @@ const options = {
 };
 
 const putPolicy = new qiniu.rs.PutPolicy(options);
-const uploadToken=putPolicy.uploadToken(mac);  
+
 
 const config = new qiniu.conf.Config({ // 空间对应的机房
     zone: qiniu.zone.Zone_z2
@@ -30,6 +30,10 @@ class Qiniu{
     constructor(){
 
     }
+
+    getToken() {
+        return putPolicy.uploadToken(mac);  
+    }
  
     /**
      * 上传文件流 数据流上传（表单方式
@@ -38,7 +42,7 @@ class Qiniu{
      */
     putStream(readableStream, filename) {
         return new Promise( (resolve, reject) =>{
-            formUploader.putStream(uploadToken, filename, readableStream, putExtra, async function(respErr,
+            formUploader.putStream(this.getToken(), filename, readableStream, putExtra, async function(respErr,
             respBody, respInfo) {
             if (respErr) {
                 reject(respErr)
@@ -65,7 +69,7 @@ class Qiniu{
      */
     put(data, filename) {
         return new Promise( (resolve, reject) =>{
-            formUploader.put(uploadToken, filename, data, putExtra, async function(respErr,
+            formUploader.put(this.getToken(), filename, data, putExtra, async function(respErr,
             respBody, respInfo) {
             if (respErr) {
                 reject(respErr)
@@ -89,7 +93,7 @@ class Qiniu{
     uploadFile(filename, localFile){
         return new Promise((resolve, reject) =>{
             // 文件上传
-            formUploader.putFile(uploadToken, filename, localFile, putExtra, async function(respErr,
+            formUploader.putFile(this.getToken(), filename, localFile, putExtra, async function(respErr,
                 respBody, respInfo) {
                 if (respErr) {
                     console.error(respErr) ;
