@@ -18,8 +18,17 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+/* GET home page. */
+router.get('/chatroom', function(req, res, next) {   
+  res.sendFile(path.join(__dirname, '../public/chat.html'));
+});
+
 router.get('/admin', function(req, res, next) { 
   res.sendFile(path.join(__dirname, '../front/admin/dist/index.html'));
+});
+
+router.get('/scan', function(req, res, next) {
+  res.json( req.query);
 });
 
 const routers = []
