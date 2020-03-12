@@ -1,4 +1,14 @@
+function genID(length) {
+  return Number(Math.random().toString().substr(3,length) + Date.now()).toString(36);
+}
 $(function() {
+ 
+  $('.right .content-box').height($('.right').height() - $('.right header').height() - $('.right footer').height()) 
+             $('.left li').click(function(){
+               $('.chat-title').text($(this).find('.nick').text()) 
+               $('.left li').removeClass('liselected')
+               $(this).addClass('liselected')
+             })
   var FADE_TIME = 150; // ms
   var TYPING_TIMER_LENGTH = 400; // ms
   var COLORS = [
@@ -7,17 +17,21 @@ $(function() {
     '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
   ];
 
+  var avatars = ['http://image.popochiu.com/32845622-3-thread_28272798_20200307142236_s_70454_o_w_690_h_1211_9965.png']
+
   // Initialize variables
   var $window = $(window);
   var $usernameInput = $('.usernameInput'); // Input for username
-  var $messages = $('.messages'); // Messages area
-  var $inputMessage = $('.inputMessage'); // Input message input box
+  var $messages = $('.content-box'); // Messages area
+  var $inputMessage = $('#inputMessage'); // Input message input box
 
   var $loginPage = $('.login.page'); // The login page
   var $chatPage = $('.chat.page'); // The chatroom page
 
   // Prompt for setting a username
-  var username;
+  var username = '游客' + genID();
+
+  $('.nickname').text(username)
   var connected = false;
   var typing = false;
   var lastTypingTime;
@@ -43,6 +57,9 @@ $(function() {
       return dataURL;
   }
  
+  $('#test').click(function() {
+    socket.emit('send room', {message: 'test send room', roomId: 123});
+  })
   
 $("#imgInput").change(function(){
   // $("#imgs").attr("src",URL.createObjectURL($(this)[0].files[0])); 
@@ -89,26 +106,7 @@ $("#imgInput").change(function(){
     }
     log(message);
   }
-
-  // Sets the client's username
-  const setUsername = () => {
-    username = cleanInput($usernameInput.val().trim());
-
-    // If the username is valid
-    if (username) {
-      $loginPage.fadeOut();
-      $chatPage.show();
-      $loginPage.off('click');
-      $currentInput = $inputMessage.focus();
-
-      // Tell the server your username
-      socket.emit('add user', username);
-
-      setTimeout(()=>{
-        socket.emit('refresh')
-      },500)
-    }
-  }
+ 
 
   // Sends a chat message
   const sendMessage = (sourceMessage,messageType) => {
@@ -118,12 +116,9 @@ $("#imgInput").change(function(){
     // if there is a non-empty message and a socket connection
     if ((message && connected) || messageType == 'image') {
       $inputMessage.val('');
-      if(!messageType)messageType = 'text'
-      addChatMessage({
-        username: username,
-        message:messageType == 'image' ? sourceMessage : message,
-        type: messageType
-      }); 
+      if(!messageType)messageType = 'text' ;
+
+      addMessage(true,message)
       // tell server to execute 'new message' and send along one parameter
       socket.emit('new message', {message: sourceMessage || message,type: messageType});
     } 
@@ -132,7 +127,8 @@ $("#imgInput").change(function(){
   // Log a message
     const log = (message, options) => {
     var $el = $('<li>').addClass('log').text(message);
-    addMessageElement($el, options);
+    $('.right ul').append($el)
+    // addMessageElement($el, options);
   }
 
   // Adds the visual chat message to the message list
@@ -161,6 +157,37 @@ $("#imgInput").change(function(){
 
     addMessageElement($messageDiv, options);
   }
+
+  const addMessage = (isSend, content, username)=>{
+    $('.right ul').append(messageTemplate(isSend, content,username))
+    $messages[0].scrollTop = $messages[0].scrollHeight;
+  }
+
+  const messageTemplate = (isSend, message, username) => {
+    return isSend ? messageRightTemplate(message) : messageLeftTemplate(message,username)
+  }
+  const messageLeftTemplate = (content,username) => {
+    return `<li class="msg-left">
+    <div class="msg-left-box">
+        <img class="avatar" src="/images/avatar1.jpg">
+        <div class="msg-left-content">
+          <p>${username}</p>
+          <div class="msg-content left-triangle">${content}</div>
+        </div>
+        
+    </div>
+</li>`
+  }
+
+  const messageRightTemplate = (content) => {
+    return `<li class="msg-right">
+                    <div>
+                    <div class="msg-content right-triangle ">${content}</div>
+                        <img class="avatar" src="/images/avatar1.jpg"> 
+                    </div>
+                </li>`
+  }
+
 
   // Adds the visual chat typing message
   const addChatTyping = (data) => {
@@ -224,8 +251,7 @@ $("#imgInput").change(function(){
       setTimeout(() => {
         var typingTimer = (new Date()).getTime();
         var timeDiff = typingTimer - lastTypingTime;
-        if (timeDiff >= TYPING_TIMER_LENGTH && typing) {
-          socket.emit('stop typing');
+        if (timeDiff >= TYPING_TIMER_LENGTH && typing) { 
           typing = false;
         }
       }, TYPING_TIMER_LENGTH);
@@ -260,24 +286,18 @@ $("#imgInput").change(function(){
     }
     // When the client hits ENTER on their keyboard
     if (event.which === 13) {
-      if (username) {
-        sendMessage();
-        socket.emit('stop typing');
+      if (username) {  
         typing = false;
-      } else {
-        setUsername();
+      } else { 
       }
     }
   });
 
   $('#submit').click(function(event){
     if (username) {
-      sendMessage();
-      socket.emit('stop typing');
+      sendMessage(); 
       typing = false;
-    } else {
-      setUsername();
-    }
+    } 
   }) 
   $inputMessage.on('input', () => {
     updateTyping();
@@ -305,14 +325,13 @@ $("#imgInput").change(function(){
     log(message, {
       prepend: true
     });
-    addParticipantsMessage(data);
+    // addParticipantsMessage(data); 
   });
 
   // Whenever the server emits 'new message', update the chat body
   socket.on('new message', (data) => {
-    console.log(data)
-    addChatMessage(data);
-
+    console.log(data) 
+    addMessage(false,data.message,data.username)
     if(document.visibilityState == "hidden"){ 
       notification.sendNotification(data)
     }
@@ -347,13 +366,13 @@ $("#imgInput").change(function(){
 
     
     member_list.push(data)
-    addParticipantsMessage(data);
+    // addParticipantsMessage(data);
   });
 
   // Whenever the server emits 'user left', log it in the chat body
   socket.on('user left', (data) => {
     log(data.username + ' left');
-    addParticipantsMessage(data);
+    // addParticipantsMessage(data);
     removeChatTyping(data);
   });
 
@@ -362,10 +381,7 @@ $("#imgInput").change(function(){
     addChatTyping(data);
   });
 
-  // Whenever the server emits 'stop typing', kill the typing message
-  socket.on('stop typing', (data) => {
-    removeChatTyping(data);
-  });
+ 
 
   socket.on('disconnect', () => {
     log('you have been disconnected');
@@ -381,5 +397,12 @@ $("#imgInput").change(function(){
   socket.on('reconnect_error', () => {
     log('attempt to reconnect has failed');
   });
+
+  
+  setTimeout(()=>{
+    socket.emit('add user', username);
+    socket.emit('refresh')
+    socket.emit('join room', { roomId: 123})
+  },500)
 
 });

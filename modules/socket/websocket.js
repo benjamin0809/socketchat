@@ -6,7 +6,7 @@ class WebSocket{
     this.socket = socket;
     this.rooms = [];
     this.io = io; 
-    this.funcArr = ['newMessage','refresh','addUser','typing','stopTyping','disconnect','joinRoom']
+    this.funcArr = ['newMessage','refresh','addUser','typing','stopTyping','disconnect','joinRoom','sendRoomMessage']
 
     this.funcArr.forEach(func=>{
       this[func]();
@@ -25,6 +25,16 @@ class WebSocket{
       this.socket.join(data.roomId) 
     });
   }
+
+  sendRoomMessage (){
+    this.socket.on('send room', (data) => {  
+      this.socket.to(data.roomId).emit('new message', {
+        message: data.message,
+        username: this.socket.username
+      })
+    });
+  }
+
   isValid(token){
     return !!token;
   }

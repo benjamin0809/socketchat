@@ -13,6 +13,13 @@ const articleRouter  = require('./article')
 const loginRouter  = require('./login')
 const wechatRouter  = require('./wechat')
 
+function getClientIP(req) {
+  return req.headers['x-forwarded-for'] || // 判断是否有反向代理 IP
+      req.connection.remoteAddress || // 判断 connection 的远程 IP
+      req.socket.remoteAddress || // 判断后端的 socket 的 IP
+      req.connection.socket.remoteAddress;
+};
+
 /* GET home page. */
 router.get('/', function(req, res, next) {  
   res.render('index', { title: 'Express' });
@@ -21,6 +28,11 @@ router.get('/', function(req, res, next) {
 /* GET home page. */
 router.get('/chatroom', function(req, res, next) {   
   res.sendFile(path.join(__dirname, '../public/chat.html'));
+});
+
+/* GET home page. */
+router.get('/chats', function(req, res, next) {   
+  res.render('chat', { ip: getClientIP(req)});
 });
 
 router.get('/admin', function(req, res, next) { 

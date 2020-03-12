@@ -6,49 +6,101 @@
   <title>Socket.IO Chat Example</title>
   <link rel="stylesheet" href="/style.css">
 </head>
-<body>
-  <ul class="pages">
-    <li class="chat page">
-      <div class="chatArea">
-        <ul class="messages"></ul>
-      </div>
-      <div class="input">
-         <div class="imginput">
-            <img src="/images/album.png"/>
-            <input type="file" id="imgInput" style="opacity: 0;width:2rem;height:100%"/>
-         </div> 
-        <input class="inputMessage" placeholder="Type here..."/>
-      </div>
-     
-      
-      
-    </li>
-    <li class="login page">
-      <div class="form">
-        <h3 class="title">What's your nickname?</h3>
-        <input class="usernameInput" type="text" maxlength="14" />
-        <button id="submit" type="submit">确定</button>
-      </div>
-    </li>
-  </ul>
-
-  <!-- <div class="user-list-container">
-      <div>
-          <img src="" id="imgs">
-      </div>
-       
-      <button onclick=""></button>
-      
-    <div class="online_user_container">
-      在线人数 <span id="online_user">0</span>
+<body> 
+   
+  <div class="header">
+    <div class="header-box">
+      <span class="nickname"></span>
+      <img class="header-avatar" src="http://www.popochiu.com/images/avatar1.jpg">
     </div>
-    <ul id="user-list" class="user-list">
-     
-       
-    </ul>
+   
+  </div>
+  <div class="chat">
+    <div class="left"> 
+      <ul>
+        <li class="liselected"> 
+            <div class="list-item">
+                <img class="avatar" src="http://image.popochiu.com/32845622-3-thread_28272798_20200307142236_s_70454_o_w_690_h_1211_9965.png">
+                <div class="inner-item">
+                    <p class="nick">技术性调整</p>
+                    <p class="last-chat">疯狂嘅Design 有 JPG </p>
+                </div> 
+            </div>
+        </li>
+        <li>
+            <div class="list-item">
+            <img class="avatar" src="http://image.popochiu.com/32845622-3-thread_28272798_20200307142236_s_70454_o_w_690_h_1211_9965.png">
+            <div class="inner-item">
+                <p class="nick">房间1</p>
+                <p class="last-chat">疯狂嘅Design 有 JPG </p>
+            </div> 
+        </div>
+    </li>
+        <li><div class="list-item">
+            <img class="avatar" src="http://image.popochiu.com/32845622-3-thread_28272798_20200307142236_s_70454_o_w_690_h_1211_9965.png">
+            <div class="inner-item">
+                <p class="nick">房间2</p>
+                <p class="last-chat">疯狂嘅Design 有 JPG </p>
+            </div> 
+        </div></li>
+        <li><div class="list-item">
+            <img class="avatar" src="http://image.popochiu.com/32845622-3-thread_28272798_20200307142236_s_70454_o_w_690_h_1211_9965.png">
+            <div class="inner-item">
+                <p class="nick">房间3</p>
+                <p class="last-chat">疯狂嘅Design 有 JPG </p>
+            </div> 
+        </div></li>
+        <li><div class="list-item">
+            <img class="avatar" src="http://image.popochiu.com/32845622-3-thread_28272798_20200307142236_s_70454_o_w_690_h_1211_9965.png">
+            <div class="inner-item">
+                <p class="nick">房间4</p>
+                <p class="last-chat">疯狂嘅Design 有 JPG </p>
+            </div> 
+        </div></li>
+      </ul>
+     </div>
+     <div class="right">
+         <header>
+            <h1 class="chat-title">技术性调整</h1>
+         </header>
+         <div class="content-box">
+            <ul>
+                <!-- <li class="msg-left">
+                    <div class="msg-left-box">
+                        <img class="avatar" src="http://image.popochiu.com/heart.png">
+                        <div class="msg-left-content">
+                          <p>Benjamin</p>
+                          <div class="msg-content left-triangle">金鱼缸笠头十足怪物小王子5</div>
+                        </div>
+                        
+                    </div>
+                </li>
 
-    
-  </div> -->
+                <li class="msg-right">
+                    <div> 
+                        <div class="msg-content right-triangle">金鱼缸笠头十足怪物小王子 5
+                        </div>
+                        <img class="avatar" src="../pictures/bg_default.png">
+                    </div>
+                </li>  --> 
+            </ul>
+         </div>
+         <footer class="input-box">
+            <div class="tools">
+
+            </div>
+            <div class="input">
+                <textarea  placeholder="..." name="" id="inputMessage" cols="30" rows="9"></textarea>
+            </div>
+            <div class="buttons">
+                <button id="submit">发送</button>
+            </div>
+         </footer>
+       
+     </div>
+  </div> 
+
+ 
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="/javascripts/socket.io.js"></script>
   <script src="/main.js"></script>
