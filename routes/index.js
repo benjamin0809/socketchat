@@ -39,6 +39,10 @@ router.get('/admin', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../front/admin/dist/index.html'));
 });
 
+router.get('/menu', function(req, res, next) { 
+  res.sendFile(path.join(__dirname, '../public/menu.html'));
+});
+
 router.get('/scan', function(req, res, next) {
   res.json( req.query);
 });

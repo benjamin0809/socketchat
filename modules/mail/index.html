@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Email</title>
+    <!-- 引入样式 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        html,body {
+            margin: 0;
+        }
+        .el-header{
+            padding: 0;
+        }
+        .carousel-img{
+            width: 100%;
+        }
+
+        .content{
+            margin: 2rem auto;
+        }
+        .content .collapse{
+            float: left;
+        } 
+        .content .divider{
+            float: right;
+        } 
+
+        
+        .content::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+    </style>
+
+<style>
+     h1{
+       text-align: center;
+     }
+  </style>
+</head>
+
+<body>
+    <div id="app">
+      <el-container>
+        <el-header>
+          <h1>Email</h1></el-header>
+        <el-main><el-form ref="form" :model="form" label-width="80px">
+          <el-form-item label="发送人">
+            <el-input v-model="form.from" placeholder="别名"></el-input>
+          </el-form-item>
+          <el-form-item label="接收人">
+            <el-input v-model="form.to" placeholder="多个接收人请用,隔开"></el-input>
+          </el-form-item>
+          <el-form-item label="标题">
+            <el-input v-model="form.subject"></el-input>
+          </el-form-item>
+          <el-form-item label="文本">
+            <el-input v-model="form.text"></el-input>
+          </el-form-item>
+          <el-form-item label="html">
+            <el-input type="textarea" v-model="form.html"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="onSubmit">立即创建</el-button>
+            <el-button>取消</el-button>
+          </el-form-item>
+        </el-form>
+      </el-main>
+      </el-container>
+      
+</body>
+
+<script>
+    function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = ["Android", "iPhone",
+            "SymbianOS", "Windows Phone",
+            "iPad", "iPod"];
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
+
+    if (IsPC()) {
+        //  若果是pc端
+        document.body.classList.add('desktop')
+    } else {
+        //  移动端
+        document.body.classList.add('m')
+    }
+
+    var imgs = ['15830609185369', '15830609048048', '15830608936677','15830608759656', '15830608112585']
+    imgs = imgs.map((item) => {
+        return 'http://image.popochiu.com/' + item + '.jpg'
+    }) 
+    var app = new Vue({
+        el: '#app',
+        data() {
+          return {
+            form: {
+              from: '',
+              to: '',
+              subject: '',
+              text: '',
+              html: ''
+            }
+          }
+        },
+        methods: {
+          onSubmit() { 
+            axios.post('./sendEmail', {
+              from: this.form.from,
+              token: '9527',
+              to : this.form.to,
+              subject: this.form.subject,
+              text: this.form.text,
+              html: this.form.html
+            })
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+          } 
+        }
+
+         
+    })
+</script>
+
+</html>
