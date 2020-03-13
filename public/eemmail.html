@@ -70,10 +70,12 @@
             <el-input type="textarea" v-model="form.html"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="onSubmit">立即创建</el-button>
+            <el-button type="primary" @click="onSubmit">发送</el-button>
             <el-button>取消</el-button>
           </el-form-item>
         </el-form>
+
+        <div>{{result}}</div>
       </el-main>
       </el-container>
       
@@ -117,7 +119,8 @@
               subject: '',
               text: '',
               html: ''
-            }
+            },
+            result: ''
           }
         },
         methods: {
@@ -132,6 +135,7 @@
             })
             .then(function (response) {
               console.log(response);
+              this.result = response
             })
             .catch(function (error) {
               console.log(error);
