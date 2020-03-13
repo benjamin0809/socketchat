@@ -16,7 +16,6 @@ router.post('/sendEmail', async function (req, res, next) {
   let text = req.body.text; 
   let html = req.body.html || 0;
  
-  redis.clearPageh(main_key)
   if (token !== '9527') {
     console.error('permission denied')
     res.send('未授权')
@@ -38,8 +37,6 @@ router.post('/sendEmailWithAttachments', function (req, res, next) {
   let subject = req.body.subject || 2;
   let text = req.body.text; 
   let html = req.body.html || 0;
- 
-  redis.clearPageh(main_key)
   if (token !== '9527') {
     console.error('permission denied')
     res.send('未授权')

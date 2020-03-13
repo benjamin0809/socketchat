@@ -125,7 +125,7 @@
         },
         methods: {
           onSubmit() { 
-            axios.post('./sendEmail', {
+            axios.post('/email/sendEmail', {
               from: this.form.from,
               token: '9527',
               to : this.form.to,
