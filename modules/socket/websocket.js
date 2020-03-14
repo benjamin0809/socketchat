@@ -30,7 +30,8 @@ class WebSocket{
     this.socket.on('send room', (data) => {  
       this.socket.to(data.roomId).emit('new message', {
         message: data.message,
-        username: this.socket.username
+        username: this.socket.username,
+        roomId: data.roomId
       })
     });
   }

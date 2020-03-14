@@ -12,6 +12,7 @@ const emotionRouter  = require('./emotion')
 const articleRouter  = require('./article')
 const loginRouter  = require('./login')
 const wechatRouter  = require('./wechat')
+const avatarRouter  = require('./avatar')
 
 function getClientIP(req) {
   return req.headers['x-forwarded-for'] || // 判断是否有反向代理 IP
@@ -58,6 +59,8 @@ routers.push({path: '/emotion',routerName: emotionRouter})
 routers.push({path: '/article',routerName: articleRouter})
 routers.push({path: '/connect',routerName: loginRouter})
 routers.push({path: '/wechat',routerName: wechatRouter})
+routers.push({path: '/avatar',routerName: avatarRouter})
+
 
 routers.forEach(item => { 
   app.use(item.path, item.routerName)  

@@ -60,9 +60,9 @@ var httpsio = require('socket.io')(httpsserver, {
 httpsio.on('connection',(socket=>{ 
   let token = socket.handshake.query.token;
   if (!token) {
-    delete io.sockets.sockets[socket.id]
+    delete httpsio.sockets.sockets[socket.id]
   }else{ 
-    let newsocket = new WebSocket(socket,io); 
+    let newsocket = new WebSocket(socket,httpsio); 
   }
 })) 
   
