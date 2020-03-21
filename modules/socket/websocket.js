@@ -1,13 +1,12 @@
  
- 
+global_rooms = new Map()
 class WebSocket{
   constructor(socket,io){  
     this.addedUser = false;
     this.socket = socket;
-    this.rooms = [];
     this.io = io; 
     this.funcArr = ['newMessage','refresh','addUser','typing','stopTyping','disconnect','joinRoom','sendRoomMessage']
-
+ 
     this.funcArr.forEach(func=>{
       this[func]();
     }) 
@@ -19,9 +18,49 @@ class WebSocket{
   // joinRoom (socket, roomId){
   //   socket.join(roomId)
   // }
+
+  addPoolRooms(socketId, roomId) {
+    if(roomId instanceof Array) {
+      for(let id of roomId) {
+        var tmp = global_rooms.get(id)
+        if(tmp) {
+          tmp.add(socketId) 
+        }else{
+          global_rooms.set(id, new Set([socketId])) 
+        }
+      }
+    }else {
+      var tmp = global_rooms.get(roomId)
+        if(tmp) {
+          tmp.add(socketId) 
+        }else{
+          global_rooms.set(roomId, new Set([socketId])) 
+        }
+    }
+  }
+
+  removePoolRooms(socketId) {
+    for(let item of global_rooms.values()){
+      if(item.has(socketId)) {
+        item.delete(socketId)
+      }
+    }
+  }
+
+  toJsonPoolRooms() {
+    let result = []
+    for(let [name, value] of global_rooms.entries()){
+      result.push({
+        room: name,
+        users: [...value]
+      })
+    }
+    return result
+  }
   
   joinRoom (){
     this.socket.on('join room', (data) => {  
+      this.addPoolRooms(this.socket.id, data.roomId)
       this.socket.join(data.roomId) 
     });
   }
@@ -63,6 +102,7 @@ class WebSocket{
     for(let i = 0; i < keys.length; i++){
       sockets[keys[i]].emit('refresh-list', {
         data: datalist,
+        rooms: this.toJsonPoolRooms(),
         count: datalist.length
       })
     } 
@@ -117,6 +157,7 @@ class WebSocket{
   disconnect(){ 
     this.socket.on('disconnect', () => {
       if (this.addedUser) { 
+        this.removePoolRooms(this.socket.id)
         // echo globally that this client has left
         this.socket.broadcast.emit('user left', {
           username: this.socket.username,
