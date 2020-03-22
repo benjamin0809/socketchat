@@ -14,12 +14,8 @@ const WebSocket = require('../modules/socket/websocket')
 /**
  * Get port from environment and store in Express.
  */
+ 
 
- console.log(path.resolve(__dirname,'../https/www.popochiu.com.key'))
- const httpsOption = {
-   key: fs.readFileSync(path.resolve(__dirname,'../https/www.popochiu.com.key')),
-   cert: fs.readFileSync(path.resolve(__dirname,'../https/www.popochiu.com.pem'))
- }
 var port = normalizePort(process.env.PORT || '80'); 
 app.set('port', port);
 
@@ -28,7 +24,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app); 
-var httpsserver =  https.createServer(httpsOption, app);
+
 
 var io = require('socket.io')(server, {
   path:'/chat', 
@@ -48,24 +44,6 @@ io.on('connection',(socket=>{
   }
 })) 
 
-var httpsio = require('socket.io')(httpsserver, {
-  path:'/chat', 
-  serveClient: true,
-  // below are engine.IO options
-  pingInterval: 10000,
-  pingTimeout: 5000,
-  cookie: false
-});  
-
-httpsio.on('connection',(socket=>{ 
-  let token = socket.handshake.query.token;
-  if (!token) {
-    delete httpsio.sockets.sockets[socket.id]
-  }else{ 
-    let newsocket = new WebSocket(socket,httpsio); 
-  }
-})) 
-  
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -74,10 +52,48 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
+  
+/**
+ * Create HTTPS server.
+ */ 
+const key_path = path.resolve(__dirname,'../https/www.popochiu.com.key')
+const cert_path = path.resolve(__dirname,'../https/www.popochiu.com.pem')
 
-httpsserver.listen(443);
-httpsserver.on('error', onError);
-httpsserver.on('listening', onListening);
+if (fs.existsSync(key_path) && fs.existsSync(cert_path) ) {
+  const httpsOption = {
+    key: fs.readFileSync(key_path),
+    cert: fs.readFileSync(cert_path)
+  }
+  var httpsserver =  https.createServer(httpsOption, app);
+
+  var httpsio = require('socket.io')(httpsserver, {
+    path:'/chat', 
+    serveClient: true,
+    // below are engine.IO options
+    pingInterval: 10000,
+    pingTimeout: 5000,
+    cookie: false
+  });  
+  
+  httpsio.on('connection',(socket=>{ 
+    let token = socket.handshake.query.token;
+    if (!token) {
+      delete httpsio.sockets.sockets[socket.id]
+    }else{ 
+      let newsocket = new WebSocket(socket,httpsio); 
+    }
+  })) 
+
+  httpsserver.listen(443);
+  httpsserver.on('error', onError);
+  httpsserver.on('listening', onListening);
+}
+
+
+
+
+
+
 /**
  * Normalize a port into a number, string, or false.
  */
