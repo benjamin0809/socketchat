@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <title>HTML5 Ajax Uploader</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .preview-avatar {
+            width: 200px;
+            height: 200px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            ;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        #imgshow {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="preview-avatar">
+        <img id="imgshow" src="" alt="" />
+    </div>
+
+    <p style="display: none;;">
+        <input type="file" id="upfile" accept="image/png, image/jpeg, image/jpg">
+    </p>
+
+    <p>
+        <input type="button" id="upJQuery" value="提交">
+    </p>
+    <script>
+
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return (r[2]); return null;
+        }
+        var id = GetQueryString("id");
+        //在input file内容改变的时候触发事件
+        $('#upfile').change(function () {
+            //获取input file的files文件数组;
+            //$('#filed')获取的是jQuery对象，.get(0)转为原生对象;
+            //这边默认只能选一个，但是存放形式仍然是数组，所以取第一个元素使用[0];
+            var file = $('#upfile').get(0).files[0];
+            //创建用来读取此文件的对象
+            var reader = new FileReader();
+            //使用该对象读取file文件
+            reader.readAsDataURL(file);
+            //读取文件成功后执行的方法函数
+            reader.onload = function (e) {
+                //读取成功后返回的一个参数e，整个的一个进度事件
+                console.log(e);
+                //选择所要显示图片的img，要赋值给img的src就是e中target下result里面
+                //的base64编码格式的地址
+                $('#imgshow').get(0).src = e.target.result;
+            }
+        })
+
+        $('.preview-avatar').click(function () {
+            $('#upfile').click();
+        })
+        /* jQuery 版 */
+        $('#upJQuery').on('click', function () {
+            if(!id) {
+                alert("id is empty")
+                return
+            }
+            var fd = new FormData();
+            fd.append("id", id);
+            fd.append("myfile", $("#upfile").get(0).files[0]);
+            $.ajax({
+                url: "/avatar/save",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                headers: {
+                    token: "555"
+                },
+                data: fd,
+                success: function (res) {
+                    if(res && res.errorCode == 0) {
+                        alert("上传成功")
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
