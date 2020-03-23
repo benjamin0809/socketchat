@@ -92,18 +92,33 @@ class ChatDao {
       return this.sqlUtils.queryWithParams(sql, params);
     }
 
-
+    /**
+     * 获取房间
+     * @param {*} userid 
+     */
+    getOtherRooms(userid) {
+      let sql = `SELECT room.name, room.id, room.avatar from 
+      ${table_room} room where room.id not in (
+          select user_room.roomid
+              from ${table_user_room} user_room 
+              inner join 
+              ${table_user} user on user.id = user_room.userid
+              where user.id = ?
+      )`
+      let params = [userid]
+      return this.sqlUtils.queryWithParams(sql, params);
+    }
 
     /**
      * 获取房间
      * @param {*} userid 
      */
     getRoomsByUser(userid) {
-      let sql = `SELECT room.name, room.id from 
+      let sql = `SELECT room.name, room.id, room.avatar from 
       ${table_user} user 
-      left join 
+      inner join 
       ${table_user_room} user_room on user.id = user_room.userid
-      left join 
+      inner join 
       ${table_room} room on user_room.roomid = room.id
       where user.id = ?`
       let params = [userid]
@@ -173,6 +188,26 @@ class ChatDao {
     joinRoom(userid, roomid){
       if(!userid) {
         throw new Error('joinRoom failed, userid is empty')
+      }
+      if(!roomid) {
+        throw new Error('joinRoom failed,roomid is empty')
+      }
+      const sql = `insert into ${table_user_room} (userid, roomid) VALUES (?, ?);`
+      const params = []
+      params.push(userid)
+      params.push(roomid)
+
+      return this.sqlUtils.queryWithParams(sql, params)
+    }
+
+      /**
+     * 加入房间
+     * @param {*} username 用户id
+     * @param {*} roomid 房间id
+     */
+    joinRoomSocketName(username, roomid){
+      if(!username) {
+        throw new Error('joinRoom failed, username is empty')
       }
       if(!roomid) {
         throw new Error('joinRoom failed,roomid is empty')

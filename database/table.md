@@ -79,6 +79,7 @@ CREATE TABLE `chat_room` (
   `avatar` text COLLATE utf8_unicode_ci,
   `description` text COLLATE utf8_unicode_ci,
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+   `has_pwd` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 

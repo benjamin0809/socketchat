@@ -63,6 +63,7 @@ class WebSocket{
   joinRoom (){
     this.socket.on('join room', (data) => {  
       this.addPoolRooms(this.socket.id, data.roomId)
+      this.chat.joinRoom(this.socket.userid, data.roomId)
       this.socket.join(data.roomId) 
     });
   }
@@ -124,13 +125,19 @@ class WebSocket{
         name: username,
         socketid: this.socket.id
       })
+      var rooms = await this.chat.getRoomsByUser(userid)
+      var roomids = rooms.map(item => item.id)
+      this.addPoolRooms(this.socket.id, roomids)
       // we store the username in the socket session for this client
       this.socket.username = username;
+      this.socket.userid = userid;
       let numUsers = this.getSocketsCount();
       this.addedUser = true; 
       this.socket.emit('login', {
         numUsers: numUsers,
-        myRooms: await this.chat.getRoomsByUser(userid)
+        myRooms: rooms,
+        otherRooms: await this.chat.getOtherRooms(userid),
+        
       });
       // echo globally (all clients) that a person has connected
       this.socket.broadcast.emit('user joined', {
