@@ -3,49 +3,103 @@
 
 <head>
     <meta charset="utf-8">
-    <title>HTML5 Ajax Uploader</title>
+    <title>Avatar Uploader</title>
+    <link rel="stylesheet" href="/css/cropper.min.css">
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="/js/cropper.min.js"></script>
     <style>
         body {
             text-align: center;
         }
 
         .preview-avatar {
-            width: 200px;
-            height: 200px;
-            border: 1px solid gray;
+            border: 1px dashed gray;
             border-radius: 5px;
-            ;
+            min-height: 200px;
             margin: auto;
-            overflow: hidden;
         }
 
         #imgshow {
             width: 100%;
         }
     </style>
+
+    <style>
+        .container {
+            margin: 20px auto;
+            max-width: 640px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .cropper-view-box,
+        .cropper-face {
+            border-radius: 0%;
+        }
+
+
+        .row,
+        .preview {
+            overflow: hidden;
+        }
+
+        .col {
+            float: left;
+            margin-right: 12px;
+        }
+
+        .col-6 {
+            width: 50%;
+        }
+
+        .col-3 {
+            width: 25%;
+        }
+
+        .col-2 {
+            width: 16.7%;
+        }
+
+        .col-1 {
+            width: 8.3%;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="container">
+        <h1>Avatar Uploader</h1>
+        <div class="preview-avatar">
+            <img id="image" src="" alt="" />
+        </div>
+        <div class="row">
 
-    <div class="preview-avatar">
-        <img id="imgshow" src="" alt="" />
+            <div class="col col-3">
+                <div class="preview"></div>
+            </div>
+            <div class="col col-2">
+                <div class="preview"></div>
+            </div>
+            <div class="col col-1">
+                <div class="preview"></div>
+            </div>
+        </div>
     </div>
-
     <p style="display: none;;">
         <input type="file" id="upfile" accept="image/png, image/jpeg, image/jpg">
     </p>
 
     <p>
+        <input type="button" id="choose-image" value="选择图片">
         <input type="button" id="upJQuery" value="提交">
     </p>
+    <p id="result"></p>
     <script>
 
-        function GetQueryString(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-            var r = window.location.search.substr(1).match(reg);
-            if (r != null) return (r[2]); return null;
-        }
+        var cropper
         var id = GetQueryString("id");
         //在input file内容改变的时候触发事件
         $('#upfile').change(function () {
@@ -59,20 +113,27 @@
             reader.readAsDataURL(file);
             //读取文件成功后执行的方法函数
             reader.onload = function (e) {
-                //读取成功后返回的一个参数e，整个的一个进度事件
-                console.log(e);
+                //读取成功后返回的一个参数e，整个的一个进度事件 
                 //选择所要显示图片的img，要赋值给img的src就是e中target下result里面
                 //的base64编码格式的地址
-                $('#imgshow').get(0).src = e.target.result;
+                $('#image').get(0).src = e.target.result;
+                if (cropper) {
+                    cropper.destroy()
+                    $('.preview img').attr('src', e.target.result)
+                }
+                loadedCrop()
+
+
             }
         })
 
-        $('.preview-avatar').click(function () {
+        $('#choose-image').click(function () {
             $('#upfile').click();
         })
         /* jQuery 版 */
+        /**
         $('#upJQuery').on('click', function () {
-            if(!id) {
+            if (!id) {
                 alert("id is empty")
                 return
             }
@@ -89,12 +150,186 @@
                 },
                 data: fd,
                 success: function (res) {
-                    if(res && res.errorCode == 0) {
+                    if (res && res.errorCode == 0) {
                         alert("上传成功")
                     }
                 }
             });
         });
+**/
+
+
+
+
+        function loadedCrop() {
+            var image = document.getElementById('image');
+            var button = document.getElementById('upJQuery');
+            var previews = document.querySelectorAll('.preview');
+            var croppable = false;
+            cropper = new Cropper(image, {
+                minCropBoxWidth: 100,
+                minCropBoxHeight: 100,
+                aspectRatio: 1,
+                viewMode: 1,
+                ready: function () {
+
+                    var clone = this.cloneNode();
+
+                    clone.className = '';
+                    clone.style.cssText = (
+                        'display: block;' +
+                        'width: 100%;' +
+                        'min-width: 0;' +
+                        'min-height: 0;' +
+                        'max-width: none;' +
+                        'max-height: none;'
+                    );
+
+
+                    croppable = true;
+                    each(previews, function (elem) {
+                        elem.appendChild(clone.cloneNode());
+                    });
+                },
+                crop: function (event) {
+                    var data = event.detail;
+                    var cropper = this.cropper;
+                    var imageData = cropper.getImageData();
+                    var previewAspectRatio = data.width / data.height;
+
+                    each(previews, function (elem) {
+                        var previewImage = elem.getElementsByTagName('img').item(0);
+                        if (previewImage) {
+                            var previewWidth = elem.offsetWidth;
+                            var previewHeight = previewWidth / previewAspectRatio;
+                            var imageScaledRatio = data.width / previewWidth;
+
+                            elem.style.height = previewHeight + 'px';
+                            previewImage.style.width = imageData.naturalWidth / imageScaledRatio + 'px';
+                            previewImage.style.height = imageData.naturalHeight / imageScaledRatio + 'px';
+                            previewImage.style.marginLeft = -data.x / imageScaledRatio + 'px';
+                            previewImage.style.marginTop = -data.y / imageScaledRatio + 'px';
+                        }
+
+
+                    });
+                },
+            });
+
+            button.onclick = function () {
+                var croppedCanvas;
+                var roundedCanvas;
+                var roundedImage;
+
+                if (!croppable) {
+                    return;
+                }
+
+                // Crop
+                croppedCanvas = cropper.getCroppedCanvas();
+
+                // Round
+                roundedCanvas = getRoundedCanvas(croppedCanvas);
+
+                // Show
+                roundedImage = document.createElement('img');
+                var base64Data = croppedCanvas.toDataURL()
+                roundedImage.src = base64Data
+                //调用
+                var blob = dataURLtoBlob(base64Data);
+                var file = blobToFile(blob, '111');
+                saveForm(file)
+            };
+        }
+
+        function saveForm(file) {
+            if (!id) {
+                alert("id is empty")
+                return
+            }
+            var fd = new FormData();
+            fd.append("id", id);
+            fd.append("myfile", file);
+            $.ajax({
+                url: "/avatar/save",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                headers: {
+                    token: "555"
+                },
+                data: fd,
+                success: function (res) {
+                    if (res && res.errorCode == 0) {
+                        if(res.data && res.data.fileEntity){
+                            $('#result').text(res.data.fileEntity.fullpath)
+                        }else{
+                            $('#result').text('')
+                        }
+                        alert("上传成功") 
+                    }
+                },
+                error: function() {
+                    $('#result').text('')
+                    alert("上传失败")
+                }
+            });
+        }
+        /** Utils **/
+
+
+        function each(arr, callback) {
+            var length = arr.length;
+            var i;
+
+            for (i = 0; i < length; i++) {
+                callback.call(arr, arr[i], i, arr);
+            }
+
+            return arr;
+        }
+
+        function getRoundedCanvas(sourceCanvas) {
+            var canvas = document.createElement('canvas');
+            var context = canvas.getContext('2d');
+            var width = sourceCanvas.width;
+            var height = sourceCanvas.height;
+
+            canvas.width = width;
+            canvas.height = height;
+            context.imageSmoothingEnabled = true;
+            context.drawImage(sourceCanvas, 0, 0, width, height);
+            context.globalCompositeOperation = 'destination-in';
+            context.beginPath();
+            //context.arc(width / 2, height / 2, Math.min(width, height) / 2, 0, 2 * Math.PI, true);
+            context.fill();
+            return canvas;
+        }
+        //将base64转换为blob
+        function dataURLtoBlob(dataurl) {
+            var arr = dataurl.split(','),
+                mime = arr[0].match(/:(.*?);/)[1],
+                bstr = atob(arr[1]),
+                n = bstr.length,
+                u8arr = new Uint8Array(n);
+            while (n--) {
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+            return new Blob([u8arr], { type: mime });
+        }
+        //blob转换为file
+        function blobToFile(theBlob, fileName) {
+            theBlob.lastModifiedDate = new Date();
+            theBlob.name = fileName;
+            return theBlob;
+        }
+
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return (r[2]); return null;
+        }
+
     </script>
 </body>
 

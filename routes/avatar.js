@@ -8,7 +8,7 @@ const { ResponseSuccess, ResponseError } = require('../models/response')
 const fs = require('fs')
 const path = require('path')
 const defaultAvatar = '../public/upload/avatar/head.png'
-router.get('/:id', function (req, res, next) { 
+router.get('/getAvatar/:id', function (req, res, next) { 
 
   let url = path.join(__dirname, `../public/upload/avatar/${req.params.id}.png`)
   if (fs.existsSync(url)) {
@@ -16,6 +16,10 @@ router.get('/:id', function (req, res, next) {
   } else {
     res.sendFile(path.join(__dirname, defaultAvatar))
   }
+})
+
+router.get('/upload', function (req, res, next) { 
+  res.sendFile(path.join(__dirname, '../public/saveavatar.html'))
 })
  
 /* GET home page. */
@@ -62,7 +66,7 @@ router.post('/save', multipartMiddleware, async function (req, res, next) {
         result = JSON.stringify(e)
       } catch (e) { }
     }) 
-    res.json(new ResponseSuccess(result).toJson());
+    res.json(new ResponseSuccess({result,fileEntity}).toJson());
   });
   source.on('error', function (err) {
     res.json(new ResponseError().toJson());
