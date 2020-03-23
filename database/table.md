@@ -69,3 +69,42 @@ CREATE TABLE `article` (
   PRIMARY KEY (`id`),
   KEY `article_id_IDX` (`id`,`title`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+
+/** 2020/3/23 **/
+
+CREATE TABLE `chat_room` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `avatar` text COLLATE utf8_unicode_ci,
+  `description` text COLLATE utf8_unicode_ci,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+
+CREATE TABLE `chat_user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `socketid` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+
+CREATE TABLE `chat_user_room` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `userid` bigint(20) NOT NULL,
+  `roomid` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `chat_user_room_un` (`userid`,`roomid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+
+CREATE TABLE `chat_message` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `type` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'text',
+  `content` text COLLATE utf8_unicode_ci,
+  `sendid` bigint(20) NOT NULL,
+  `receptid` bigint(20) NOT NULL,
+  `roomid` bigint(20) NOT NULL DEFAULT '0',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci

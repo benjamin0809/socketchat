@@ -1,4 +1,4 @@
- 
+
 global_rooms = new Map()
 class WebSocket{
   constructor(socket,io){  
@@ -10,6 +10,8 @@ class WebSocket{
     this.funcArr.forEach(func=>{
       this[func]();
     }) 
+    const ChatDao = require('../chat/chat')
+    this.chat = new ChatDao() 
   }
 
   // addSocket(socket){
@@ -115,16 +117,20 @@ class WebSocket{
   }
   
   addUser(){
-    this.socket.on('add user', (username) => {
+    this.socket.on('add user', async (username) => {
       if (this.addedUser) return;
   
+      const userid = await this.chat.createUser({
+        name: username,
+        socketid: this.socket.id
+      })
       // we store the username in the socket session for this client
       this.socket.username = username;
       let numUsers = this.getSocketsCount();
-      this.addedUser = true;
-      
+      this.addedUser = true; 
       this.socket.emit('login', {
-        numUsers: numUsers
+        numUsers: numUsers,
+        myRooms: await this.chat.getRoomsByUser(userid)
       });
       // echo globally (all clients) that a person has connected
       this.socket.broadcast.emit('user joined', {
