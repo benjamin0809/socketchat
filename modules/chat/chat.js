@@ -35,6 +35,7 @@ class ChatDao {
       }
       
       const result = await this.sqlUtils.queryWithParams(sql, params)
+      await this.joinRoom(result.insertId, 0);
       return result.insertId
     }
 

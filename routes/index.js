@@ -33,9 +33,9 @@ router.get('/chatroom', function(req, res, next) {
 });
 
 /* GET home page. */
-router.get('/chats', function(req, res, next) {   
-  res.render('chat', { ip: getClientIP(req)});
-});
+// router.get('/chats', function(req, res, next) {   
+//   res.render('chat', { ip: getClientIP(req)});
+// });
 
 router.get('/admin', function(req, res, next) { 
   res.sendFile(path.join(__dirname, '../front/admin/dist/index.html'));

@@ -127,8 +127,10 @@ class WebSocket{
       })
       var rooms = await this.chat.getRoomsByUser(userid)
       var roomids = rooms.map(item => item.id)
-      this.addPoolRooms(this.socket.id, roomids)
-      this.socket.join(roomids)
+      if(roomids.length > 0) {
+        this.addPoolRooms(this.socket.id, roomids)
+        this.socket.join(roomids)
+      }
       // we store the username in the socket session for this client
       this.socket.username = username;
       this.socket.userid = userid;
