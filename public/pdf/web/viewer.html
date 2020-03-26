@@ -46,7 +46,8 @@ See https://github.com/adobe-type-tools/cmap-resources
 
 
   var DEFAULT_URL = "";
-  var pdfUrl =document.location.search.substring(1);
+  // var pdfUrl =document.location.search.substring(1); -->
+  var pdfUrl = null;
   if(null == pdfUrl || "" == pdfUrl){
       var BASE64_MARKER = ';base64,';//声明文件流编码格式
       var preFileId = "";
