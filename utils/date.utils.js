@@ -246,7 +246,7 @@ class DateUtils {
           time = new Date().getFullYear() + '-' + time
           result = new Date(time)
       }
-      console.log(time,result)
+      //console.log(time,result)
       return this.getCurrentTime(result)
   }
   };

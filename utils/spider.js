@@ -256,6 +256,7 @@ class Sipder {
       HupuDao.insertHupuImages(article).then(res => {
         resolve({ result: true, message: 'insert into table ok' })
       }).catch(err => {
+        console.error(err);
         resolve({ result: false, message: 'this item failed', error: err })
       })
     })
