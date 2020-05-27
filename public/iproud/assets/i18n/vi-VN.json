@@ -1,0 +1,1578 @@
+{
+  "MY_INFO_VERIFY": "Biệt danh bất hợp pháp",
+  "TUTORIAL_SLIDE3_DESCRIPTION3": "",
+  "APP_COMMON_COPY_MESSAGE": "Sao chép liên kết",
+  "APP_COMMON_EXTRACT_QRCODE": "Xác định mã QR",
+  "APP_COMMON_DISABLE_FUCTION": "Tính năng này hiện chưa được bật.",
+  "1. Location": "điều này cho phép chúng tôi sử dụng vị trí của bạn để cung cấp 1 số chức năng, nếu theo dõi được chặt chẽ những hoạt động của bạn, dữ liệu của 1 bộ phận người dùng có thể sử dụng làm chấm công đồng thời cho phép bạn đánh dấu vị trí của mình",
+  "2. Camera": "cho phép iProud truy cập vào camera của bạn để sử dụng chức năng quét mã vạch, đồng thời tải ảnh lên để sử dụng làm ảnh đại diện",
+  "3. Library": "cho phép iProud truy cập vào bộ sưu tập ảnh của bạn, bạn có thể tải ảnh lên để sử dụng làm ảnh đại diện",
+  "ABOUT_APP": "Đôi điều về Viên Bảo",
+  "ABOUT_APP_VERSION": "Phiên bản",
+  "ABOUT_VERSION_ALREADY_LASTEST": "đaã cập nhật phiên bản mới nhất",
+  "ABOUT_VERSION_CHECK": "Phiên bản kiểm tra",
+  "ABOUT_VERSION_DEBUG": "bản dùng thử",
+  "ABOUT_VERSION_DESC": "Mô tả phiên bản",
+  "ABOUT_VERSION_RELEASE": "phiên bản chính thức",
+  "ABOUT_VERSION_UPDATE": "cập nhật phiên bản mới",
+  "ABOUT_WELCOME_PAGE": "chào đón",
+  "ACCOUNT_LOCKED": "tài khoản của bạn đã bị khóa, vui lòng liên hệ quản lý hệ thống",
+  "AGENT_DELETE_MESSAGE": "Xác nhận cần xóa bỏ người thay thế?",
+  "APP_BUTTON_CANCEL": "hủy",
+  "APP_BUTTON_SAVE": "Bảo lưu",
+  "APP_COMMON_ALL": "Tất cả",
+  "APP_COMMON_NODATA": "Chưa có dữ liệu",
+  "APP_COMMON_ENTER": "Đi vào",
+  "APP_COMMON_CLEAR_MESSAGES": "Xóa tin nhắn",
+  "APP_COMMON_CANCEL": "hủy",
+  "APP_COMMON_CONFIRM": "OK",
+  "APP_COMMON_LATER": "Sau đó",
+  "APP_COMMON_HANDLE_TIPS": "Dấu nhắc hoạt động",
+  "APP_COMMON_MORE": "Nhiều hơn",
+  "APP_COMMON_NO_MORE": "không còn thêm nữa",
+  "APP_COMMON_SUBMIT": "Gửi",
+  "APP_COMMON_LOADING_FAILED": "Tải không thành công",
+  "APP_COMMON_TOUCH_RETRY": "Vui lòng nhấn để thử lại",
+  "APP_COMMON_RELOAD_IAMGE": "Tải lại hình ảnh",
+  "APP_DATETIME_SECOND": "giây",
+  "APP_NETWORK_DISCONNECT": "Mạng không được phát hiện, vui lòng kết nối vào mạng",
+  "APP_NETWORK_ONCONNECTED": "vừa kết nối lại với mạng",
+  "APP_NETWORK_ONDISCONNECTED": "ngắt kết nối mạng, vui lòng kết nối với đường mạng",
+  "APP_TUTORIAL_PASS": "bỏ qua",
+  "APP_TUTORIAL_START": "bắt đầu mạo hiểm",
+  "BROWSER_COPIED": "Địa chỉ liên kết đã được sao chép vào bảng tạm",
+  "BROWSER_NOT_INSTALL_WEXIN": "bạn chưa cài đặt wechat",
+  "BROWSER_POPOVER_CLOSE": "Đóng ",
+  "BROWSER_POPOVER_COLLECT": "sưu tập",
+  "BROWSER_POPOVER_COPYURL": "sao chép đường dẫn",
+  "BROWSER_POPOVER_OPENINBROWSER": "Mở trong trình duyệt",
+  "BROWSER_POPOVER_COMPLAINT": "Complaint",
+  "BROWSER_POPOVER_REFRESH": "Refresh",
+  "BROWSER_POPOVER_WEBLOG": "Sina Weibo",
+  "BROWSER_POPOVER_WECHAT": "Gửi tới Wechat",
+  "BROWSER_POPOVER_WECHAT_MOMENT": "khoảnh khắc wechat",
+  "BROWSER_SENT": "Đã gửi",
+  "BROWSER_SHARE_SUCCESSFULLY": "chia sẻ thành công",
+  "CHANGE_PASSWORD_CONFIRM": "xác nhận mật khẩu",
+  "CHANGE_PASSWORD_CONFIRM_INVLID": "Xác nhận mật khẩu phải tương đồng với mật khẩu mới",
+  "CHANGE_PASSWORD_NEW": "mật khẩu mới",
+  "CHANGE_PASSWORD_OLD": "mật khẩu cũ",
+  "CHANGE_PASSWORD_SUBMIT": "gửi ",
+  "CHANGE_PASSWORD_SUCCESS": "Mật mã của bạn đã đổi thành công",
+  "CONTACT_BLACK_LIST_TITLE": "Danh sách đen",
+  "CONTACT_BLACK_LIST_REMOVE": "Cho tôi vào danh sách đen",
+  "CONTACT_BLACK_LIST_REMOVE_MESSAGE": "Chắc là sẽ cho tôi danh sách đen?",
+  "CONTACT_TITLE": "Liên lạc lục",
+  "CONTACT_SEARCH": "Tìm kiếm",
+  "CONTACT_NEW": "Bạn mới",
+  "CONTACT_RESOURCE": "Từ nhóm:",
+  "CONTACT_ADD_TITLE": "Thêm bạn",
+  "CONTACT_ADD_PHONE": "Số điện thoại di động",
+  "CONTACT_ADD_SCAN": "Sau quét đi những",
+  "CONTACT_ADD_SCAN_INFO": "Quét mã hai chiều thêm bạn",
+  "CONTACT_ADD_MYCODE": "- Mã hai chiều",
+  "CONTACT_ADD_MYCODE_INFO": "Sau quét đi những cộng tôi cho bạn bè",
+  "CONTACT_ADD_NEW_REQUEST": "Bạn yêu cầu",
+  "CONTACT_ADD_NEW_REQUEST_REJECT": "Từ chối",
+  "CONTACT_ADD_NEW_REQUEST_AGREE": "Đồng ý",
+  "CONTACT_ADD_SEND_REQUEST_OK": "Một yêu cầu kết bạn đã được gửi, vui lòng đợi bên kia xác nhận!",
+  "CONTACT_ADD_SEND_RESPONSE": "Tôi đã chấp nhận yêu cầu kết bạn của bạn. Bây giờ chúng ta hãy trò chuyện!",
+  "CONTACT_CHOOSER_CLOSE": "Quay trở lại",
+  "CONTACT_CHOOSER_MULTI": "Nhiều người",
+  "CONTACT_CHOOSER_DONE": "Hoàn thành",
+  "CONTACT_CHOOSER_CANCEL": "Hủy bỏ",
+  "CONTACT_CHOOSER_TITLE": "Chọn một người bạn thân.",
+  "CONTACT_CHOOSER_TITLE_MULTI": "Lựa chọn nhiều người bạn thân",
+  "CONTACT_DETAIL_NICKNAME": "Biệt danh：",
+  "CONTACT_DETAIL_NAME": "Tên：",
+  "CONTACT_DETAIL_CONCERN": "Chú ý",
+  "CONTACT_DETAIL_CONCERN_UNDO": "Hủy tâm",
+  "CONTACT_DETAIL_BLACK_HINT": "Đã được thêm vào danh sách đen, anh sẽ không nhận được tin nhắn của nhau.",
+  "CONTACT_DETAIL_SEND_MESSAGE": "Nhắn tin",
+  "CONTACT_DETAIL_SEND_REQUEST": "Thêm bạn.",
+  "CONTACT_DETAIL_VERIFY_INFO": "Thông tin xác thực",
+  "CONTACT_DETAIL_VERIFY_DESCRIPTION": "Anh cần phải gửi đơn xin xác nhận, chờ nhau qua",
+  "CONTACT_DETAIL_VERIFY_CANCEL": "Hủy bỏ",
+  "CONTACT_DETAIL_VERIFY_SEND": "Gửi",
+  "CONTACT_GROUP_MANAGE_TITLE": "Nhóm quản lý.",
+  "CONTACT_GROUP_MANAGE_ADD": "Thêm Nhóm",
+  "CONTACT_GROUP_ADD_ALERT": "Thêm Nhóm",
+  "CONTACT_GROUP_ADD_MESSAGE": "Hãy nhập tên nhóm mới",
+  "CONTACT_GROUP_ADD_PLACEHOLDER": "Hãy nhập tên nhóm",
+  "CONTACT_GROUP_DELETE_ALERT": "Xoá gợi ý",
+  "CONTACT_GROUP_DELETE_MESSAGE": "Chắc chắn là gỡ bỏ nhóm? Xoá nên nhóm sau trong nhóm liên lạc sẽ chuyển vào nhóm mặc định.",
+  "CONTACT_GROUP_EDIT_ALERT": "Nhóm biên tập.",
+  "CONTACT_GROUP_EDIT_MESSAGE": "Hãy nhập tên nhóm mới",
+  "CONTACT_MORE_ADD_FRIEND": "Thêm bạn",
+  "CONTACT_MORE_GROUP_MANAGE": "Nhóm quản lý",
+  "CONTACT_MORE_BLACKLIST_MANAGE": "Quản lý danh sách đen",
+  "CONTACT_OPTION_TITLE": "Thêm",
+  "CONTACT_OPTION_ALIASNAME": "Ghi chú và nhóm",
+  "CONTACT_OPTION_STARRED": "Ngôi sao tiêu chuẩn",
+  "CONTACT_OPTION_PHONE_NUMBER": "Điện thoại",
+  "CONTACT_OPTION_SHARE": "Khuyên nên liên lạc",
+  "CONTACT_OPTION_BLACKLIST": "Danh sách đen",
+  "CONTACT_OPTION_DELETE": "Gỡ bỏ",
+  "CONTACT_OPTION_DELETE_ALERT": "Chắc phải gỡ bỏ",
+  "CONTACT_OPTION_BLACKLIST_ALERT": "Chắc chắn sẽ gia nhập danh sách đen",
+  "CONTACT_OPTION_BLACKLIST_UNDO_ALERT": "Chắc chắn sẽ cho danh sách đen",
+  "CONTACT_SET_REMARK_TITLE": "Sửa đổi không bút",
+  "CONTACT_SET_ALIAS": "Cài đặt ghi chú",
+  "CONTACT_ALIAS": "Ghi chú",
+  "CONTACT_SET_REMARK_TAG": "Nhãn",
+  "CONTACT_TAG_CHOOSER_TITLE": "Chuyển vào nhóm",
+  "COMMUNITY_DISCOVER": "Khám phá",
+  "COMMUNITY_POST_NAME": "Bài viết",
+  "CERTIFICATE_CONFIG_BACK_MESSAGE": "Quay trở lại trang ký để tiếp tục ký?",
+  "CERTIFICATE_CONFIG_SUCCESS": "Cấu hình thành công",
+  "CERTIFICATE_PASSWORD_TRUE": "Mật khẩu thành công!",
+  "CERTIFICATE_PASSWORD_FALSE": "Mật khẩu bị lỗi, xin xác nhận lại mật k",
+  "CERTIFICATE_VALID_FAILED": "Xác thực không thành công, chứng chỉ này không thể được sử dụng cho chữ ký điện tử",
+  "CERTIFICATE_PASSWORD_VERIFY": "Mật khẩu",
+  "CERTIFICATE_PASSWORD_ENTER": "Vui lòng nhập mật khẩu chứng chỉ 6 ký tự.",
+  "CERTIFICATE_PASSWORD": "Mật khẩu",
+  "CERTIFICATE__DELETE_MESSAGE": "Bạn có chắc muốn xoá chứng nhận này không?",
+  "CERTIFICATE_TITLE": "Thêm chữ ký điện tử cho tín hiệu di động FIH,Các tập tin chứng nhận sẽ chỉ được lưu trên thiết bị này.",
+  "CERTIFICATE_DELETE": "xóa",
+  "CERTIFICATE_UPDATECERT": "Chuẩn bị",
+  "CERTIFICATE_SERIALNUMBER": "Số seri",
+  "CERTIFICATE_VALIDITY": "Giá trị",
+  "CERTIFICATE_TILL": "Đến",
+  "CERTIFICATE_ISSUER": "Phát",
+  "CERTIFICATE_SUBJECT": "Mũ",
+  "CERTIFICATE_ALGORITHM": "Thuật toán chữ ký",
+  "CERTIFICATE_FINGERPRINT": "Chứng nhận vân tay",
+  "CERTIFICATE_REUPLOAD": "Thay",
+  "CERTIFICATE_CANCEL_HINT": "Tải đã hủy!",
+  "CERTIFICATE_DOWNLOAD_HINT": "Tải xuống chứng chỉ từ extranet",
+  "CERTIFICATE_NOMATCH_TITLE": "Xác thực không thành công",
+  "CERTIFICATE_NOMATCH_SUBTITLE": "Chủ sở hữu chứng chỉ không phù hợp với người dùng hiện tại",
+  "CERTIFICATE_NOMATCH_SUBJECT": "Chủ sở hữu chứng chỉ: ",
+  "CERTIFICATE_NOMATCH_CURRENT": "Người dùng hiện tại: ",
+  "DATE_ALERT_MESSAGE": "Lỗi ngày tháng! Ngày bắt đầu không thể lớn hơn ngày kết thúc",
+  "EMPLOYEE_BIND_ALREADY": "Danh tính nhân viên của bạn đã được xác nhận",
+  "EMPLOYEE_BU": "sự nghiệp đoàn",
+  "EMPLOYEE_COMMITTEE": "Ủy ban kỹ thuật",
+  "EMPLOYEE_COST_CODE": "mã chi phí",
+  "EMPLOYEE_DEPARTMENT": "bộ phận",
+  "EMPLOYEE_DEPARTMENT_CODE": "mã chi phí bộ phận",
+  "EMPLOYEE_DIRECTOR": "quản lý trực tiếp",
+  "EMPLOYEE_DORM": "Ký túc xá",
+  "EMPLOYEE_FWP": "có thay đổi vị trí trong tương lai",
+  "EMPLOYEE_GRADE": "cấp bậc",
+  "EMPLOYEE_HOBBY": "sở thích",
+  "EMPLOYEE_MOBILEINPMS": "Số liên lạc",
+  "EMPLOYEE_REMARK": "nhận xét",
+  "EMPLOYEE_IDENTITY_BIND": "Xác nhận danh tính nhân viên",
+  "EMPLOYEE_IDENTITY_TITLE": "Danh tính nhân viên",
+  "EMPLOYEE_IDENTITY_UNBIND": "xóa danh tính",
+  "EMPLOYEE_INCOMPANYDATE": "ngày bắt đầu làm việc",
+  "EMPLOYEE_ISDIRECT": "trực tiếp/ gián tiếp",
+  "EMPLOYEE_MAXEDUCATION": "học vấn cao nhất",
+  "EMPLOYEE_NATIONAL_ID": "số chứng minh nhân dân",
+  "EMPLOYEE_NOT_BIND_YET": "bạn vẫn chưa xác nhận danh tính nhân viên",
+  "EMPLOYEE_OUTYEAR": "thâm niên công nhân viên",
+  "EMPLOYEE_POSITION": "vị trí quản lý",
+  "EMPLOYEE_POSITIONSERIES": "chuỗi vị trí",
+  "EMPLOYEE_REAL_NAME": "họ tên",
+  "EMPLOYEE_SITE": "Xưởng làm việc",
+  "EMPLOYEE_SPECIALTY": "Chuyên ngành",
+  "EMPLOYEE_STAFF_NUMBER": "Mã nhân viên",
+  "EMPLOYEE_URGENTMANANDTEL": "liên hệ khẩn cấp",
+  "EMPLOYEE_WORKLONG": "Thâm niên",
+  "EMPLOYEE_WORKPOSTNAME": "vị trí",
+  "EMPLOYEE_WORK_HISTORY": "Kinh nghiệm làm việc",
+  "FORGOT_PASSWORD_MOBILEPHONE": "số di động",
+  "FORGOT_PASSWORD_NEXTSTEP": "tiếp theo",
+  "FORGOT_PASSWORD_TITLE": "Đăng nhập nhanh bằng SMS",
+  "HOME_ENGINEER_RECRUITMENT": "tuyển dụng kỹ sư",
+  "HOME_GENERAL_RECRUITMENT": "tuyển dụng công nhân",
+  "HOME_LINKS": "Khuyến nghị",
+  "HOME_MORE_WIDGET": "nhiều ứng dụng hơn",
+  "HOME_NEWS": "Tin tức",
+  "HOME_NEWS_INDUSTRY_PREVIEW": "tin tức xung quanhh",
+  "HOME_NEWS_FIH_PREVIEW": "Điểm nóng nhà máy",
+  "HOME_PARK_LIFE": "Khuôn viên sinh hoạt",
+  "HOME_POSITION_PREVIEW": "vị trí chuyển phát nhanh",
+  "HOME_PULL_REFRESH": "kéo xuống để làm mới",
+  "HOME_REFRESH": "Refresh",
+  "HOME_SEARCH_INFO": "Từ khóa",
+  "HOME_SEARCH_ITEM": "Điều",
+  "HOME_SEARCH_LIST": "Tìm kiếm",
+  "HOME_SEARCH_LOADING": "đang tải",
+  "HOME_SEARCH_PERIOD": "không còn thêm nữa",
+  "HOME_SEARCH_RECORD": "Lịch sử tìm kiếm",
+  "HOME_SEARCH_RESULT": "Kết quả tìm kiếm",
+  "HOME_SIGN_MONTH": "trong vòng 1 tháng",
+  "HOME_SIGN_QUARTER": "Trong 3 tháng",
+  "HOME_SIGN_TITLE": "Lần đăng nhập gần nhất",
+  "HOME_SIGN_WEEK": "Trong 1 tuần",
+  "HOME_TITLE": "iProud",
+  "HTTP_ERROR_STATUS_0": "yêu cầu thất bại, đang có sự cố, vui lòng thử lại sau",
+  "HTTP_ERROR_STATUS_404": "Yêu cầu thất bại, không tìm thấy địa chỉ yêu cầu ",
+  "HTTP_ERROR_STATUS_500": "yêu cầu thất bại, đang có sự cố, vui lòng thử lại sau",
+  "HTTP_ERROR_STATUS_DISCONNECTED": "Vui lòng kết nối tới mạng",
+  "HTTP_ERROR_STATUS_TIMEOUT": "hết hạn yêu cầu, vui lòng thử lại sau",
+  "HTTP_ERROR_STATUS_UNKNOWN": "yêu cầu bị lỗi, chưa xác định được nguyên nhân",
+  "SOCIAL_CHECKIN_CHECKINREWARD_TITLE": "Đăng nhập ngay hôm nay",
+  "SOCIAL_IPROUD_POINTS": "Điểm",
+  "SOCIAL_POINTS": "Điểm",
+  "SOCIAL_CHECKIN_CHECKINREWARD_BUTTON_TEXT": "Nhận ngay",
+  "SOCIAL_CHECKIN_BUTTON": "Nhận phòng",
+  "SOCIAL_CHECKIN_ACCUMULATE_DAYS": "Liên tục",
+  "SOCIAL_CHECKIN_ACCUMULATE_DAY": "ngày",
+  "SOCIAL_CHECKIN_TITLE": "Nhận phòng",
+  "SOCIAL_CHECKIN_ALREADY_SIGN": "Đã đăng nhập",
+  "SOCIAL_CALENDAR_SUNDAY": "nhật",
+  "SOCIAL_CALENDAR_MONDAY": "hai",
+  "SOCIAL_CALENDAR_TUESDAY": "ba",
+  "SOCIAL_CALENDAR_WEDNESDAY": "tư",
+  "SOCIAL_CALENDAR_THURSDAY": "năm",
+  "SOCIAL_CALENDAR_FRIDAY": "sáu",
+  "SOCIAL_CALENDAR_SATURDAY": "bảy",
+  "SOCIAL_ACHIEVEMENT_TITLE": "Danh sách thành tích",
+  "SOCIAL_ACHIEVEMENT_ITEM_GOT": "Chúc mừng huy chương thành tích của bạn",
+  "SOCIAL_ACHIEVEMENT_ITEM_NO_GOT": "Huy chương thành tích chưa đạt được",
+  "SOCIAL_ACHIEVEMENT_ITEM_SHARE_BUTTON": "Chia sẻ huy chương của tôi",
+  "SOCIAL_ACHIEVEMENT_ITEM_PRESENTEDTO": "Trình bày cho",
+  "SOCIAL_TASK_TITLE": "Danh sách nhiệm vụ",
+  "SOCIAL_TASK_RECEIVE_ALL": "Nhận tất cả",
+  "SOCIAL_TASK_COMPLETED": "Đã hoàn thành",
+  "SOCIAL_TASK_NOT_COMPLETED": "Đi đến kết thúc",
+  "SOCIAL_TASK_RECEIVE": "Nhận",
+  "SOCIAL_TASK_ALREADY_RECEIVE": "Đã nhận",
+  "SOCIAL_MY_IPROUD_POINTS": "iProud Tiền xu",
+  "SOCIAL_MY_DAILY": "Nhiệm vụ hàng ngày",
+  "SOCIAL_MY_ASSETS_POINTS": "Chi tiết tiền xu",
+  "SOCIAL_MY_LEADERBOARD": "Xếp hạng tiền xu",
+  "SOCIAL_MY_DAILY_LIST": "hằng ngày",
+  "SOCIAL_MY_WEEK_LIST": "tuần",
+  "SOCIAL_MY_MONTH_LIST": "tháng",
+  "SOCIAL_MY_TOTAL_LIST": "Tổng cộng",
+  "SOCIAL_CLUB_CONCERNED_CLUB": "Câu lạc bộ quan tâm",
+  "SOCIAL_CLUB_RECOMMENDED_CLUB": "Câu lạc bộ đề xuất",
+  "SOCIAL_CLUB_RECENT_VISIT": "Chuyến thăm gần đây",
+  "SOCIAL_CLUB_FOLLOW": "Theo",
+  "SOCIAL_CLUB_GO": "Đi",
+  "SOCIAL_CLUB_NO_FOLLOW": "Bạn chưa theo dõi cộng đồng ~",
+  "SOCIAL_CLUB_MORE": "Thêm câu lạc bộ",
+  "SOCIAL_CLUB_GO_FOLLOW": "Chú ý",
+  "SOCIAL_CLUB_MORE_RECOMMENDATIONS": "Hơn",
+  "SOCIAL_CLUB_CLUB": "Câu lạc bộ",
+  "SOCIAL_CLUB_ACTIVITY": "Hoạt động",
+  "SOCIAL_CLUB_MOMENT": "Bài viết",
+  "SOCIAL_CLUB_CHOOSE_AREA": "Khu vực",
+  "SOCIAL_CLUB_FOLLOWERS": "Người theo dõi",
+  "SOCIAL_CLUB_POSTS": "Đề tài",
+  "SOCIAL_CLUB_SERACH": "Vui lòng nhập từ khóa ",
+  "LOGIN_ACCOUNT": "Tài khoản",
+  "LOGIN_BY_OTHER_WAY": "đăng nhập bằng cách khác, Hoặc",
+  "LOGIN_FORGOT_PASSWORD": "Quên mật khẩu, ",
+  "LOGIN_BY_WORKFLOW_TIPS": "muốn đăng nhập tài khoản workflow phải đăng kí số điện thoại và xác nhận thông tin danh tính nhân viên",
+  "LOGIN_ERROR": "không thể đăng nhập, vui lòng kiểm tra lại thông tin và đăng nhập lại sau",
+  "LOGIN_ERROR_CONFIRM_BUTTON": "xác nhận  ",
+  "LOGIN_ERROR_INCORRECT_PASSWORD": "đăng nhập thất bại, mật khẩu ko đúng, vui lòng kiểm tra lại thông tin",
+  "LOGIN_ERROR_INCORRECT_SECURITY_CODE": "Mã xác minh không chính xác",
+  "LOGIN_ERROR_PHONE_NUMBER_NOT_EXIST": "đăng nhập thất bại, số điện thoại ko đúng, vui lòng kiểm tra lại thông tin",
+  "LOGIN_ERROR_USER_NOT_EXIST": "đăng nhập thất bại, tài khoản không đúng, vui lòng kiểm tra lại thông tin",
+  "LOGIN_FORGOTPASSWORD": "dđăng nhập nhanh bằng tin nhắn",
+  "LOGIN_LANGUAGE_SELECT": "lựa chọn ngôn ngữ",
+  "LOGIN_LANGUAGES": "ngôn ngữ",
+  "LOGIN_MOBILEPHONE": "số di động",
+  "LOGIN_FORGET_PASSWORD": "Quên mật khẩu",
+  "LOGIN_RETRIEVE_PASSWORD": "Lấy lại mật khẩu",
+  "MESSAGE_VERIFICATION_CODE": "Xác minh tin nhắn SMS",
+  "LOGIN_NO_EMPLOYEEID_TIPS": "nhân viên nội bộ vui lòng ấn xác nhận danh tính nhân viên",
+  "LOGIN_PASSWORD": "Mật mã",
+  "LOGIN_PASSWORD_HINTS": "mật khẩu ( 8 kí tự trở lên bao gồm cả số và chữ cái )",
+  "LOGIN_REGISTER": "đăng kí",
+  "LOGIN_ERROR_CODE_6006": "Voucher đã hết hạn. Vui lòng thử lại.",
+  "LOGIN_ERROR_CODE_6008": "Tài khoản Wechat chưa bị ràng buộc với tài khoản iProud. Vui lòng đăng nhập bằng tài khoản iProud và sau đó liên kết Wechat trong> Trung tâm bảo mật của tôi.",
+  "LOGIN_ERROR_CODE_6010": "ID Apple chưa bị ràng buộc với tài khoản iProud. Vui lòng đăng nhập bằng tài khoản iProud trước, sau đó liên kết ID Apple trong My> Security Center",
+  "LOGIN_SUBMIT": "Đăng nhập",
+  "LOGIN_SIGNIN_WITH": "Đăng nhập",
+  "LOGIN_SIGNIN_WITH_WECHAT": "Đăng nhập bằng WeChat",
+  "LOGIN_SIGNIN_WITH_APPLE": "Đăng nhập bằng ID apple",
+  "LOGIN_SIGNIN_WITH_WORKFLOW": "Đăng nhập bằng Workflow",
+  "CANCELACCOUNT": "Hủy tài khoản",
+  "CANCELACCOUNT_TIPS":"Bạn có chắc chắn muốn hủy tài khoản của mình, tất cả thông tin cá nhân của bạn sẽ bị xóa sau khi đăng xuất.",
+  "CANCELACCOUNT_SUCCESS":"Đăng xuất thành công",
+  "LOGIN_TITLE": "Đăng nhập",
+  "LOGIN_WORKFLOW": "workflow ",
+  "LOGIN_WECHAT": "WeChat",
+  "BINDING_SUCCESS": "Liên kết thành công",
+  "UNBIND_BEFROE_HEADER": "Hủy xác nhận",
+  "UNBIND_WECHAT_BEFROE_MESSAGE": "Sau khi hủy liên kết WeChat, bạn không còn có thể sử dụng WeChat để đăng nhập vào tài khoản iProud",
+  "UNBIND_APPLE_BEFROE_MESSAGE": "Sau khi hủy liên kết ID APPLE, bạn sẽ không còn có thể sử dụng ID APPLE để đăng nhập vào tài khoản iProud",
+  "UNBIND_SUCCESS": "Không thành công",
+  "BINDING_GO": "Không ràng buộc",
+  "CANCEL_BIND_GO": "Không ràng buộc",
+  "MESSAGE_DELETE": "xóa",
+  "MESSAGE_DELETE_CANCEL": "hủy",
+  "MESSAGE_DELETE_CONFIRM": "OK",
+  "MESSAGE_DELETE_MESSAGE": "xác nhận xóa thông tin này?",
+  "MESSAGE_CLEAR_MESSAGE": "Sau khi xóa, bạn sẽ không thể khôi phục. Bạn có chắc chắn muốn xóa tất cả tin nhắn?",
+  "MESSAGE_DELETE_TITLE": "xóa nhắc nhở",
+  "MESSAGE_EMPTY": "thư mục trống",
+  "MESSAGE_GROUP_DELETE": "Xóa ",
+  "MESSAGE_GROUP_REMOVE_STICKY": "xóa chú ý",
+  "MESSAGE_GROUP_STICKY_ON_TOP": "Tin nhắn nhóm trên đỉnh",
+  "MESSAGE_NO_MORE": "không còn thêm nữa",
+  "MESSAGE_IMAGE_PHOTO": "Album",
+  "MESSAGE_IMAGE_CAMERA": "Máy ảnh",
+  "MESSAGE_TITLE": "tin nhắn",
+  "MESSAGE_CHAT_RESEND": "Bạn có muốn gửi lại?",
+  "MESSAGE_TYPE_IMAGE": "[hình ảnh]",
+  "MY_BIND_EMPLOYEE_ALREADY_BIND": "Mã số nhân viên này đã được xác nhận với số di động",
+  "MY_BIND_EMPLOYEE_DEFEATED": "dữ liệu thông tin không khớp",
+  "MY_BIND_EMPLOYEE_SUCCEED": "ràng buộc thông tin nhân viên thành công",
+  "MY_INFO_AVATAR": "ảnh đại diện",
+  "MY_INFO_BIND_EMPLOYEE": "Xác nhận danh tính nhân viên",
+  "MY_INFO_CANCEL": "hủy",
+  "MY_INFO_CHANGE_PASSWORD": "thay đổi mật khẩu",
+  "MY_INFO_CHANGE_WECHATID": "WeChat Id",
+  "MY_INFO_FROM_CAMERA": "chụp ảnh",
+  "MY_INFO_FROM_LIBRARY": "Chọn từ kho ảnh",
+  "MY_INFO_VIEW_FULL_AVATAR": "Xem hình ảnh đầy đủ",
+  "MY_INFO_NICKNAME": "tên gọi",
+  "MY_INFO_SET_PASSWORD": "cài đặt mật khẩu  ",
+  "MY_INFO_SHOW_EMPLOYEE": "Tra cứu dữ liệu nhân viên",
+  "MY_INFO_SIGNATURE": "Kí tên",
+  "MY_INFO_TITLE": "thông tin của tôi",
+  "MY_INFO_USERNAME": "số di động",
+  "MY_LIST_ABOUT": "về",
+  "MY_LIST_EMPLOYEE": "Danh tính nhân viên",
+  "MY_LIST_FEEDBACK": "Vấn đề phản hồi",
+  "MY_LIST_HELP": "chăm sóc khách hàng",
+  "MY_LIST_LOGIN_REGISTER": "Đăng nhập/Đăng ký",
+  "MY_LIST_SIGN_BUTTONNAME": "Nhận phòng",
+  "MY_LIST_ASSETS_SHELL": "iProud Tiền xu",
+  "MY_LIST_ASSETS_RANKS": "Thứ hạng của tôi",
+  "MY_LIST_ASSETS_MEDALS": "Huy chương của tôi",
+  "MY_LIST_MY_FANS": "Người hâm mộ của tôi",
+  "MY_LIST_ACHIEVELIST": "Danh sách huy chương",
+  "MY_LIST_SHELLS_DETAILS": "iProud Tiền xu",
+  "MY_LIST_TASKLIST": "Danh sách nhiệm vụ",
+  "MY_LIST_SCORE_ROLE": "Mô tả thể chế",
+  "MY_LIST_EXPERIENCE": "Giá trị thực nghiệm: ",
+  "MY_LIST_NEXT_LEVEL_REQUIRES": ",Cấp độ tiếp theo yêu cầu: ",
+  "MY_LIST_MYCOMMENTS": "Những bình luận của tôi",
+  "MY_LIST_MYEVENTS": "Sự kiện của tôi",
+  "MY_LIST_MYPUBLISH": "Xuất bản của tôi",
+  "MY_LIST_MYFOLLOWS": "Theo tôi",
+  "MY_LIST_MYFAVOURITE": "Sở thích của tôi",
+  "MY_LIST_LOGOUT": "Thoát",
+  "MY_LIST_SECURITY": "Trung tâm an toàn",
+  "MY_LIST_SETTING": "Cài đặt",
+  "MY_LIST_SHARE": "mời bạn bè",
+  "MY_LIST_TITLE": "thông tin của tôi",
+  "MY_NICKNAME_EXCEED": "tên gọi không được vượt quá 50 kí tự",
+  "MY_NICKNAME_VERIFY": "tên gọi không hợp pháp",
+  "MY_PHONE_VERIFY": "Định dạng số di động không hợp pháp",
+  "MY_SET_MY_DEFEAT ": "cài đặt tên gọi thất bại",
+  "MY_SET_MY_SUCCEED ": "cài đặt tên gọi thành công",
+  "MY_SET_NICKNAME": "cài đặt tên gọi  ",
+  "MY_SET_PHONE": "cài đặt lại số di động",
+  "MY_SET_PHONE_DEFEATED": "cài đặt lại số di động thất bại",
+  "MY_SET_PHONE_SUCCEED": "Cài đặt lại số di động thành công ",
+  "MY_UNBIND_EMPLOYEE_DEFEATED": "xóa ràng buộc thông tin nhân viên thất bại",
+  "MY_UNBIND_EMPLOYEE_SUCCEED": "hủy danh tính nhân viên thành công ",
+  "MY_UPDATA_NICKNAME": "Nhập tên gọi",
+  "MY_UPDATA_PHONE": "Nhập số điện thoại",
+  "POST_DETAILS": "vị trí cụ thể",
+  "QR_CODE": "mã QR",
+  "RECRUITMENT_APPLY": "Xin",
+  "RECRUITMENT_CARD_ID": "số chứng minh nhân dân",
+  "RECRUITMENT_DL_QUANTITY": "số lượng tuyển dụng",
+  "RECRUITMENT_DL_REGISTRATION_MOBILE": "Miễn phí đăng ký điện thoại tư vấn",
+  "RECRUITMENT_DL_SALARY": "Lương",
+  "RECRUITMENT_IDL_ALLAREA": "Tất cả địa điểm",
+  "RECRUITMENT_IDL_ALLTYPE": "tất cả các loại",
+  "RECRUITMENT_IDL_DEPARTMENT": "bộ phận yêu cầu",
+  "RECRUITMENT_IDL_ENDTIME": "thời gian kết thúc",
+  "RECRUITMENT_IDL_PUBLISHTIME": "thời gian công bố",
+  "RECRUITMENT_IDL_QUALIFICATIONS": "trình độ chuyên môn",
+  "RECRUITMENT_IDL_QUANTITY": "số lượng tuyển dụng",
+  "RECRUITMENT_IDL_SALARY_RANGE": "Mức lương",
+  "RECRUITMENT_IDL_WORKPLACE": "Địa điểm làm việc",
+  "RECRUITMENT_IDL_WORK_DUTY": "công việc phụ trách",
+  "RECRUITMENT_INTERVIEW_DATE": "ngày phỏng vấn",
+  "RECRUITMENT_INTERVIEW_SITE": "xưởng phỏng vấn",
+  "RECRUITMENT_INTERVIEW_WORKPOST": "Cương vị phỏng vấn",
+  "RECRUITMENT_MOBILE_PHONE": "số di động",
+  "RECRUITMENT_PERSON_NAME": "họ tên",
+  "RECRUITMENT_POST_DESCRIPTION": "Mô tả vị trí",
+  "RECRUITMENT_POST_QUESTION": "câu hỏi thường gặp",
+  "RECRUITMENT_QUICK_REGISTRATION": "đăng kí ngay ",
+  "RECRUITMENT_REGISTRATION": "đăng kí ngay ",
+  "RECRUITMENT_SEARCH_KEYWORD": "từ quan trọng",
+  "SCANNER_SETTING_OPENSETTING": "từ chối truy cập máy ảnh, vui lòng kiểm tra cài đặt mở ứng dụng máy ảnh",
+  "SCANNER_SETTING_REQUEST": "cài đặt yêu cầu",
+  "SECURITY_MY_ACCOUNT": "an toàn cho tài khoản",
+  "SECURITY_MYCERTIFICATE": "chứng",
+  "SELECT_COUNTRY_ALL": "tất cả quốc gia và khu vực",
+  "SELECT_COUNTRY_HOT": "Quốc gia hoặc khu vực nóng",
+  "SELECT_COUNTRY_MOBILEPHONE": "Số di động",
+  "SELECT_COUNTRY_SEARCH": "Tìm kiếm",
+  "SELECT_COUNTRY_TITLE": "lựa chọn quốc gia, vùng",
+  "SETTINGS_ASSISTIVE_TOUCH": "phím tắt nhanh",
+  "SETTINGS_BROWSER_CORE": "trình duyệt nội bộ",
+  "SETTINGS_CACHE_COMPLETE": "Xóa bỏ hoàn thành",
+  "SETTINGS_CACHE_INFO": "bạn có chắc chắn muốn xóa toàn bộ lưu trữ?bao gồm thông tin, ảnh, nhật kí tìm kiếm …",
+  "SETTINGS_DARK_THEME": "Chế độ tối",
+  "SETTINGS_SEND_ERROR_REPORT": "Báo cáo sự bất thường",
+  "SETTINGS_DELETE_CACHE": "xóa lưu trữ",
+  "SETTINGS_OPTION_LANGUAGE": "lựa chọn ngôn ngữ",
+  "SETTINGS_OPTION_RECEIVE_NOTIFY": "tiếp nhận thông tin",
+  "SETTINGS_PAGE_PROFILE": "sửa",
+  "SETTINGS_PROFILE_BUTTON": "sửa",
+  "SETTINGS_TITLE": "Cài đặt",
+  "SET_PASSWORD_COEFFICIENT1": "không có hiệu lực",
+  "SET_PASSWORD_COEFFICIENT2": "không có hiệu lực",
+  "SET_PASSWORD_COEFFICIENT3": "trung bình",
+  "SET_PASSWORD_COEFFICIENT4": "mạnh",
+  "SET_PASSWORD_COEFFICIENT5": "rất mạnh",
+  "SET_PASSWORD_CONFIRM": "xấc nhận mật khẩu",
+  "SET_PASSWORD_CONFIRM_INVLID": "2 lần mật khẩu không khớp",
+  "SET_PASSWORD_ERROR": "mật khẩu quá ngắn",
+  "SET_PASSWORD_ISSENT": "cài đặt mật khẩu thành công",
+  "SET_PASSWORD_LENG_ERROR": "độ dài mật khẩu ít hơn 8",
+  "SET_PASSWORD_NEW": "Nhập mật khẩu, ví dụ XXXX0000",
+  "SET_PASSWORD_OLD_ERR": "Mật mã cũ không chính xác",
+  "SET_PASSWORD_RULE": "< span class = ' place ' > chiều dài mật khẩu phải từ 8-32 từ , < span class = ' tình trạng ' > bao gồm tối thiểu là 2 loại số và ký tự . Ví dụ: 0 ~ 9, A~ Z, a~ z và các ký tự khác tổ thành.",
+  "SHARE_DESCRIPTION": "tải ứng dụng iProud, kết nối lấy thông tin chuyên cần và bảng lương, ngừng kết nối với wechat khi kết nối với iProud, sau này chỉ có iProud mới có thể xem được bảng lương",
+  "SHARE_MODAL_TITLE": "Chia sẻ đến",
+  "SHARE_TITLE": "Viên Bảo, nền tảng chia sẻ sự ấm áp",
+  "SIGNUP_AND_BIND": "Thông tin người dùng đầy đủ",
+  "BIND_AND_LOGIN": "Tài khoản ràng buộc",
+  "BIND_EXIST_ACCOUNT": "Ràng buộc một tài khoản hiện có",
+  "SIGNUP_AND": "Và",
+  "SIGNUP_ERROR": "Không thể tạo tài khoản. Vui lòng kiểm tra lại thông tin tài khoản và thử lại.",
+  "SIGNUP_ERROR_INVALID_CODE": "Không thể tạo tài khoản. Mã xác minh không chính xác",
+  "SIGNUP_ERROR_NUMBER_EXIST": "Không thể tạo tài khoản, số di động đã tồn tại",
+  "SIGNUP_IDENTIFY_CHANGE_ONE": "Đổi số khác",
+  "SIGNUP_IDENTIFY_PLACEHOLDER": "Mã xác minh",
+  "SIGNUP_LOGIN_AGREE_PRIVACY": "đăng nhập để đồng ý",
+  "SIGNUP_MOBILEPHONE": "số di động",
+  "SIGNUP_NICKNAME": "tên gọi",
+  "SIGNUP_PASSWORD": "mật khẩu",
+  "SIGNUP_PRIVACY_PPLICY": "Chính sách bảo mật",
+  "SIGNUP_REGISTER_AGREE_PRIVACY": "Đã đọc và đồng ý",
+  "SIGNUP_SERVICE_AGREEMENT": "cam kết dịch vụ",
+  "SIGNUP_SUBMIT": "tiếp theo",
+  "SIGNUP_TITLE": "đăng  kí tài khoản mới",
+  "SIGNUP_VERIFYCODE": "Mã xác minh",
+  "SIGNUP_VERIFYCODE_INCORRECT": "mã xác nhận không chính xác",
+  "SIGNUP_VERIFYCODE_ISSENT": "Mã xác minh đã được gửi qua số di động của bạn, hãy chú ý kiểm tra",
+  "SIGNUP_VERIFYCODE_PLACEHOLDER": "6 kí tự",
+  "SIGNUP_VERIFYCODE_SEND": "lấy mã xác minh",
+  "SIGNUP_VERIFYCODE_TITLE": "Nhập mã xác minh",
+  "TABS_TAB1_TITLE": "trang chủ",
+  "TABS_TAB2_TITLE": "tin nhắn",
+  "TABS_TAB3_TITLE": "ứng dụng  ",
+  "TABS_TAB4_TITLE": "Ban ",
+  "TABS_TAB5_TITLE": "của tôi",
+  "TUTORIAL_CONTINUE_BUTTON": "tiếp tục",
+  "TUTORIAL_SKIP_BUTTON": "bỏ qua",
+  "TUTORIAL_SLIDE1_DESCRIPTION1": "Chào mừng đến với ứng dụng độc quyền của nhân viên FIH ",
+  "TUTORIAL_SLIDE1_DESCRIPTION2": "[Viên Bảo] nền tảng chia sẻ sự ấm áp",
+  "TUTORIAL_SLIDE1_DESCRIPTION3": "Hành trình của bạn sẽ bắt đầu",
+  "TUTORIAL_SLIDE1_TITLE": "xin chào",
+  "TUTORIAL_SLIDE2_DESCRIPTION1": "Tại Viên Bảo bạn có thể tra cứu lương, chấm công",
+  "TUTORIAL_SLIDE2_DESCRIPTION2": "Xin nghỉ phép, khiếu nại …",
+  "TUTORIAL_SLIDE2_DESCRIPTION3": "Kịp thời tiếp nhận tin tức đầu tiên từ Tập đoàn và giới công nghiệp",
+  "TUTORIAL_SLIDE2_TITLE": "toàn bộ chức năng",
+  "TUTORIAL_SLIDE3_DESCRIPTION1": "Đối với người dùng lần đầu, xin vui lòng vào mục  [của Tôi]",
+  "TUTORIAL_SLIDE3_DESCRIPTION2": "Nhập mã số nhân viên để xác nhận danh tính nhân viên",
+  "TUTORIAL_SLIDE3_TITLE": "bắt đầu sử dụng",
+  "UPGRADE_CURRENT_VERSION": "Phiên bản hiện tại",
+  "UPGRADE_IGNORE": "Bỏ qua",
+  "UPGRADE_LATEST_VERSION": "phiên bản mới nhất",
+  "UPGRADE_NEW_VERSION": "Phiên bản nâng cấp",
+  "UPGRADE_UPDATE_NOW": "Cập nhật ngay bây giờ",
+  "UPGRADE_VERSION_TIPS": "để sử dụng ứng dụng bình thường, vui lòng cập nhật phiên bản",
+  "VERIFICATION_CODE_EXPIRED": "Mã xác minh đã quá hạn!",
+  "VERIFICATION_CODE_INCORRECT": "mã xác nhận không đúng",
+  "VERIFICATION_CODE_SENT": "Đã thất bại khi gửi mã xác minh, hãy thử lại sau.",
+  "VERSION_EXCHANGE_MESSAGE": "bản chính thức chưa kích hoạt, vui lòng kiểm tra đã đổi sang bản chạy thử chưa?",
+  "VERSION_EXCHANGE_TIPS": "Thao tác gợi ý",
+  "VERSION_EXCHANGE_TO_DEBUG": "Đã chuyển sang phiên bản kiểm tra, cần khởi động lại máy",
+  "VERSION_EXCHANGE_TO_RELEASE": "đã chuyển đến bản chính thức, vui lòng khởi động lại để đăng nhập",
+  "WELCOME_INTRO": "làm thông minh, sống hiện đại",
+  "WELCOME_LOGIN": "Đăng nhập",
+  "WELCOME_SIGNUP": "Đăng ký",
+  "WELCOME_TITLE": "Iproud",
+  "WELCOME_VERSION": "Phiên bản",
+  "WIDGET_FAVORITE_EXCEED": "ứng dụng yêu thích được chọn tối đa là 8",
+  "WIDGET_FAVORITE_SAVE_FAILURE": "lưu ứng dụng yêu thích thất bại",
+  "WIDGET_FAVORITE_SAVE_SUCCESS": "Ứng dụng bạn hay dùng đã bảo lưu thành công",
+  "WIDGET_LIST_EDIT": "sửa",
+  "WIDGET_LIST_MYWIDGET": "Ứng dụng của Tôi",
+  "WIDGET_LIST_TITLE": "toàn bộ ứng dụng",
+  "WORKFLOW_AGENTLIST_HINT": "Hiện tại không có người thay thế",
+  "WORKFLOW_AGENT_BUTTON": "thêm",
+  "WORKFLOW_AGENT_NOWAGENT": "Người được ủy quyền hiện tại",
+  "WORKFLOW_DETAILS_CERT_EXCEPTION": "Chứng nhận có ngoại lệ",
+  "WORKFLOW_DETAILS_CERT_EXPIRED": "Chứng nhận hết hạn",
+  "WORKFLOW_DETAILS_CERT_TOAST": "Lời khuyên của Ủy ban",
+  "WORKFLOW_DETAILS_CERT_HINT": "Cấu hình chữ ký điện tử",
+  "WORKFLOW_DETAILS_CANCEL": "hủy",
+  "WORKFLOW_DETAILS_CERT_SET": "Để thiết lập",
+  "WORKFLOW_DETAILS_ADOPT": "Đồng ý",
+  "WORKFLOW_DETAILS_ALERT": "Vui lòng nhập ý kiến của bạn ở đây, khi từ chối ký duyệt bắt buộc phải điền.",
+  "WORKFLOW_DETAILS_APPLYMAN": "người làm đơn",
+  "WORKFLOW_DETAILS_APPLYTIME": "thời gian nộp",
+  "WORKFLOW_DETAILS_CKECKHISTORY": "lịch sử phê duyệt",
+  "WORKFLOW_DETAILS_APPROVE_FINISH_TITLE": "Phê duyệt xong",
+  "WORKFLOW_DETAILS_APPROVE_FINISH_SUBTITLE": "bạn có thể",
+  "WORKFLOW_DETAILS_APPROVE_CLOSE": "Gần",
+  "WORKFLOW_DETAILS_APPROVE_GOTODO": "Workflow",
+  "WORKFLOW_DETAILS_VIEW_FORM": "Xem PDF",
+  "WORKFLOW_DETAILS_DETAILINFO": "thông tin chi tiết",
+  "WORKFLOW_DETAILS_HINT": "hiện tại chưa hỗ trợ phê duyệt qua điện thoại",
+  "WORKFLOW_DETAILS_NO_SUPPORT": "Không hỗ trợ phê duyệt",
+  "WORKFLOW_DETAILS_TASK_FINISH": "Nhiệm vụ đã hoàn thành",
+  "WORKFLOW_DETAILS_MAININFO": "Dữ liệu chính",
+  "WORKFLOW_DETAILS_PROCESS": "Lưu trình hiện tại",
+  "WORKFLOW_DETAILS_REJECT": "từ chối",
+  "WORKFLOW_DETAILS_REJECT_TOAST": "vui lòng điền ý kiến",
+  "WORKFLOW_DETAILS_SIGN": "Cột ký tên",
+  "WORKFLOW_DETAILS_SIGN_FAILED": "Ký không thành công, vui lòng thử lại sau.",
+  "WORKFLOW_DETAILS_TASK": "Nhiệm vụ hiện tại",
+  "WORKFLOW_DETAILS_TASKINFO": "Nhiệm vụ",
+  "WORKFLOW_DETAILS_TITLE": "Chi tiết nhiệm vụ",
+  "WORKFLOW_DONETASK_BUTTON": "tìm kiếm",
+  "WORKFLOW_DONETASK_ENDDATE": "Ngày kết thúc",
+  "WORKFLOW_DONETASK_HINT": "Trong thời gian này không có nhiệm vụ đã hoàn thành!",
+  "WORKFLOW_DONETASK_STARTDATE": "Ngày bắt đầu",
+  "WORKFLOW_DONETASK_TITLE": "Nhiệm vụ đã hoàn thành",
+  "WORKFLOW_SETTING_AGENTID": "Mã số nhân viên của người thay thế",
+  "WORKFLOW_SETTING_AGENTLIST": "Người được ủy quyền",
+  "WORKFLOW_SETTING_AGENTNAME": "người được ủy quyền kí tên",
+  "WORKFLOW_SETTING_AGENTTIME": "Thời gian thay thế",
+  "WORKFLOW_SETTING_AGENTTYPE": "Loại hình thay thế",
+  "WORKFLOW_SETTING_DELETE": "Xóa ",
+  "WORKFLOW_SETTING_MESSAGE": "tiếp nhận thông tin",
+  "WORKFLOW_SETTING_MYAGENT": "Người được ủy quyền",
+  "WORKFLOW_SETTING_NEW": "thêm",
+  "WORKFLOW_SETTING_TASK": "Chỉ nhận hỗ trợ nhiệm vụ ký điện thoại di động",
+  "WORKFLOW_SETTING_TILL": "đến",
+  "WORKFLOW_SETTING_TITLE": "Cài đặt",
+  "WORKFLOW_SET_AGENT_ABOUT": "chú ý",
+  "WORKFLOW_SET_AGENT_ALERT1": "Sau ủy quyền: Người ủy quyền sẽ không nhận được email và công việc",
+  "WORKFLOW_SET_AGENT_ALERT2": "thông thường: người ủy quyền và người được ủy quyền đều nhận được email",
+  "WORKFLOW_SET_AGENT_BUTTON": "gửi ",
+  "WORKFLOW_SET_AGENT_EMPLOYEECARD": "Nhập mã số nhân viên",
+  "WORKFLOW_SET_AGENT_ENDDATE": "Ngày kết thúc",
+  "WORKFLOW_SET_AGENT_INPUTEND": "Nhập ngày kết thúc",
+  "WORKFLOW_SET_AGENT_INPUTSTART": "Nhập ngày bắt đầu",
+  "WORKFLOW_SET_AGENT_NOT_YOURSELF": "Xin lưu ý, không thể cài đặt người thay thế bằng chính mình",
+  "WORKFLOW_SET_AGENT_NO_EMPLOYEE": "workflow ko tồn tại nhân viên này, vui lòng đảm bảo mã số nhân viên là chính xác",
+  "WORKFLOW_SET_AGENT_NUMBER": "0-200 ký tự",
+  "WORKFLOW_SET_AGENT_POSTMAN": "đối tượng được ủy quyền",
+  "WORKFLOW_SET_AGENT_POSTMANID": "Nhập mã số nhân viên",
+  "WORKFLOW_SET_AGENT_STARTDATE": "Ngày bắt đầu",
+  "WORKFLOW_SET_AGENT_TITLE": "người được ủy quyền",
+  "WORKFLOW_SET_AGENT_TYPE": "Loại hình thay thế",
+  "WORKFLOW_SET_AGENT_TYPE1": "ủy quyền",
+  "WORKFLOW_SET_AGENT_TYPE2": "thông thường  ",
+  "WORKFLOW_SET_AGENT_USER": "người dùng hiện tại",
+  "WORKFLOW_TAB1_TITLE": "Nhiệm vụ đợi làm",
+  "WORKFLOW_TAB2_TITLE": "Nhiệm vụ đã hoàn thành",
+  "WORKFLOW_TAB3_TITLE": "Đơn của Tôi",
+  "WORKFLOW_TAB4_TITLE": "Cài đặt",
+  "WORKFLOW_TASK_BUTTON": "tìm kiếm",
+  "WORKFLOW_TASK_ENDDATE": "Ngày kết thúc",
+  "WORKFLOW_TASK_HINT": "Không có dữ liệu trong phạm vi thời gian đã chọn!",
+  "WORKFLOW_TASK_STARTDATE": "Ngày bắt đầu",
+  "WORKFLOW_TASK_TITLE": "Đơn của Tôi",
+  "WORKFLOW_UNDONETASK_ALL": "Tất cả nhiệm vụ",
+  "WORKFLOW_UNDONETASK_APPLICANT": "Xin",
+  "WORKFLOW_UNDONETASK_APPLYDATE": "Ngày xin",
+  "WORKFLOW_UNDONETASK_HINT": "hiện tại đang không có nhiệm vụ nào",
+  "WORKFLOW_UNDONETASK_TITLE": "Nhiệm vụ đợi làm",
+  "COUNTRY_REAGION_HOT": [
+    {
+      "number": "86",
+      "code": "CN",
+      "name": "Trung Quốc"
+    },
+    {
+      "number": "886",
+      "code": "TW",
+      "name": "Đài Loan"
+    },
+    {
+      "number": "91",
+      "code": "IN",
+      "name": "Ấn Độ"
+    },
+    {
+      "number": "84",
+      "code": "VN",
+      "name": "Việt Nam"
+    }
+  ],
+  "COUNTRY_REAGION": [
+    {
+      "number": "1",
+      "code": "US",
+      "name": "Mỹ"
+    },
+    {
+      "number": "1",
+      "code": "CA",
+      "name": "Canada"
+    },
+    {
+      "number": "7",
+      "code": "RU",
+      "name": "Russia"
+    },
+    {
+      "number": "20",
+      "code": "EG",
+      "name": "Ai cập"
+    },
+    {
+      "number": "27",
+      "code": "ZA",
+      "name": "Nam Phi"
+    },
+    {
+      "number": "30",
+      "code": "GR",
+      "name": "Greece"
+    },
+    {
+      "number": "31",
+      "code": "NL",
+      "name": "Hà Lan"
+    },
+    {
+      "number": "32",
+      "code": "BE",
+      "name": "Bỉ"
+    },
+    {
+      "number": "33",
+      "code": "FR",
+      "name": "Pháp"
+    },
+    {
+      "number": "34",
+      "code": "ES",
+      "name": "Tây Ban Nha"
+    },
+    {
+      "number": "36",
+      "code": "HU",
+      "name": "Hungary"
+    },
+    {
+      "number": "39",
+      "code": "IT",
+      "name": "Ý"
+    },
+    {
+      "number": "40",
+      "code": "RO",
+      "name": "Romania"
+    },
+    {
+      "number": "41",
+      "code": "CH",
+      "name": "Thụy Sĩ"
+    },
+    {
+      "number": "43",
+      "code": "AT",
+      "name": "Áo"
+    },
+    {
+      "number": "44",
+      "code": "GB",
+      "name": "United Kiongdom"
+    },
+    {
+      "number": "45",
+      "code": "DK",
+      "name": "Đan Mạch"
+    },
+    {
+      "number": "46",
+      "code": "SE",
+      "name": "Thụy Điển"
+    },
+    {
+      "number": "47",
+      "code": "NO",
+      "name": "Na-uy"
+    },
+    {
+      "number": "48",
+      "code": "PL",
+      "name": "Ba Lan"
+    },
+    {
+      "number": "49",
+      "code": "DE",
+      "name": "Đức"
+    },
+    {
+      "number": "51",
+      "code": "PE",
+      "name": "Peru"
+    },
+    {
+      "number": "52",
+      "code": "MX",
+      "name": "Mexico"
+    },
+    {
+      "number": "53",
+      "code": "CU",
+      "name": "Cuba"
+    },
+    {
+      "number": "54",
+      "code": "AR",
+      "name": "Argentina"
+    },
+    {
+      "number": "55",
+      "code": "BR",
+      "name": "Brazil"
+    },
+    {
+      "number": "56",
+      "code": "CL",
+      "name": "Chile"
+    },
+    {
+      "number": "57",
+      "code": "CO",
+      "name": "Colombia"
+    },
+    {
+      "number": "58",
+      "code": "VE",
+      "name": "Venezuela"
+    },
+    {
+      "number": "60",
+      "code": "MY",
+      "name": "Malaysia"
+    },
+    {
+      "number": "61",
+      "code": "AU",
+      "name": "Úc"
+    },
+    {
+      "number": "62",
+      "code": "ID",
+      "name": "Indonesia"
+    },
+    {
+      "number": "63",
+      "code": "PH",
+      "name": "Philippines"
+    },
+    {
+      "number": "64",
+      "code": "NZ",
+      "name": "New Zealand"
+    },
+    {
+      "number": "65",
+      "code": "SG",
+      "name": "Singapore"
+    },
+    {
+      "number": "66",
+      "code": "TH",
+      "name": "Thái Lan"
+    },
+    {
+      "number": "81",
+      "code": "JP",
+      "name": "Nhật Bản"
+    },
+    {
+      "number": "82",
+      "code": "KR",
+      "name": "Hàn Quốc"
+    },
+    {
+      "number": "84",
+      "code": "VN",
+      "name": "Việt Nam"
+    },
+    {
+      "number": "86",
+      "code": "CN",
+      "name": "Trung Quốc"
+    },
+    {
+      "number": "90",
+      "code": "TR",
+      "name": "Thổ Nhĩ Kỳ"
+    },
+    {
+      "number": "91",
+      "code": "IN",
+      "name": "Ấn Độ"
+    },
+    {
+      "number": "92",
+      "code": "PK",
+      "name": "Pakistan"
+    },
+    {
+      "number": "93",
+      "code": "AF",
+      "name": "Afghanistan"
+    },
+    {
+      "number": "94",
+      "code": "LK",
+      "name": "Sri Lanka"
+    },
+    {
+      "number": "95",
+      "code": "MM",
+      "name": "Miến Điện"
+    },
+    {
+      "number": "98",
+      "code": "IR",
+      "name": "Iran"
+    },
+    {
+      "number": "212",
+      "code": "MA",
+      "name": "Ma Rốc"
+    },
+    {
+      "number": "213",
+      "code": "DZ",
+      "name": "Algeria"
+    },
+    {
+      "number": "216",
+      "code": "TN",
+      "name": "Tunisia"
+    },
+    {
+      "number": "218",
+      "code": "LY",
+      "name": "Libya"
+    },
+    {
+      "number": "220",
+      "code": "GM",
+      "name": "Gambia"
+    },
+    {
+      "number": "221",
+      "code": "SN",
+      "name": "Senegal"
+    },
+    {
+      "number": "223",
+      "code": "ML",
+      "name": "Mali"
+    },
+    {
+      "number": "224",
+      "code": "GN",
+      "name": "Ghi-nê"
+    },
+    {
+      "number": "225",
+      "code": "",
+      "name": "Ivory Coast"
+    },
+    {
+      "number": "226",
+      "code": "BF",
+      "name": "Burkina-faso"
+    },
+    {
+      "number": "227",
+      "code": "NE",
+      "name": "Niger"
+    },
+    {
+      "number": "228",
+      "code": "TG",
+      "name": "Togo"
+    },
+    {
+      "number": "229",
+      "code": "BJ",
+      "name": "Benin"
+    },
+    {
+      "number": "230",
+      "code": "MU",
+      "name": "Mô-ri-xơ"
+    },
+    {
+      "number": "231",
+      "code": "LR",
+      "name": "Liberia"
+    },
+    {
+      "number": "232",
+      "code": "SL",
+      "name": "Sierra Leone"
+    },
+    {
+      "number": "233",
+      "code": "GH",
+      "name": "Ghana"
+    },
+    {
+      "number": "233",
+      "code": "UZ",
+      "name": "Uzbekistan"
+    },
+    {
+      "number": "234",
+      "code": "NG",
+      "name": "Nigeria"
+    },
+    {
+      "number": "235",
+      "code": "TD",
+      "name": "Sát"
+    },
+    {
+      "number": "236",
+      "code": "CF",
+      "name": "Cộng hòa Trung Phi"
+    },
+    {
+      "number": "237",
+      "code": "CM",
+      "name": "Cameroon"
+    },
+    {
+      "number": "239",
+      "code": "ST",
+      "name": "Sao Tome & Principe"
+    },
+    {
+      "number": "241",
+      "code": "GA",
+      "name": "Gabon"
+    },
+    {
+      "number": "242",
+      "code": "CG",
+      "name": "Công gô"
+    },
+    {
+      "number": "243",
+      "code": "ZR",
+      "name": "Zaire"
+    },
+    {
+      "number": "244",
+      "code": "AO",
+      "name": "Angola"
+    },
+    {
+      "number": "247",
+      "code": "",
+      "name": "Ascension"
+    },
+    {
+      "number": "248",
+      "code": "SC",
+      "name": "Seychelles"
+    },
+    {
+      "number": "249",
+      "code": "SD",
+      "name": "Sudan"
+    },
+    {
+      "number": "251",
+      "code": "ET",
+      "name": "Ethiopia"
+    },
+    {
+      "number": "252",
+      "code": "SO",
+      "name": "Somali"
+    },
+    {
+      "number": "253",
+      "code": "DJ",
+      "name": "Djibouti"
+    },
+    {
+      "number": "254",
+      "code": "KE",
+      "name": "Kenya"
+    },
+    {
+      "number": "255",
+      "code": "TZ",
+      "name": "Tanzania"
+    },
+    {
+      "number": "256",
+      "code": "UG",
+      "name": "Uganda"
+    },
+    {
+      "number": "257",
+      "code": "BI",
+      "name": "Burundi"
+    },
+    {
+      "number": "258",
+      "code": "MZ",
+      "name": "Mozambique"
+    },
+    {
+      "number": "260",
+      "code": "ZM",
+      "name": "Zambia"
+    },
+    {
+      "number": "261",
+      "code": "MG",
+      "name": "Mô-dăm-bích"
+    },
+    {
+      "number": "262",
+      "code": "",
+      "name": "Reunion"
+    },
+    {
+      "number": "263",
+      "code": "ZW",
+      "name": "Zimbabwe"
+    },
+    {
+      "number": "264",
+      "code": "NA",
+      "name": "Namibia"
+    },
+    {
+      "number": "265",
+      "code": "MW",
+      "name": "Malawi"
+    },
+    {
+      "number": "266",
+      "code": "LS",
+      "name": "Lesotho"
+    },
+    {
+      "number": "267",
+      "code": "BW",
+      "name": "Botswana"
+    },
+    {
+      "number": "268",
+      "code": "SZ",
+      "name": "Swaziland"
+    },
+    {
+      "number": "327",
+      "code": "KZ",
+      "name": "Kazakstan"
+    },
+    {
+      "number": "331",
+      "code": "KG",
+      "name": "Kyrgyzstan"
+    },
+    {
+      "number": "350",
+      "code": "GI",
+      "name": "Gibraltar"
+    },
+    {
+      "number": "351",
+      "code": "PT",
+      "name": "Bồ Đào Nha"
+    },
+    {
+      "number": "352",
+      "code": "LU",
+      "name": "Luxembourg"
+    },
+    {
+      "number": "353",
+      "code": "IE",
+      "name": "Ireland"
+    },
+    {
+      "number": "354",
+      "code": "IS",
+      "name": "Ai-xơ-len"
+    },
+    {
+      "number": "355",
+      "code": "AL",
+      "name": "Albania"
+    },
+    {
+      "number": "356",
+      "code": "MT",
+      "name": "Malta"
+    },
+    {
+      "number": "357",
+      "code": "CY",
+      "name": "Síp"
+    },
+    {
+      "number": "358",
+      "code": "FI",
+      "name": "Phần Lan"
+    },
+    {
+      "number": "359",
+      "code": "BG",
+      "name": "Bulgaria"
+    },
+    {
+      "number": "370",
+      "code": "LT",
+      "name": "Lithuania"
+    },
+    {
+      "number": "371",
+      "code": "LV",
+      "name": "Latvia"
+    },
+    {
+      "number": "372",
+      "code": "EE",
+      "name": "Estonia"
+    },
+    {
+      "number": "373",
+      "code": "MD",
+      "name": "Moldova Republic of"
+    },
+    {
+      "number": "374",
+      "code": "AM",
+      "name": "Armenia"
+    },
+    {
+      "number": "375",
+      "code": "BY",
+      "name": "Belarus"
+    },
+    {
+      "number": "376",
+      "code": "AD",
+      "name": "Andorra"
+    },
+    {
+      "number": "377",
+      "code": "MC",
+      "name": "Monaco"
+    },
+    {
+      "number": "378",
+      "code": "SM",
+      "name": "San Marino"
+    },
+    {
+      "number": "380",
+      "code": "UA",
+      "name": "Ukraine"
+    },
+    {
+      "number": "381",
+      "code": "YU",
+      "name": "Nam Tư"
+    },
+    {
+      "number": "386",
+      "code": "SI",
+      "name": "Slovenia"
+    },
+    {
+      "number": "420",
+      "code": "CZ",
+      "name": "Séc (Tiệp Khắc)"
+    },
+    {
+      "number": "421",
+      "code": "SK",
+      "name": "Slovakia"
+    },
+    {
+      "number": "423",
+      "code": "LI",
+      "name": "Liechtenstein"
+    },
+    {
+      "number": "501",
+      "code": "BZ",
+      "name": "Belize"
+    },
+    {
+      "number": "502",
+      "code": "GT",
+      "name": "Guatemala"
+    },
+    {
+      "number": "503",
+      "code": "SV",
+      "name": "EI Salvador"
+    },
+    {
+      "number": "504",
+      "code": "HN",
+      "name": "Honduras"
+    },
+    {
+      "number": "505",
+      "code": "NI",
+      "name": "Nicaragua"
+    },
+    {
+      "number": "506",
+      "code": "CR",
+      "name": "Costa Rica"
+    },
+    {
+      "number": "507",
+      "code": "PA",
+      "name": "Panama"
+    },
+    {
+      "number": "509",
+      "code": "HT",
+      "name": "Haiti"
+    },
+    {
+      "number": "591",
+      "code": "BO",
+      "name": "Bolivia"
+    },
+    {
+      "number": "592",
+      "code": "GY",
+      "name": "Guyana"
+    },
+    {
+      "number": "593",
+      "code": "EC",
+      "name": "Ecuador"
+    },
+    {
+      "number": "594",
+      "code": "GF",
+      "name": "French Guiana"
+    },
+    {
+      "number": "595",
+      "code": "PY",
+      "name": "Paraguay"
+    },
+    {
+      "number": "596",
+      "code": "",
+      "name": "Martinique"
+    },
+    {
+      "number": "597",
+      "code": "SR",
+      "name": "Suriname"
+    },
+    {
+      "number": "598",
+      "code": "UY",
+      "name": "Uruguay"
+    },
+    {
+      "number": "599",
+      "code": "",
+      "name": "Netheriands Antilles"
+    },
+    {
+      "number": "673",
+      "code": "BN",
+      "name": "Brunei"
+    },
+    {
+      "number": "674",
+      "code": "NR",
+      "name": "Nauru"
+    },
+    {
+      "number": "675",
+      "code": "PG",
+      "name": "Papua New Cuinea"
+    },
+    {
+      "number": "676",
+      "code": "TO",
+      "name": "Tonga"
+    },
+    {
+      "number": "677",
+      "code": "SB",
+      "name": "Solomon Is"
+    },
+    {
+      "number": "679",
+      "code": "FJ",
+      "name": "Fiji"
+    },
+    {
+      "number": "682",
+      "code": "CK",
+      "name": "Cook Is."
+    },
+    {
+      "number": "684",
+      "code": "",
+      "name": "Samoa Eastern"
+    },
+    {
+      "number": "685",
+      "code": "",
+      "name": "Samoa Western"
+    },
+    {
+      "number": "689",
+      "code": "PF",
+      "name": "French Polynesia"
+    },
+    {
+      "number": "850",
+      "code": "KP",
+      "name": "Triều Tiên"
+    },
+    {
+      "number": "852",
+      "code": "HK",
+      "name": "Hồng Kông"
+    },
+    {
+      "number": "853",
+      "code": "MO",
+      "name": "Macao"
+    },
+    {
+      "number": "855",
+      "code": "KH",
+      "name": "Kampuchea (Cambodia )"
+    },
+    {
+      "number": "856",
+      "code": "LA",
+      "name": "Laos"
+    },
+    {
+      "number": "880",
+      "code": "BD",
+      "name": "Bangladesh"
+    },
+    {
+      "number": "886",
+      "code": "TW",
+      "name": "Đài Loan"
+    },
+    {
+      "number": "960",
+      "code": "MV",
+      "name": "Maldives"
+    },
+    {
+      "number": "961",
+      "code": "LB",
+      "name": "Lebanon"
+    },
+    {
+      "number": "962",
+      "code": "JO",
+      "name": "Jordan"
+    },
+    {
+      "number": "963",
+      "code": "SY",
+      "name": "Syria"
+    },
+    {
+      "number": "964",
+      "code": "IQ",
+      "name": "Iraq"
+    },
+    {
+      "number": "965",
+      "code": "KW",
+      "name": "Kuwait"
+    },
+    {
+      "number": "966",
+      "code": "SA",
+      "name": "Ả Rập Xê Út"
+    },
+    {
+      "number": "967",
+      "code": "YE",
+      "name": "Yemen"
+    },
+    {
+      "number": "968",
+      "code": "OM",
+      "name": "Oman"
+    },
+    {
+      "number": "971",
+      "code": "AE",
+      "name": "Các Tiểu Vương Quốc Ả Rập Thống Nhất"
+    },
+    {
+      "number": "972",
+      "code": "IL",
+      "name": "Israel"
+    },
+    {
+      "number": "973",
+      "code": "BH",
+      "name": "Bahrain"
+    },
+    {
+      "number": "974",
+      "code": "QA",
+      "name": "Qatar"
+    },
+    {
+      "number": "976",
+      "code": "MN",
+      "name": "Mông Cổ"
+    },
+    {
+      "number": "977",
+      "code": "NP",
+      "name": "Nepal"
+    },
+    {
+      "number": "992",
+      "code": "TJ",
+      "name": "Tajikstan"
+    },
+    {
+      "number": "993",
+      "code": "TM",
+      "name": "Turkmenistan"
+    },
+    {
+      "number": "994",
+      "code": "AZ",
+      "name": "Azerbaijan"
+    },
+    {
+      "number": "995",
+      "code": "GE",
+      "name": "Georgia"
+    },
+    {
+      "number": "1242",
+      "code": "BS",
+      "name": "Bahamas"
+    },
+    {
+      "number": "1246",
+      "code": "BB",
+      "name": "Barbados"
+    },
+    {
+      "number": "1264",
+      "code": "AI",
+      "name": "Anguilla"
+    },
+    {
+      "number": "1268",
+      "code": "AG",
+      "name": "Antigua and Barbuda"
+    },
+    {
+      "number": "1345",
+      "code": "",
+      "name": "Cayman Is."
+    },
+    {
+      "number": "1441",
+      "code": "BM",
+      "name": "Bermuda Is."
+    },
+    {
+      "number": "1664",
+      "code": "MS",
+      "name": "Montserrat Is"
+    },
+    {
+      "number": "1670",
+      "code": "",
+      "name": "Mariana Is"
+    },
+    {
+      "number": "1671",
+      "code": "GU",
+      "name": "Guam"
+    },
+    {
+      "number": "1758",
+      "code": "LC",
+      "name": "Saint Lueia"
+    },
+    {
+      "number": "1758",
+      "code": "LC",
+      "name": "St.Lucia"
+    },
+    {
+      "number": "1784",
+      "code": "VC",
+      "name": "Saint Vincent"
+    },
+    {
+      "number": "1784",
+      "code": "VC",
+      "name": "St.Vincent"
+    },
+    {
+      "number": "1787",
+      "code": "PR",
+      "name": "Puerto Rico"
+    },
+    {
+      "number": "1809",
+      "code": "GD",
+      "name": "Grenada"
+    },
+    {
+      "number": "1809",
+      "code": "TT",
+      "name": "Trinidad and Tobago"
+    },
+    {
+      "number": "1876",
+      "code": "JM",
+      "name": "Jamaica"
+    },
+    {
+      "number": "1890",
+      "code": "DO",
+      "name": "Dominica Rep."
+    }
+  ]
+}
