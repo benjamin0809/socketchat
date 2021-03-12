@@ -1,0 +1,1573 @@
+{
+  "APP_TUTORIAL_START": "Let's Start",
+  "APP_TUTORIAL_PASS": "Skip",
+  "APP_DATETIME_SECOND": "Seconds",
+  "APP_BUTTON_CANCEL": "Cancel",
+  "APP_BUTTON_SAVE": "Save",
+  "APP_NETWORK_DISCONNECT": "The network is not detected, please connect to the network",
+  "APP_NETWORK_ONDISCONNECTED": "The network has disconnected ,please connect the network",
+  "APP_NETWORK_ONCONNECTED": "The network has connected",
+  "ABOUT_APP": "About iProud",
+  "ABOUT_APP_VERSION": "Version",
+  "ABOUT_VERSION_CHECK": "Version check",
+  "ABOUT_VERSION_DESC": "Version description",
+  "ABOUT_VERSION_ALREADY_LASTEST": "Already the lastest",
+  "ABOUT_VERSION_DEBUG": "Beta Version",
+  "ABOUT_VERSION_RELEASE": "Official version",
+  "ABOUT_VERSION_UPDATE": "Update version",
+  "ABOUT_WELCOME_PAGE": "Welcome",
+  "UPGRADE_CURRENT_VERSION": "Current version",
+  "UPGRADE_LATEST_VERSION": "Latest version",
+  "UPGRADE_VERSION_TIPS": "To ensure that you can use the app normally, please update the version.",
+  "UPGRADE_UPDATE_NOW": "Update Now",
+  "UPGRADE_NEW_VERSION": "Version update",
+  "UPGRADE_IGNORE": "Ignore",
+  "COMMUNITY_DISCOVER":"Discover",
+  "COMMUNITY_POST":"Posts",
+  "CHANGE_PASSWORD_OLD": "Old password",
+  "CHANGE_PASSWORD_NEW": "New password",
+  "CHANGE_PASSWORD_CONFIRM": "Confirm password",
+  "CHANGE_PASSWORD_SUBMIT": "Submit",
+  "CHANGE_PASSWORD_CONFIRM_INVLID": "Confirmed password is not matched with new password",
+  "CHANGE_PASSWORD_SUCCESS": "Your password has been changed successfully.",
+  "CONTACT_BLACK_LIST_TITLE": "Blocked List",
+  "CONTACT_BLACK_LIST_REMOVE": "Unblock",
+  "CONTACT_BLACK_LIST_REMOVE_MESSAGE": "Sure to unblock this contact?",
+  "CONTACT_TITLE": "Contacts",
+  "CONTACT_SEARCH": "search",
+  "CONTACT_NEW": "New Friends",
+  "CONTACT_RESOURCE": "From:",
+  "CONTACT_ADD_TITLE": "Add Contacts",
+  "CONTACT_ADD_PHONE": "Phone",
+  "CONTACT_ADD_SCAN": "Scan QR Code",
+  "CONTACT_ADD_SCAN_INFO": "Scan QR Code to add friend",
+  "CONTACT_ADD_MYCODE": "My QR Code",
+  "CONTACT_ADD_MYCODE_INFO": "Scan my code to add friend",
+  "CONTACT_ADD_NEW_REQUEST": "New Friends",
+  "CONTACT_ADD_NEW_REQUEST_REJECT": "reject",
+  "CONTACT_ADD_NEW_REQUEST_AGREE": "accept",
+  "CONTACT_ADD_SEND_REQUEST_OK": "A friend request has been sent, please wait for the other party to confirm!",
+  "CONTACT_ADD_SEND_RESPONSE": "I've accepted your friend request.Now let's chat!",
+  "CONTACT_CHOOSER_CLOSE": "Close",
+  "CONTACT_CHOOSER_MULTI": "Multi",
+  "CONTACT_CHOOSER_DONE": "Done",
+  "CONTACT_CHOOSER_CANCEL": "Cancel",
+  "CONTACT_CHOOSER_TITLE": "Send to",
+  "CONTACT_CHOOSER_TITLE_MULTI": "Send to",
+  "CONTACT_DETAIL_NICKNAME": "Alias：",
+  "CONTACT_DETAIL_NAME": "Name：",
+  "CONTACT_DETAIL_CONCERN": "Follow",
+  "CONTACT_DETAIL_CONCERN_UNDO": "Unfollow",
+  "CONTACT_DETAIL_BLACK_HINT": "This person is now blocked from sending you messages.",
+  "CONTACT_DETAIL_SEND_MESSAGE": "Send Message",
+  "CONTACT_DETAIL_SEND_REQUEST": "Add",
+  "CONTACT_DETAIL_VERIFY_INFO": "Friend Request",
+  "CONTACT_DETAIL_VERIFY_DESCRIPTION": "Send a friend request first",
+  "CONTACT_DETAIL_VERIFY_CANCEL": "Cancel",
+  "CONTACT_DETAIL_VERIFY_SEND": "Send",
+  "CONTACT_GROUP_MANAGE_TITLE": "All Tags",
+  "CONTACT_GROUP_MANAGE_ADD": "New Tag",
+  "CONTACT_GROUP_ADD_ALERT": "Create Tag",
+  "CONTACT_GROUP_ADD_MESSAGE": "Input the tag name",
+  "CONTACT_GROUP_ADD_PLACEHOLDER": "Such as Family or Friends",
+  "CONTACT_GROUP_DELETE_ALERT": "Delete this tag?",
+  "CONTACT_GROUP_DELETE_MESSAGE": "Contacts in the tag will remove to the default tag.Delete ths tag",
+  "CONTACT_GROUP_EDIT_ALERT": "Edit Tag",
+  "CONTACT_GROUP_EDIT_MESSAGE": "Input the new tag name",
+  "CONTACT_MORE_ADD_FRIEND": "Add Contacts",
+  "CONTACT_MORE_GROUP_MANAGE": "Tags",
+  "CONTACT_MORE_BLACKLIST_MANAGE": "Blocked List",
+  "CONTACT_OPTION_TITLE": "More",
+  "CONTACT_OPTION_ALIASNAME": "Alias and Tag",
+  "CONTACT_OPTION_STARRED": "Starred",
+  "CONTACT_OPTION_PHONE_NUMBER": "Mobile",
+  "CONTACT_OPTION_SHARE": "Share Contact",
+  "CONTACT_OPTION_BLACKLIST": "Blocked",
+  "CONTACT_OPTION_DELETE": "Delete",
+  "CONTACT_OPTION_DELETE_ALERT": "Delete this contact?",
+  "CONTACT_OPTION_BLACKLIST_ALERT": "Block this contact?",
+  "CONTACT_OPTION_BLACKLIST_UNDO_ALERT": "Unblock this contact?",
+  "CONTACT_SET_REMARK_TITLE": "Edit Alias",
+  "CONTACT_SET_ALIAS": "Set Alias",
+  "CONTACT_ALIAS": "Alias",
+  "CONTACT_SET_REMARK_TAG": "Tag",
+  "CONTACT_TAG_CHOOSER_TITLE": "Choose Tag",
+  "CERTIFICATE_ADD_ERROR": "This certificate has been added, cannot be added repeatedly!",
+  "CERTIFICATE_PASSWORD_TRUE": "Password verification succeeded!",
+  "CERTIFICATE_PASSWORD_FALSE": "Password verification failed, please verify the password again!",
+  "CERTIFICATE_VALID_FAILED": "Validation failed, this certificate cannot be used for electronic signature!",
+  "CERTIFICATE_NOMATCH_TITLE": "Validation failed",
+  "CERTIFICATE_NOMATCH_SUBTITLE": "Certificate owner does not match current user",
+  "CERTIFICATE_NOMATCH_SUBJECT": "Certificate owner: ",
+  "CERTIFICATE_NOMATCH_CURRENT": "Current user: ",
+  "CERTIFICATE_CONFIG_BACK_MESSAGE": "Back to the signing page to continue signing?",
+  "CERTIFICATE_CONFIG_SUCCESS": "Configuration succeeded",
+  "CERTIFICATE_DOWNLOAD_HINT": "Download certificate from extranet",
+  "CERTIFICATE_PASSWORD_VERIFY": "Verify",
+  "CERTIFICATE_PASSWORD_ENTER": "Please enter the 6 characters certificate password",
+  "CERTIFICATE_PASSWORD": "password",
+  "CERTIFICATE__DELETE_MESSAGE": "Are you sure you want to delete this certificate?",
+  "CERTIFICATE_TITLE": "Set your electronic signature for FIH mobile sign off,certificate files will only be saved on this device.",
+  "CERTIFICATE_LIST_TITLE": "Default electronic signature",
+  "CERTIFICATE_HINT": "You can add one or more common electronic signatures. Note that only one can be set as the default signature. Use your default electronic signature for sign off when moving sign off.",
+  "CERTIFICATE_DEFAULT": "default",
+  "CERTIFICATE_SETTODEFAULT": "Default",
+  "CERTIFICATE_DELETE": "Delete",
+  "CERTIFICATE_UPDATECERT": "Set",
+  "CERTIFICATE_VERIFYPASSWORD": "password",
+  "CERTIFICATE_SERIALNUMBER": "Serial number",
+  "CERTIFICATE_VALIDITY": "Validity",
+  "CERTIFICATE_TILL": "till",
+  "CERTIFICATE_ISSUER": "Issuer",
+  "CERTIFICATE_SUBJECT": "Owner",
+  "CERTIFICATE_ALGORITHM": "Signature algorithm",
+  "CERTIFICATE_FINGERPRINT": "Fingerprint",
+  "CERTIFICATE_REUPLOAD": "Replace",
+  "CERTIFICATE_CANCEL_HINT": "Upload canceled!",
+  "EMPLOYEE_IDENTITY_TITLE": "Employee identity",
+  "EMPLOYEE_IDENTITY_BIND": "Bind employee identity",
+  "EMPLOYEE_IDENTITY_UNBIND": "Unbind Employee identity",
+  "EMPLOYEE_BIND_ALREADY": "You have bound as an employee.",
+  "EMPLOYEE_NOT_BIND_YET": "You have not bound employee identity yet.",
+  "EMPLOYEE_STAFF_NUMBER": "Employee ID",
+  "EMPLOYEE_NATIONAL_ID": "National ID",
+  "EMPLOYEE_REAL_NAME": "Name",
+  "EMPLOYEE_GRADE": "Grade",
+  "EMPLOYEE_POSITION": "Managerial Position",
+  "EMPLOYEE_SITE": "Work site",
+  "EMPLOYEE_BU": "BU",
+  "EMPLOYEE_DEPARTMENT": "Department",
+  "EMPLOYEE_DEPARTMENT_CODE": "Department code",
+  "EMPLOYEE_COST_CODE": "Cost code",
+  "EMPLOYEE_POSITIONSERIES": "Job family",
+  "EMPLOYEE_COMMITTEE": "Technical committee",
+  "EMPLOYEE_WORKPOSTNAME": "Job position",
+  "EMPLOYEE_ISDIRECT": "DL/IDL",
+  "EMPLOYEE_INCOMPANYDATE": "Onboard date",
+  "EMPLOYEE_WORKLONG": "Seniority",
+  "EMPLOYEE_OUTYEAR": "Seniority apart from FIH",
+  "EMPLOYEE_MAXEDUCATION": "The highest educational degree",
+  "EMPLOYEE_SPECIALTY": "Skill",
+  "EMPLOYEE_URGENTMANANDTEL": "Emergency contact",
+  "EMPLOYEE_DIRECTOR": "Direct supervisor",
+  "EMPLOYEE_DORM": "Dorm",
+  "EMPLOYEE_WORK_HISTORY": "Work experience",
+  "EMPLOYEE_FWP": "Future rotation position",
+  "EMPLOYEE_HOBBY": "Interests",
+  "EMPLOYEE_PHONE": "Phone number",
+  "EMPLOYEE_REMARK": "Remark",
+  "FORGOT_PASSWORD_TITLE": "Quickly login by SMS",
+  "FORGOT_PASSWORD_MOBILEPHONE": "Mobile phone number",
+  "FORGOT_PASSWORD_NEXTSTEP": "Next",
+  "HOME_TITLE": "iProud",
+  "HOME_LINKS": "Recommendated link",
+  "HOME_MORE_WIDGET": "More",
+  "HOME_PULL_REFRESH": " Drop-down refresh ",
+  "HOME_REFRESH": "Refresh...",
+  "HOME_SEARCH_LIST": "Search",
+  "HOME_SEARCH_INFO": " Keyword",
+  "HOME_SEARCH_RECORD": "History",
+  "HOME_SEARCH_RESULT": "Search results:",
+  "HOME_SEARCH_LOADING": "Loading ...",
+  "HOME_SEARCH_PERIOD": "No more !",
+  "HOME_SEARCH_ITEM": "Item(s)",
+  "HOME_SIGN_TITLE": "Last signed:",
+  "HOME_SIGN_WEEK": "Within Week",
+  "HOME_SIGN_MONTH": "Within a month",
+  "HOME_SIGN_QUARTER": "Within 3 months",
+  "HOME_PARK_LIFE": "Campus Guideline",
+  "HOME_NEWS": "News",
+  "HOME_GENERAL_RECRUITMENT": "General recruitment",
+  "HOME_ENGINEER_RECRUITMENT": "Engineers recruitment",
+  "HOME_ENGINEER": "ENGINEER ",
+  "HOME_GENERAL": "GENERAL",
+  "HOME_POSITION_PREVIEW": "Position news",
+  "HOME_NEWS_INDUSTRY_PREVIEW": "Industry news",
+  "HOME_NEWS_FIH_PREVIEW": "Fih news",
+  "MESSAGE_EMPTY": "Message is empty",
+  "MESSAGE_DELETE": "Delete",
+  "MESSAGE_DELETE_TITLE": "Delete tips",
+  "MESSAGE_DELETE_MESSAGE": "Are you sure to delete this message？",
+  "MESSAGE_CLEAR_MESSAGE": "After clearing, you will not be able to recover. Are you sure you want to clear all messages?",
+  "MESSAGE_DELETE_CONFIRM": "OK",
+  "MESSAGE_DELETE_CANCEL": "Cancel",
+  "MESSAGE_NO_MORE": "No more messages",
+  "MESSAGE_IMAGE_PHOTO": "Album",
+  "MESSAGE_IMAGE_CAMERA": "Camera",
+  "MESSAGE_TITLE": "Messages",
+  "MESSAGE_CHAT_RESEND": "Do you want to resend?",
+  "MESSAGE_GROUP_STICKY_ON_TOP": "Sticky on top",
+  "MESSAGE_GROUP_REMOVE_STICKY": "Remove sticky",
+  "MESSAGE_GROUP_DELETE": "Delete",
+  "MESSAGE_TYPE_IMAGE": "[Image]",
+  "VERSION_EXCHANGE_TIPS": "Operation Tips",
+  "VERSION_EXCHANGE_MESSAGE": "Official version is inavailable. Do you want to turn to Beta version?",
+  "VERSION_EXCHANGE_TO_RELEASE": "Already turned on Official version, please restart the client",
+  "VERSION_EXCHANGE_TO_DEBUG": "Already turned to Beta version, please restart the client to activate",
+  "MY_INFO_TITLE": "My information",
+  "MY_INFO_VERIFY": "Nickname illegality",
+  "MY_INFO_AVATAR": "Portrait",
+  "MY_INFO_NICKNAME": "Nickname",
+  "MY_INFO_USERNAME": "Mobile phone number",
+  "MY_INFO_SIGNATURE": "Signatue",
+  "MY_INFO_BIND_EMPLOYEE": "Bind employee identity",
+  "MY_INFO_SHOW_EMPLOYEE": "View employee information",
+  "MY_INFO_SET_PASSWORD": "Password setting",
+  "MY_INFO_CHANGE_PASSWORD": "Change password",
+  "CANCELACCOUNT": "Account Cancellation",
+  "CANCELACCOUNT_TIPS":"Are you sure you want to cancel your account, all your personal information will be cleared after logout.",
+  "CANCELACCOUNT_SUCCESS":"Logout successful",
+  
+  "MY_INFO_CHANGE_WECHATID": "WeChat Id",
+  "MY_INFO_FROM_LIBRARY": "Select from photo album",
+  "MY_INFO_FROM_CAMERA": "Take pictures",
+  "MY_INFO_VIEW_FULL_AVATAR": "View full image",
+  "MY_INFO_CANCEL": "Cancel",
+  "MY_INFO_CODE": "My QR Code",
+  "MY_LIST_TITLE": "My information",
+  "MY_LIST_EMPLOYEE": "Employee Identity",
+  "MY_LIST_SECURITY": "Security Center",
+  "MY_LIST_HELP": "Customer Service",
+  "MY_LIST_FEEDBACK": "Feedback",
+  "MY_LIST_SETTING": "Setting",
+  "MY_LIST_SHARE": "Invite friends",
+  "MY_LIST_ABOUT": "About",
+  "MY_LIST_LOGOUT": "Logout",
+  "MY_LIST_LOGIN_REGISTER": "Login/Register",
+  "MY_LIST_SIGN_BUTTONNAME": "Check in",
+  "MY_LIST_ASSETS_SHELL": "iProud Coins",
+  "MY_LIST_ASSETS_RANKS": "My Ranking",
+  "MY_LIST_ASSETS_MEDALS": "My Medals",
+  "MY_LIST_MY_FANS": "My Fans",
+  "MY_LIST_ACHIEVELIST": "Medals List",
+  "MY_LIST_SHELLS_DETAILS": "iProud Coins",
+  "MY_LIST_TASKLIST": "Task list",
+  "MY_LIST_SCORE_ROLE": "Institutional description",
+  "MY_LIST_EXPERIENCE": "Experience: ",
+  "MY_LIST_NEXT_LEVEL_REQUIRES": ",Next level requires: ",
+  "MY_LIST_MYCOMMENTS": "My Comments",
+  "MY_LIST_MYEVENTS": "My Events",
+  "MY_LIST_MYPUBLISH": "My Publish",
+  "MY_LIST_MYFOLLOWS": "My Follows",
+  "MY_LIST_MYFAVOURITE": "My Favourites",
+  "MY_UPDATA_NICKNAME": "Please enter your nickname",
+  "MY_NICKNAME_VERIFY": "Nickname illegality",
+  "MY_NICKNAME_EXCEED": "Nickname can't exceed 50 letters",
+  "MY_SET_NICKNAME": " Nickname setting ",
+  "MY_SET_MY_SUCCEED ": " Set nickname successfully  ",
+  "MY_SET_MY_DEFEAT ": " Nickname setting fail ",
+  "MY_SET_PHONE": "Reset the phone number ",
+  "MY_UPDATA_PHONE": "Please type in Phone numbers ",
+  "MY_PHONE_VERIFY": "Mobile phone number format is illegal ",
+  "MY_SET_PHONE_SUCCEED": "Mobile phone reset successfylly",
+  "MY_SET_PHONE_DEFEATED": "Unbinding employee information fail",
+  "MY_BIND_EMPLOYEE_SUCCEED": " Binding employee information successfully ",
+  "MY_BIND_EMPLOYEE_DEFEATED": " Binding employee information mismatch ",
+  "MY_BIND_EMPLOYEE_ALREADY_BIND": " Already bound by other mobile ",
+  "MY_UNBIND_EMPLOYEE_SUCCEED": " Unbind employee information successfully ",
+  "MY_UNBIND_EMPLOYEE_DEFEATED": " Unbinding employee information failure ",
+  "LOGIN_TITLE": "Login",
+  "LOGIN_MOBILEPHONE": "Mobile phone number",
+  "LOGIN_FORGET_PASSWORD": "Forgot Password",
+  "LOGIN_RETRIEVE_PASSWORD": "Retrieve password",
+  "LOGIN_PASSWORD": "Password",
+  "LOGIN_PASSWORD_HINTS": "Password(8 and above numbers and letters)",
+  "LOGIN_FORGOTPASSWORD": "Quickly login by SMS",
+  "LOGIN_WORKFLOW": "Workflow",
+  "LOGIN_WECHAT": "WeChat",
+  "LOGIN_ACCOUNT": "Account",
+  "LOGIN_SUBMIT": "Login",
+  "LOGIN_ERROR": "Unable to Login. Please check your account information and try again.",
+  "LOGIN_ERROR_PHONE_NUMBER_NOT_EXIST": "Login fail due to inexistent phone number, please check your account information and try again",
+  "LOGIN_ERROR_USER_NOT_EXIST": "Login fail due to inexistent account. Please check your account information and try again.",
+  "LOGIN_ERROR_INCORRECT_SECURITY_CODE": "Incorrect secrity code",
+  "LOGIN_ERROR_INCORRECT_PASSWORD": "Login fail due to incorrect pwssord. Please check your password and try again.",
+  "LOGIN_ERROR_CONFIRM_BUTTON": "OK",
+  "LOGIN_ERROR_CODE_6006": "The voucher has expired. Please try again.",
+  "LOGIN_ERROR_CODE_6008": "The Wechat account has not been bound to the iProud account. Please log in with a iProud account and then bind the Wechat in my > Security Center.",
+  "LOGIN_REGISTER": "Register",
+  "LOGIN_LANGUAGE_SELECT": "Select language",
+  "LOGIN_LANGUAGES": "Languages",
+  "LOGIN_BY_OTHER_WAY": "Login via other ways, or",
+  "LOGIN_FORGOT_PASSWORD": "Forgot password, ",
+  "LOGIN_BY_WORKFLOW_TIPS": "You can use the Workflow account to log in by registering the employee with the mobile phone number and binding the employee ID.",
+  "LOGIN_NO_EMPLOYEEID_TIPS": "Please click to bind employee identity if you are employee",
+  "BINDING_SUCCESS": "Binding success",
+  "UNBIND_SUCCESS": "Unbind success",
+  "BINDING_GO": "Unbound",
+  "CANCEL_BIND_GO": "Unbind",
+  "VERIFICATION_CODE_SENT": "Failed to send verification code, please try again later.",
+  "VERIFICATION_CODE_INCORRECT": "Incorrect verification code！",
+  "VERIFICATION_CODE_EXPIRED": "Verification code is expired！",
+  "SET_PASSWORD_RULE": "<span class='place'>Password length must be 8-32 bits</span>, <span class='place'>consisting of at least 2 character types</span>. For example, 0~9, A~Z, a~z and other characters. ",
+  "SET_PASSWORD_LENG_ERROR": "The password length is less than 8.",
+  "SET_PASSWORD_ERROR": "The strength of the password is too weak! ",
+  "SET_PASSWORD_NEW": "Please type in your password, for example :XXXX0000",
+  "SET_PASSWORD_CONFIRM": "Confirm password ",
+  "SET_PASSWORD_CONFIRM_INVLID": " Two passwords inconsistent ",
+  "SET_PASSWORD_ISSENT": " Password setting successful ",
+  "SET_PASSWORD_COEFFICIENT1": "Invalid",
+  "SET_PASSWORD_COEFFICIENT2": "Invalid",
+  "SET_PASSWORD_COEFFICIENT3": "Medium",
+  "SET_PASSWORD_COEFFICIENT4": "Strong",
+  "SET_PASSWORD_COEFFICIENT5": "Very strong",
+  "SET_PASSWORD_OLD_ERR": "Old password incorrect ",
+  "SECURITY_MY_ACCOUNT": "My account security",
+  "SECURITY_MYCERTIFICATE": "My Certificates",
+  "SELECT_COUNTRY_TITLE": "Select country or region",
+  "SELECT_COUNTRY_MOBILEPHONE": "Mobile phone",
+  "SELECT_COUNTRY_SEARCH": "Search",
+  "SELECT_COUNTRY_HOT": "Popular country or region",
+  "SELECT_COUNTRY_ALL": "All countries or regions",
+  "SETTINGS_TITLE": "Setting",
+  "SETTINGS_OPTION_RECEIVE_NOTIFY": "Receive promoting messages",
+  "SETTINGS_OPTION_LANGUAGE": "Select Language",
+  "SETTINGS_PROFILE_BUTTON": "Edit",
+  "SETTINGS_PAGE_PROFILE": "Edit",
+  "SETTINGS_DELETE_CACHE": "Clear the cache ",
+  "SETTINGS_CACHE_INFO": " Are you sure to clear All (Including Picture and so on)?",
+  "SETTINGS_CACHE_COMPLETE": " Clear completed",
+  "SETTINGS_ASSISTIVE_TOUCH": "Assistive Touch",
+  "SETTINGS_BROWSER_CORE": "Inner browser",
+  "SETTINGS_DARK_THEME": "Dark mode",
+  "SETTINGS_SEND_ERROR_REPORT": "Report anomaly",
+  "SIGNUP_TITLE": "Register",
+  "SIGNUP_MOBILEPHONE": "Mobile Phone",
+  "SIGNUP_PASSWORD": "Password",
+  "SIGNUP_NICKNAME": "Nickname",
+  "SIGNUP_VERIFYCODE": "Vertification code",
+  "SIGNUP_VERIFYCODE_PLACEHOLDER": "6 Characters",
+  "SIGNUP_IDENTIFY_PLACEHOLDER": "Verification code",
+  "SIGNUP_IDENTIFY_CHANGE_ONE": "Change a verification code",
+  "SIGNUP_VERIFYCODE_SEND": "Get the verification code",
+  "SIGNUP_SUBMIT": "Next",
+  "SIGNUP_ERROR": "Unable to create account due to existing phone number",
+  "SIGNUP_ERROR_NUMBER_EXIST": "Unable to create account. Phone number already exist.",
+  "SIGNUP_ERROR_INVALID_CODE": "Unable to create account. Incorrect security code.",
+  "SIGNUP_VERIFYCODE_ISSENT": "The verification code has been sent to your mobile phone, pay attention to check",
+  "SIGNUP_LOGIN_AGREE_PRIVACY": "By sign in,you hereby agree to ",
+  "SIGNUP_REGISTER_AGREE_PRIVACY": "Sign in and agree ",
+  "SIGNUP_SERVICE_AGREEMENT": "Service agreement",
+  "SIGNUP_PRIVACY_PPLICY": "Privacy Policy",
+  "SIGNUP_AND": " and ",
+  "SIGNUP_VERIFYCODE_INCORRECT": "Vertification code incorrect",
+  "SIGNUP_VERIFYCODE_TITLE": "Please type in the Verification code",
+  "TABS_TAB1_TITLE": "Homepage",
+  "TABS_TAB2_TITLE": "Message",
+  "TABS_TAB3_TITLE": "Apps",
+  "TABS_TAB4_TITLE": "Board",
+  "TABS_TAB5_TITLE": "My",
+  "TUTORIAL_SLIDE1_TITLE": "Welcome!",
+  "TUTORIAL_SLIDE2_TITLE": "Full functions",
+  "TUTORIAL_SLIDE3_TITLE": "Start",
+  "TUTORIAL_SLIDE1_DESCRIPTION1": "Welcome to iProud! This is a FIH staff exclusive app.",
+  "TUTORIAL_SLIDE1_DESCRIPTION2": "iProud is a touchable and shareable platform!",
+  "TUTORIAL_SLIDE1_DESCRIPTION3": "Your journey is going to start",
+  "TUTORIAL_SLIDE2_DESCRIPTION1": "You can do many things on iProud ",
+  "TUTORIAL_SLIDE2_DESCRIPTION2": "Such as checking your salary,attendance",
+  "TUTORIAL_SLIDE2_DESCRIPTION3": "apply for leave, maintenance,complain and get immidate HQ and industry news ",
+  "TUTORIAL_SLIDE3_DESCRIPTION1": "For new user, please enter 'My'",
+  "TUTORIAL_SLIDE3_DESCRIPTION2": "to connect your employee ID and activate your account",
+  "TUTORIAL_SLIDE3_DESCRIPTION3": " ",
+  "TUTORIAL_SKIP_BUTTON": "Skip",
+  "TUTORIAL_CONTINUE_BUTTON": "Continue",
+  "WELCOME_TITLE": "Iproud",
+  "WELCOME_INTRO": "A touchable and shareable platform",
+  "WELCOME_SIGNUP": "Register",
+  "WELCOME_LOGIN": "Login",
+  "WELCOME_VERSION": "Version",
+  "WIDGET_LIST_TITLE": "All Apps",
+  "WIDGET_LIST_MYWIDGET": "My Apps",
+  "WIDGET_LIST_EDIT": "Edit",
+  "WIDGET_FAVORITE_SAVE_SUCCESS": "Congratulation, favorite apps have been saved successfully.",
+  "WIDGET_FAVORITE_SAVE_FAILURE": "Sorry, favorite apps saving fail.",
+  "WIDGET_FAVORITE_EXCEED": "The maximum number of favorite apps is 8.",
+  "WORKFLOW_DONETASK_TITLE": "Finished task",
+  "WORKFLOW_DONETASK_STARTDATE": "Start Date",
+  "WORKFLOW_DONETASK_ENDDATE": "End date",
+  "WORKFLOW_DONETASK_BUTTON": "Query",
+  "WORKFLOW_DONETASK_HINT": "No task in selected time!",
+  "WORKFLOW_TASK_HINT": "No data in selected time！",
+  "WORKFLOW_UNDONETASK_TITLE": "To-do",
+  "WORKFLOW_UNDONETASK_ALL": "All",
+  "WORKFLOW_UNDONETASK_HINT": "No tasks！",
+  "WORKFLOW_UNDONETASK_APPLICANT": "Application",
+  "WORKFLOW_UNDONETASK_APPLYDATE": "Applied date",
+  "WORKFLOW_SET_AGENT_TITLE": "Agent",
+  "WORKFLOW_SET_AGENT_USER": "User",
+  "WORKFLOW_SET_AGENT_EMPLOYEECARD": "Type in the start date",
+  "WORKFLOW_SET_AGENT_STARTDATE": "Start date",
+  "WORKFLOW_SET_AGENT_INPUTSTART": "Input the Begin Time",
+  "WORKFLOW_SET_AGENT_ENDDATE": "End date",
+  "WORKFLOW_SET_AGENT_INPUTEND": "Please type in End date",
+  "WORKFLOW_SET_AGENT_TYPE": "Agent type",
+  "WORKFLOW_SET_AGENT_TYPE1": "Appointment",
+  "WORKFLOW_SET_AGENT_TYPE2": "Normal",
+  "WORKFLOW_SET_AGENT_POSTMAN": "Agent user",
+  "WORKFLOW_SET_AGENT_ABOUT": "Agent explaination",
+  "WORKFLOW_SET_AGENT_POSTMANID": "Please type in your Emplyee ID",
+  "WORKFLOW_SET_AGENT_NUMBER": "0-200 letters",
+  "WORKFLOW_SET_AGENT_ALERT1": "Appointment: you will not receive the task and mail, only your agent will receive them ",
+  "WORKFLOW_SET_AGENT_ALERT2": "Normal：you and your agent will  receive the task and mail",
+  "WORKFLOW_SET_AGENT_NO_EMPLOYEE": "Workflow does not have this employee, please make sure that it is the correct job number.",
+  "WORKFLOW_SET_AGENT_NOT_YOURSELF": "Note, you can't set the agent to yourself.",
+  "WORKFLOW_SET_AGENT_BUTTON": "Submit",
+  "WORKFLOW_DETAILS_CERT_TOAST": "Approve tips",
+  "WORKFLOW_DETAILS_CERT_HINT": "Please configure electronic signature",
+  "WORKFLOW_DETAILS_CANCEL": "Cancel",
+  "WORKFLOW_DETAILS_CERT_SET": "Set",
+  "WORKFLOW_DETAILS_TITLE": "Task Information",
+  "WORKFLOW_DETAILS_SIGN": "Signed Solumn",
+  "WORKFLOW_DETAILS_SIGN_FAILED": "Signing failed, please try again later.",
+  "WORKFLOW_DETAILS_ALERT": "Please fill in your opinion here,it can't be empty when rejecting the task.",
+  "WORKFLOW_DETAILS_REJECT_TOAST": "Please fill in your audit opinion",
+  "WORKFLOW_DETAILS_ADOPT": "Approve",
+  "WORKFLOW_DETAILS_REJECT": "Reject",
+  "WORKFLOW_DETAILS_HINT": "Doesn't support mobile approval",
+  "WORKFLOW_DETAILS_NO_SUPPORT": "Doesn't support approval",
+  "WORKFLOW_DETAILS_TASK_FINISH": "Task completed",
+  "WORKFLOW_DETAILS_TASKINFO": "Task information",
+  "WORKFLOW_DETAILS_PROCESS": "Current Process",
+  "WORKFLOW_DETAILS_TASK": "Current Task",
+  "WORKFLOW_DETAILS_APPLYMAN": "Applicant",
+  "WORKFLOW_DETAILS_APPLYTIME": "Applied Time",
+  "WORKFLOW_DETAILS_MAININFO": "Main Data",
+  "WORKFLOW_DETAILS_DETAILINFO": "Detail Data",
+  "WORKFLOW_DETAILS_CKECKHISTORY": "Approval History",
+  "DATE_ALERT_MESSAGE": "Date range error! The start date cannot be greater than the end date.",
+  "WORKFLOW_DETAILS_APPROVE_FINISH_TITLE": "Approval Finished",
+  "WORKFLOW_DETAILS_APPROVE_FINISH_SUBTITLE": "you can",
+  "WORKFLOW_DETAILS_APPROVE_CLOSE": "Close",
+  "WORKFLOW_DETAILS_APPROVE_GOTODO": "Workflow",
+  "WORKFLOW_DETAILS_VIEW_FORM": "View PDF",
+  "WORKFLOW_DETAILS_CERT_EXCEPTION": "Certificate with exception",
+  "WORKFLOW_DETAILS_CERT_EXPIRED": "Certificate expired",
+  "WORKFLOW_SETTING_TITLE": "Setting ",
+  "WORKFLOW_SETTING_MESSAGE": "Receive the messages",
+  "WORKFLOW_SETTING_TASK": "Only show mobile approval tasks",
+  "WORKFLOW_SETTING_MYAGENT": "My Agent",
+  "WORKFLOW_SETTING_AGENTLIST": "Current Agent User ",
+  "WORKFLOW_SETTING_AGENTID": "Agent's Employee ID:",
+  "WORKFLOW_SETTING_AGENTNAME": "Agent User：",
+  "WORKFLOW_SETTING_AGENTTYPE": "Agent Type：",
+  "WORKFLOW_SETTING_AGENTTIME": "Agent time：",
+  "WORKFLOW_SETTING_DELETE": "Delete",
+  "WORKFLOW_SETTING_NEW": "Add",
+  "WORKFLOW_SETTING_TILL": " to ",
+  "WORKFLOW_AGENT_NOWAGENT": "Current Agent user:",
+  "WORKFLOW_AGENTLIST_HINT": "No agent now！",
+  "AGENT_DELETE_MESSAGE": "Are you sure to delete this agent？",
+  "WORKFLOW_AGENT_BUTTON": "Add",
+  "WORKFLOW_TASK_TITLE": "My Form",
+  "WORKFLOW_TASK_STARTDATE": "Start date",
+  "WORKFLOW_TASK_ENDDATE": "End time",
+  "WORKFLOW_TASK_BUTTON": "Query",
+  "WORKFLOW_TAB1_TITLE": "To-do",
+  "WORKFLOW_TAB2_TITLE": "Finished",
+  "WORKFLOW_TAB3_TITLE": "My Form",
+  "WORKFLOW_TAB4_TITLE": "Setting",
+  "BROWSER_NOT_INSTALL_WEXIN": "You don't install WeChat",
+  "BROWSER_SHARE_SUCCESSFULLY": "Share successfully!",
+  "BROWSER_SENT": "Sent",
+  "BROWSER_COPIED": "Url is copied to the clipboard",
+  "SHARE_MODAL_TITLE": "Share to",
+  "BROWSER_POPOVER_WEBLOG": "Share on Weibo",
+  "BROWSER_POPOVER_COLLECT": "Collect",
+  "BROWSER_POPOVER_WECHAT": "WeChat friend",
+  "BROWSER_POPOVER_WECHAT_MOMENT": "Wechat friend group",
+  "SHARE_TITLE": "iProud, a touchable and shareable platform",
+  "SHARE_DESCRIPTION": "Download iProud APP to enjoy useful functions! Gentle reminder: Wechat enterprise service will be stopped after iProud going live!",
+  "BROWSER_POPOVER_COPYURL": "Copy URL",
+  "BROWSER_POPOVER_REFRESH": "Refresh",
+  "BROWSER_POPOVER_CLOSE": "Close",
+  "BROWSER_POPOVER_OPENINBROWSER": "Open browser",
+  "BROWSER_POPOVER_COMPLAINT": "Complaint",
+  "RECRUITMENT_QUICK_REGISTRATION": "Quick Registration",
+  "RECRUITMENT_PERSON_NAME": "Name",
+  "RECRUITMENT_INTERVIEW_SITE": "Interview site",
+  "RECRUITMENT_CARD_ID": "National ID",
+  "RECRUITMENT_MOBILE_PHONE": "Mobile phone number",
+  "RECRUITMENT_INTERVIEW_DATE": "Interview date",
+  "RECRUITMENT_INTERVIEW_WORKPOST": "Interviewed Position",
+  "RECRUITMENT_POST_DESCRIPTION": "Position description",
+  "RECRUITMENT_POST_QUESTION": "Common questions",
+  "RECRUITMENT_REGISTRATION": "Registration",
+  "RECRUITMENT_APPLY": "Apply",
+  "RECRUITMENT_DL_SALARY": "Salary",
+  "RECRUITMENT_DL_QUANTITY": "Hired headcount",
+  "RECRUITMENT_DL_REGISTRATION_MOBILE": "Free register and consult phone number",
+  "RECRUITMENT_IDL_WORKPLACE": "Work location",
+  "RECRUITMENT_IDL_DEPARTMENT": "Required department",
+  "RECRUITMENT_IDL_QUANTITY": "Quantity",
+  "RECRUITMENT_IDL_SALARY_RANGE": "Salary range",
+  "RECRUITMENT_IDL_PUBLISHTIME": "Released Time",
+  "RECRUITMENT_IDL_ENDTIME": "End Time",
+  "RECRUITMENT_IDL_WORK_DUTY": "Work duty",
+  "RECRUITMENT_IDL_QUALIFICATIONS": "Qualifications",
+  "RECRUITMENT_SEARCH_KEYWORD": "Keyword",
+  "RECRUITMENT_IDL_ALLAREA": "All Workplaces",
+  "RECRUITMENT_IDL_ALLTYPE": "All type",
+  "APP_COMMON_HANDLE_TIPS": "Operation hint",
+  "APP_COMMON_CONFIRM": "OK",
+  "APP_COMMON_LATER": "Later",
+  "APP_COMMON_CANCEL": "Cancel",
+  "APP_COMMON_SUBMIT": "Submit",
+  "APP_COMMON_MORE": "More",
+  "APP_COMMON_NO_MORE": "No more data",
+  "APP_COMMON_ALL": "All",
+  "APP_COMMON_NODATA": "No data",
+  "APP_COMMON_ENTER": "Enter",
+  "APP_COMMON_CLEAR_MESSAGES": "Clear message",
+  "APP_COMMON_LOADING_FAILED": "Failed to load",
+  "APP_COMMON_TOUCH_RETRY": "Please tap to try again",
+  "APP_COMMON_RELOAD_IAMGE": "Reload Picture",
+  "APP_COMMON_COPY_MESSAGE": "Copy Message",
+  "APP_COMMON_EXTRACT_QRCODE": "Extract QR Code",
+  "APP_COMMON_DISABLE_FUCTION": "This feature is not currently enabled.",
+  "POST_DETAILS": "Position details",
+  "SCANNER_SETTING_REQUEST": "Setting request",
+  "SCANNER_SETTING_OPENSETTING": "The denial of access to camera! Would you like to open your Camera setting?",
+  "HTTP_ERROR_STATUS_0": "The request fail due to error request response",
+  "HTTP_ERROR_STATUS_404": "The request failed and the request address was not found.",
+  "HTTP_ERROR_STATUS_500": "The request fail due to server error, please try again later.",
+  "HTTP_ERROR_STATUS_TIMEOUT": "Request timed out, please try again later.",
+  "HTTP_ERROR_STATUS_DISCONNECTED": "Please connect to the network.",
+  "HTTP_ERROR_STATUS_UNKNOWN": "The request fail due to unknown reason",
+  "SOCIAL_CHECKIN_CHECKINREWARD_TITLE": "Sign in today",
+  "SOCIAL_IPROUD_POINTS": "iProud Coins",
+  "SOCIAL_POINTS": "Points",
+  "SOCIAL_CHECKIN_CHECKINREWARD_BUTTON_TEXT": "Get",
+  "SOCIAL_CHECKIN_BUTTON": "Check-In",
+  "SOCIAL_CHECKIN_ACCUMULATE_DAYS": "Continuous ",
+  "SOCIAL_CHECKIN_ACCUMULATE_DAY": " days",
+  "SOCIAL_CHECKIN_TITLE": "Check In",
+  "SOCIAL_CHECKIN_ALREADY_SIGN": "Checked",
+  "SOCIAL_CALENDAR_SUNDAY": "Sun",
+  "SOCIAL_CALENDAR_MONDAY": "Mon",
+  "SOCIAL_CALENDAR_TUESDAY": "Tue",
+  "SOCIAL_CALENDAR_WEDNESDAY": "Wed",
+  "SOCIAL_CALENDAR_THURSDAY": "Thu",
+  "SOCIAL_CALENDAR_FRIDAY": "Fri",
+  "SOCIAL_CALENDAR_SATURDAY": "Sat",
+  "SOCIAL_ACHIEVEMENT_TITLE": "Achievement list",
+  "SOCIAL_ACHIEVEMENT_ITEM_GOT": "Congratulations, you have won the Medal of Achievement.",
+  "SOCIAL_ACHIEVEMENT_ITEM_NO_GOT": "The achievement medal has not yet been obtained.",
+  "SOCIAL_ACHIEVEMENT_ITEM_SHARE_BUTTON": "Share my medal",
+  "SOCIAL_ACHIEVEMENT_ITEM_PRESENTEDTO": "presented to",
+  "SOCIAL_TASK_TITLE": "Task list",
+  "SOCIAL_TASK_RECEIVE_ALL": "Get all",
+  "SOCIAL_TASK_COMPLETED": "Finished",
+  "SOCIAL_TASK_NOT_COMPLETED": "Go to finish",
+  "SOCIAL_TASK_RECEIVE": "Receive",
+  "SOCIAL_TASK_ALREADY_RECEIVE": "Received",
+  "SOCIAL_MY_IPROUD_POINTS": "My iProud Coins",
+  "SOCIAL_MY_DAILY": "Daily task",
+  "SOCIAL_MY_ASSETS_POINTS": "Coins details",
+  "SOCIAL_MY_LEADERBOARD": "Coins ranking",
+  "SOCIAL_MY_DAILY_LIST": "Daily",
+  "SOCIAL_MY_WEEK_LIST": "Weekly",
+  "SOCIAL_MY_MONTH_LIST": "Monthly",
+  "SOCIAL_MY_TOTAL_LIST": "Total",
+  "SOCIAL_CLUB_CONCERNED_CLUB": "Concerned Club",
+  "SOCIAL_CLUB_RECOMMENDED_CLUB": "Recommended Club",
+  "SOCIAL_CLUB_RECENT_VISIT": "Recent Visit",
+  "SOCIAL_CLUB_FOLLOW": "Follow",
+  "SOCIAL_CLUB_GO": "Go",
+  "SOCIAL_CLUB_MORE_RECOMMENDATIONS": "More",
+  "SOCIAL_CLUB_CLUB": "Club",
+  "SOCIAL_CLUB_ACTIVITY": "Activity",
+  "SOCIAL_CLUB_MOMENT": "Posts",
+  "SOCIAL_CLUB_CHOOSE_AREA": "Area",
+  "SOCIAL_CLUB_FOLLOWERS": "Followers",
+  "SOCIAL_CLUB_POSTS": "Topic",
+  "SOCIAL_CLUB_SERACH": "Please enter a keyword",
+  "SOCIAL_CLUB_NO_FOLLOW": "You have not followed the community yet ~",
+  "SOCIAL_CLUB_MORE": "More Clubs",
+  "SOCIAL_CLUB_GO_FOLLOW": "Go Follow",
+  "QR_CODE": "QR code",
+  "ACCOUNT_LOCKED": "Your account is locked,Please contact system administrator!",
+  "COUNTRY_REAGION_HOT": [
+    {
+      "number": "86",
+      "code": "CN",
+      "name": "China"
+    },
+    {
+      "number": "886",
+      "code": "TW",
+      "name": "Taiwan"
+    },
+    {
+      "number": "91",
+      "code": "IN",
+      "name": "India"
+    },
+    {
+      "number": "84",
+      "code": "VN",
+      "name": "Vietnam"
+    }
+  ],
+  "COUNTRY_REAGION": [
+    {
+      "number": "1",
+      "code": "US",
+      "name": "United States of America"
+    },
+    {
+      "number": "1",
+      "code": "CA",
+      "name": "Canada"
+    },
+    {
+      "number": "7",
+      "code": "RU",
+      "name": "Russia"
+    },
+    {
+      "number": "20",
+      "code": "EG",
+      "name": "Egypt"
+    },
+    {
+      "number": "27",
+      "code": "ZA",
+      "name": "South Africa"
+    },
+    {
+      "number": "30",
+      "code": "GR",
+      "name": "Greece"
+    },
+    {
+      "number": "31",
+      "code": "NL",
+      "name": "Netherlands"
+    },
+    {
+      "number": "32",
+      "code": "BE",
+      "name": "Belgium"
+    },
+    {
+      "number": "33",
+      "code": "FR",
+      "name": "France"
+    },
+    {
+      "number": "34",
+      "code": "ES",
+      "name": "Spain"
+    },
+    {
+      "number": "36",
+      "code": "HU",
+      "name": "Hungary"
+    },
+    {
+      "number": "39",
+      "code": "IT",
+      "name": "Italy"
+    },
+    {
+      "number": "40",
+      "code": "RO",
+      "name": "Romania"
+    },
+    {
+      "number": "41",
+      "code": "CH",
+      "name": "Switzerland"
+    },
+    {
+      "number": "43",
+      "code": "AT",
+      "name": "Austria"
+    },
+    {
+      "number": "44",
+      "code": "GB",
+      "name": "United Kiongdom"
+    },
+    {
+      "number": "45",
+      "code": "DK",
+      "name": "Denmark"
+    },
+    {
+      "number": "46",
+      "code": "SE",
+      "name": "Sweden"
+    },
+    {
+      "number": "47",
+      "code": "NO",
+      "name": "Norway"
+    },
+    {
+      "number": "48",
+      "code": "PL",
+      "name": "Poland"
+    },
+    {
+      "number": "49",
+      "code": "DE",
+      "name": "Germany"
+    },
+    {
+      "number": "51",
+      "code": "PE",
+      "name": "Peru"
+    },
+    {
+      "number": "52",
+      "code": "MX",
+      "name": "Mexico"
+    },
+    {
+      "number": "53",
+      "code": "CU",
+      "name": "Cuba"
+    },
+    {
+      "number": "54",
+      "code": "AR",
+      "name": "Argentina"
+    },
+    {
+      "number": "55",
+      "code": "BR",
+      "name": "Brazil"
+    },
+    {
+      "number": "56",
+      "code": "CL",
+      "name": "Chile"
+    },
+    {
+      "number": "57",
+      "code": "CO",
+      "name": "Colombia"
+    },
+    {
+      "number": "58",
+      "code": "VE",
+      "name": "Venezuela"
+    },
+    {
+      "number": "60",
+      "code": "MY",
+      "name": "Malaysia"
+    },
+    {
+      "number": "61",
+      "code": "AU",
+      "name": "Australia"
+    },
+    {
+      "number": "62",
+      "code": "ID",
+      "name": "Indonesia"
+    },
+    {
+      "number": "63",
+      "code": "PH",
+      "name": "Philippines"
+    },
+    {
+      "number": "64",
+      "code": "NZ",
+      "name": "New Zealand"
+    },
+    {
+      "number": "65",
+      "code": "SG",
+      "name": "Singapore"
+    },
+    {
+      "number": "66",
+      "code": "TH",
+      "name": "Thailand"
+    },
+    {
+      "number": "81",
+      "code": "JP",
+      "name": "Japan"
+    },
+    {
+      "number": "82",
+      "code": "KR",
+      "name": "Korea"
+    },
+    {
+      "number": "84",
+      "code": "VN",
+      "name": "Vietnam"
+    },
+    {
+      "number": "86",
+      "code": "CN",
+      "name": "China"
+    },
+    {
+      "number": "90",
+      "code": "TR",
+      "name": "Turkey"
+    },
+    {
+      "number": "91",
+      "code": "IN",
+      "name": "India"
+    },
+    {
+      "number": "92",
+      "code": "PK",
+      "name": "Pakistan"
+    },
+    {
+      "number": "93",
+      "code": "AF",
+      "name": "Afghanistan"
+    },
+    {
+      "number": "94",
+      "code": "LK",
+      "name": "Sri Lanka"
+    },
+    {
+      "number": "95",
+      "code": "MM",
+      "name": "Burma"
+    },
+    {
+      "number": "98",
+      "code": "IR",
+      "name": "Iran"
+    },
+    {
+      "number": "212",
+      "code": "MA",
+      "name": "Morocco"
+    },
+    {
+      "number": "213",
+      "code": "DZ",
+      "name": "Algeria"
+    },
+    {
+      "number": "216",
+      "code": "TN",
+      "name": "Tunisia"
+    },
+    {
+      "number": "218",
+      "code": "LY",
+      "name": "Libya"
+    },
+    {
+      "number": "220",
+      "code": "GM",
+      "name": "Gambia"
+    },
+    {
+      "number": "221",
+      "code": "SN",
+      "name": "Senegal"
+    },
+    {
+      "number": "223",
+      "code": "ML",
+      "name": "Mali"
+    },
+    {
+      "number": "224",
+      "code": "GN",
+      "name": "Guinea"
+    },
+    {
+      "number": "225",
+      "code": "",
+      "name": "Ivory Coast"
+    },
+    {
+      "number": "226",
+      "code": "BF",
+      "name": "Burkina-faso"
+    },
+    {
+      "number": "227",
+      "code": "NE",
+      "name": "Niger"
+    },
+    {
+      "number": "228",
+      "code": "TG",
+      "name": "Togo"
+    },
+    {
+      "number": "229",
+      "code": "BJ",
+      "name": "Benin"
+    },
+    {
+      "number": "230",
+      "code": "MU",
+      "name": "Mauritius"
+    },
+    {
+      "number": "231",
+      "code": "LR",
+      "name": "Liberia"
+    },
+    {
+      "number": "232",
+      "code": "SL",
+      "name": "Sierra Leone"
+    },
+    {
+      "number": "233",
+      "code": "GH",
+      "name": "Ghana"
+    },
+    {
+      "number": "233",
+      "code": "UZ",
+      "name": "Uzbekistan"
+    },
+    {
+      "number": "234",
+      "code": "NG",
+      "name": "Nigeria"
+    },
+    {
+      "number": "235",
+      "code": "TD",
+      "name": "Chad"
+    },
+    {
+      "number": "236",
+      "code": "CF",
+      "name": "Central African Republic"
+    },
+    {
+      "number": "237",
+      "code": "CM",
+      "name": "Cameroon"
+    },
+    {
+      "number": "239",
+      "code": "ST",
+      "name": "Sao Tome and Principe"
+    },
+    {
+      "number": "241",
+      "code": "GA",
+      "name": "Gabon"
+    },
+    {
+      "number": "242",
+      "code": "CG",
+      "name": "Congo"
+    },
+    {
+      "number": "243",
+      "code": "ZR",
+      "name": "Zaire"
+    },
+    {
+      "number": "244",
+      "code": "AO",
+      "name": "Angola"
+    },
+    {
+      "number": "247",
+      "code": "",
+      "name": "Ascension"
+    },
+    {
+      "number": "248",
+      "code": "SC",
+      "name": "Seychelles"
+    },
+    {
+      "number": "249",
+      "code": "SD",
+      "name": "Sudan"
+    },
+    {
+      "number": "251",
+      "code": "ET",
+      "name": "Ethiopia"
+    },
+    {
+      "number": "252",
+      "code": "SO",
+      "name": "Somali"
+    },
+    {
+      "number": "253",
+      "code": "DJ",
+      "name": "Djibouti"
+    },
+    {
+      "number": "254",
+      "code": "KE",
+      "name": "Kenya"
+    },
+    {
+      "number": "255",
+      "code": "TZ",
+      "name": "Tanzania"
+    },
+    {
+      "number": "256",
+      "code": "UG",
+      "name": "Uganda"
+    },
+    {
+      "number": "257",
+      "code": "BI",
+      "name": "Burundi"
+    },
+    {
+      "number": "258",
+      "code": "MZ",
+      "name": "Mozambique"
+    },
+    {
+      "number": "260",
+      "code": "ZM",
+      "name": "Zambia"
+    },
+    {
+      "number": "261",
+      "code": "MG",
+      "name": "Madagascar"
+    },
+    {
+      "number": "262",
+      "code": "",
+      "name": "Reunion"
+    },
+    {
+      "number": "263",
+      "code": "ZW",
+      "name": "Zimbabwe"
+    },
+    {
+      "number": "264",
+      "code": "NA",
+      "name": "Namibia"
+    },
+    {
+      "number": "265",
+      "code": "MW",
+      "name": "Malawi"
+    },
+    {
+      "number": "266",
+      "code": "LS",
+      "name": "Lesotho"
+    },
+    {
+      "number": "267",
+      "code": "BW",
+      "name": "Botswana"
+    },
+    {
+      "number": "268",
+      "code": "SZ",
+      "name": "Swaziland"
+    },
+    {
+      "number": "327",
+      "code": "KZ",
+      "name": "Kazakstan"
+    },
+    {
+      "number": "331",
+      "code": "KG",
+      "name": "Kyrgyzstan"
+    },
+    {
+      "number": "350",
+      "code": "GI",
+      "name": "Gibraltar"
+    },
+    {
+      "number": "351",
+      "code": "PT",
+      "name": "Portugal"
+    },
+    {
+      "number": "352",
+      "code": "LU",
+      "name": "Luxembourg"
+    },
+    {
+      "number": "353",
+      "code": "IE",
+      "name": "Ireland"
+    },
+    {
+      "number": "354",
+      "code": "IS",
+      "name": "Iceland"
+    },
+    {
+      "number": "355",
+      "code": "AL",
+      "name": "Albania"
+    },
+    {
+      "number": "356",
+      "code": "MT",
+      "name": "Malta"
+    },
+    {
+      "number": "357",
+      "code": "CY",
+      "name": "Cyprus"
+    },
+    {
+      "number": "358",
+      "code": "FI",
+      "name": "Finland"
+    },
+    {
+      "number": "359",
+      "code": "BG",
+      "name": "Bulgaria"
+    },
+    {
+      "number": "370",
+      "code": "LT",
+      "name": "Lithuania"
+    },
+    {
+      "number": "371",
+      "code": "LV",
+      "name": "Latvia"
+    },
+    {
+      "number": "372",
+      "code": "EE",
+      "name": "Estonia"
+    },
+    {
+      "number": "373",
+      "code": "MD",
+      "name": "Moldova Republic of"
+    },
+    {
+      "number": "374",
+      "code": "AM",
+      "name": "Armenia"
+    },
+    {
+      "number": "375",
+      "code": "BY",
+      "name": "Belarus"
+    },
+    {
+      "number": "376",
+      "code": "AD",
+      "name": "Andorra"
+    },
+    {
+      "number": "377",
+      "code": "MC",
+      "name": "Monaco"
+    },
+    {
+      "number": "378",
+      "code": "SM",
+      "name": "San Marino"
+    },
+    {
+      "number": "380",
+      "code": "UA",
+      "name": "Ukraine"
+    },
+    {
+      "number": "381",
+      "code": "YU",
+      "name": "Yugoslavia"
+    },
+    {
+      "number": "386",
+      "code": "SI",
+      "name": "Slovenia"
+    },
+    {
+      "number": "420",
+      "code": "CZ",
+      "name": "Czech Republic"
+    },
+    {
+      "number": "421",
+      "code": "SK",
+      "name": "Slovakia"
+    },
+    {
+      "number": "423",
+      "code": "LI",
+      "name": "Liechtenstein"
+    },
+    {
+      "number": "501",
+      "code": "BZ",
+      "name": "Belize"
+    },
+    {
+      "number": "502",
+      "code": "GT",
+      "name": "Guatemala"
+    },
+    {
+      "number": "503",
+      "code": "SV",
+      "name": "EI Salvador"
+    },
+    {
+      "number": "504",
+      "code": "HN",
+      "name": "Honduras"
+    },
+    {
+      "number": "505",
+      "code": "NI",
+      "name": "Nicaragua"
+    },
+    {
+      "number": "506",
+      "code": "CR",
+      "name": "Costa Rica"
+    },
+    {
+      "number": "507",
+      "code": "PA",
+      "name": "Panama"
+    },
+    {
+      "number": "509",
+      "code": "HT",
+      "name": "Haiti"
+    },
+    {
+      "number": "591",
+      "code": "BO",
+      "name": "Bolivia"
+    },
+    {
+      "number": "592",
+      "code": "GY",
+      "name": "Guyana"
+    },
+    {
+      "number": "593",
+      "code": "EC",
+      "name": "Ecuador"
+    },
+    {
+      "number": "594",
+      "code": "GF",
+      "name": "French Guiana"
+    },
+    {
+      "number": "595",
+      "code": "PY",
+      "name": "Paraguay"
+    },
+    {
+      "number": "596",
+      "code": "",
+      "name": "Martinique"
+    },
+    {
+      "number": "597",
+      "code": "SR",
+      "name": "Suriname"
+    },
+    {
+      "number": "598",
+      "code": "UY",
+      "name": "Uruguay"
+    },
+    {
+      "number": "599",
+      "code": "",
+      "name": "Netheriands Antilles"
+    },
+    {
+      "number": "673",
+      "code": "BN",
+      "name": "Brunei"
+    },
+    {
+      "number": "674",
+      "code": "NR",
+      "name": "Nauru"
+    },
+    {
+      "number": "675",
+      "code": "PG",
+      "name": "Papua New Cuinea"
+    },
+    {
+      "number": "676",
+      "code": "TO",
+      "name": "Tonga"
+    },
+    {
+      "number": "677",
+      "code": "SB",
+      "name": "Solomon Is"
+    },
+    {
+      "number": "679",
+      "code": "FJ",
+      "name": "Fiji"
+    },
+    {
+      "number": "682",
+      "code": "CK",
+      "name": "Cook Is."
+    },
+    {
+      "number": "684",
+      "code": "",
+      "name": "Samoa Eastern"
+    },
+    {
+      "number": "685",
+      "code": "",
+      "name": "Samoa Western"
+    },
+    {
+      "number": "689",
+      "code": "PF",
+      "name": "French Polynesia"
+    },
+    {
+      "number": "850",
+      "code": "KP",
+      "name": "North Korea"
+    },
+    {
+      "number": "852",
+      "code": "HK",
+      "name": "Hongkong"
+    },
+    {
+      "number": "853",
+      "code": "MO",
+      "name": "Macao"
+    },
+    {
+      "number": "855",
+      "code": "KH",
+      "name": "Kampuchea (Cambodia )"
+    },
+    {
+      "number": "856",
+      "code": "LA",
+      "name": "Laos"
+    },
+    {
+      "number": "880",
+      "code": "BD",
+      "name": "Bangladesh"
+    },
+    {
+      "number": "886",
+      "code": "TW",
+      "name": "Taiwan"
+    },
+    {
+      "number": "960",
+      "code": "MV",
+      "name": "Maldives"
+    },
+    {
+      "number": "961",
+      "code": "LB",
+      "name": "Lebanon"
+    },
+    {
+      "number": "962",
+      "code": "JO",
+      "name": "Jordan"
+    },
+    {
+      "number": "963",
+      "code": "SY",
+      "name": "Syria"
+    },
+    {
+      "number": "964",
+      "code": "IQ",
+      "name": "Iraq"
+    },
+    {
+      "number": "965",
+      "code": "KW",
+      "name": "Kuwait"
+    },
+    {
+      "number": "966",
+      "code": "SA",
+      "name": "Saudi Arabia"
+    },
+    {
+      "number": "967",
+      "code": "YE",
+      "name": "Yemen"
+    },
+    {
+      "number": "968",
+      "code": "OM",
+      "name": "Oman"
+    },
+    {
+      "number": "971",
+      "code": "AE",
+      "name": "United Arab Emirates"
+    },
+    {
+      "number": "972",
+      "code": "IL",
+      "name": "Israel"
+    },
+    {
+      "number": "973",
+      "code": "BH",
+      "name": "Bahrain"
+    },
+    {
+      "number": "974",
+      "code": "QA",
+      "name": "Qatar"
+    },
+    {
+      "number": "976",
+      "code": "MN",
+      "name": "Mongolia"
+    },
+    {
+      "number": "977",
+      "code": "NP",
+      "name": "Nepal"
+    },
+    {
+      "number": "992",
+      "code": "TJ",
+      "name": "Tajikstan"
+    },
+    {
+      "number": "993",
+      "code": "TM",
+      "name": "Turkmenistan"
+    },
+    {
+      "number": "994",
+      "code": "AZ",
+      "name": "Azerbaijan"
+    },
+    {
+      "number": "995",
+      "code": "GE",
+      "name": "Georgia"
+    },
+    {
+      "number": "1242",
+      "code": "BS",
+      "name": "Bahamas"
+    },
+    {
+      "number": "1246",
+      "code": "BB",
+      "name": "Barbados"
+    },
+    {
+      "number": "1264",
+      "code": "AI",
+      "name": "Anguilla"
+    },
+    {
+      "number": "1268",
+      "code": "AG",
+      "name": "Antigua and Barbuda"
+    },
+    {
+      "number": "1345",
+      "code": "",
+      "name": "Cayman Is."
+    },
+    {
+      "number": "1441",
+      "code": "BM",
+      "name": "Bermuda Is."
+    },
+    {
+      "number": "1664",
+      "code": "MS",
+      "name": "Montserrat Is"
+    },
+    {
+      "number": "1670",
+      "code": "",
+      "name": "Mariana Is"
+    },
+    {
+      "number": "1671",
+      "code": "GU",
+      "name": "Guam"
+    },
+    {
+      "number": "1758",
+      "code": "LC",
+      "name": "Saint Lueia"
+    },
+    {
+      "number": "1758",
+      "code": "LC",
+      "name": "St.Lucia"
+    },
+    {
+      "number": "1784",
+      "code": "VC",
+      "name": "Saint Vincent"
+    },
+    {
+      "number": "1784",
+      "code": "VC",
+      "name": "St.Vincent"
+    },
+    {
+      "number": "1787",
+      "code": "PR",
+      "name": "Puerto Rico"
+    },
+    {
+      "number": "1809",
+      "code": "GD",
+      "name": "Grenada"
+    },
+    {
+      "number": "1809",
+      "code": "TT",
+      "name": "Trinidad and Tobago"
+    },
+    {
+      "number": "1876",
+      "code": "JM",
+      "name": "Jamaica"
+    },
+    {
+      "number": "1890",
+      "code": "DO",
+      "name": "Dominica Rep."
+    }
+  ]
+}
