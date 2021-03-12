@@ -18,8 +18,26 @@
         .el-header{
             padding: 0;
         }
+
+        .carousel-img-container {
+            height: 100%;
+            text-align: center;
+            position: relative;
+        }
+
         .carousel-img{
-            width: 100%;
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;  
+            height: 100%;
+        
+        }
+
+        .carousel-img-desc{
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;   
+            bottom: 5%;
         }
 
         .content{
@@ -96,7 +114,10 @@
             <el-main>
                 <el-carousel :interval="4000" type="card" :height="carouselHeight">
                     <el-carousel-item v-for="item in imgs" :key="item">
-                      <img class="carousel-img" :src="item">
+                        <div  class="carousel-img-container" >
+                            <img class="carousel-img" :src="item.img">
+                            <h2 class="carousel-img-desc"  >{{item.desc}}</h2>
+                        </div> 
                     </el-carousel-item>
                   </el-carousel>
 
@@ -170,9 +191,15 @@
         document.body.classList.add('m')
     }
 
-    var imgs = ['15830609185369', '15830609048048', '15830608936677','15830608759656', '15830608112585']
+    var imgs = [{img: 'features', desc: '新功能效果'},
+    {img: 'future', desc: '新功能预测'},
+    {img: 'levelup', desc: '效果提升'},
+    {img: 'new', desc: '新品宣传'},
+    {img: 'production', desc: '数据产出'},
+    {img: 'publish', desc: '发布会'}]
     imgs = imgs.map((item) => {
-        return 'http://image.popochiu.com/' + item + '.jpg'
+         item.img = './svg/' + item.img + '.svg'
+         return item
     }) 
     var app = new Vue({
         el: '#app',
@@ -182,7 +209,7 @@
             imgs: imgs,
             activeNames: ['1'],
             value: new Date(),
-            carouselHeight: IsPC() ? '400px': '125px'
+            carouselHeight: IsPC() ? '360px': '125px'
         },
         methods: {
             handleSelect(key, keyPath) {

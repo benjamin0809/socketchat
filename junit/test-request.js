@@ -1,13 +1,27 @@
- const Qiniu = require('../modules/qiniu/qiniu') 
  
- const qiniu = new Qiniu()
 
- var key = "883a2810e383423a9b111c2532f5daea.png";
- console.log(qiniu.getPublicDownloadUrl(key))
-   
+  var http = require('http')
+var opt = {
+ host:'10.191.131.156',
+ port:'3128',
+ method:'POST',//这里是发送的方法
+ path:'F2846595:mrz0809@http://www.popochiu.com/hupu/getImages',     //这里是访问的路径
+ headers:{
+  //这里放期望发送出去的请求头
+ }
+}
+//以下是接受数据的代码
+var body = '';
+var req = http.request(opt, function(res) {
+  console.log("Got response: " + res.statusCode);
+  res.on('data',function(d){
+  body += d;
+ }).on('end', function(){
+  console.log(res.headers)
+  console.log(body)
+ });
 
-const resurl = 'https://p1.hoopchina.com.cn/sina/b6c104f022fc4a9d95e6ebc1dbebf862.jpeg?x-oss-process=image/resize,w_800/format,webp'
-
-qiniu.fetchWebUrl(resurl,resurl.split('/')[0] ).then(res=>{
-    console.log(res)
+}).on('error', function(e) {
+  console.log("Got error: " + e.message);
 })
+req.end();
