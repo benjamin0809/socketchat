@@ -1,11 +1,5 @@
-const { ResponseSuccess, ResponseError } = require('../models/response')
-
 var express = require('express');
-var router = express.Router();
-var mutipart = require('connect-multiparty')
-const ArticleDao = require('../modules/article/article')
-const path = require('path');
-const dateUtils = require('../utils/date.utils') 
+var router = express.Router(); 
 const UserDao = require('../modules/user/user')
 const Token = require('../utils/token')
 var md5 = require('md5');
@@ -46,7 +40,7 @@ router.all('/extralogin', async function (req, res, next) {
       RefreshToken: Token.generateAccessToken(account),
       userId: account
     }
-    res.json(result)
+    res.success(result)
   } else {
     res.status(500).json({
       msg: 'account infomation is incorret'
@@ -62,7 +56,7 @@ router.all('/getuser', async function (req, res, next) {
    const UserID = Token.validToken(accessToken);
 
    if(UserID) {
-    res.json({
+    res.success({
       account : UserID
     });
    } else{
@@ -76,7 +70,7 @@ router.all('/random', async function (req, res, next) {
   const UserID = Token.validToken(accessToken);
 
   if(UserID) {
-   res.json({
+   res.success({
      value : Math.random()
    });
   } else{
@@ -90,10 +84,10 @@ router.all('/refreshtoken', async function (req, res, next) {
   const UserID = Token.validToken(refreshToken);
 
    if(UserID) {
-    res.json({
+    res.success({
       jwt: Token.generateUserToken(UserID),
       account : UserID
-    });
+    }); 
    } else{
     res.status(401).end('refreshtoken is invalid');
    }  
@@ -108,11 +102,11 @@ router.all('/v2/getuser', async function (req, res, next) {
    const UserID = Token.validToken(accessToken);
 
    if(UserID) {
-    res.json({
+    res.success({
       account : UserID
     });
-   } else{
-    res.json(new ResponseError('random', 'token is invalid', 401).toJson());
+   } else{ 
+    res.error('random', 'token is invalid', 401);
    } 
 });
 router.all('/v2/random', async function (req, res, next) { 
@@ -122,11 +116,11 @@ router.all('/v2/random', async function (req, res, next) {
   const UserID = Token.validToken(accessToken);
 
   if(UserID) {
-   res.json({
+   res.success({
      value : Math.random()
    });
   } else{
-    res.json(new ResponseError('random', 'token is invalid', 401).toJson());
+    res.error('random', 'token is invalid', 401);
   } 
 });
 
@@ -136,15 +130,13 @@ router.all('/v2/refreshtoken', async function (req, res, next) {
   const UserID = Token.validToken(refreshToken);
 
    if(UserID) {
-    res.json({
+    res.success({
       jwt: Token.generateUserToken(UserID),
       account : UserID
     });
    } else{
-
-    
-    res.json(new ResponseError('refreshtoken', 'refreshtoken is invalid', 401).toJson());
+    res.error('refreshtoken', 'refreshtoken is invalid', 401) 
    }  
    
 });
-module.exports = router;
+module.exports = { router, alias: '/connect' };

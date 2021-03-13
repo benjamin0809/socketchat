@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 
-const config = require('../../config/dev.conf')
+const config = require('../../../config/dev.conf')
 // 设置邮件内容（谁发送什么给谁）
 const defaultMailOptions = {
   from: '"benjamin 👻" <benjamin_0809@163.com>', // 发件人

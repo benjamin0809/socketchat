@@ -1,7 +1,7 @@
 const http = require('./http.request') 
 const superagent = require('superagent'); //获取网页dom树
 require('superagent-proxy')(superagent);
-const proxy = 'http://F2846595:mrz0809@10.191.131.156:3128'
+const proxy = 'http://F2846595:*****@10.191.131.156:3128'
 let getTokenUrl = 'https://aip.baidubce.com/oauth/2.0/token'; 
 let body = {
   grant_type: 'client_credentials',

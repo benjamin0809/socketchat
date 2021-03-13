@@ -1,32 +1,34 @@
 var express = require('express');
+ 
+if(process.env.NODE_ENV == 'development') {
+  var child_process = require("child_process")
+  child_process.execFile("redis.bat",null,{ cwd:'E:/projects/node/myapp/config'},function(error,stdout,stderr){
+      if(error !==null){
+          console.log("exec error"+error)
+      }
+      else console.log("成功")
+      console.log('stdout: ' + stdout);
+      console.log('stderr: ' + stderr);
+  })
+} 
 
-var child_process = require("child_process")
-child_process.execFile("redis.bat",null,{ cwd:'E:/projects/node/myapp/config'},function(error,stdout,stderr){
-    if(error !==null){
-        console.log("exec error"+error)
-    }
-    else console.log("成功")
-    console.log('stdout: ' + stdout);
-    console.log('stderr: ' + stderr);
-})
-
+require('module-alias/register')
 var path = require('path'); 
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var favicon = require('serve-favicon')
-
-const Routers = require('./routes/index');
-const tokenUtils = require('./utils/token')
-const whitelist = require('./routes/whitelist')
-const TaskList = require('./modules/task/task-list')
+const { ResponseSuccess, ResponseError } = require('./src/models/response')
+const Routers = require('./src/routes/index');
+const tokenUtils = require('./src/utils/token')
+const whitelist = require('./src/routes/whitelist')
+const TaskList = require('./src/modules/task/task-list') 
 var app = express();  
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views')); 
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
-
+app.use(logger('dev')); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -43,7 +45,7 @@ app.options("/*", function(req, res, next) {
 });
 
 // 自定义跨域中间件
-var allowCors = function(req, res, next) {
+app.all('*', function(req, res, next) {
   // res.header('Access-Control-Allow-Origin', req.headers.origin); 
 
   res.header('Access-Control-Allow-Origin', '*');
@@ -51,9 +53,7 @@ var allowCors = function(req, res, next) {
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Credentials','true');
   next();
-};  
-
-app.all('*', allowCors);
+});
 // app.use(allowCors)
 // 自定义跨域中间件
 
@@ -61,12 +61,20 @@ app.all('*', allowCors);
 /** request 拦截器 */ 
 app.all('*',function(req, res, next) {   
 
-  const clientIP = getClientIP(req)
-  const method = req.method  
-  console.log('request 拦截器' +  req.url ,',req.path' + req.path +', method: ', method ,"客户端Ip", clientIP) 
+  /** 自定义Response Successfully 返回方法 */
+  res.success = function(data, message, errorCode) {
+    res.json(new ResponseSuccess(data, message, errorCode).toJson()); 
+  };
 
-  // 白名单
+  /** 自定义Response Failed 返回方法 */
+  res.error = function(data, message, errorCode) {
+    res.json(new ResponseError(data, message, errorCode).toJson()); 
+  };
+ 
+  const clientIP = getClientIP(req) 
+  console.log('request 拦截器' +  req.url ,',req.path' + req.path +', method: ', req.method ,"客户端Ip", clientIP) 
 
+  // 白名单 
   let isWhite = whitelist.some(item =>req.path.indexOf(item) > -1)
   if(isWhite){
     next()
@@ -82,6 +90,7 @@ app.all('*',function(req, res, next) {
  
 });
 
+ 
 /**定义路由 */  
 app.use(Routers)  
   
@@ -108,7 +117,10 @@ function getClientIP(req) {
       req.connection.remoteAddress || // 判断 connection 的远程 IP
       req.socket.remoteAddress || // 判断后端的 socket 的 IP
       req.connection.socket.remoteAddress;
-};
+}; 
+if(process.env.NODE_ENV == 'production') {
+  new TaskList().start() 
+} 
 
-new TaskList().start() 
+console.log('Everything is under controll!')
 module.exports = app;

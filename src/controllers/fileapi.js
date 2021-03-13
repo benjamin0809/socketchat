@@ -205,7 +205,8 @@ router.all('/getAllFiles', function (req, res, next) {
   }).catch(e => {
     res.send(e)
   })
-})
+}) 
+
  
 router.all('/getFiles', function (req, res, next) { 
   const fileDao = new FileDao(); 
@@ -216,11 +217,11 @@ router.all('/getFiles', function (req, res, next) {
 
   
   fileDao.getFiles(filters, orders, currentPage, pageSize).then(data => {
-    res.send(data)
+    res.success(data)
   }).catch(e => {
     res.send(e)
   })
 })
  
 
-module.exports = router;
+module.exports =  { router, alias: '/api/file'};

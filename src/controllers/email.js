@@ -51,4 +51,4 @@ router.post('/sendEmailWithAttachments', function (req, res, next) {
   }
 })
 
-module.exports = router;
+module.exports = { router };

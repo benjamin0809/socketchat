@@ -1,16 +1,14 @@
 var express = require('express');
-var router = express.Router();
+var router = express.Router();  
+var multipartMiddleware = require('connect-multiparty')();
 const FileUtils = require('../utils/file-utils')
-var mutipart = require('connect-multiparty')
-var multipartMiddleware = mutipart();
-const FileDao = require('../modules/file/file')
-const { ResponseSuccess, ResponseError } = require('../models/response')
+const FileDao = require('../modules/file/file') 
 const fs = require('fs')
 const path = require('path')
 const defaultAvatar = '../public/upload/avatar/head.png'
 router.get('/getAvatar/:id', function (req, res, next) { 
 
-  let url = path.join(__dirname, `../public/upload/avatar/${req.params.id}.png`)
+  let url = path.join(__dirname, `../../public/upload/avatar/${req.params.id}.png`)
   if (fs.existsSync(url)) {
     res.sendFile(url)
   } else {
@@ -19,7 +17,7 @@ router.get('/getAvatar/:id', function (req, res, next) {
 })
 
 router.get('/upload', function (req, res, next) { 
-  res.sendFile(path.join(__dirname, '../public/saveavatar.html'))
+  res.sendFile(path.join(__dirname, '../../public/saveavatar.html'))
 })
  
 /* GET home page. */
@@ -27,7 +25,7 @@ router.post('/save', multipartMiddleware, async function (req, res, next) {
   const fileDao = new FileDao();
   let fileEntity = fileDao.getInstance()
 
-  const UPLOAD_PATH = '../public/upload/avatar'
+  const UPLOAD_PATH = '../../public/upload/avatar'
   let outpath = path.resolve(__dirname, UPLOAD_PATH)
   if (!fs.existsSync(outpath)) {
     fs.mkdirSync(outpath)
@@ -66,11 +64,11 @@ router.post('/save', multipartMiddleware, async function (req, res, next) {
         result = JSON.stringify(e)
       } catch (e) { }
     }) 
-    res.json(new ResponseSuccess({result,fileEntity}).toJson());
+    res.success({result,fileEntity});
   });
   source.on('error', function (err) {
-    res.json(new ResponseError().toJson());
+    res.error(err);
   });
 });
 
-module.exports = router;
+module.exports =  { router };

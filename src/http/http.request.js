@@ -1,14 +1,14 @@
 var http = require("http");
 var config = require("../config/dev.conf");
   
-const proxy = 'http://F2846595:mrz0809@10.191.131.156:3128'
+const proxy = 'http://F2846595:****@10.191.131.156:3128'
 const request = function(method, path, body, headers){ 
     var data = {}
     body && Object.assign(data,body)
     data = JSON.stringify(data)
     var opt = {  
-        host: config.sever.host,  
-        port: config.sever.port,  
+        host: '47.115.123.36',  
+        port: 80,  
         method: method,  
         path: path,  
         proxy: proxy,
@@ -16,8 +16,7 @@ const request = function(method, path, body, headers){
             "Content-Type": 'application/json',  
             "Content-Length": data.length 
         }  
-    }   
-      
+    }    
     Object.assign(opt.headers, headers)
     var body = '';  
     return new Promise((resolve,reject)=>{

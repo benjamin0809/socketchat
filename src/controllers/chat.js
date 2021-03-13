@@ -1,28 +1,24 @@
 const express = require('express');
-const router = express.Router();
-const { ResponseSuccess, ResponseError } = require('../models/response')
+const router = express.Router(); 
 const ChatDao = require('../modules/chat/chat') 
 
 router.get('/getRoom', function (req, res, next) {
   let id = req.query.id
   const chat = new ChatDao()
-  chat.getRoom(id).then(data => {
-    const result = new ResponseSuccess(data).toJson()
-    res.send(result)
-  }).catch(error => {
-    const result = new ResponseSuccess(error).toJson()
-    res.send(result)
+  chat.getRoom(id).then(data => { 
+    res.success(data)
+  }).catch(error => { 
+    res.error(result)
   })
 });
 
 router.get('/getRooms', function (req, res, next) {
   const chat = new ChatDao()
   chat.getRooms().then(data => {
-    const result = new ResponseSuccess(data).toJson()
+        res.success(data)
     res.send(result)
   }).catch(error => {
-    const result = new ResponseSuccess(error).toJson()
-    res.send(result)
+    res.error(error) 
   })
 });
 
@@ -30,11 +26,10 @@ router.get('/getRoomsByUser', function (req, res, next) {
   let userid = req.query.userid
   const chat = new ChatDao()
   chat.getRoomsByUser(userid).then(data => {
-    const result = new ResponseSuccess(data).toJson()
+        res.success(data)
     res.send(result)
   }).catch(error => {
-    const result = new ResponseSuccess(error).toJson()
-    res.send(result)
+    res.error(error) 
   })
 });
 
@@ -48,12 +43,10 @@ router.post('/createUser', async (req, res, next) => {
     const data = await chat.createUser({
       name,password,socketid
     }) 
-    const result = new ResponseSuccess(data).toJson()
-    res.send(result)
+    res.success(data) 
   }
   catch (error) {
-    const result = new ResponseSuccess(error).toJson()
-    res.send(result)
+    res.error(error) 
   }
 });
 
@@ -68,12 +61,10 @@ router.post('/updateUser', async (req, res, next) => {
     const data = await chat.updateUser({
       name,password,socketid,id
     }) 
-    const result = new ResponseSuccess(data).toJson()
-    res.send(result)
+    res.success(data) 
   }
   catch (error) {
-    const result = new ResponseSuccess(error).toJson()
-    res.send(result)
+    res.error(error) 
   }
 });
 
@@ -83,12 +74,10 @@ router.post('/deleteUser', async (req, res, next) => {
     const chat = new ChatDao()
 
     const data = await chat.deleteUser(id) 
-    const result = new ResponseSuccess(data).toJson()
-    res.send(result)
+    res.success(data)
   }
   catch (error) {
-    const result = new ResponseSuccess(error).toJson()
-    res.send(result)
+    res.error(error)
   }
 });
 
@@ -104,12 +93,11 @@ router.post('/createRoom', async (req, res, next) => {
     const data = await chat.createRoom({
       name,password,description,avatar
     }) 
-    const result = new ResponseSuccess(data).toJson()
+        res.success(data)
     res.send(result)
   }
   catch (error) {
-    const result = new ResponseSuccess(error).toJson()
-    res.send(result)
+    res.error(error)
   }
 });
 
@@ -125,12 +113,10 @@ router.post('/updateRoom', async (req, res, next) => {
     const data = await chat.updateRoom({
       name,password,description,avatar,id
     }) 
-    const result = new ResponseSuccess(data).toJson()
-    res.send(result)
+    res.success(data)
   }
   catch (error) {
-    const result = new ResponseSuccess(error).toJson()
-    res.send(result)
+    res.error(error)
   }
 });
 
@@ -140,12 +126,10 @@ router.post('/deleteRoom', async (req, res, next) => {
     const chat = new ChatDao()
 
     const data = await chat.deleteRoom(id) 
-    const result = new ResponseSuccess(data).toJson()
-    res.send(result)
+    res.success(data)
   }
   catch (error) {
-    const result = new ResponseSuccess(error).toJson()
-    res.send(result)
+    res.error(error)
   }
 });
 
@@ -155,12 +139,10 @@ router.post('/joinRoom', async (req, res, next) => {
     let roomid = req.body.roomid
     const chat = new ChatDao() 
     const data = await chat.joinRoom(userid,roomid) 
-    const result = new ResponseSuccess(data).toJson()
-    res.send(result)
+    res.success(data)
   }
   catch (error) {
-    const result = new ResponseSuccess(error).toJson()
-    res.send(result)
+    res.error(error)
   }
 });
 
@@ -170,14 +152,12 @@ router.post('/joinRoomSocketName', async (req, res, next) => {
     let roomid = req.body.roomid
     const chat = new ChatDao() 
     const data = await chat.joinRoomSocketName(username,roomid) 
-    const result = new ResponseSuccess(data).toJson()
-    res.send(result)
+    res.success(data)
   }
   catch (error) {
-    const result = new ResponseSuccess(error).toJson()
-    res.send(result)
+    res.error(error)
   }
 });
  
 
-module.exports = router;
+module.exports =  { router, alias:'/webchat' };

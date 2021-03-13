@@ -1,16 +1,15 @@
 var express = require('express');
 var router = express.Router();
-const UserDao = require('../modules/user/user')
-var utils = require('../utils/utils')
+const UserDao = require('../modules/user/user') 
 const token = require('../utils/token')
 
 router.all('/getUser', function (req, res, next) {
   let id = req.query.id
   const user = new UserDao()
   user.getUser(id).then(data => {
-    res.send(JSON.stringify(data))
+    res.success(data)
   }).catch(error => {
-    res.send(JSON.stringify(error))
+    res.error(error)
   })
 });
 
@@ -26,11 +25,11 @@ router.post('/login', async (req, res, next) => {
       accessToken: token.generateAccessToken(userId),
       userToken: token.generateAccessToken(userId),
       userId: userId
-    }
-    res.json(result)
+    } 
+    res.success(result)
   }
   catch (error) {
-    res.send(JSON.stringify(error))
+    res.error(error)
   }
 });
 
@@ -47,12 +46,12 @@ router.post('/register', async (req, res, next) => {
       userToken: token.generateAccessToken(userId),
       userId: userId
     }
-    res.json(result)
+    res.success(result)
   } catch (error) {
-    res.send(JSON.stringify(error))
+    res.error(error)
   }
 
 });
 
 
-module.exports = router;
+module.exports = { router, alias: '/api/users'} ;

@@ -414,7 +414,7 @@ router.all('/getFiles', function (req, res, next) {
 
 
   fileDao.getFiles(filters, orders, currentPage, pageSize).then(data => {
-    res.send(data)
+    res.custom(data)
   }).catch(e => {
     res.send(e)
   })
@@ -429,4 +429,4 @@ router.all('/getFileType', function (req, res, next) {
   })
 }) 
 
-module.exports = router;
+module.exports = { router };

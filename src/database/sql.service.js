@@ -1,5 +1,5 @@
 const mysql = require('mysql')
-const config = require('../config/dev.conf')
+const config = require('../../config/dev.conf')
 
 class SqlService{
     constructor() {

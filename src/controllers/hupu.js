@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Hupu = require('../modules/hupu/hupu.js');
-const Spider = require('../utils/spider')
-const FileUtils = require('../utils/file-utils')
-const path = require('path')
+const Spider = require('../utils/spider') 
 const Redis = require('../redis/redis')
 const main_key = "getHupuImages";
 const HupuDao = new Hupu();
@@ -16,26 +14,15 @@ router.get('/', function (req, res, next) {
 router.get('/getImages', async (req, res, next) => {
   let limit = req.query.limit || 20;
   let offset = req.query.offset || 0;
-  const pagekey = limit + '-' + offset;
-
-  try{ 
-    // let reidsResult = await redis.getpageh(main_key, pagekey);
-    // if(reidsResult && reidsResult.length > 0){
-    //   res.send(reidsResult)
-    // }else {
-    //   let data = await HupuDao.getHupuImages(limit, offset) 
-    //   redis.sethpage(main_key, pagekey, data)
-    //   res.send(data) 
-    // } 
-
+  const pagekey = limit + '-' + offset; 
+  try{  
     let data = await HupuDao.getHupuImages(limit, offset) 
       redis.sethpage(main_key, pagekey, data)
       res.send(data) 
   }catch(e){
     console.error(e)
     res.send(e) 
-  }
-  
+  } 
 })
 
 router.get('/getMobileImages', async (req, res, next) => {
@@ -43,16 +30,7 @@ router.get('/getMobileImages', async (req, res, next) => {
   let offset = ~~req.query.offset || 0;
   const pagekey = limit + '-' + offset;
 
-  try{ 
-    // let reidsResult = await redis.getpageh(main_key, pagekey);
-    // if(reidsResult && reidsResult.length > 0){
-    //   res.send(reidsResult)
-    // }else {
-    //   let data = await HupuDao.getHupuImages(limit, offset) 
-    //   redis.sethpage(main_key, pagekey, data)
-    //   res.send(data) 
-    // } 
-
+  try{   
     let data = await HupuDao.getMobileHupuImages(limit, offset)  
       res.send(data) 
   }catch(e){
@@ -167,4 +145,4 @@ router.post('/spiderAction', function (req, res, next) {
   }
 })
 
-module.exports = router;
+module.exports = { router };

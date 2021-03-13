@@ -1,17 +1,13 @@
-const { ResponseSuccess, ResponseError } = require('../models/response')
-
 var express = require('express');
 var router = express.Router();
-var mutipart = require('connect-multiparty')
 const ArticleDao = require('../modules/article/article')
-const path = require('path');
 const dateUtils = require('../utils/date.utils')
 
-const getUserInfo = (req)=>{ 
+const getUserInfo = (req) => {
   return {
     userid: req.cookies.userid,
     username: req.cookies.username,
-    redirectUrl:req.protocol + "://" +req.headers.host + req.originalUrl
+    redirectUrl: req.protocol + "://" + req.headers.host + req.originalUrl
   }
 }
 
@@ -36,8 +32,26 @@ const getMenu = () => {
 }
 router.get('/', function (req, res, next) {
   // 渲染文件 index.ejs
-  res.redirect('./home')
+  res.render('./home')
 
+});
+
+
+router.get('/index', async function (req, res, next) {
+  // 渲染文件 index.ejs
+  let menu = getMenu()
+  menu[0].class = "active"
+
+  const article = new ArticleDao()
+  let data = await article.getAllArticles(null, [{
+    key: 'publishtime',
+    orderby: 'desc'
+  }])
+
+  for (let item of data) {
+    item.publishtime = dateUtils.getCurrentTime(item.publishtime)
+  }
+  res.render('./home', { menu: menu, title: 'home', articles: data, user: getUserInfo(req) })
 });
 
 router.get('/home', async (req, res, next) => {
@@ -47,45 +61,29 @@ router.get('/home', async (req, res, next) => {
 
   const article = new ArticleDao()
   let data = await article.getAllArticles(null, [{
-    key:'publishtime',
-    orderby:'desc'
+    key: 'publishtime',
+    orderby: 'desc'
   }])
 
-  for(let item of data){ 
+  for (let item of data) {
     item.publishtime = dateUtils.getCurrentTime(item.publishtime)
   }
-  res.render('./common/home', { menu: menu, title: 'home', articles: data, user: getUserInfo(req)  })
+  res.render('./common/home', { menu: menu, title: 'home', articles: data, user: getUserInfo(req) })
 });
 
-router.get('/index', async function (req, res, next) {
-  // 渲染文件 index.ejs
-  let menu = getMenu()
-  menu[0].class = "active"
-
-  const article = new ArticleDao()
-  let data = await article.getAllArticles(null, [{
-    key:'publishtime',
-    orderby:'desc'
-  }])
-
-  for(let item of data){ 
-    item.publishtime = dateUtils.getCurrentTime(item.publishtime)
-  }
-  res.render('./home', { menu: menu, title: 'home', articles: data, user: getUserInfo(req)  })
-});
 
 router.get('/profile', function (req, res, next) {
   // 渲染文件 index.ejs
   let menu = getMenu()
   menu[1].class = "active"
-  res.render('common/profile', { menu: menu, title: 'profile', user: getUserInfo(req)  })
+  res.render('common/profile', { menu: menu, title: 'profile', user: getUserInfo(req) })
 });
 
 router.get('/message', function (req, res, next) {
   // 渲染文件 index.ejs
   let menu = getMenu()
   menu[2].class = "active"
-  res.render('common/message', { menu: menu, title: 'message', user: getUserInfo(req)  })
+  res.render('common/message', { menu: menu, title: 'message', user: getUserInfo(req) })
 });
 router.get('/compose', function (req, res, next) {
   console.log(req.cookies)
@@ -93,7 +91,7 @@ router.get('/compose', function (req, res, next) {
   // 渲染文件 index.ejs
   let menu = getMenu()
   menu[3].class = "active"
-  res.render('module/compose', { menu: menu, title: 'compose', user: getUserInfo(req)  })
+  res.render('module/compose', { menu: menu, title: 'compose', user: getUserInfo(req) })
 });
 
 /* GET users listing. */
@@ -109,12 +107,12 @@ router.get('/details', async (req, res, next) => {
 
       let mdoel = data[0];
       mdoel.publishtime = dateUtils.getCurrentTime(mdoel.publishtime)
-       
+
       res.render('module/detail', {
         menu: menu,
-        article: data[0], 
-        user: getUserInfo(req) 
-      }) 
+        article: data[0],
+        user: getUserInfo(req)
+      })
     }
   } catch (e) {
     res.render('formerror', { e: e })
@@ -126,13 +124,13 @@ router.post('/like', async (req, res, next) => {
   const id = req.body.id
   try {
     const article = new ArticleDao()
-    let data = await article.insertArticle(entity)
-    res.json(new ResponseSuccess(data).toJson())
+    let data = await article.likeArticle(id)
+    res.success(data)
   } catch (e) {
-    res.json(new ResponseError(e).toJson())
+    res.error(e)
   }
 })
- 
+
 
 
 
@@ -141,9 +139,9 @@ router.post('/createArticle', async (req, res, next) => {
   try {
     const article = new ArticleDao()
     let data = await article.insertArticle(entity)
-    res.json(new ResponseSuccess(data).toJson())
+    res.success(data)
   } catch (e) {
-    res.json(new ResponseError(e).toJson())
+    res.error(e)
   }
 });
 
@@ -159,4 +157,4 @@ router.post('/create', async (req, res, next) => {
   }
 });
 
-module.exports = router;
+module.exports = { router };
