@@ -6,25 +6,36 @@
 
 var app = require('../app');
 var debug = require('debug')('myapp:server');
-var http = require('http');  
+var spdy = require('spdy');  
 var path = require('path'); 
 var fs = require('fs')
-var https = require('https'); 
 const WebSocket = require('../src/modules/socket/websocket') 
 /**
  * Get port from environment and store in Express.
  */
  
+const key_path = path.resolve(__dirname,'../https/key.pem')
+const cert_path = path.resolve(__dirname,'../https/cert.pem')
 
-var port = normalizePort(process.env.PORT || '80'); 
-app.set('port', port);
+
+  const httpsOption =  
+    fs.existsSync(key_path) && fs.existsSync(cert_path) ?  {
+      key: fs.readFileSync(key_path),
+      cert: fs.readFileSync(cert_path)
+    }:  {
+      
+    }
+
+var port = normalizePort(process.env.PORT || '80');  
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app); 
+// var server = http.createServer(app); 
 
+var server = spdy
+    .createServer(httpsOption, app) 
 
 var io = require('socket.io')(server, {
   path:'/chat', 
@@ -55,16 +66,14 @@ server.on('listening', onListening);
   
 /**
  * Create HTTPS server.
- */ 
-const key_path = path.resolve(__dirname,'../https/www.popochiu.com.key')
-const cert_path = path.resolve(__dirname,'../https/www.popochiu.com.pem')
+ */  
 
 if (fs.existsSync(key_path) && fs.existsSync(cert_path) ) {
   const httpsOption = {
     key: fs.readFileSync(key_path),
     cert: fs.readFileSync(cert_path)
   }
-  var httpsserver =  https.createServer(httpsOption, app);
+  var httpsserver =  spdy.createServer(httpsOption, app);
 
   var httpsio = require('socket.io')(httpsserver, {
     path:'/chat', 
