@@ -116,10 +116,10 @@ router.get('/pdf/download', (req, res, next) => {
 });
 
 router.get('/download/getword', function (req, res, next) {
-  res.sendFile(path.join(__dirname, '../public/file/word.docx'))
+  res.sendFile(path.join(__dirname, '../../public/file/word.docx'))
 });
 router.get('/download/getexcel', function (req, res, next) {
-  res.sendFile(path.join(__dirname, '../public/file/language.xlsx'))
+  res.sendFile(path.join(__dirname, '../../public/file/language.xlsx'))
 });
 
 router.post('/readStream/excel', function (req, res, next) {
@@ -195,7 +195,7 @@ router.post('/uploadFile', multipartMiddleware, async function (req, res, next) 
   const fileDao = new FileDao();
   let fileEntity = fileDao.getInstance()
 
-  const UPLOAD_PATH = '../public/upload'
+  const UPLOAD_PATH = '../../public/upload'
   let outpath = path.resolve(__dirname, UPLOAD_PATH)
   if (!fs.existsSync(outpath)) {
     fs.mkdirSync(outpath)
@@ -298,7 +298,7 @@ const customRouter = function (routerPath, type) {
   router.post(routerPath, function (req, res, next) {
     let filetype = type;
     let filename = req.body.filename || new Date().getTime()
-    let UPLOAD_PATH = '../public/' + filetype
+    let UPLOAD_PATH = '../../public/' + filetype
     let outpath = path.resolve(__dirname, UPLOAD_PATH)
     if (!fs.existsSync(outpath)) {
       fs.mkdirSync(outpath)
