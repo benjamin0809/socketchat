@@ -3,7 +3,7 @@
 
 <head>
 	<title>静态页面保存</title>
-	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<style>
 		#textarea {
 			width: calc(100% - 2rem);
@@ -97,7 +97,7 @@
 				$('#token').val(password)
 			}
 			let host = window.location.host
-			let baseUrl = 'http://' + host + '/file/'
+			let baseUrl = 'https://' + host + '/file/'
 			const submit = (action) => {
 				var result = $('#textarea').text();
 				var value = $('#textarea').val();
