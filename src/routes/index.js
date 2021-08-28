@@ -64,7 +64,7 @@ routers.push({path: '/',routerName: router})
 routers.forEach(item => { 
   app.use(item.path, item.routerName)  
 })
-
+console.log('Initial router: ', new Date().toLocaleTimeString())
 for(let key in Module) {
   if(!Module[key] || !Module[key].router) { 
     console.error(`路由配置错误，请确认${key}.js正确定义了router`)
@@ -74,6 +74,6 @@ for(let key in Module) {
   app.use(context, Module[key].router)
   console.log(`初始化路由 ${key} 成功,对应的路由为: ${context}.`)
 } 
-
+console.log('Initial router done!endtime: ', new Date().toLocaleTimeString())
 module.exports = app
 
