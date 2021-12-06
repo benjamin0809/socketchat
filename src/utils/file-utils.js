@@ -128,7 +128,7 @@ class FileUtils {
 
     if(!req)return '';
     let port = ""
-    if (req.connection.localPort != 80 && req.connection.localPort != 443) {
+    if (req.connection.localPort != 80 && req.connection.localPort != 443 && req.connection.localPort) {
       port = ':' + req.connection.localPort
     }
     return req.protocol + '://' + req.hostname  + port 
