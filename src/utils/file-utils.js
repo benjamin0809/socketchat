@@ -3,8 +3,7 @@ const fs = require("fs");
 const mkdirp = require('mkdirp');  
 const path = require('path')
 const proxy = '';  
-const mineType = require('mime-types');  // 文件类型
-// const proxy = 'http://F2846595:mrz0809@10.191.131.156:3128'; 
+const mineType = require('mime-types');  // 文件类型 
 const probe = require('probe-image-size');
 
 class FileUtils { 
@@ -129,7 +128,7 @@ class FileUtils {
 
     if(!req)return '';
     let port = ""
-    if (req.connection.localPort != 80) {
+    if (req.connection.localPort != 80 && req.connection.localPort != 443) {
       port = ':' + req.connection.localPort
     }
     return req.protocol + '://' + req.hostname  + port 
