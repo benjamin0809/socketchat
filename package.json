@@ -29,7 +29,7 @@
     "morgan": "~1.9.0",
     "mssql": "^6.2.0",
     "mysql2": "^1.7.0",
-    "node-forge": "^0.10.0",
+    "node-forge": "^1.3.0",
     "nodemailer": "^6.2.1",
     "pkijs": "^2.1.82",
     "probe-image-size": "^4.1.1",
